@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playground | Vivek Kumar</title>
+<meta name="description" content="A desk of Vivek Kumar's covers, marks and studies. Drag things around.">
+<meta name="theme-color" content="#F3F0FB">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Covered+By+Your+Grace&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+</head>
+<body data-page="play">
+<header data-site-nav>
+  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav></noscript>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <header class="page-hero play-head" style="padding-bottom:0">
+      <div>
+        <span class="chip" style="--c:var(--mint)">Playground</span>
+        <h1 class="display t-xxl">The desk</h1>
+        <p class="hand">drag anything around, click a print to open it</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn--sun btn--sm" type="button" id="shuffle">Shuffle</button>
+        <button class="btn btn--white btn--sm" type="button" id="tidy">Tidy up</button>
+      </div>
+    </header>
+    <div class="desk" id="desk" aria-label="Desk of project prints and stickers"><span class="hand hint" aria-hidden="true">psst, it's all draggable</span></div>
+  </div>
+</main>
+
+<footer data-site-foot></footer>
+
+<script src="assets/js/data.js"></script>
+<script>
+(function () {
+  var mobile = window.matchMedia('(max-width: 600px)').matches;
+  // [id, x%, y%, width%, tilt, caption]
+  var items = mobile ? [
+    ['logofolio', 3, 1.5, 62, -4, 'logo marks'], ['social-media', 48, 9, 48, 5, 'posts & ads'],
+    ['dune-escape', 5, 20, 60, 3, 'parallax study'], ['talksy', 40, 29.5, 56, -5, 'chat, but calmer'],
+    ['watien', 3, 40, 58, -3, 'boutique brand'], ['achilles', 40, 49.5, 56, 4, 'coastal hero'],
+    ['volt-47', 4, 60, 60, 2, 'lights never go off'], ['bewakoof', 40, 70, 56, -4, 'heuristics!'],
+    ['palmonas', 4, 81, 62, 2, 'jewellery web']
+  ] : [
+    ['logofolio', 3, 5, 19, -5, 'logo marks'], ['dune-escape', 25, 3, 19, 3, 'parallax study'],
+    ['social-media', 48, 6, 14, -3, 'posts & ads'], ['volt-47', 67, 4, 22, 4, 'lights never go off'],
+    ['talksy', 6, 40, 17, 4, 'chat, but calmer'], ['watien', 27, 36, 18, -4, 'boutique brand'],
+    ['palmonas', 49, 42, 20, 2, 'jewellery web'], ['achilles', 73, 40, 18, -3, 'coastal hero'],
+    ['bewakoof', 14, 70, 18, -2, 'heuristics!'], ['portfolio-cover', 58, 72, 15, 5, '2026 folio']
+  ];
+  var stickers = mobile ? [['heart', 78, .5, 14, 12], ['smile', 8, 91, 14, 0], ['star', 76, 91, 15, -10]]
+    : [['heart', 44, 2, 5, 12], ['smile', 40, 76, 4.5, 0], ['star', 88, 74, 5.5, -10], ['flower', 2, 82, 6, 0], ['bolt', 92, 30, 3.6, 8]];
+  var SVG = {
+    heart: '<svg viewBox="0 0 64 60"><path d="M32 56 6 30C-2 22 2 6 16 6c7 0 12 4 16 10 4-6 9-10 16-10 14 0 18 16 10 24z" fill="#FF5A8C" stroke="#1C1747" stroke-width="3"/></svg>',
+    smile: '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#FFCF33" stroke="#1C1747" stroke-width="3"/><rect x="22" y="20" width="6" height="14" rx="3" fill="#1C1747"/><rect x="36" y="20" width="6" height="14" rx="3" fill="#1C1747"/><path d="M20 42c7 6 17 6 24 0" stroke="#1C1747" stroke-width="3" fill="none" stroke-linecap="round"/></svg>',
+    star: '<svg viewBox="0 0 64 64"><path d="M32 2 40 22l22 2-17 14 6 22-19-12-19 12 6-22L2 24l22-2z" fill="#6FE3B2" stroke="#1C1747" stroke-width="3" stroke-linejoin="round"/></svg>',
+    flower: '<svg viewBox="0 0 64 64"><g fill="#9DB0FF" stroke="#1C1747" stroke-width="2.5"><circle cx="32" cy="14" r="12"/><circle cx="32" cy="50" r="12"/><circle cx="14" cy="32" r="12"/><circle cx="50" cy="32" r="12"/></g><circle cx="32" cy="32" r="9" fill="#FFCF33" stroke="#1C1747" stroke-width="2.5"/></svg>',
+    bolt: '<svg viewBox="0 0 48 64"><path d="M30 2 4 36h16l-4 26 28-36H28z" fill="#3350FF" stroke="#1C1747" stroke-width="3" stroke-linejoin="round"/></svg>'
+  };
+  var byId = {}; window.PROJECTS.forEach(function (p) { byId[p.id] = p; });
+  byId['portfolio-cover'] = { title: 'Portfolio cover 2026', img: 'assets/img/portfolio-cover.jpg', w: 1419, h: 1109, noLink: true };
+
+  var desk = document.getElementById('desk');
+  desk.insertAdjacentHTML('beforeend', items.filter(function (it) { return byId[it[0]]; }).map(function (it, i) {
+    var p = byId[it[0]];
+    return '<figure class="p-item taped" data-href="' + (p.noLink ? '' : 'project.html?id=' + it[0]) + '" style="--x:' + it[1] + '%;--y:' + it[2] + '%;--w:' + it[3] + '%;--r:' + it[4] + 'deg;--tr:' + (i % 2 ? 6 : -5) + 'deg" aria-label="' + p.title + (p.noLink ? '' : ', press Enter to open') + '. Draggable.">' +
+      '<img src="' + p.img + '" alt="" width="' + p.w + '" height="' + p.h + '" loading="lazy"><figcaption>' + it[5] + '</figcaption></figure>';
+  }).join('') + stickers.map(function (s) {
+    return '<span class="p-sticker" style="--x:' + s[1] + '%;--y:' + s[2] + '%;--w:' + s[3] + '%;--r:' + s[4] + 'deg" aria-label="' + s[0] + ' sticker. Draggable.">' + SVG[s[0]] + '</span>';
+  }).join(''));
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var desk = document.getElementById('desk');
+  var all = Array.prototype.slice.call(desk.querySelectorAll('.p-item, .p-sticker'));
+  all.forEach(function (el) {
+    var href = el.getAttribute('data-href');
+    if (href) el.setAttribute('data-cursor', 'drag / open');
+    window.makeDraggable(el, { bounds: desk, onTap: href ? function () { window.location.href = href; } : null });
+  });
+  document.getElementById('tidy').addEventListener('click', function () { all.forEach(function (el) { el.resetDrag(); }); });
+  document.getElementById('shuffle').addEventListener('click', function () {
+    var d = desk.getBoundingClientRect();
+    all.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var tx = Math.random() * (d.width - r.width), ty = Math.random() * (d.height - r.height);
+      var bx = r.left - d.left - parseFloat(el.dataset.dx || 0), by = r.top - d.top - parseFloat(el.dataset.dy || 0);
+      el.dataset.dx = tx - bx; el.dataset.dy = ty - by;
+      el.style.translate = (tx - bx) + 'px ' + (ty - by) + 'px';
+    });
+  });
+})();
+</script>
+</body>
+</html>

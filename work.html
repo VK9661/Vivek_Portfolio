@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work | Vivek Kumar</title>
+<meta name="description" content="UI/UX, brand identity, graphic and motion design projects by Vivek Kumar.">
+<meta name="theme-color" content="#F3F0FB">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Covered+By+Your+Grace&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+</head>
+<body data-page="work">
+<header data-site-nav>
+  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav></noscript>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <header class="page-hero">
+      <span class="chip" style="--c:var(--sun)">Index</span>
+      <h1 class="display t-xxl">The work</h1>
+      <p class="hand">brand, product, graphic and motion, all in one drawer</p>
+      <svg class="ast" style="--c:var(--pink)" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0-31V31M-31 0H31M-22-22L22 22M-22 22L22-22" stroke="currentColor" stroke-width="21" stroke-linecap="round"/></svg>
+    </header>
+
+    <div class="filters" role="group" aria-label="Filter projects" id="filters"></div>
+    <div class="cases" id="cases" aria-live="polite"></div>
+  </div>
+
+  <div data-site-cta></div>
+</main>
+
+<footer data-site-foot></footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/cards.js"></script>
+<script>
+(function () {
+  var P = window.PROJECTS;
+  var cases = document.getElementById('cases'), filters = document.getElementById('filters');
+  cases.innerHTML = P.map(function (p, i) { return window.workCard(p, i, false); }).join('');
+
+  var CATS = [['all', 'All'], ['ux', 'UI/UX'], ['brand', 'Brand'], ['graphic', 'Graphic'], ['motion', 'Motion']];
+  var count = function (k) { return k === 'all' ? P.length : P.filter(function (p) { return (p.cats || []).indexOf(k) > -1; }).length; };
+  filters.innerHTML = CATS.map(function (c, i) {
+    return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '<span class="count">' + count(c[0]) + '</span></button>';
+  }).join('');
+
+  var apply = function (k) {
+    Array.prototype.forEach.call(filters.children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === k)); });
+    Array.prototype.forEach.call(cases.children, function (card) {
+      var show = k === 'all' || card.getAttribute('data-cats').split(' ').indexOf(k) > -1;
+      card.classList.toggle('is-hidden', !show);
+      if (show) card.classList.add('is-in');
+    });
+    try { history.replaceState(null, '', k === 'all' ? location.pathname : '#' + k); } catch (e) {}
+  };
+  filters.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) apply(b.getAttribute('data-f')); });
+  var initial = location.hash.slice(1);
+  if (CATS.some(function (c) { return c[0] === initial; })) apply(initial);
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

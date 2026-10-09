@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journal | Vivek Kumar</title>
+<meta name="description" content="Notes and a design reading list by Vivek Kumar: UX, UI, branding, type and motion.">
+<meta name="theme-color" content="#F3F0FB">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Covered+By+Your+Grace&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+</head>
+<body data-page="journal">
+<header data-site-nav>
+  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav></noscript>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <header class="page-hero">
+      <span class="chip" style="--c:var(--sky)">Journal</span>
+      <h1 class="display t-xxl">Notes &amp; reads</h1>
+      <p class="hand">a shelf of design reading, while my own posts are in the works</p>
+    </header>
+
+    <section class="card journal-empty journal-empty--slim" aria-labelledby="own-title">
+      <div>
+        <span class="eyebrow muted">From me</span>
+        <h2 id="own-title" style="font-size:clamp(1.5rem,2.4vw,2rem)">My own write-ups are on the way.</h2>
+        <p class="muted" style="font-weight:500;margin-top:6px">Until then, the latest work lives on Behance.</p>
+      </div>
+      <a class="btn" href="https://www.behance.net/vivekgupta143" target="_blank" rel="noopener">Follow on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>
+    </section>
+
+    <div class="sec-head" style="margin-top:clamp(48px,6vw,80px)">
+      <div><h2 class="display t-lg">Design reading list</h2><p class="hand">articles, guides and blogs worth bookmarking</p></div>
+    </div>
+    <div class="filters" id="read-filters" role="group" aria-label="Filter the reading list"></div>
+    <!-- To add a read: copy an <a class="read"> below. data-cat: ux | ui | brand | type | motion -->
+    <div class="reads" id="reads" aria-live="polite">
+      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener"><span class="src">Nielsen Norman Group</span><h3>10 Usability Heuristics for User Interface Design</h3><p>Jakob Nielsen's ten general principles for interaction design, and the usual basis for a heuristic evaluation.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://lawsofux.com/" target="_blank" rel="noopener"><span class="src">Jon Yablonski</span><h3>Laws of UX</h3><p>Psychology principles like Fitts's law, Hick's law and the Peak-End rule, explained for designers.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://www.refactoringui.com/" target="_blank" rel="noopener"><span class="src">Adam Wathan &amp; Steve Schoger</span><h3>Refactoring UI</h3><p>Practical tactics for better-looking interfaces: hierarchy, spacing, colour and depth.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://developer.apple.com/design/human-interface-guidelines/" target="_blank" rel="noopener"><span class="src">Apple</span><h3>Human Interface Guidelines</h3><p>Apple's guidance for designing apps across iPhone, iPad, Mac and its other platforms.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://m3.material.io/" target="_blank" rel="noopener"><span class="src">Google</span><h3>Material Design 3</h3><p>Google's open-source design system: components, design tokens and usage guidelines.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://www.smashingmagazine.com/" target="_blank" rel="noopener"><span class="src">Smashing Magazine</span><h3>Smashing Magazine</h3><p>A long-running magazine for web designers and developers, covering UX, accessibility and front-end.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://www.figma.com/blog/" target="_blank" rel="noopener"><span class="src">Figma</span><h3>Figma Blog</h3><p>Product news, design practice and stories from the team behind the tool.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="brand" style="--c:var(--pink)" href="https://www.underconsideration.com/brandnew/" target="_blank" rel="noopener"><span class="src">UnderConsideration</span><h3>Brand New</h3><p>Opinions on corporate and brand identity work, with before-and-after looks at new logos.</p><span class="foot"><span class="chip">Brand</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="type" style="--c:var(--sun)" href="https://fonts.google.com/knowledge" target="_blank" rel="noopener"><span class="src">Google Fonts</span><h3>Fonts Knowledge</h3><p>Free lessons on typography, from choosing and pairing type to variable fonts.</p><span class="foot"><span class="chip">Type</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="motion" style="--c:var(--lilac)" href="https://www.schoolofmotion.com/blog" target="_blank" rel="noopener"><span class="src">School of Motion</span><h3>School of Motion Blog</h3><p>Tutorials, ideas and resources on motion design and After Effects.</p><span class="foot"><span class="chip">Motion</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+    </div>
+  </div>
+
+  <div data-site-cta></div>
+</main>
+
+<footer data-site-foot></footer>
+
+<script src="assets/js/data.js"></script>
+<script>
+(function () {
+  var reads = document.getElementById('reads'), rf = document.getElementById('read-filters');
+  var CATS = [['all', 'All'], ['ux', 'UX'], ['ui', 'UI'], ['brand', 'Brand'], ['type', 'Type'], ['motion', 'Motion']];
+  var items = Array.prototype.slice.call(reads.children);
+
+  // Illustrated header for each card, in the order of the list above
+  var I = '#1C1747', S = 'stroke="' + I + '" stroke-width="3"', ARR = '<path d="M150 76h22m-8-8 8 8-8 8" stroke="' + I + '" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+  var ART = [
+    // 1 heuristics: checklist + magnifier
+    '<g class="m1"><rect x="105" y="22" width="96" height="112" rx="10" fill="#fff" ' + S + '/><rect x="133" y="14" width="40" height="16" rx="5" fill="#FFCF33" ' + S + '/><path d="M120 54l6 6 10-12M146 55h40M120 82l6 6 10-12M146 83h40M120 110l6 6 10-12M146 111h28" ' + S + ' fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="m2"><circle cx="222" cy="98" r="22" fill="#fff" fill-opacity=".7" stroke="' + I + '" stroke-width="4"/><path d="M238 114l20 20" stroke="' + I + '" stroke-width="7" stroke-linecap="round"/></g>',
+    // 2 laws of UX: cursor travelling to a target
+    '<g class="m2"><circle cx="196" cy="74" r="44" fill="#fff" ' + S + '/><circle cx="196" cy="74" r="28" fill="#FF5A8C" ' + S + '/><circle cx="196" cy="74" r="11" fill="#fff" ' + S + '/></g><path d="M100 112C124 116 140 100 158 88" stroke="' + I + '" stroke-width="3" stroke-dasharray="6 7" fill="none"/><g class="m1"><path d="M78 96l34 12-14 5-5 14z" fill="#FFCF33" ' + S + ' stroke-linejoin="round"/></g>',
+    // 3 refactoring UI: messy card -> clean card
+    '<g class="m1"><rect x="56" y="34" width="88" height="84" rx="8" fill="#fff" ' + S + '/><path d="M68 52h50M68 66h64M68 80h40M68 94h58M68 106h30" ' + S + ' stroke-linecap="round" opacity=".4"/></g>' + ARR + '<g class="m2"><rect x="182" y="28" width="92" height="96" rx="10" fill="#fff" ' + S + '/><rect x="194" y="40" width="68" height="30" rx="6" fill="#9DB0FF" stroke="' + I + '" stroke-width="2.5"/><path d="M194 84h52" stroke="' + I + '" stroke-width="5" stroke-linecap="round"/><path d="M194 96h36" ' + S + ' stroke-linecap="round" opacity=".5"/><rect x="194" y="104" width="34" height="12" rx="6" fill="#3350FF"/></g>',
+    // 4 HIG: phone with app icons
+    '<g class="m1"><rect x="124" y="14" width="72" height="128" rx="14" fill="#fff" ' + S + '/><rect x="148" y="20" width="24" height="6" rx="3" fill="' + I + '"/><g stroke="' + I + '" stroke-width="2.5"><rect x="136" y="38" width="20" height="20" rx="6" fill="#FF5A8C"/><rect x="164" y="38" width="20" height="20" rx="6" fill="#FFCF33"/><rect x="136" y="66" width="20" height="20" rx="6" fill="#6FE3B2"/><rect x="164" y="66" width="20" height="20" rx="6" fill="#3350FF"/><rect x="136" y="94" width="20" height="20" rx="6" fill="#9DB0FF"/><rect x="164" y="94" width="20" height="20" rx="6" fill="#fff"/></g></g><g class="m3"><circle cx="234" cy="46" r="12" fill="#FFCF33" ' + S + '/></g><g class="m2"><path d="M80 108l12-28 12 28z" fill="#FF5A8C" ' + S + ' stroke-linejoin="round"/></g>',
+    // 5 Material: layered sheets + floating action button
+    '<g class="m1"><rect x="92" y="42" width="120" height="80" rx="8" fill="#9DB0FF" ' + S + ' transform="rotate(-8 152 82)"/></g><g class="m2"><rect x="104" y="30" width="120" height="80" rx="8" fill="#fff" ' + S + '/><path d="M118 48h60M118 62h90M118 76h70" ' + S + ' stroke-linecap="round" opacity=".45"/></g><g class="m3"><circle cx="224" cy="112" r="20" fill="#3350FF" ' + S + '/><path d="M224 103v18M215 112h18" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></g>',
+    // 6 Smashing: browser window with code
+    '<g class="m1"><rect x="70" y="24" width="180" height="106" rx="10" fill="#fff" ' + S + '/><path d="M70 44h180" ' + S + '/><circle cx="84" cy="34" r="4" fill="#FF5A8C"/><circle cx="98" cy="34" r="4" fill="#FFCF33"/><circle cx="112" cy="34" r="4" fill="#6FE3B2"/></g><g class="m3"><path d="M136 70l-18 16 18 16M184 70l18 16-18 16M168 64l-16 46" stroke="' + I + '" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>',
+    // 7 Figma blog: vector path with anchors and a handle
+    '<g class="m1"><path d="M68 112C108 30 168 30 196 78S250 120 262 52" stroke="' + I + '" stroke-width="3.5" fill="none"/></g><path d="M160 58L232 98" stroke="' + I + '" stroke-width="2"/><g stroke="' + I + '" stroke-width="2.5"><circle cx="160" cy="58" r="5" fill="#fff"/><circle cx="232" cy="98" r="5" fill="#fff"/><rect class="m3" x="62" y="106" width="12" height="12" fill="#fff"/><rect class="m3" x="190" y="72" width="12" height="12" fill="#3350FF"/><rect class="m3" x="256" y="46" width="12" height="12" fill="#fff"/></g><g class="m2"><path d="M110 132l10-30 16 8z" fill="#FFCF33" ' + S + ' stroke-linejoin="round"/></g>',
+    // 8 Brand New: old mark -> new mark
+    '<g class="m1"><rect x="62" y="38" width="76" height="76" rx="10" fill="#fff" ' + S + '/><circle cx="100" cy="76" r="20" fill="none" ' + S + ' opacity=".35"/><path d="M88 76h24" ' + S + ' opacity=".35"/></g>' + ARR + '<g class="m2"><rect x="182" y="34" width="84" height="84" rx="12" fill="' + I + '" ' + S + '/><path d="M204 98l20-42 20 42z" fill="#FFCF33"/><circle cx="224" cy="86" r="8" fill="#FF5A8C"/></g><g class="m3"><path d="M276 26l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#fff" stroke="' + I + '" stroke-width="2"/></g>',
+    // 9 Fonts Knowledge: type specimen with guides
+    '<path d="M50 112h220M50 62h220M50 40h220" stroke="' + I + '" stroke-width="2" stroke-dasharray="5 6" opacity=".45"/><g class="m3"><text x="160" y="112" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="96" fill="' + I + '">Aa</text></g><g class="m2"><circle cx="252" cy="36" r="10" fill="#FF5A8C" ' + S + '/></g><g class="m1"><rect x="56" y="24" width="18" height="18" rx="4" fill="#fff" ' + S + '/></g>',
+    // 10 Motion: bouncing ball with keyframes
+    '<path d="M60 108Q110 16 160 108Q200 46 240 108" stroke="' + I + '" stroke-width="2.5" stroke-dasharray="5 6" fill="none"/><g stroke="' + I + '" stroke-width="2.5"><circle cx="84" cy="64" r="9" fill="#FF5A8C" opacity=".35"/><circle cx="108" cy="46" r="10" fill="#FF5A8C" opacity=".6"/><circle class="m3" cx="200" cy="76" r="13" fill="#FFCF33"/></g><path d="M56 132h208" ' + S + '/><g fill="#fff" stroke="' + I + '" stroke-width="2.5"><path class="m1" d="M80 126l6 6-6 6-6-6z"/><path d="M160 126l6 6-6 6-6-6z"/><path class="m2" d="M240 126l6 6-6 6-6-6z"/></g>'
+  ];
+  items.forEach(function (r, i) {
+    if (ART[i]) r.insertAdjacentHTML('afterbegin', '<span class="read-art" aria-hidden="true"><svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid meet">' + ART[i] + '</svg></span>');
+  });
+  var count = function (k) { return k === 'all' ? items.length : items.filter(function (r) { return r.getAttribute('data-cat') === k; }).length; };
+  rf.innerHTML = CATS.map(function (c, i) { return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '<span class="count">' + count(c[0]) + '</span></button>'; }).join('');
+  rf.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-f]'); if (!b) return;
+    var k = b.getAttribute('data-f');
+    Array.prototype.forEach.call(rf.children, function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    items.forEach(function (r) { var show = k === 'all' || r.getAttribute('data-cat') === k; r.classList.toggle('is-hidden', !show); if (show) r.classList.add('is-in'); });
+  });
+})();
+</script><script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

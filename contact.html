@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Vivek Kumar</title>
+<meta name="description" content="Get in touch with Vivek Kumar for design roles and freelance projects.">
+<meta name="theme-color" content="#F3F0FB">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Covered+By+Your+Grace&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+</head>
+<body data-page="contact">
+<header data-site-nav>
+  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav></noscript>
+</header>
+
+<main id="main">
+  <div class="wrap contact-wrap">
+    <section aria-labelledby="c-title" data-reveal>
+      <span class="chip"><i class="dot" aria-hidden="true"></i>Available for new projects</span>
+      <h1 class="display t-xxl" id="c-title">Say<br>hello.</h1>
+      <p class="hand">got a role, a project or just a question?</p>
+      <br>
+      <a class="mail" href="mailto:vivekgupta9661@gmail.com?subject=Portfolio%20enquiry" data-cursor="write">vivekgupta9661@gmail.com</a>
+      <p style="margin-top:14px"><button class="btn btn--white btn--sm" type="button" data-copy="vivekgupta9661@gmail.com" data-cursor="copy">Copy email</button></p>
+      <nav class="link-rows" aria-label="Elsewhere">
+        <a href="https://www.behance.net/vivekgupta143" target="_blank" rel="noopener">Behance<span class="round-ar" aria-hidden="true">&#8599;</span></a>
+        <a href="https://www.linkedin.com/in/vivek-kumar-9641312a8" target="_blank" rel="noopener">LinkedIn<span class="round-ar" aria-hidden="true">&#8599;</span></a>
+        <a href="https://www.instagram.com/16__vivek__" target="_blank" rel="noopener">Instagram<span class="round-ar" aria-hidden="true">&#8599;</span></a>
+      </nav>
+    </section>
+
+    <form class="card taped form-card" id="note-form" novalidate data-reveal style="--d:.1s">
+      <h2>Leave a note</h2>
+      <p>It opens your email app with everything filled in, ready to send.</p>
+      <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-msg">What's on your mind?</label><textarea id="f-msg" name="message" placeholder="Tell me about the project, the role or the idea..." required></textarea></div>
+      <p class="form-error" id="f-err" role="alert" hidden></p>
+      <button class="btn" type="submit">Write the email <span class="ar" aria-hidden="true">&#8599;</span></button>
+      <p class="form-done" id="f-done" role="status" hidden>Your email app should now be open with the note ready to send. If nothing opened, write to vivekgupta9661@gmail.com directly.</p>
+    </form>
+  </div>
+</main>
+
+<footer data-site-foot></footer>
+
+<script src="assets/js/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  // No backend: the form builds a mailto link. Nothing is stored or sent by the page itself.
+  var form = document.getElementById('note-form');
+  var name = document.getElementById('f-name'), email = document.getElementById('f-email'), msg = document.getElementById('f-msg');
+  var err = document.getElementById('f-err'), done = document.getElementById('f-done');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = [];
+    [name, email, msg].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    if (!name.value.trim()) bad.push([name, 'your name']);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) bad.push([email, 'a valid email']);
+    if (!msg.value.trim()) bad.push([msg, 'a message']);
+    if (bad.length) {
+      bad.forEach(function (b) { b[0].setAttribute('aria-invalid', 'true'); });
+      err.textContent = 'Please add ' + bad.map(function (b) { return b[1]; }).join(', ') + '.';
+      err.hidden = false; done.hidden = true; bad[0][0].focus(); return;
+    }
+    err.hidden = true;
+    var subject = 'Portfolio enquiry from ' + name.value.trim();
+    var body = msg.value.trim() + '\n\n' + name.value.trim() + '\n' + email.value.trim();
+    window.location.href = 'mailto:' + window.CONTACT.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    done.hidden = false;
+  });
+})();
+</script>
+</body>
+</html>
