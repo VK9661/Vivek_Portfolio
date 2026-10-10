@@ -65,17 +65,19 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'watien', title: 'WATIEN', kind: 'Brand identity', cats: ['brand'], color: 'mint', featured: true,
-    summary: 'Brand identity for a boutique for the modern soul.',
-    about: 'A brand identity for WATIEN Boutique, "a boutique for the modern soul": logo, colours, typography and brand applications, built on four words: luxury, elegance, culture and modern.',
-    year: '2025', published: 'Apr 2025', tags: ['Branding', 'Brand system'], tools: '',
-    img: 'assets/img/watien.jpg', w: 1415, h: 1111,
-    behance: 'https://www.behance.net/gallery/224066753/WATIEN',
-    facts: [['Type', 'Brand identity'], ['Palette', 'Deep green and gold'], ['Published', 'Apr 2025']],
+    id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: true,
+    summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
+    about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
+    year: '2026', published: 'Oct 2026', tags: ['Packaging', 'Social campaign', 'Brand identity'], tools: ['After Effects', 'Adobe Firefly', 'Google Veo', 'Google Flow', 'ElevenLabs'],
+    img: 'assets/img/chashni.jpg', w: 1400, h: 1095,
+    behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
+    facts: [['Type', 'Concept project'], ['Line', 'This one stops here.'], ['Scripts', 'Devanagari + Latin'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'The mark', p: ['An illustrated portrait inside an arched frame: a figure with a sleek bob, gold lips and sculptural statement earrings, paired with a high-contrast serif wordmark and a lighter "Boutique" line between rules.'] },
-      { h: 'Colour', p: ['A two-colour palette of deep forest green and soft gold, used on cream paper stock, so the identity reads as quiet luxury rather than loud fashion.'] },
-      { h: 'Applications shown', list: ['Primary logo card', 'Swing tag in green with gold foil', 'Storefront window decal', 'Colour and values card', 'Typography and brand applications'] }
+      { h: 'The problem', p: ['Every Diwali, the same gift box does the rounds unopened, because nothing on it says what is inside.'] },
+      { h: 'The system', p: ['One mark, one colour variable, four sweets. The pour on the lid and the drawer take the colour of the sweet, so the box names what it holds before anyone opens it.', 'The identity is bilingual, set in Devanagari and Latin.'] },
+      { h: 'One line, three reels', p: ['The campaign runs on a single line, "This one stops here", which lands three different ways across three reels:'], list: ['The Test: the standard', 'The Count: the problem', 'Keep One: the box you keep for yourself'] },
+      { h: 'Deliverables', list: ['Bilingual Devanagari and Latin identity', 'Print-ready packaging with dielines', 'Three reels', 'Three carousels'] },
+      { h: 'Credits', p: ['Concept, identity, packaging and motion by Vivek Kumar. AI was used to generate the kitchen footage (Adobe Firefly, Google Veo), the travertine plate (Google Flow) and the voice (ElevenLabs). Music: paulyudin, "Ambient" (Pixabay).'] }
     ]
   },
   {
@@ -90,6 +92,20 @@ window.PROJECTS = [
       { h: 'Identity', p: ['The app icon is a profile in a circle, in lilac and sky blue: a face in conversation, which sets the soft, human tone for the whole app.'] },
       { h: 'Welcome screen', p: ['A single clear promise, "Connect. Share. Feel heard. Anywhere.", with one primary action, Start Messaging, so a new user knows exactly what to do next.'] },
       { h: 'Chat screen', list: ['Header with contact, "last seen recently" status, call and menu actions', 'Expressive marbled chat wallpaper', 'Friendly empty state: "No messages here yet. Send a message to start conversation"', 'Composer with attachment and voice note controls'] }
+    ]
+  },
+  {
+    id: 'watien', title: 'WATIEN', kind: 'Brand identity', cats: ['brand'], color: 'mint',
+    summary: 'Brand identity for a boutique for the modern soul.',
+    about: 'A brand identity for WATIEN Boutique, "a boutique for the modern soul": logo, colours, typography and brand applications, built on four words: luxury, elegance, culture and modern.',
+    year: '2025', published: 'Apr 2025', tags: ['Branding', 'Brand system'], tools: '',
+    img: 'assets/img/watien.jpg', w: 1415, h: 1111,
+    behance: 'https://www.behance.net/gallery/224066753/WATIEN',
+    facts: [['Type', 'Brand identity'], ['Palette', 'Deep green and gold'], ['Published', 'Apr 2025']],
+    writeup: [
+      { h: 'The mark', p: ['An illustrated portrait inside an arched frame: a figure with a sleek bob, gold lips and sculptural statement earrings, paired with a high-contrast serif wordmark and a lighter "Boutique" line between rules.'] },
+      { h: 'Colour', p: ['A two-colour palette of deep forest green and soft gold, used on cream paper stock, so the identity reads as quiet luxury rather than loud fashion.'] },
+      { h: 'Applications shown', list: ['Primary logo card', 'Swing tag in green with gold foil', 'Storefront window decal', 'Colour and values card', 'Typography and brand applications'] }
     ]
   },
   {
