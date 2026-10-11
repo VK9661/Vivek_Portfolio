@@ -95,20 +95,6 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'palmonas', title: 'Palmonas', kind: 'Website design', cats: ['ux', 'graphic'], color: 'sun',
-    summary: 'E-commerce UI/UX for a demi-fine jewellery brand.',
-    about: 'A landing page and hero section design for Palmonas, a demi-fine jewellery brand, balancing editorial restraint with conversion intent.',
-    year: '2025', published: 'Jun 2025', tags: ['Landing page', 'Ecommerce', 'Prototyping'], tools: '',
-    img: 'assets/img/palmonas.jpg', w: 1559, h: 1009,
-    behance: 'https://www.behance.net/gallery/228224345/Hero-Section-%28Palmonas%29',
-    facts: [['Type', 'Website / hero section'], ['Focus', 'E-commerce UI/UX'], ['Published', 'Jun 2025']],
-    writeup: [
-      { h: 'The hero', p: ['A soft lilac campaign banner pairs a script "Sale" headline with a bold offer block, "End of season, Buy 1 Get 1 Free, use code EOSS", and a single Shop Now action, with carousel dots for the next banners.'] },
-      { h: 'Page structure', list: ['Header with a gifting search ("Search gifts for your dearest...") and category navigation', '"Everyday demi-fine jewellery" row: Mangalsutra, Rings, Earrings, Bracelets', 'Collection cards on pink: Made for Stunting, For the Love of Me, Stackables Glam', 'Mega sale banner and an occasion carousel (wedding wear, office wear)', '"Shop with confidence" trust row: skin safe, 18K gold vermeil, authentic diamonds', 'Footer with help, about and payment methods'] },
-      { h: 'Visual direction', p: ['Warm cream backgrounds, rose-pink campaign colour and editorial photography keep the store feeling premium, while every section still ends in a clear way to shop.'] }
-    ]
-  },
-  {
     id: 'bewakoof', title: 'Bewakoof', kind: 'Heuristic evaluation', cats: ['ux'], color: 'sun',
     summary: "What's working and what isn't across a high-traffic ecommerce funnel.",
     about: "A heuristic evaluation of the Bewakoof shopping app: a structured review of what's working and what isn't across a high-traffic ecommerce funnel.",
@@ -119,32 +105,6 @@ window.PROJECTS = [
     writeup: [
       { h: 'What a heuristic evaluation is', p: ['An expert review of an interface against established usability principles. It is a fast way to find friction before running costly user tests.'] },
       { h: 'Screens in focus', list: ['Home: stories row (Specials, Shop Now, Plus Size, Accessories) and promotional banners', 'Offer cards such as "Joggers, buy 2 at ₹1699"', 'New Arrivals and product discovery', 'Bottom navigation: Men, Categories, Studio, Profile'] }
-    ]
-  },
-  {
-    id: 'logofolio', title: 'Logofolio', kind: 'Logo design', cats: ['brand'], color: 'sky',
-    summary: 'Selected marks across different brands and styles.',
-    about: 'A collection of logo designs across different brands and styles, from energetic sports-style marks to refined geometric emblems.',
-    year: '2025', published: 'Apr 2025', tags: ['Logo design', 'Brand identity'], tools: '',
-    img: 'assets/img/logofolio.jpg', w: 1415, h: 1111,
-    behance: 'https://www.behance.net/gallery/222859787/Logofolio',
-    facts: [['Type', 'Logo collection'], ['Published', 'Apr 2025']],
-    writeup: [
-      { h: 'Selected marks', list: ['Zero Energy: a "Z" split by a lightning bolt, with the line "No limits, just power"', 'Fabrisse: a symmetrical geometric emblem with a spaced serif wordmark', 'Redmagic: a monoline "R" built from parallel strokes'] },
-      { h: 'Range', p: ['The set moves between bold, high-energy marks and quiet, premium ones, showing how the same geometric thinking adapts to very different brand personalities.'] }
-    ]
-  },
-  {
-    id: 'dune-escape', title: 'DuneEscape', kind: 'Parallax UI animation', cats: ['motion'], color: 'sun',
-    summary: 'A multi-layer parallax animation for a luxury desert-retreat website.',
-    about: 'A multi-layer parallax animation built in After Effects for DuneEscape, a luxury desert-retreat landing page, showing depth and motion control.',
-    year: '2025', published: 'Jun 2025', tags: ['Parallax', 'UI animation'], tools: ['After Effects'],
-    img: 'assets/img/parallax-dune.jpg', w: 1448, h: 1086,
-    behance: 'https://www.behance.net/gallery/228225099/Parallax-Animation',
-    facts: [['Type', 'Parallax UI animation'], ['Tool', 'After Effects'], ['Published', 'Jun 2025']],
-    writeup: [
-      { h: 'The scene', p: ['A golden dune landscape split into separate layers, with an oversized serif "sands" set among them so the type and the landscape move at different speeds and create depth.'] },
-      { h: 'Interface', list: ['Navigation: Home, About, Experiences, Sustainability, Contact', 'Headline: "a luxury retreat nested in the heart of the golden sands", mixing script and sans serif', 'Outlined "Explore the resort" action and slider arrows'] }
     ]
   },
   {
@@ -160,19 +120,6 @@ window.PROJECTS = [
       { h: 'Interface', list: ['Navigation: Home, Customize, Pricing, Our Work, Contact', 'Short intro on Achilles Point’s rocky coastline, native bush and Rangitoto Island view', 'Single pill-shaped "Book Now" action'] }
     ]
   },
-  {
-    id: 'social-media', title: 'Social media designs', kind: 'Graphic design', cats: ['graphic'], color: 'pink',
-    summary: 'Campaign and content creatives: posts, banners and ad creatives.',
-    about: 'A set of campaign and content creatives across platforms: posts, banners and ad creatives for brands, promotions and campaigns.',
-    year: '2025', published: 'Apr 2025', tags: ['Social media', 'Advertising'], tools: '',
-    img: 'assets/img/social-media.jpg', w: 1254, h: 1254,
-    behance: 'https://www.behance.net/gallery/223899689/Social-Media-Posts',
-    facts: [['Type', 'Social media & ad creatives'], ['Formats', 'Posts, banners, ad creatives'], ['Published', 'Apr 2025']],
-    writeup: [
-      { h: 'Creatives shown', list: ['Gaming chair "Black Friday super sale" with a 50% discount offer', 'Biryani promotion: "Special delicious, limited time only, 50% save"', 'Sneaker ad with repeated outline type and an "Only $50" price tag', 'Organic argan oil skincare post: "Innovative beauty solutions"'] },
-      { h: 'Approach', p: ['Each piece leads with one clear message, a strong product cut-out and a single call to action, while colour and type change to match each brand’s category, from bold red retail to soft green skincare.'] }
-    ]
-  }
 ];
 
 window.CONTACT = {

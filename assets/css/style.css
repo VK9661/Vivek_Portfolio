@@ -592,7 +592,7 @@ body.intro-on .js-drop .L, body.intro-on .id-card { animation-play-state: paused
   .row-i .meta { display: none; }
   .pager { grid-template-columns: 1fr; }
 
-  .desk { height: 1650px; }
+  .desk { height: 1480px; }
   .tape-band { height: 190px; }
   .tape { top: 108px; transform: rotate(2.6deg); }
   .tape--b { top: 26px; transform: rotate(-3deg); }
