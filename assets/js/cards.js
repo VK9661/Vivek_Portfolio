@@ -21,7 +21,9 @@
   };
 
   window.rowItem = function (p, i) {
-    return '<a class="row-i" href="project.html?id=' + p.id + '" style="--c:' + swatch(p) + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '" data-cursor="view">' +
+    // Rows draw ink text on the swatch (chip and hover fill), so ink projects borrow lilac
+    var c = p.color === 'ink' ? (window.SWATCH || {}).lilac || '#9DB0FF' : swatch(p);
+    return '<a class="row-i" href="project.html?id=' + p.id + '" style="--c:' + c + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '" data-cursor="view">' +
       '<span class="n" aria-hidden="true">' + String(i + 1).padStart(2, '0') + '</span>' +
       '<span class="th"><img src="' + p.img + '" alt="" width="' + p.w + '" height="' + p.h + '" loading="lazy"></span>' +
       '<div><h3>' + esc(p.title) + '</h3><p>' + esc(p.summary) + '</p></div>' +
