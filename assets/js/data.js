@@ -95,20 +95,6 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'watien', title: 'WATIEN', kind: 'Brand identity', cats: ['brand'], color: 'mint',
-    summary: 'Brand identity for a boutique for the modern soul.',
-    about: 'A brand identity for WATIEN Boutique, "a boutique for the modern soul": logo, colours, typography and brand applications, built on four words: luxury, elegance, culture and modern.',
-    year: '2025', published: 'Apr 2025', tags: ['Branding', 'Brand system'], tools: '',
-    img: 'assets/img/watien.jpg', w: 1415, h: 1111,
-    behance: 'https://www.behance.net/gallery/224066753/WATIEN',
-    facts: [['Type', 'Brand identity'], ['Palette', 'Deep green and gold'], ['Published', 'Apr 2025']],
-    writeup: [
-      { h: 'The mark', p: ['An illustrated portrait inside an arched frame: a figure with a sleek bob, gold lips and sculptural statement earrings, paired with a high-contrast serif wordmark and a lighter "Boutique" line between rules.'] },
-      { h: 'Colour', p: ['A two-colour palette of deep forest green and soft gold, used on cream paper stock, so the identity reads as quiet luxury rather than loud fashion.'] },
-      { h: 'Applications shown', list: ['Primary logo card', 'Swing tag in green with gold foil', 'Storefront window decal', 'Colour and values card', 'Typography and brand applications'] }
-    ]
-  },
-  {
     id: 'palmonas', title: 'Palmonas', kind: 'Website design', cats: ['ux', 'graphic'], color: 'sun',
     summary: 'E-commerce UI/UX for a demi-fine jewellery brand.',
     about: 'A landing page and hero section design for Palmonas, a demi-fine jewellery brand, balancing editorial restraint with conversion intent.',
