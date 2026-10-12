@@ -26,27 +26,20 @@
    ===================================================================== */
 window.PROJECTS = [
   {
-    id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: true,
-    summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
-    about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
-    year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'], tools: ['Figma', 'Miro', 'Illustrator', 'Google Forms'],
-    img: 'assets/img/shopup.jpg', w: 1448, h: 1086,
-    behance: 'https://www.behance.net/gallery/248983891/ShopUp-Case-Study',
-    facts: [['Type', 'UI/UX case study'], ['Platform', 'Mobile app'], ['Published', 'May 2026'], ['Tools', 'Figma, Miro, Illustrator, Google Forms']],
+    id: 'fikr', title: 'FIKR', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'blue', featured: true,
+    summary: 'Medicine care for a parent who lives far away.',
+    about: 'Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure. FIKR (फ़िक्र) is a concept app designed to ease this worry without making parents feel monitored.',
+    year: '2026', published: 'Oct 2026', tags: ['Mobile app', 'Healthcare', 'Motion'], tools: ['After Effects'],
+    img: 'assets/img/fikr.jpg', w: 808, h: 632,
+    behance: 'https://www.behance.net/gallery/256988001/FIKR-Medicine-Care-UXUI-Case-Study',
+    facts: [['Type', 'Concept UI/UX case study'], ['Platform', 'Mobile app'], ['Research', 'Five interviews'], ['Design system', 'Material 3'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'Why this project', p: ['Unlike generic e-commerce giants, ShopUp is designed with the user at the centre: a smarter, more personalised shopping experience using AI-powered recommendations that understand taste, needs and budget.', 'A clutter-free interface, fast delivery and real-time customer support aim to make shopping seamless, not stressful, while curated collections, exclusive deals and local seller support help people discover unique products.'] },
-      { h: 'What users told me', p: ['Research surfaced recurring pain points, including:'], quotes: ['I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.', 'I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.'] },
-      { h: 'The logo', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick deliveries and a seamless experience, while the bold blue conveys trust, reliability and innovation.'] }
-    ],
-    role: ['Design Strategy', 'Problem Solution', 'Information Architecture', 'Empathy Mapping', 'Usability Testing', 'User Flow', 'Prototyping', 'Wireframes', 'Competitive Analysis', 'Visual Design', 'User Research', 'User Persona'],
-    process: [
-      ['Empathize', 'User research, user interviews, competitive analysis'],
-      ['Define', 'User persona, goal statement, empathy mapping'],
-      ['Ideate', 'Brainstorming, card sorting, user flow'],
-      ['Design', 'Paper wireframing, visual design, prototype'],
-      ['Testing', 'Usability checks, survey insights, improvements']
-    ],
-    board: Array.from({ length: 16 }, function (_, i) { return 'assets/img/shopup/board-' + String(i).padStart(2, '0') + '.jpg'; })
+      { h: 'The worry', p: ['Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure.'] },
+      { h: 'What research showed', p: ['Five interviews surfaced two things:'], list: ['Being asked can hurt more than taking the medicine', 'Routines often break during trips, illness or festivals'] },
+      { h: 'The solution', p: ['Parents tap one haldi button: Taken. The child sees silence when all is well, and a clear alert when something needs attention. FIKR turns everyday worry into quiet reassurance, without making parents feel monitored.'] },
+      { h: 'Process', list: ['Research and affinity mapping', 'Personas', 'User flows', 'Wireframes', 'Logo exploration', 'Material 3 design system', 'Final screens', 'After Effects film'] },
+      { h: 'Credits', p: ['Concept project. Persona photos are AI-generated. Music: "Classical Vibes 4" by Mixkit.'] }
+    ]
   },
   {
     id: 'volt-47', title: 'VOLT 47', kind: 'Brand identity', cats: ['brand', 'motion'], color: 'ink', featured: true,
@@ -81,20 +74,27 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'fikr', title: 'FIKR', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'blue', featured: true,
-    summary: 'Medicine care for a parent who lives far away.',
-    about: 'Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure. FIKR (फ़िक्र) is a concept app designed to ease this worry without making parents feel monitored.',
-    year: '2026', published: 'Oct 2026', tags: ['Mobile app', 'Healthcare', 'Motion'], tools: ['After Effects'],
-    img: 'assets/img/fikr.jpg', w: 808, h: 632,
-    behance: 'https://www.behance.net/gallery/256988001/FIKR-Medicine-Care-UXUI-Case-Study',
-    facts: [['Type', 'Concept UI/UX case study'], ['Platform', 'Mobile app'], ['Research', 'Five interviews'], ['Design system', 'Material 3'], ['Published', 'Oct 2026']],
+    id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: true,
+    summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
+    about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
+    year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'], tools: ['Figma', 'Miro', 'Illustrator', 'Google Forms'],
+    img: 'assets/img/shopup.jpg', w: 1448, h: 1086,
+    behance: 'https://www.behance.net/gallery/248983891/ShopUp-Case-Study',
+    facts: [['Type', 'UI/UX case study'], ['Platform', 'Mobile app'], ['Published', 'May 2026'], ['Tools', 'Figma, Miro, Illustrator, Google Forms']],
     writeup: [
-      { h: 'The worry', p: ['Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure.'] },
-      { h: 'What research showed', p: ['Five interviews surfaced two things:'], list: ['Being asked can hurt more than taking the medicine', 'Routines often break during trips, illness or festivals'] },
-      { h: 'The solution', p: ['Parents tap one haldi button: Taken. The child sees silence when all is well, and a clear alert when something needs attention. FIKR turns everyday worry into quiet reassurance, without making parents feel monitored.'] },
-      { h: 'Process', list: ['Research and affinity mapping', 'Personas', 'User flows', 'Wireframes', 'Logo exploration', 'Material 3 design system', 'Final screens', 'After Effects film'] },
-      { h: 'Credits', p: ['Concept project. Persona photos are AI-generated. Music: "Classical Vibes 4" by Mixkit.'] }
-    ]
+      { h: 'Why this project', p: ['Unlike generic e-commerce giants, ShopUp is designed with the user at the centre: a smarter, more personalised shopping experience using AI-powered recommendations that understand taste, needs and budget.', 'A clutter-free interface, fast delivery and real-time customer support aim to make shopping seamless, not stressful, while curated collections, exclusive deals and local seller support help people discover unique products.'] },
+      { h: 'What users told me', p: ['Research surfaced recurring pain points, including:'], quotes: ['I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.', 'I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.'] },
+      { h: 'The logo', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick deliveries and a seamless experience, while the bold blue conveys trust, reliability and innovation.'] }
+    ],
+    role: ['Design Strategy', 'Problem Solution', 'Information Architecture', 'Empathy Mapping', 'Usability Testing', 'User Flow', 'Prototyping', 'Wireframes', 'Competitive Analysis', 'Visual Design', 'User Research', 'User Persona'],
+    process: [
+      ['Empathize', 'User research, user interviews, competitive analysis'],
+      ['Define', 'User persona, goal statement, empathy mapping'],
+      ['Ideate', 'Brainstorming, card sorting, user flow'],
+      ['Design', 'Paper wireframing, visual design, prototype'],
+      ['Testing', 'Usability checks, survey insights, improvements']
+    ],
+    board: Array.from({ length: 16 }, function (_, i) { return 'assets/img/shopup/board-' + String(i).padStart(2, '0') + '.jpg'; })
   },
   {
     id: 'bewakoof', title: 'Bewakoof', kind: 'Heuristic evaluation', cats: ['ux'], color: 'sun',
