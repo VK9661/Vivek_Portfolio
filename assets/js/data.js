@@ -81,17 +81,19 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'talksy', title: 'Talksy', kind: 'App design', cats: ['ux'], color: 'pink', featured: true,
-    summary: 'A messaging app, redrawn. Connect. Share. Feel heard.',
-    about: 'App design for Talksy, a messaging app built around "a more meaningful way to chat". The project covers the app icon, the welcome screen and the chat experience.',
-    year: '2025', published: 'Sep 2025', tags: ['Mobile app', 'Chat UX'], tools: ['Figma'],
-    img: 'assets/img/talksy.jpg', w: 1448, h: 1086,
-    behance: 'https://www.behance.net/gallery/233957851/Talksy-App',
-    facts: [['Type', 'App design'], ['Platform', 'Mobile'], ['Tool', 'Figma'], ['Published', 'Sep 2025']],
+    id: 'fikr', title: 'FIKR', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'blue', featured: true,
+    summary: 'Medicine care for a parent who lives far away.',
+    about: 'Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure. FIKR (फ़िक्र) is a concept app designed to ease this worry without making parents feel monitored.',
+    year: '2026', published: 'Oct 2026', tags: ['Mobile app', 'Healthcare', 'Motion'], tools: ['After Effects'],
+    img: 'assets/img/fikr.jpg', w: 808, h: 632,
+    behance: 'https://www.behance.net/gallery/256988001/FIKR-Medicine-Care-UXUI-Case-Study',
+    facts: [['Type', 'Concept UI/UX case study'], ['Platform', 'Mobile app'], ['Research', 'Five interviews'], ['Design system', 'Material 3'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'Identity', p: ['The app icon is a profile in a circle, in lilac and sky blue: a face in conversation, which sets the soft, human tone for the whole app.'] },
-      { h: 'Welcome screen', p: ['A single clear promise, "Connect. Share. Feel heard. Anywhere.", with one primary action, Start Messaging, so a new user knows exactly what to do next.'] },
-      { h: 'Chat screen', list: ['Header with contact, "last seen recently" status, call and menu actions', 'Expressive marbled chat wallpaper', 'Friendly empty state: "No messages here yet. Send a message to start conversation"', 'Composer with attachment and voice note controls'] }
+      { h: 'The worry', p: ['Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure.'] },
+      { h: 'What research showed', p: ['Five interviews surfaced two things:'], list: ['Being asked can hurt more than taking the medicine', 'Routines often break during trips, illness or festivals'] },
+      { h: 'The solution', p: ['Parents tap one haldi button: Taken. The child sees silence when all is well, and a clear alert when something needs attention. FIKR turns everyday worry into quiet reassurance, without making parents feel monitored.'] },
+      { h: 'Process', list: ['Research and affinity mapping', 'Personas', 'User flows', 'Wireframes', 'Logo exploration', 'Material 3 design system', 'Final screens', 'After Effects film'] },
+      { h: 'Credits', p: ['Concept project. Persona photos are AI-generated. Music: "Classical Vibes 4" by Mixkit.'] }
     ]
   },
   {
