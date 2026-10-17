@@ -30,7 +30,6 @@ Then open http://localhost:5173. (Any static server works too, e.g. `npx serve s
 | `services.html` | Tabbed services, process, draggable capability board, FAQ |
 | `journal.html` | Empty state until articles exist |
 | `contact.html` | Email, socials and a note form that opens the visitor's email app |
-| `playground.html` | Draggable desk of project prints and stickers (shuffle / tidy up) |
 | `assets/js/data.js` | **All projects + contact links.** Add a project by adding an entry. |
 | `assets/js/cards.js` | Shared project card renderers |
 | `assets/js/main.js` | Shared nav, contact band, footer and all interactions |

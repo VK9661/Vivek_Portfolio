@@ -48,8 +48,7 @@
     { href: 'work.html', key: 'work', label: 'Work' },
     { href: 'about.html', key: 'about', label: 'About' },
     { href: 'services.html', key: 'services', label: 'Services' },
-    { href: 'journal.html', key: 'journal', label: 'Journal' },
-    { href: 'playground.html', key: 'play', label: 'Playground' }
+    { href: 'journal.html', key: 'journal', label: 'Journal' }
   ];
   var current = page === 'project' ? 'work' : page;
   var cur = function (k) { return k === current ? ' aria-current="page"' : ''; };

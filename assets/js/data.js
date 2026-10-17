@@ -1,6 +1,5 @@
 /* =====================================================================
-   PROJECTS — single source of truth for Home, Work, Project detail and
-   Playground. Add a new work by adding an entry here.
+   PROJECTS — single source of truth for Home, Work, Project detail. Add a new work by adding an entry here.
 
    id        : used in the URL  -> project.html?id=<id>
    title     : project name
