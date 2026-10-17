@@ -58,6 +58,12 @@ li { margin: 0 0 0.6pt; }
 .sk { margin-bottom: 1pt; }
 .sk b { font-weight: 600; }
 .edu { margin-bottom: 1.5pt; }
+/* Minimal Accent theme */
+h1 { font-weight: 600; letter-spacing: -0.6pt; font-size: 22pt; }
+.title { color: #2b59ff; font-weight: 600; }
+h2 { color: #2b59ff; border-bottom: none; letter-spacing: 1.6pt; margin-top: 10pt; }
+table.row td.date { color: #2b59ff; }
+.btn { border-radius: 10pt; }
 .footer { position: fixed; bottom: -9mm; right: 0; font-size: 6.6pt; color: #999; text-align: right; }
 """
 
