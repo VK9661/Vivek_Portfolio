@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
-<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
+(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vivek Kumar | Graphic, UI/UX & Motion Designer</title>
 <meta name="description" content="Portfolio of Vivek Kumar, a graphic, UI/UX and motion graphic designer and video editor based in India.">
@@ -20,7 +20,7 @@
 </head>
 <body data-page="home">
 <header data-site-nav>
-  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
+  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
 </header>
 
 <main id="main">
@@ -110,7 +110,7 @@
   </section>
 
   <!-- DRAWER -->
-  <section class="sec" style="padding-top:0" aria-labelledby="drawer-title">
+  <section class="sec sec--flush" aria-labelledby="drawer-title">
     <div class="wrap">
       <div class="sec-head" data-reveal>
         <div>
@@ -124,7 +124,7 @@
   </section>
 
   <!-- SERVICES TEASER -->
-  <section class="sec" style="padding-top:0" aria-labelledby="svc-title">
+  <section class="sec sec--flush" aria-labelledby="svc-title">
     <div class="wrap">
       <div class="sec-head" data-reveal>
         <div>
@@ -148,48 +148,7 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/cards.js"></script>
-<script>
-(function () {
-  // Tape marquee words (duplicated so the loop is seamless)
-  var words = ['UI/UX design', 'Brand systems', 'Motion studies', 'Video editing', 'Interaction design', 'Prototyping', 'Visual hierarchy', 'Social creatives'];
-  var html = '';
-  for (var k = 0; k < 4; k++) words.forEach(function (w) { html += '<span>' + w + '</span><i>✳</i>'; });
-  Array.prototype.forEach.call(document.querySelectorAll('.tape .track'), function (t) { t.innerHTML = html; });
-
-  var P = window.PROJECTS;
-  document.getElementById('featured').innerHTML = P.filter(function (p) { return p.featured; }).map(function (p, i) { return window.workCard(p, i, true); }).join('');
-
-  // "All" lists only the projects not featured above; a category lists every
-  // project in it, featured ones included
-  var drawerItems = P.filter(function (p) { return !p.featured; });
-  var drawer = document.getElementById('drawer'), df = document.getElementById('drawer-filters');
-  drawer.innerHTML = P.map(window.rowItem).join('');
-  var renumber = function () {
-    var n = 0;
-    Array.prototype.forEach.call(drawer.children, function (row) { if (!row.classList.contains('is-hidden')) row.querySelector('.n').textContent = String(++n).padStart(2, '0'); });
-  };
-  Array.prototype.forEach.call(drawer.children, function (row, i) { if (P[i].featured) { row.classList.add('is-feat', 'is-hidden'); } });
-  renumber();
-
-  // Category buttons for the drawer (only categories that have something in it)
-  var CATS = [['all', 'All'], ['ux', 'UI/UX'], ['brand', 'Brand'], ['graphic', 'Graphic'], ['motion', 'Motion']];
-  var count = function (k) { return k === 'all' ? drawerItems.length : P.filter(function (p) { return p.cats.indexOf(k) > -1; }).length; };
-  df.innerHTML = CATS.filter(function (c) { return count(c[0]) > 0; }).map(function (c, i) {
-    return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '<span class="count">' + count(c[0]) + '</span></button>';
-  }).join('');
-  df.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-f]'); if (!b) return;
-    var k = b.getAttribute('data-f');
-    Array.prototype.forEach.call(df.children, function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-    Array.prototype.forEach.call(drawer.children, function (row) {
-      var show = k === 'all' ? !row.classList.contains('is-feat') : row.getAttribute('data-cats').split(' ').indexOf(k) > -1;
-      row.classList.toggle('is-hidden', !show);
-      if (show) { row.classList.remove('is-in'); void row.offsetWidth; row.classList.add('is-in'); }
-    });
-    renumber();
-  });
-})();
-</script>
+<script src="assets/js/pages/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/hero.js"></script>

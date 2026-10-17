@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
-<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
+(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Work | Vivek Kumar</title>
 <meta name="description" content="UI/UX, brand identity, graphic and motion design projects by Vivek Kumar.">
@@ -18,7 +18,7 @@
 </head>
 <body data-page="work">
 <header data-site-nav>
-  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
+  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
 </header>
 
 <main id="main">
@@ -41,32 +41,7 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/cards.js"></script>
-<script>
-(function () {
-  var P = window.PROJECTS;
-  var cases = document.getElementById('cases'), filters = document.getElementById('filters');
-  cases.innerHTML = P.map(function (p, i) { return window.workCard(p, i, false); }).join('');
-
-  var CATS = [['all', 'All'], ['ux', 'UI/UX'], ['brand', 'Brand'], ['graphic', 'Graphic'], ['motion', 'Motion']];
-  var count = function (k) { return k === 'all' ? P.length : P.filter(function (p) { return (p.cats || []).indexOf(k) > -1; }).length; };
-  filters.innerHTML = CATS.map(function (c, i) {
-    return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '<span class="count">' + count(c[0]) + '</span></button>';
-  }).join('');
-
-  var apply = function (k) {
-    Array.prototype.forEach.call(filters.children, function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === k)); });
-    Array.prototype.forEach.call(cases.children, function (card) {
-      var show = k === 'all' || card.getAttribute('data-cats').split(' ').indexOf(k) > -1;
-      card.classList.toggle('is-hidden', !show);
-      if (show) card.classList.add('is-in');
-    });
-    try { history.replaceState(null, '', k === 'all' ? location.pathname : '#' + k); } catch (e) {}
-  };
-  filters.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) apply(b.getAttribute('data-f')); });
-  var initial = location.hash.slice(1);
-  if (CATS.some(function (c) { return c[0] === initial; })) apply(initial);
-})();
-</script>
+<script src="assets/js/pages/work.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

@@ -1,6 +1,6 @@
 # Vivek Kumar — portfolio site
 
-Plain HTML, CSS and JavaScript. No build step, no dependencies.
+Plain HTML, CSS and JavaScript. No build step, no dependencies (Lenis smooth scroll loads from a CDN).
 
 ## Run locally
 
@@ -9,43 +9,53 @@ cd site
 node serve.js
 ```
 
-Then open http://localhost:5173. (Any static server works too, e.g. `npx serve site`.)
+Then open http://localhost:5173. Any static server works too, for example `npx serve site`.
 
-## Design system ("sticker desk")
+## Design
 
-- Colours: Paper `#F3F0FB`, Ink `#1C1747`, Riso pink `#FF5A8C`, Cobalt `#3350FF`, Sun `#FFCF33`, plus mint, sky and lilac accents
-- Type: Bricolage Grotesque (headlines, heavy and condensed), Plus Jakarta Sans (body/UI), Covered By Your Grace (notes) — all Google Fonts
-- Hard 2.5px outlines with flat offset shadows (no blur); corners 26px / 16px / pill
-- Tape and tilt, on a dotted, doodled paper background; "hello" cursor bubble
-- All tokens live at the top of `assets/css/style.css`
+- **Sticker desk on glass:** stickers, notes, stars, tape strips and doodles keep hard ink outlines. UI surfaces (nav, cards, rows, buttons, chips, panels, fields) are frosted glass over a soft aurora.
+- **Day and night themes**, switched by the sun/moon button in the nav.
+- **Colours:** ink `#1C1747`, riso pink `#FF5A8C`, cobalt `#3350FF`, sun `#FFCF33`, plus mint, sky and lilac.
+- **Type:** Bricolage Grotesque (headlines), Plus Jakarta Sans (body and UI), Covered By Your Grace (handwritten notes). All are Google Fonts.
+- All tokens live at the top of `assets/css/style.css`.
 
 ## Structure
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Home: hero with ID card and stickers, tape marquee, at a glance, selected work, drawer, service tiles |
+| `index.html` | Home: "Portfolio, 2026 edition" hero, tape marquee, selected work, the drawer with category filters, service tiles |
 | `work.html` | Filterable index of all projects (UI/UX, Brand, Graphic, Motion) |
-| `project.html?id=…` | Project detail (ShopUp includes the full case-study board) |
-| `about.html` | Bio, background & toolkit bento, working principles |
+| `project.html?id=…` | Project page, rendered from `data.js` |
+| `about.html` | Bio, at a glance, background and toolkit, working principles |
 | `services.html` | Tabbed services, process, draggable capability board, FAQ |
-| `journal.html` | Empty state until articles exist |
+| `journal.html` | Illustrated design reading list |
 | `contact.html` | Email, socials and a note form that opens the visitor's email app |
-| `assets/js/data.js` | **All projects + contact links.** Add a project by adding an entry. |
+| `assets/css/style.css` | The whole stylesheet, written mobile first (breakpoints at 381, 601, 901 and 1101px) |
+| `assets/js/data.js` | **All projects and contact links.** Add a project by adding an entry. |
 | `assets/js/cards.js` | Shared project card renderers |
-| `assets/js/main.js` | Shared nav, contact band, footer and all interactions |
+| `assets/js/pages/*.js` | The script for each page (home, work, journal, services, contact, project) |
+| `assets/js/main.js` | Shared nav, contact band, footer, theme, reveals, cursor, intro and page transitions |
+| `assets/js/hero.js` | Home hero interactions: cursor colour, confetti, role pill, tilt, magnetic buttons |
 
-## Day and night theme (glass)
+Every page loads its scripts in the same order: `data.js`, `cards.js` (if needed), the page script, Lenis, `main.js`.
 
-The site has a day mode (light aurora) and a night mode (dark aurora), switched by the sun/moon button in the nav.
-On a first visit it follows the device setting, and after that it remembers the visitor's choice (`localStorage` key `vk-theme`).
+## Nav
 
-- Theme tokens and glass styles: section 26 at the end of `assets/css/style.css`
-- The inline script at the top of each page's `<head>` sets `data-theme` before first paint, so there is no flash
-- The switch logic is in `assets/js/main.js`, next to the nav
+The nav is one floating glass pill.
+
+- **Scrolling down the page** folds it to a compact pill: profile photo, day/night switch and menu.
+- **Scrolling back up**, or **tapping the folded pill**, unfolds it.
+- The folding animates CSS grid columns, so it stays smooth on phones.
+
+## Day and night theme
+
+- **First visit:** the site follows the device setting. After that it remembers the visitor's choice (`localStorage` key `vk-theme`).
+- **No flash on load:** the inline script at the top of each page's `<head>` sets `data-theme` before the first paint.
+- **The switch animation:** the new theme opens as a circle from the switch, using a View Transition. Browsers without View Transitions switch instantly.
 
 ## Restoring the previous design
 
-The previous "sticker desk" design is kept in three places:
+The previous "sticker desk" design (before the glass theme) is kept in three places:
 
 - the Git tag `backup-riso-design`
 - the branch `backup/riso-design`

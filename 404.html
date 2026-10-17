@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
-<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
+(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
 <base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | Vivek Kumar</title>

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
-<script>try{if(sessionStorage.getItem("vk-curtain")==="1"){var d=document.documentElement;d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}</script>
+<script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
+(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services | Vivek Kumar</title>
 <meta name="description" content="Website and app design, brand identity, social media creatives, posters, motion graphics and video editing by Vivek Kumar.">
@@ -18,7 +18,7 @@
 </head>
 <body data-page="services">
 <header data-site-nav>
-  <noscript><nav class="wrap" style="padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;font-weight:700"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
+  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
 </header>
 
 <main id="main">
@@ -51,7 +51,7 @@
   </div>
 
   <!-- PROCESS -->
-  <section class="sec process-band" style="margin-top:clamp(72px,10vw,140px)" aria-labelledby="how-title">
+  <section class="sec process-band services-band" aria-labelledby="how-title">
     <div class="wrap">
       <div class="sec-head" data-reveal><div><h2 class="display t-lg" id="how-title">How I work</h2><p class="hand">the order stays, the depth flexes with the project</p></div></div>
       <ol class="steps-grid">
@@ -83,7 +83,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="sec" style="padding-top:0" aria-labelledby="faq-title">
+  <section class="sec sec--flush" aria-labelledby="faq-title">
     <div class="wrap">
       <div class="sec-head" data-reveal><div><h2 class="display t-lg" id="faq-title">Questions, answered</h2></div></div>
       <div class="faq-list">
@@ -101,46 +101,8 @@
 <footer data-site-foot></footer>
 
 <script src="assets/js/data.js"></script>
+<script src="assets/js/pages/services.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-(function () {
-  // Accessible vertical tabs: hover (desktop), click, arrow keys, and #t0..#t5 deep links
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.svc'));
-  var select = function (tab, focus) {
-    tabs.forEach(function (t) {
-      var on = t === tab, panel = document.getElementById(t.getAttribute('aria-controls'));
-      t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1;
-      panel.classList.toggle('is-on', on); panel.hidden = !on;
-    });
-    if (focus) tab.focus();
-  };
-  var fine = window.matchMedia('(hover: hover)').matches;
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t); });
-    if (fine) t.addEventListener('mouseenter', function () { select(t); });
-    t.addEventListener('keydown', function (e) {
-      var n = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-      if (e.key === 'Home') n = -i; if (e.key === 'End') n = tabs.length - 1 - i;
-      if (n === undefined) return;
-      e.preventDefault(); select(tabs[(i + n + tabs.length) % tabs.length], true);
-    });
-  });
-  var hash = document.getElementById(location.hash.slice(1));
-  if (hash && tabs.indexOf(hash) > -1) select(hash);
-  if (!fine) document.querySelector('.hover-word').textContent = 'tap';
-
-  // FAQ: all collapsed. Hover opens smoothly (desktop); click, tap or Enter pins it open/closed.
-  Array.prototype.forEach.call(document.querySelectorAll('.faq-item'), function (item) {
-    var btn = item.querySelector('.faq-q'), t = null, pinned = false;
-    var set = function (open) { item.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); };
-    btn.addEventListener('click', function () { pinned = !item.classList.contains('is-open') || !pinned; set(pinned); });
-    if (fine) {
-      item.addEventListener('mouseenter', function () { clearTimeout(t); t = setTimeout(function () { set(true); }, 90); });
-      item.addEventListener('mouseleave', function () { clearTimeout(t); if (!pinned) t = setTimeout(function () { set(false); }, 160); });
-    }
-  });
-})();
-</script>
 </body>
 </html>
