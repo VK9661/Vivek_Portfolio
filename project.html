@@ -114,20 +114,8 @@
       p.process.map(function (s, i) { return '<div class="step" style="--c:' + cols[i % 5] + ';--r:' + (i % 2 ? 2 : -2) + 'deg"><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div></section>';
   }
 
-  if (p.board) {
-    html += '<section class="board" aria-labelledby="board-title">' +
-      '<div class="sec-head" data-reveal><div><h2 class="display t-lg" id="board-title">The full case study</h2><p class="hand">every board, as presented</p></div></div>' +
-      '<div class="board-stack">' + p.board.map(function (b, i) {
-        // a board is a path (1200 × 1780 slices) or [path, width, height]
-        var src = typeof b === 'string' ? b : b[0], w = typeof b === 'string' ? 1200 : b[1], h = typeof b === 'string' ? 1780 : b[2];
-        return '<img src="' + src + '" alt="' + (i === 0 ? esc(p.title) + ' case study board, part 1 of ' + p.board.length : 'Part ' + (i + 1)) + '" width="' + w + '" height="' + h + '" loading="lazy" decoding="async">';
-      }).join('') + '</div></section>';
-  }
   if (p.behance) {
-    var motion = p.cats.indexOf('motion') > -1;
-    html += '<section class="pending"><div class="card taped" data-reveal><h2>' + (p.board && motion ? 'Watch it move' : 'See every frame') + '</h2><p>' +
-      (p.board ? (motion ? 'The animation and video for ' + esc(p.title) + ' play on Behance.' : 'See ' + esc(p.title) + ' in full resolution on Behance.')
-               : 'The full ' + esc(p.title) + ' presentation, with all boards' + (motion ? ' and the animation' : '') + ', lives on Behance.') + '</p>' +
+    html += '<section class="pending"><div class="card taped" data-reveal><h2>See every frame</h2><p>The full ' + esc(p.title) + ' presentation, with all boards' + (p.cats.indexOf('motion') > -1 ? ' and the animation' : '') + ', lives on Behance.</p>' +
       '<a class="btn btn--sun" href="' + p.behance + '" target="_blank" rel="noopener">Open on Behance <span class="ar" aria-hidden="true">&#8599;</span></a></div></section>';
   }
 

@@ -19,8 +19,6 @@
    behance   : external link
    color     : pink | blue | sun | mint | sky | lilac | ink (card backing colour)
    featured  : true = shown in the Home "Selected work" grid
-   board     : optional long-form case study images, as paths or [path, w, h]
-               (images pulled from the project's Behance page, video modules left out)
 
    Sources: Behance project pages (descriptions, dates, tags), the earlier
    portfolio copy, and what is visible in each cover image.
@@ -33,26 +31,6 @@ window.PROJECTS = [
     year: '2026', published: 'Oct 2026', tags: ['Mobile app', 'Healthcare', 'Motion'], tools: ['After Effects'],
     img: 'assets/img/fikr.jpg', w: 808, h: 632,
     behance: 'https://www.behance.net/gallery/256988001/FIKR-Medicine-Care-UXUI-Case-Study',
-    board: [
-      ['assets/img/fikr/board-00.webp', 1400, 1079],
-      ['assets/img/fikr/board-01.webp', 1400, 1575],
-      ['assets/img/fikr/board-02.webp', 1400, 1923],
-      ['assets/img/fikr/board-03.webp', 1400, 3223],
-      ['assets/img/fikr/board-04.webp', 1400, 3319],
-      ['assets/img/fikr/board-05.webp', 1400, 1603],
-      ['assets/img/fikr/board-06.webp', 1400, 1663],
-      ['assets/img/fikr/board-07.webp', 1400, 3294],
-      ['assets/img/fikr/board-08.webp', 1400, 2381],
-      ['assets/img/fikr/board-09.webp', 1400, 4040],
-      ['assets/img/fikr/board-10.webp', 1400, 2703],
-      ['assets/img/fikr/board-11.webp', 1400, 1794],
-      ['assets/img/fikr/board-12.webp', 1400, 2355],
-      ['assets/img/fikr/board-13.webp', 1400, 2428],
-      ['assets/img/fikr/board-14.webp', 1400, 3041],
-      ['assets/img/fikr/board-15.webp', 1400, 3201],
-      ['assets/img/fikr/board-16.webp', 1400, 2005],
-      ['assets/img/fikr/board-17.webp', 1400, 1283]
-    ],
     facts: [['Type', 'Concept UI/UX case study'], ['Platform', 'Mobile app'], ['Research', 'Five interviews'], ['Design system', 'Material 3'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The worry', p: ['Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure.'] },
@@ -69,24 +47,6 @@ window.PROJECTS = [
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Brand identity', 'Logo animation'], tools: '',
     img: 'assets/img/volt47.jpg', w: 1100, h: 826,
     behance: 'https://www.behance.net/gallery/256688019/VOLT-47-247-Gym-Brand-Identity-Logo-Animation',
-    board: [
-      ['assets/img/volt-47/board-00.webp', 1400, 1050],
-      ['assets/img/volt-47/board-01.webp', 1400, 760],
-      ['assets/img/volt-47/board-02.webp', 1400, 880],
-      ['assets/img/volt-47/board-03.webp', 1400, 1100],
-      ['assets/img/volt-47/board-04.webp', 1400, 950],
-      ['assets/img/volt-47/board-05.webp', 1400, 960],
-      ['assets/img/volt-47/board-06.webp', 1400, 1120],
-      ['assets/img/volt-47/board-07.webp', 1400, 1400],
-      ['assets/img/volt-47/board-08.webp', 1400, 560],
-      ['assets/img/volt-47/board-09.webp', 1400, 1400],
-      ['assets/img/volt-47/board-10.webp', 1400, 875],
-      ['assets/img/volt-47/board-11.webp', 1400, 1060],
-      ['assets/img/volt-47/board-12.webp', 1400, 1260],
-      ['assets/img/volt-47/board-13.webp', 1400, 1400],
-      ['assets/img/volt-47/board-14.webp', 1400, 1120],
-      ['assets/img/volt-47/board-15.webp', 1400, 860]
-    ],
     facts: [['Type', 'Self-initiated concept'], ['Tagline', 'Lights never go off'], ['Typefaces', 'Anton, Space Grotesk'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The mark', p: ['One shape, read three ways: a wedge cut at 23°, three barbell plates locking around it, and a bolt struck out of the middle as negative space.'] },
@@ -103,18 +63,6 @@ window.PROJECTS = [
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'], tools: ['After Effects', 'Adobe Firefly', 'Google Veo', 'Google Flow', 'ElevenLabs'],
     img: 'assets/img/chashni.jpg', w: 1400, h: 1095,
     behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
-    board: [
-      ['assets/img/chashni/board-00.webp', 1400, 1052],
-      ['assets/img/chashni/board-01.webp', 1400, 820],
-      ['assets/img/chashni/board-02.webp', 1400, 980],
-      ['assets/img/chashni/board-03.webp', 1400, 1588],
-      ['assets/img/chashni/board-04.webp', 1400, 2166],
-      ['assets/img/chashni/board-05.webp', 1400, 1095],
-      ['assets/img/chashni/board-06.webp', 1400, 1349],
-      ['assets/img/chashni/board-07.webp', 1400, 1806],
-      ['assets/img/chashni/board-08.webp', 1400, 1652],
-      ['assets/img/chashni/board-09.webp', 1400, 1326]
-    ],
     facts: [['Type', 'Concept project'], ['Line', 'This one stops here.'], ['Scripts', 'Devanagari + Latin'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The problem', p: ['Every Diwali, the same gift box does the rounds unopened, because nothing on it says what is inside.'] },
@@ -144,8 +92,7 @@ window.PROJECTS = [
       ['Ideate', 'Brainstorming, card sorting, user flow'],
       ['Design', 'Paper wireframing, visual design, prototype'],
       ['Testing', 'Usability checks, survey insights, improvements']
-    ],
-    board: Array.from({ length: 16 }, function (_, i) { return 'assets/img/shopup/board-' + String(i).padStart(2, '0') + '.jpg'; })
+    ]
   },
   {
     id: 'bewakoof', title: 'Bewakoof', kind: 'Heuristic evaluation', cats: ['ux'], color: 'sun',
@@ -154,21 +101,6 @@ window.PROJECTS = [
     year: '2025', published: 'Jul 2025', tags: ['UX research', 'Audit'], tools: ['Figma'],
     img: 'assets/img/bewakoof.jpg', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/229827375/Heuristic-Evaluation-%28Bewakoof%29',
-    board: [
-      ['assets/img/bewakoof/board-00.webp', 1400, 909],
-      ['assets/img/bewakoof/board-01.webp', 1400, 909],
-      ['assets/img/bewakoof/board-02.webp', 1400, 909],
-      ['assets/img/bewakoof/board-03.webp', 1400, 909],
-      ['assets/img/bewakoof/board-04.webp', 1400, 909],
-      ['assets/img/bewakoof/board-05.webp', 1400, 909],
-      ['assets/img/bewakoof/board-06.webp', 1400, 909],
-      ['assets/img/bewakoof/board-07.webp', 1400, 909],
-      ['assets/img/bewakoof/board-08.webp', 1400, 909],
-      ['assets/img/bewakoof/board-09.webp', 1400, 909],
-      ['assets/img/bewakoof/board-10.webp', 1400, 909],
-      ['assets/img/bewakoof/board-11.webp', 1400, 909],
-      ['assets/img/bewakoof/board-12.webp', 1400, 455]
-    ],
     facts: [['Type', 'Heuristic evaluation'], ['Platform', 'Mobile shopping app'], ['Tool', 'Figma'], ['Published', 'Jul 2025']],
     writeup: [
       { h: 'What a heuristic evaluation is', p: ['An expert review of an interface against established usability principles. It is a fast way to find friction before running costly user tests.'] },
@@ -182,11 +114,6 @@ window.PROJECTS = [
     year: '2025', published: 'Jun 2025', tags: ['Motion', 'Parallax', 'Web'], tools: ['Figma'],
     img: 'assets/img/parallax-achilles.jpg', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/228224255/Parallax',
-    board: [
-      ['assets/img/achilles/board-00.webp', 1400, 905],
-      ['assets/img/achilles/board-01.webp', 1400, 905],
-      ['assets/img/achilles/board-02.webp', 1400, 624]
-    ],
     facts: [['Type', 'Parallax UI'], ['Tool', 'Figma'], ['Published', 'Jun 2025']],
     writeup: [
       { h: 'The hero', p: ['The headline "Achilles" is filled with the coastline itself, so the image shows through the letters while foreground bush and rocks sit on their own layers in front.'] },
