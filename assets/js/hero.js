@@ -14,7 +14,7 @@
   });
 
   /* 2. Role pill: flips through every role, each with its own colour, and resizes to fit */
-  var ROLES = [['Graphic designer', '#FF5A8C', '#fff'], ['UI/UX designer', '#3350FF', '#fff'], ['Motion designer', '#FFCF33', '#1C1747'], ['Video editor', '#6FE3B2', '#1C1747']];
+  var ROLES = [['Graphic designer', '#FF5A8C', '#1C1747'], ['UI/UX designer', '#3350FF', '#fff'], ['Motion designer', '#FFCF33', '#1C1747'], ['Video editor', '#6FE3B2', '#1C1747']];
   var pill = hero.querySelector('.hp-role'), word = pill.querySelector('.hp-role-word'), ri = 0, rtimer = null;
   var measure = document.createElement('span');
   measure.className = 'hp-role-word';

@@ -17,8 +17,8 @@
   document.title = p.title + ' — ' + p.kind + ' | Vivek Kumar';
   var md = document.querySelector('meta[name="description"]'); if (md) md.content = p.summary;
 
-  // Accent: the project's colour, or sun when the project colour is ink (so it still pops on paper)
-  var sw = window.swatchOf(p), accent = p.color === 'ink' ? window.SWATCH.sun : sw;
+  // Accent: the project's colour, but light enough to carry ink text (ink projects get sun, cobalt ones lilac)
+  var sw = window.swatchOf(p), accent = p.color === 'ink' ? window.SWATCH.sun : p.color === 'blue' ? window.SWATCH.lilac : sw;
   var num = String(idx + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
   var meta = '<div class="proj-meta">' +
     p.tags.map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join('') +
@@ -55,9 +55,9 @@
     '<div class="ph-tape" aria-hidden="true" style="--accent:' + accent + '"><div class="track">' + tapeHTML + '</div></div>' +
     '<span id="story"></span>' +
     '<section class="proj-overview">' +
-      '<aside class="facts card" data-reveal><h2 class="eyebrow">Project facts</h2><dl>' +
+      '<div class="facts card" data-reveal><h2 class="eyebrow">Project facts</h2><dl>' +
         (p.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
-      '</dl>' + (p.behance ? '<a class="btn btn--sm btn--sun" href="' + p.behance + '" target="_blank" rel="noopener">Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') + '</aside>' +
+      '</dl>' + (p.behance ? '<a class="btn btn--sm btn--sun" href="' + p.behance + '" target="_blank" rel="noopener">Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') + '</div>' +
       '<div class="writeup">' +
         '<p class="intro-p" data-reveal>' + esc(p.about) + '</p>' +
         (p.writeup || []).map(function (s, i) {

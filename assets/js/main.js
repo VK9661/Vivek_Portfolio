@@ -102,14 +102,19 @@
     nav = $('.nav'); themeBtn = $('.theme-btn'); menuBtn = $('.nav-menu'); panel = $('#menu-panel');
     var menuText = $('.nav-menu-text');
     var menuOpen = function () { return panel.classList.contains('is-open'); };
+    $$('#menu-panel > *').forEach(function (el, i) { el.style.setProperty('--i', i); });
+    // While the menu is open the page behind it is inert, so focus stays in the nav and menu
+    var behind = $$('main, footer, .skip-link');
     var setMenu = function (open) {
       panel.classList.toggle('is-open', open);
       menuBtn.setAttribute('aria-expanded', String(open));
       menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
       menuText.textContent = open ? 'Close' : 'Menu';
-      root.style.overflow = open ? 'hidden' : '';
+      behind.forEach(function (el) { el.inert = open; });
+      // one scroll lock only: Lenis when it runs, otherwise the page itself
       if (lenis) { if (open) lenis.stop(); else lenis.start(); }
-      if (open) { var first = $('a.m', panel); if (first) first.focus({ preventScroll: true }); }
+      else root.style.overflow = open ? 'hidden' : '';
+      if (open) { var first = $('a.m', panel); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 250); }
     };
     menuBtn.addEventListener('click', function () { setMenu(!menuOpen()); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen()) { setMenu(false); menuBtn.focus(); } });
@@ -169,7 +174,7 @@
       themeBtn.setAttribute('aria-pressed', String(dark));
       themeBtn.setAttribute('aria-label', dark ? 'Day mode' : 'Night mode');
       themeBtn.setAttribute('data-cursor', dark ? 'day mode' : 'night mode');
-      if (metaTheme) metaTheme.setAttribute('content', dark ? '#0D0A26' : '#EEF0FF');
+      if (metaTheme) metaTheme.setAttribute('content', dark ? '#0E0B25' : '#F2F1FA');
     };
     var switching = false;
     var switchTheme = function (next) {
@@ -266,9 +271,11 @@
           } else if (n.nodeType === 1 && n.tagName !== 'BR' && !n.classList.contains('rw')) { wrap(n); }
         });
       };
-      if (!h.getAttribute('aria-label')) h.setAttribute('aria-label', h.textContent.replace(/\s+/g, ' ').trim());
+      var full = h.textContent.replace(/\s+/g, ' ').trim();
       wrap(h);
       $$('.rw', h).forEach(function (w) { w.setAttribute('aria-hidden', 'true'); });
+      // screen readers read this copy of the text, not the split-up words
+      var sr = document.createElement('span'); sr.className = 'sr-only'; sr.textContent = full; h.appendChild(sr);
       if (!h.closest('[data-reveal]')) h.setAttribute('data-words', '');
     });
 

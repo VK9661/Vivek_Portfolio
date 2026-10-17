@@ -40,8 +40,8 @@
   --stk: #1C1747;                       /* sticker ink: outlines and text on solid colour, both themes */
 
   /* surfaces and text (switch with the theme) */
-  --bg: #EEF0FF;
-  --paper: #EEF0FF;
+  --bg: #F2F1FA;
+  --paper: #F2F1FA;
   --paper-2: rgba(28, 23, 71, .06);
   --ink: #1C1747;
   --ink-2: #4A4570;
@@ -61,12 +61,12 @@
   --sh-sm: 0 4px 14px rgba(28, 23, 71, .08);
   --sh: 0 12px 34px rgba(28, 23, 71, .1), 0 2px 6px rgba(28, 23, 71, .05);
   --sh-lg: 0 26px 64px rgba(28, 23, 71, .15), 0 4px 12px rgba(28, 23, 71, .06);
+  /* ambient light: three soft glows kept to the edges, so the middle stays calm
+     and the colour comes from the work and the stickers */
   --aurora:
-    radial-gradient(38% 34% at 84% 16%, rgba(157, 176, 255, .9), transparent 70%),
-    radial-gradient(34% 40% at 96% 72%, rgba(255, 143, 179, .62), transparent 70%),
-    radial-gradient(40% 40% at 4% 4%, rgba(127, 216, 245, .62), transparent 70%),
-    radial-gradient(30% 30% at 46% 82%, rgba(255, 223, 110, .5), transparent 70%),
-    radial-gradient(30% 34% at 8% 74%, rgba(111, 227, 178, .34), transparent 70%);
+    radial-gradient(46% 40% at 92% 6%, rgba(157, 176, 255, .42), transparent 72%),
+    radial-gradient(38% 34% at 2% 2%, rgba(127, 216, 245, .2), transparent 70%),
+    radial-gradient(40% 38% at 100% 100%, rgba(255, 143, 179, .16), transparent 72%);
 
   /* type */
   --f-display: 'Bricolage Grotesque', 'Arial Narrow', 'Arial Black', sans-serif;
@@ -93,8 +93,8 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0D0A26;
-  --paper: #0D0A26;
+  --bg: #0E0B25;
+  --paper: #0E0B25;
   --paper-2: rgba(255, 255, 255, .07);
   --ink: #F4F2FF;
   --ink-2: rgba(244, 242, 255, .72);
@@ -114,11 +114,9 @@ html[data-theme="dark"] {
   --sh: 0 14px 40px rgba(0, 0, 0, .36);
   --sh-lg: 0 28px 72px rgba(0, 0, 0, .48);
   --aurora:
-    radial-gradient(40% 36% at 82% 16%, rgba(51, 80, 255, .62), transparent 70%),
-    radial-gradient(34% 40% at 98% 74%, rgba(255, 90, 140, .42), transparent 70%),
-    radial-gradient(42% 42% at 2% 0%, rgba(108, 59, 255, .48), transparent 70%),
-    radial-gradient(30% 30% at 46% 84%, rgba(255, 207, 51, .16), transparent 70%),
-    radial-gradient(28% 32% at 8% 76%, rgba(111, 227, 178, .12), transparent 70%);
+    radial-gradient(46% 40% at 92% 6%, rgba(51, 80, 255, .32), transparent 72%),
+    radial-gradient(38% 36% at 2% 2%, rgba(108, 59, 255, .2), transparent 70%),
+    radial-gradient(40% 38% at 100% 100%, rgba(255, 90, 140, .12), transparent 72%);
 }
 
 /* Without backdrop blur the glass is a little more solid so text stays readable */
@@ -389,14 +387,19 @@ html[data-theme="dark"] .theme-btn .moon { opacity: 1; transform: none; }
   .nav:not(.is-mini) .nav-fold--menu > span, .nav.is-mini .nav-fold--links > span { visibility: hidden; transition: visibility 0s var(--nav-dur); }
 }
 
-/* Full-screen menu */
+/* Full-screen menu: a dark circle grows from the top of the screen and the
+   links rise in after it. Only transform and opacity animate, so phones
+   hand the whole thing to the GPU (no repaints, no blur re-rendering). */
 .menu-panel {
   position: fixed; inset: 0; z-index: 99; display: flex; flex-direction: column; justify-content: center;
-  padding: 100px var(--gutter) 40px; background: rgba(16, 12, 48, .86); color: #F4F2FF;
-  -webkit-backdrop-filter: blur(26px) saturate(160%); backdrop-filter: blur(26px) saturate(160%);
-  clip-path: circle(0 at 50% 0); visibility: hidden; transition: clip-path .55s cubic-bezier(.77, 0, .175, 1), visibility 0s .55s;
+  padding: 100px var(--gutter) 40px; overflow: hidden; color: #F4F2FF;
+  visibility: hidden; pointer-events: none; transition: visibility 0s .55s;
 }
-.menu-panel.is-open { clip-path: circle(150% at 50% 0); visibility: visible; transition-delay: 0s; }
+.menu-panel::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 0; width: 240vmax; height: 240vmax; margin: -120vmax 0 0 -120vmax; border-radius: 50%; background: #120E34; transform: scale(0); transition: transform .55s cubic-bezier(.77, 0, .175, 1); will-change: transform; }
+.menu-panel > * { opacity: 0; transform: translateY(18px); transition: opacity .2s ease, transform .3s var(--ease-out); }
+.menu-panel.is-open { visibility: visible; pointer-events: auto; transition-delay: 0s; }
+.menu-panel.is-open::before { transform: scale(1); }
+.menu-panel.is-open > * { opacity: 1; transform: none; transition: opacity .45s ease, transform .6s var(--ease-out); transition-delay: calc(.2s + var(--i, 0) * .045s); }
 .menu-panel a.m { display: flex; align-items: baseline; gap: 14px; padding: .06em 0; font: 800 clamp(2.6rem, 11vw, 4.4rem)/1.02 var(--f-display); font-stretch: 78%; letter-spacing: -.03em; text-decoration: none; }
 .menu-panel a.m small { font: 700 .8rem var(--f-sans); color: var(--sun); letter-spacing: .08em; }
 .menu-panel a.m[aria-current="page"] { color: var(--pink); }
@@ -643,7 +646,7 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
 .svc-tile h3 { margin-top: auto; font-size: clamp(1.6rem, 2.4vw, 2.1rem); font-stretch: 85%; line-height: .95; }
 .svc-tile p { margin-top: 10px; font-size: .9rem; font-weight: 600; line-height: 1.4; }
 .svc-tile .round-ar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; background: #fff; }
-.svc-tile--blue { --tint: 86%; --tint-hi: 86%; color: #fff; }
+.svc-tile--blue { --tint: 100%; --tint-hi: 100%; color: #fff; }
 @media (hover: hover) {
   .svc-tile:hover { rotate: 0deg; transform: translateY(-8px); box-shadow: var(--sh-lg), var(--hi), 0 22px 60px -14px color-mix(in srgb, var(--c, #9DB0FF) 60%, transparent); }
   .svc-tile:hover .round-ar { transform: rotate(-45deg); }
@@ -732,7 +735,7 @@ html[data-theme="dark"] .cta::before { opacity: .22; }
 .bx { position: relative; overflow: hidden; padding: 28px; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out); }
 .bx[style*="--c"] { background: color-mix(in srgb, var(--c) var(--tint), var(--glass)); }
 .bx h3 { margin-bottom: 16px; font-size: 1.7rem; font-stretch: 90%; }
-.bx--blue { --tint: 86%; --tint-hi: 86%; color: #fff; }
+.bx--blue { --tint: 100%; --tint-hi: 100%; color: #fff; }
 html[data-theme="dark"] .bx--blue { --tint: 62%; }
 .bx .when { font-weight: 800; font-size: .85rem; }
 .bx .role { margin-top: 4px; font: 800 1.7rem/1.1 var(--f-display); font-stretch: 88%; letter-spacing: -.02em; }
@@ -902,7 +905,7 @@ html[data-theme="dark"] .pg--dark { --tint: 40%; }
 .svc-panel { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(18px) rotate(-1.5deg) scale(.97); transition: opacity .35s var(--ease-out), transform .5s var(--ease-out), visibility 0s .35s; }
 .svc-panel.is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 .svc-card { --tape-r: -5deg; position: relative; padding: 32px 28px 34px; background: color-mix(in srgb, var(--c) var(--tint), var(--glass)); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); transform: rotate(1.2deg); }
-.svc-card.svc-blue { --tint: 86%; --tint-hi: 86%; color: #fff; }
+.svc-card.svc-blue { --tint: 100%; --tint-hi: 100%; color: #fff; }
 .svc-card .big { font: 800 clamp(3.6rem, 6vw, 5rem)/.8 var(--f-display); opacity: .25; }
 .svc-card p { margin: 14px 0 20px; font-size: 1.1rem; font-weight: 600; line-height: 1.5; }
 .svc-card ul { display: flex; flex-wrap: wrap; gap: 8px; }
