@@ -62,6 +62,10 @@
         '<div class="nav-links">' + LINKS.slice(1).map(function (l) {
           return '<a class="l" href="' + l.href + '"' + cur(l.key) + '>' + l.label + '</a>';
         }).join('') + '</div>' +
+        '<button class="theme-btn" type="button" aria-pressed="false" aria-label="Night mode">' +
+          '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>' +
+          '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>' +
+        '</button>' +
         '<button class="nav-menu" type="button" aria-expanded="false" aria-controls="menu-panel"><span>Menu</span><i aria-hidden="true"></i></button>' +
         '<a class="btn btn--sun btn--sm nav-cta" href="contact.html"' + cur('contact') + '>Say hello</a>' +
       '</nav>' +
@@ -76,6 +80,28 @@
           '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
         '</div>' +
       '</div>';
+
+    /* Day / night: the head script already set data-theme before paint.
+       A saved choice wins; otherwise follow the device setting live. */
+    var root = document.documentElement, themeBtn = $('.theme-btn'), metaTheme = $('meta[name="theme-color"]');
+    var darkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+    var saved = function () { try { return localStorage.getItem('vk-theme'); } catch (e) { return null; } };
+    var applyTheme = function (t, animate) {
+      if (animate && !reduceMotion) { root.classList.add('theme-anim'); setTimeout(function () { root.classList.remove('theme-anim'); }, 520); }
+      root.setAttribute('data-theme', t);
+      var dark = t === 'dark';
+      themeBtn.setAttribute('aria-pressed', String(dark));
+      themeBtn.setAttribute('aria-label', dark ? 'Day mode' : 'Night mode');
+      themeBtn.setAttribute('data-cursor', dark ? 'day mode' : 'night mode');
+      if (metaTheme) metaTheme.setAttribute('content', dark ? '#0D0A26' : '#EEF0FF');
+    };
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('vk-theme', next); } catch (e) {}
+      applyTheme(next, true);
+    });
+    darkMQ.addEventListener('change', function (m) { if (!saved()) applyTheme(m.matches ? 'dark' : 'light', true); });
 
     var menuBtn = $('.nav-menu'), panel = $('#menu-panel');
     var setMenu = function (open) {
@@ -203,12 +229,17 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-    revealTargets.forEach(function (el) { io.observe(el); });
+    // The footer sits at the very end of the page, inside the bottom margin above,
+    // so it gets its own observer that fires as soon as any of it is visible
+    var ioEnd = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioEnd.unobserve(e.target); } });
+    }, { threshold: 0.01 });
+    revealTargets.forEach(function (el) { (el.closest('.foot') ? ioEnd : io).observe(el); });
     // Safety net: whatever is already on screen shows even if the observer is throttled
     setTimeout(function () {
       revealTargets.forEach(function (el) {
         var r = el.getBoundingClientRect();
-        if (r.top < window.innerHeight && r.bottom > 0 && !el.classList.contains('is-in')) { show(el); io.unobserve(el); }
+        if (r.top < window.innerHeight && r.bottom > 0 && !el.classList.contains('is-in')) { show(el); io.unobserve(el); ioEnd.unobserve(el); }
       });
     }, 300);
   } else {

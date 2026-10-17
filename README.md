@@ -33,3 +33,28 @@ Then open http://localhost:5173. (Any static server works too, e.g. `npx serve s
 | `assets/js/data.js` | **All projects + contact links.** Add a project by adding an entry. |
 | `assets/js/cards.js` | Shared project card renderers |
 | `assets/js/main.js` | Shared nav, contact band, footer and all interactions |
+
+## Day and night theme (glass)
+
+The site has a day mode (light aurora) and a night mode (dark aurora), switched by the sun/moon button in the nav.
+On a first visit it follows the device setting, and after that it remembers the visitor's choice (`localStorage` key `vk-theme`).
+
+- Theme tokens and glass styles: section 26 at the end of `assets/css/style.css`
+- The inline script at the top of each page's `<head>` sets `data-theme` before first paint, so there is no flash
+- The switch logic is in `assets/js/main.js`, next to the nav
+
+## Restoring the previous design
+
+The previous "sticker desk" design is kept in three places:
+
+- the Git tag `backup-riso-design`
+- the branch `backup/riso-design`
+- a local copy in `portfolio/backup-riso-design/`
+
+To put it back live, restore the tag's files onto `main` and push:
+
+```
+git checkout backup-riso-design -- .
+git commit -m "Restore riso design"
+git push
+```

@@ -1160,3 +1160,205 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
 
 @media (max-width: 900px) { .hp .hp-scroll { display: grid; } }
 
+
+
+/* =====================================================================
+   26. Glass theme: day (light aurora) and night (dark aurora)
+       The riso "sticker desk" stays: notes, stars, tapes, pills, the
+       smiley, doodle strokes and shapes keep their ink outlines. UI
+       surfaces (nav, cards, rows, buttons, chips, panels, fields) turn
+       into frosted glass over a slowly drifting aurora.
+       Theme lives on <html data-theme="light|dark">, set before first
+       paint by the inline head script and switched by .theme-btn.
+       Backup of the previous look: git tag backup-riso-design.
+   ===================================================================== */
+:root {
+  color-scheme: light;
+  --stk: #1C1747;                                  /* sticker ink, both modes */
+  --bg: #EEF0FF;
+  --paper: #EEF0FF;
+  --paper-2: rgba(28, 23, 71, .06);
+  --glass: rgba(255, 255, 255, .52);
+  --surface: var(--glass);
+  --glass-hi: rgba(255, 255, 255, .74);            /* nav and floating bars */
+  --glass-edge: rgba(255, 255, 255, .85);
+  --line: rgba(28, 23, 71, .14);                   /* dividers */
+  --bw: 1px;
+  --tint: 48%;                                     /* colour share of tinted glass */
+  --tint-hi: 62%;
+  --blur: blur(20px) saturate(165%);
+  --hi: inset 0 1px 0 rgba(255, 255, 255, .9);
+  --sh-sm: 0 4px 14px rgba(28, 23, 71, .08);
+  --sh: 0 12px 34px rgba(28, 23, 71, .1), 0 2px 6px rgba(28, 23, 71, .05);
+  --sh-lg: 0 26px 64px rgba(28, 23, 71, .15), 0 4px 12px rgba(28, 23, 71, .06);
+  --text-accent: #3350FF;
+  --title: #3350FF;
+  --dot: rgba(28, 23, 71, .1);
+  --aurora:
+    radial-gradient(38% 34% at 84% 16%, rgba(157, 176, 255, .9), transparent 70%),
+    radial-gradient(34% 40% at 96% 72%, rgba(255, 143, 179, .62), transparent 70%),
+    radial-gradient(40% 40% at 4% 4%, rgba(127, 216, 245, .62), transparent 70%),
+    radial-gradient(30% 30% at 46% 82%, rgba(255, 223, 110, .5), transparent 70%),
+    radial-gradient(30% 34% at 8% 74%, rgba(111, 227, 178, .34), transparent 70%);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0D0A26;
+  --paper: #0D0A26;
+  --paper-2: rgba(255, 255, 255, .07);
+  --glass: rgba(255, 255, 255, .07);
+  --glass-hi: rgba(22, 18, 58, .7);
+  --glass-edge: rgba(255, 255, 255, .17);
+  --ink: #F4F2FF;
+  --ink-2: rgba(244, 242, 255, .72);
+  --line: rgba(255, 255, 255, .14);
+  --tint: 24%;
+  --tint-hi: 34%;
+  --hi: inset 0 1px 0 rgba(255, 255, 255, .22);
+  --sh-sm: 0 4px 14px rgba(0, 0, 0, .28);
+  --sh: 0 14px 40px rgba(0, 0, 0, .36);
+  --sh-lg: 0 28px 72px rgba(0, 0, 0, .48);
+  --text-accent: #9DB0FF;
+  --title: #8EA2FF;
+  --dot: rgba(255, 255, 255, .07);
+  --aurora:
+    radial-gradient(40% 36% at 82% 16%, rgba(51, 80, 255, .62), transparent 70%),
+    radial-gradient(34% 40% at 98% 74%, rgba(255, 90, 140, .42), transparent 70%),
+    radial-gradient(42% 42% at 2% 0%, rgba(108, 59, 255, .48), transparent 70%),
+    radial-gradient(30% 30% at 46% 84%, rgba(255, 207, 51, .16), transparent 70%),
+    radial-gradient(28% 32% at 8% 76%, rgba(111, 227, 178, .12), transparent 70%);
+}
+
+/* Background: aurora (drifts slowly) under the dot grid and doodles */
+body { background: var(--bg); }
+body::before, body::after { content: ""; position: fixed; z-index: -1; pointer-events: none; }
+body::before { inset: -18%; background: var(--aurora); animation: aurora 40s ease-in-out infinite alternate; will-change: transform; }
+body::after { inset: 0; background-image: radial-gradient(var(--dot) 1.3px, transparent 1.7px), var(--pat-doodle); background-size: 28px 28px, 640px 640px; }
+@keyframes aurora { to { transform: translate3d(-5%, 4%, 0) rotate(7deg) scale(1.08); } }
+html.theme-anim, html.theme-anim *, html.theme-anim *::before { transition: background-color .45s ease, color .45s ease, border-color .45s ease, box-shadow .45s ease, fill .45s ease !important; }
+
+/* ---------- Glass surfaces ---------- */
+.card, .work-card, .row-i, .bx, .read, .p-step, .capboard, .faq-item, .w-list li, .back, .ph-count, .ph-cover,
+.hp-card, .mail, .chip, .to-top, .scroll-badge, .slot, .notebook, .svc-card, .num-sticker, .pg, .svc-tile,
+.proj-cover, .filters button, .field input, .field textarea, .glance dl > div, .svc .ar, .faq-q .pm, .p-step::after, .btn--white, .hp-photo {
+  border-color: var(--glass-edge);
+  box-shadow: var(--sh), var(--hi);
+}
+.chip, .filters button, .svc .ar, .faq-q .pm, .to-top, .num-sticker, .w-list li, .back, .ph-count { box-shadow: var(--sh-sm), var(--hi); }
+.field input, .field textarea { background: var(--glass); }
+.field input:focus, .field textarea:focus { background: var(--glass-hi); box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue) 22%, transparent); }
+.slot { border-style: dashed; border-color: var(--line); }
+
+/* Real blur only where it is cheap: big screens with a mouse. Elsewhere the
+   glass is a little more opaque, which reads the same over the soft aurora. */
+@media (hover: hover) and (min-width: 901px) {
+  .card, .work-card, .row-i, .bx, .read, .p-step, .capboard, .faq-item, .ph-cover, .hp-card, .mail, .chip, .to-top,
+  .scroll-badge, .notebook, .svc-card, .pg, .svc-tile, .proj-cover, .filters button, .glance dl > div, .btn--white, .back, .ph-count {
+    -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
+  }
+}
+@media (max-width: 900px), (hover: none) {
+  :root { --glass: rgba(255, 255, 255, .66); }
+  html[data-theme="dark"] { --glass: rgba(255, 255, 255, .09); }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --glass: rgba(255, 255, 255, .72); --glass-hi: rgba(255, 255, 255, .92); }
+  html[data-theme="dark"] { --glass: rgba(40, 34, 92, .55); --glass-hi: rgba(22, 18, 58, .95); }
+}
+
+/* Coloured surfaces become tinted glass, so text stays readable in both modes */
+.svc-tile, .svc-card, .pg, .faq-item.is-open, .read .chip, .ph .proj-meta .chip, .chip[style*="--c"], .bx[style*="--c"] {
+  background: color-mix(in srgb, var(--c) var(--tint), var(--glass));
+}
+.work-card .media { background: color-mix(in srgb, var(--c, var(--pink)) var(--tint-hi), transparent); border-bottom-color: var(--glass-edge); }
+.proj-cover { background: color-mix(in srgb, var(--c) var(--tint-hi), var(--glass)); }
+.svc-tile--blue, .svc-card.svc-blue, .bx--blue, .pg--dark { --tint: 86%; --tint-hi: 86%; }
+html[data-theme="dark"] :is(.svc-tile--blue, .svc-card.svc-blue, .bx--blue) { --tint: 62%; }
+html[data-theme="dark"] .pg--dark { --tint: 40%; }
+.glance dl > div::before, .row-i::before, .read::before, .p-step::before { background: color-mix(in srgb, var(--c) var(--tint-hi), transparent); opacity: 1; }
+.cta { background: color-mix(in srgb, var(--pink) var(--tint-hi), transparent); border-block: 1px solid var(--glass-edge); }
+html[data-theme="dark"] .cta::before { opacity: .5; }
+.process-band { border-block: 1px solid var(--glass-edge); }
+
+/* Soft lift instead of the hard offset shadow, with a glow in the colour of the card */
+@media (hover: hover) {
+  .work-card:hover, .read:hover, .pg--prev:hover, .pg--next:hover, .p-step:hover, .bx:hover, .glance dl > div:hover, .svc-tile:hover, .row-i:hover, .hp-card:hover {
+    box-shadow: var(--sh-lg), var(--hi), 0 22px 60px -14px color-mix(in srgb, var(--c, #9DB0FF) 60%, transparent);
+  }
+  .btn:hover { box-shadow: 0 14px 30px -10px color-mix(in srgb, var(--ch, #3350FF) 70%, transparent), var(--hi); }
+  .back:hover, .mail:hover { box-shadow: var(--sh-lg), var(--hi); }
+}
+.btn:active, .mail:active { box-shadow: var(--sh-sm); }
+
+/* Buttons: colour pills with a soft glow; the arrow chip stays solid */
+.btn { border-color: rgba(255, 255, 255, .4); box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--c, #3350FF) 80%, transparent), var(--hi); }
+.btn--white { background: var(--glass); border-color: var(--glass-edge); }
+.btn .ar { background: #fff; color: var(--stk); }
+.btn--ink .ar { background: var(--sun); }
+.btn--sun, .btn--pink { --fg: var(--stk); }
+.btn--white, .btn--sun, .btn--pink, .btn--ink, .nav .nav-cta { --fh: var(--stk); }
+
+/* ---------- Stickers and shapes keep their ink outlines ---------- */
+.note, .pill-sticker, .ph-kind, .hp-role, .step, .principle, .cap-col h3, .polaroid, .bubble {
+  border: 2.5px solid var(--stk); box-shadow: 3px 3px 0 var(--stk);
+}
+.note, .pill-sticker, .ph-kind, .step, .principle, .cap-col h3, .polaroid, .star { color: var(--stk); }
+.polaroid { background: #fff; box-shadow: 6px 6px 0 var(--stk); }
+.polaroid img { border-color: var(--stk); }
+.tape, .ph-tape { border-block: 2.5px solid var(--stk); color: var(--stk); }
+.dot { border-color: var(--stk); }
+.p-step .n, .w-num, .round-ar { border: 2px solid var(--stk); color: var(--stk); }
+.w-num { box-shadow: 2px 2px 0 var(--stk); }
+.svc-tile .round-ar, .link-rows a .round-ar { background: #fff; }
+.svc[aria-selected="true"] .ar, .faq-item.is-open .pm, .form-done, .cta .socials a:hover, .nav-logo, .nav .nav-cta { color: var(--stk); }
+.nav-logo { border: 2px solid var(--stk); }
+.ph-blob { border-color: var(--stk); }
+.hp-bit { border-color: var(--stk); }
+.hp-smile circle, .hp-smile path { stroke: var(--stk); }
+.hp-smile rect { fill: var(--stk); }
+.scroll-badge:hover { color: var(--stk); }
+.scroll-badge:hover text { fill: var(--stk); }
+.mail:hover { color: var(--stk); }
+.hp-photo { border: 1px solid var(--glass-edge); box-shadow: var(--sh-lg), var(--hi); }
+html[data-theme="dark"] .hp-photo { background-color: #7D8FF0; }
+
+/* ---------- Nav, menu and the day/night switch ---------- */
+.nav { background: var(--glass-hi); border: 1px solid var(--glass-edge); box-shadow: var(--sh), var(--hi); -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%); }
+.theme-btn { position: relative; display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 50%; color: var(--ink); transition: background-color .2s, transform .35s var(--ease-spring); }
+.theme-btn svg { position: absolute; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .55s var(--ease-spring), opacity .3s; }
+.theme-btn .moon { opacity: 0; transform: rotate(-90deg) scale(.4); }
+html[data-theme="dark"] .theme-btn .sun { opacity: 0; transform: rotate(90deg) scale(.4); }
+html[data-theme="dark"] .theme-btn .moon { opacity: 1; transform: none; }
+@media (hover: hover) { .theme-btn:hover { background: var(--paper-2); transform: rotate(-12deg); } }
+.theme-btn:active { transform: scale(.9); }
+.menu-panel { background: rgba(16, 12, 48, .86); color: #F4F2FF; -webkit-backdrop-filter: blur(26px) saturate(160%); backdrop-filter: blur(26px) saturate(160%); }
+.menu-panel .chip { background: rgba(255, 255, 255, .08); color: #F4F2FF; border-color: rgba(255, 255, 255, .35); }
+.intro { background: var(--bg); }
+
+/* ---------- Text accents and hero ---------- */
+.sec-head .hand, .hero-hi, .page-hero .hand, .contact-wrap .hand, .hp-open { color: var(--text-accent); }
+@media (hover: hover) { .hp-link:hover, .svc:not([aria-selected="true"]):hover, .link-rows a:hover, .hp-info a:hover { color: var(--text-accent); } }
+.hp-link path { stroke: var(--text-accent); }
+.hp-title { color: var(--title); }
+.hp-badge { color: var(--text-accent); border-color: var(--text-accent); background: var(--glass-hi); }
+html[data-theme="dark"] .hp-name::after { background: color-mix(in srgb, var(--sun) 40%, transparent); }
+html[data-theme="dark"] .hp-orbit { border-color: #8EA2FF; }
+
+/* ---------- Night: dividers, forms and states ---------- */
+html[data-theme="dark"] :is(.proj-sec, .facts dl div) { border-bottom-color: var(--line); }
+html[data-theme="dark"] .cap-col + .cap-col { border-color: var(--line); }
+html[data-theme="dark"] .field [aria-invalid="true"] { background: rgba(255, 90, 140, .14); border-color: #FF8FB3; }
+html[data-theme="dark"] .form-error { color: #FF8FB3; }
+html[data-theme="dark"] .notebook { background-image: repeating-linear-gradient(transparent 0 30px, rgba(157, 176, 255, .22) 30px 32px); }
+
+/* Night: colour reads as light from the corner, not as a muddy flat tint */
+html[data-theme="dark"] :is(.svc-tile, .svc-card, .pg, .faq-item.is-open, .bx[style*="--c"]) {
+  background: radial-gradient(130% 100% at 0% 0%, color-mix(in srgb, var(--c) 55%, transparent), transparent 64%), var(--glass);
+  border-color: color-mix(in srgb, var(--c) 50%, transparent);
+}
+html[data-theme="dark"] :is(.svc-tile--blue, .svc-card.svc-blue) { background: radial-gradient(130% 100% at 0% 0%, rgba(51, 80, 255, .9), rgba(51, 80, 255, .35) 70%); }
+html[data-theme="dark"] .cta { background: radial-gradient(70% 120% at 18% 50%, rgba(255, 90, 140, .5), transparent 70%), rgba(255, 90, 140, .1); }
+html[data-theme="dark"] .cta::before { opacity: .22; }
+.row-i .chip { background: color-mix(in srgb, var(--c) var(--tint-hi), var(--glass)); }
+.svc-tile .round-ar { color: var(--stk); }
+.num-sticker { background: #fff; color: var(--stk); border: 2px solid var(--stk); box-shadow: 3px 3px 0 var(--stk); }
