@@ -5,8 +5,18 @@
 <script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
 (function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Journal | Vivek Kumar</title>
-<meta name="description" content="Notes and a design reading list by Vivek Kumar: UX, UI, branding, type and motion.">
+<title>Reading list | Vivek Kumar</title>
+<meta name="description" content="A design reading list by Vivek Kumar: UX, UI, branding, type and motion.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vivek Kumar">
+<meta property="og:title" content="Reading list | Vivek Kumar">
+<meta property="og:description" content="A design reading list by Vivek Kumar: UX, UI, branding, type and motion.">
+<meta property="og:url" content="https://vivek-portfolio-beta-eight.vercel.app/journal.html">
+<meta property="og:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vivek Kumar, graphic, UI/UX and motion designer">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F2F1FA">
 <link rel="icon" type="image/png" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -18,15 +28,15 @@
 </head>
 <body data-page="journal">
 <header data-site-nav>
-  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Journal</a><a href="contact.html">Contact</a></nav></noscript>
+  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Reading list</a><a href="contact.html">Contact</a></nav></noscript>
 </header>
 
 <main id="main">
   <div class="wrap">
     <header class="page-hero">
-      <span class="chip" style="--c:var(--sky)">Journal</span>
-      <h1 class="display t-xxl">Notes &amp; reads</h1>
-      <p class="hand">a shelf of design reading, while my own posts are in the works</p>
+      <span class="chip" style="--c:var(--sky)">Reading list</span>
+      <h1 class="display t-xxl">Reading list</h1>
+      <p class="hand">articles, guides and blogs worth bookmarking</p>
     </header>
 
     <section class="card journal-empty" aria-labelledby="own-title">
@@ -38,9 +48,7 @@
       <a class="btn" href="https://www.behance.net/vivekgupta143" target="_blank" rel="noopener">Follow on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>
     </section>
 
-    <div class="sec-head reads-head">
-      <div><h2 class="display t-lg">Design reading list</h2><p class="hand">articles, guides and blogs worth bookmarking</p></div>
-    </div>
+    <h2 class="sr-only">Articles and guides</h2>
     <div class="filters" id="read-filters" role="group" aria-label="Filter the reading list"></div>
     <!-- To add a read: copy an <a class="read"> below. data-cat: ux | ui | brand | type | motion -->
     <div class="reads" id="reads" aria-live="polite">

@@ -24,6 +24,8 @@
     p.tags.map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join('') +
     (p.tools && p.tools.length ? '<span class="chip chip--tools">Tools: ' + p.tools.map(esc).join(', ') + '</span>' : '') +
   '</div>';
+  // The intro: its first sentence large, the rest as body text
+  var intro = (function (t) { var m = t.match(/^(.+?[.!?]["”]?)\s+(.+)$/); return m ? [m[1], m[2]] : [t, '']; })(p.about || '');
   var tapeWords = [p.kind].concat(p.tags, p.published ? ['Published ' + p.published] : []);
   var tapeHTML = ''; for (var k = 0; k < 6; k++) tapeWords.forEach(function (w) { tapeHTML += '<span>' + esc(w) + '</span><i>✳</i>'; });
 
@@ -39,7 +41,7 @@
           '<h1 class="ph-title">' + esc(p.title) + '</h1>' +
           '<p class="lead">' + esc(p.summary) + '</p>' + meta +
           '<div class="btn-row">' +
-            (p.behance ? '<a class="btn btn--ink" href="' + p.behance + '" target="_blank" rel="noopener">View on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') +
+            (p.behance ? '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener">View on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') +
             '<a class="btn btn--white" href="#story">Read the story <span class="ar" aria-hidden="true">&#8595;</span></a>' +
           '</div>' +
         '</div>' +
@@ -59,11 +61,11 @@
         (p.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
       '</dl>' + (p.behance ? '<a class="btn btn--sm btn--sun" href="' + p.behance + '" target="_blank" rel="noopener">Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') + '</div>' +
       '<div class="writeup">' +
-        '<p class="intro-p" data-reveal>' + esc(p.about) + '</p>' +
+        '<div class="w-intro" data-reveal><p class="intro-p">' + esc(intro[0]) + '</p>' + (intro[1] ? '<p class="intro-rest">' + esc(intro[1]) + '</p>' : '') + '</div>' +
         (p.writeup || []).map(function (s, i) {
           var cols = ['var(--pink)', 'var(--sun)', 'var(--mint)', 'var(--sky)', 'var(--lilac)'];
           return '<article class="w-sec" data-reveal style="--c:' + cols[i % cols.length] + '">' +
-            '<h2><span class="w-num" aria-hidden="true">' + String(i + 1).padStart(2, '0') + '</span>' + esc(s.h) + '</h2>' +
+            '<h2><span class="w-dot" aria-hidden="true"></span>' + esc(s.h) + '</h2>' +
             (s.p || []).map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
             (s.quotes ? '<div class="quotes">' + s.quotes.map(function (q) { return '<blockquote class="note" style="--c:var(--sun)">“' + esc(q) + '”</blockquote>'; }).join('') + '</div>' : '') +
             (s.list ? '<ul class="w-list">' + s.list.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
@@ -71,6 +73,16 @@
         }).join('') +
       '</div>' +
     '</section>';
+
+  // A few key images from the presentation; tap one to see it larger
+  if (p.gallery && p.gallery.length) {
+    html += '<section class="gallery" aria-labelledby="gal-title"><div class="sec-head"><h2 class="display t-lg" id="gal-title">Highlights</h2></div>' +
+      '<div class="gal gal--' + p.gallery.length + '">' + p.gallery.map(function (g) {
+        return '<figure class="gal-i" data-reveal><button class="gal-open" type="button" data-cursor="view" aria-label="View larger: ' + esc(g[3]) + '">' +
+          '<img src="' + g[0] + '" alt="' + esc(p.title) + ': ' + esc(g[3]) + '" width="' + g[1] + '" height="' + g[2] + '" loading="lazy" decoding="async"></button>' +
+          '<figcaption>' + esc(g[3]) + '</figcaption></figure>';
+      }).join('') + '</div></section>';
+  }
 
   if (p.role) {
     html += '<section class="proj-sec" data-reveal><h2>My role</h2><div class="chips">' +
@@ -84,7 +96,7 @@
 
   if (p.behance) {
     html += '<section class="pending"><div class="card taped" data-reveal><h2>See every frame</h2><p>The full ' + esc(p.title) + ' presentation, with all boards' + (p.cats.indexOf('motion') > -1 ? ' and the animation' : '') + ', lives on Behance.</p>' +
-      '<a class="btn btn--sun" href="' + p.behance + '" target="_blank" rel="noopener">Open on Behance <span class="ar" aria-hidden="true">&#8599;</span></a></div></section>';
+      '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener">Open on Behance <span class="ar" aria-hidden="true">&#8599;</span></a></div></section>';
   }
 
   // Previous / next: each card wears that project's own colour and a thumbnail
@@ -100,6 +112,35 @@
   html += '<nav class="pager" aria-label="More projects">' + pg(prev, 'prev') + pg(next, 'next') + '</nav>';
 
   root.innerHTML = html;
+})();
+
+(function () {
+  // Lightbox for the highlights: opens the image at full size, Esc or a tap closes it
+  var gal = document.querySelector('.gal');
+  if (!gal) return;
+  var box = document.createElement('div');
+  box.className = 'lightbox'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Image viewer'); box.hidden = true;
+  box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><figure><figcaption></figcaption></figure>';
+  document.body.appendChild(box);
+  // the image element is created on first open, so the page never holds an <img> without a source
+  var img = null, cap = box.querySelector('figcaption'), closeBtn = box.querySelector('.lightbox-close'), opener = null;
+  var close = function () {
+    box.classList.remove('is-open');
+    if (window.__lenis) window.__lenis.start();
+    setTimeout(function () { box.hidden = true; }, 300);
+    if (opener) opener.focus({ preventScroll: true });
+  };
+  gal.addEventListener('click', function (e) {
+    var b = e.target.closest('.gal-open'); if (!b) return;
+    var src = b.querySelector('img');
+    if (!img) { img = document.createElement('img'); box.querySelector('figure').insertBefore(img, cap); }
+    opener = b; img.src = src.src; img.alt = src.alt; cap.textContent = b.parentNode.querySelector('figcaption').textContent;
+    box.hidden = false; void box.offsetWidth; box.classList.add('is-open');
+    if (window.__lenis) window.__lenis.stop();
+    closeBtn.focus({ preventScroll: true });
+  });
+  box.addEventListener('click', function (e) { if (e.target === box || e.target.closest('.lightbox-close')) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
 })();
 
 (function () {

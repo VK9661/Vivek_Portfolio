@@ -10,10 +10,10 @@
 
    Contents
      1. Smooth scrolling (Lenis)      6. Toast and copy email
-     2. Nav: build, menu              7. Draggable stickers
-     3. Nav: fold on scroll           8. Blob eyes, "hello" cursor
-     4. Day / night theme             9. Intro (Home, once a session)
-     5. Contact band, footer,        10. Page transitions
+     2. Nav: build, menu              7. Blob eyes, "hello" cursor
+     3. Nav: fold on scroll           8. Intro (Home, once a session)
+     4. Day / night theme             9. Page transitions
+     5. Contact band, footer,
         reveals
    ===================================================================== */
 (function () {
@@ -61,7 +61,7 @@
     { href: 'work.html', key: 'work', label: 'Work' },
     { href: 'about.html', key: 'about', label: 'About' },
     { href: 'services.html', key: 'services', label: 'Services' },
-    { href: 'journal.html', key: 'journal', label: 'Journal' }
+    { href: 'journal.html', key: 'journal', label: 'Reading list' }
   ];
   var current = page === 'project' ? 'work' : page;
   var cur = function (k) { return k === current ? ' aria-current="page"' : ''; };
@@ -237,15 +237,20 @@
   if (footSlot) {
     footSlot.className = 'foot';
     footSlot.innerHTML =
-      '<div class="wrap foot-row">' +
-        '<span>© ' + new Date().getFullYear() + ' Vivek Kumar · Graphic, UI/UX &amp; motion designer</span>' +
+      '<div class="wrap foot-grid">' +
+        '<div class="foot-id"><b>Vivek Kumar</b><span>Graphic, UI/UX &amp; motion designer, video editor</span>' +
+          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance · India, IST</span></div>' +
+        '<nav class="foot-links" aria-label="Footer">' +
+          LINKS.concat([{ href: 'contact.html', label: 'Contact' }]).map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
+        '</nav>' +
         '<div class="foot-links">' +
           '<a href="mailto:' + C.email + '">Email</a>' +
           '<a href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
           '<a href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
           '<a href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
+          '<a href="assets/cv/Vivek_Kumar_CV.pdf" download>Download CV</a>' +
         '</div>' +
-        '<a class="to-top" href="#main" aria-label="Back to top">↑</a>' +
+        '<div class="foot-end"><span>© ' + new Date().getFullYear() + ' Vivek Kumar</span><a class="to-top" href="#main" aria-label="Back to top">↑</a></div>' +
       '</div>';
   }
 
@@ -280,12 +285,12 @@
     });
 
     var AUTO = ['.page-hero > *:not(.ast)', '.sec-head', '.proj-sec', '.faq-item', '.link-rows a', '.cta-grid > *', '.cta .socials',
-      '.foot-row', '.svc-list .svc', '.cap-col', '.filters', '.journal-empty', '.read', '.w-list li'];
+      '.foot-grid', '.svc-list .svc', '.cap-col', '.filters', '.journal-empty', '.read', '.w-list li'];
     $$(AUTO.join(',')).forEach(function (el) { if (!el.hasAttribute('data-reveal') && !el.closest('[data-reveal]')) el.setAttribute('data-reveal', ''); });
     $$('.ph-copy > .lead, .ph-copy > .proj-meta, .ph-copy > .btn-row').forEach(function (el, i) { el.setAttribute('data-reveal', ''); el.style.setProperty('--d', (.3 + i * .1) + 's'); });
     $$('.page-hero > [data-reveal]').forEach(function (el, i) { el.style.setProperty('--d', (i * .08) + 's'); });
 
-    var STAGGER = '.work-grid, .cases, .rows, .svc-tiles, .glance dl, .principles, .steps-grid, .bento, .reads, .faq-list, .link-rows, .svc-list, .capboard, .w-list, .chips';
+    var STAGGER = '.work-grid, .cases, .rows, .svc-tiles, .glance dl, .gal, .steps-grid, .bento, .reads, .faq-list, .link-rows, .svc-list, .capboard, .w-list, .chips';
     $$(STAGGER).forEach(function (g) {
       Array.prototype.slice.call(g.children)
         .filter(function (k) { return k.hasAttribute('data-reveal'); })
@@ -339,46 +344,7 @@
   });
 
 
-  /* ---------- 7. Draggable stickers (Services board) ---------- */
-  var makeDraggable = function (el) {
-    var bounds = el.offsetParent || document.body;
-    var startX, startY, baseX, baseY, pid = null;
-    if (el.tabIndex < 0) el.tabIndex = 0;
-    el.setAttribute('data-cursor', el.getAttribute('data-cursor') || 'drag');
-    var get = function () { return { x: parseFloat(el.dataset.dx || 0), y: parseFloat(el.dataset.dy || 0) }; };
-    var set = function (x, y) { el.dataset.dx = x; el.dataset.dy = y; el.style.translate = x + 'px ' + y + 'px'; };
-    var toTop = function () { window.__z = (window.__z || 10) + 1; el.style.zIndex = window.__z; };
-    el.addEventListener('pointerdown', function (e) {
-      if (e.button !== 0) return;
-      pid = e.pointerId; el.setPointerCapture(pid);
-      startX = e.clientX; startY = e.clientY; var p = get(); baseX = p.x; baseY = p.y;
-      el.classList.add('is-dragging'); toTop();
-    });
-    el.addEventListener('pointermove', function (e) {
-      if (pid !== e.pointerId) return;
-      var b = bounds.getBoundingClientRect(), r = el.getBoundingClientRect(), c = get();
-      var minX = c.x - (r.left - b.left), maxX = c.x + (b.right - r.right);
-      var minY = c.y - (r.top - b.top), maxY = c.y + (b.bottom - r.bottom);
-      set(Math.min(maxX, Math.max(minX, baseX + e.clientX - startX)), Math.min(maxY, Math.max(minY, baseY + e.clientY - startY)));
-    });
-    var end = function (e) { if (pid !== e.pointerId) return; pid = null; el.classList.remove('is-dragging'); };
-    el.addEventListener('pointerup', end);
-    el.addEventListener('pointercancel', end);
-    el.addEventListener('keydown', function (e) {
-      var step = e.shiftKey ? 40 : 10, p = get(), k = e.key;
-      if (k === 'ArrowLeft') set(p.x - step, p.y); else if (k === 'ArrowRight') set(p.x + step, p.y);
-      else if (k === 'ArrowUp') set(p.x, p.y - step); else if (k === 'ArrowDown') set(p.x, p.y + step);
-      else return;
-      e.preventDefault(); toTop();
-    });
-  };
-  $$('[data-drag]').forEach(function (el) {
-    if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', el.textContent.trim() + ' (sticker, drag or use arrow keys to move)');
-    makeDraggable(el);
-  });
-
-
-  /* ---------- 8. Blob eyes, "hello" cursor ---------- */
+  /* ---------- 7. Blob eyes, "hello" cursor ---------- */
   var eyes = $('.blob .eyes');
   if (eyes && finePointer && !reduceMotion) {
     var blob = $('.blob');
@@ -396,7 +362,7 @@
     cbox.innerHTML = '<i></i><span>hello</span>';
     document.body.appendChild(cbox);
     var lab = $('span', cbox), tx = 0, ty = 0, cx = 0, cy = 0, craf = null;
-    var LABELS = { a: 'open', button: 'click', drag: 'drag me', copy: 'copy', write: 'write' };
+    var LABELS = { a: 'open', button: 'click', copy: 'copy', write: 'write' };
     var follow = function () {
       cx += (tx - cx) * (reduceMotion ? 1 : .22); cy += (ty - cy) * (reduceMotion ? 1 : .22);
       cbox.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
@@ -426,7 +392,7 @@
   }
 
 
-  /* ---------- 9. Intro (Home, once per session) ---------- */
+  /* ---------- 8. Intro (Home, once per session) ---------- */
   var introSeen = true;
   try { introSeen = sessionStorage.getItem('vk-intro') === '1'; sessionStorage.setItem('vk-intro', '1'); } catch (e) {}
   if (page === 'home' && !introSeen && !reduceMotion) {
@@ -463,7 +429,7 @@
   }
 
 
-  /* ---------- 10. Page transitions: cobalt curtain ----------
+  /* ---------- 9. Page transitions: cobalt curtain ----------
      Leaving: a cobalt panel slides up over the page, then we navigate.
      Arriving: the inline head script adds html.is-arriving BEFORE the first
      paint, so the same cobalt panel is already there (no flash). Once fonts
