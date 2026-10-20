@@ -24,7 +24,6 @@
   var num = String(idx + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
   var meta = '<div class="proj-meta">' +
     p.tags.map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join('') +
-    (p.tools && p.tools.length ? '<span class="chip chip--tools">Tools: ' + p.tools.map(esc).join(', ') + '</span>' : '') +
   '</div>';
   // The intro: its first sentence large, the rest as body text
   var intro = (function (t) { var m = t.match(/^(.+?[.!?]["”]?)\s+(.+)$/); return m ? [m[1], m[2]] : [t, '']; })(p.about || '');
@@ -73,8 +72,20 @@
             (s.list ? '<ul class="w-list">' + s.list.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '') +
           '</article>';
         }).join('') +
+        (p.credits ? '<p class="w-credits" data-reveal>' + esc(p.credits) + '</p>' : '') +
       '</div>' +
     '</section>';
+
+  // Every project: My role, then the design process
+  if (p.role) {
+    html += '<section class="proj-sec" data-reveal><h2>My role</h2><div class="chips">' +
+      p.role.map(function (r) { return '<span class="chip">' + esc(r) + '</span>'; }).join('') + '</div></section>';
+  }
+  if (p.process) {
+    var stepCols = ['var(--sun)', 'var(--pink)', 'var(--mint)', 'var(--lilac)', 'var(--sky)'];
+    html += '<section class="proj-sec" data-reveal><h2>Design process</h2><div class="steps">' +
+      p.process.map(function (s, i) { return '<div class="step" style="--c:' + stepCols[i % 5] + ';--r:' + (i % 2 ? 2 : -2) + 'deg"><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div></section>';
+  }
 
   // Outcome: what was delivered, how success would be measured, what it shows
   if (p.outcome) {
@@ -99,16 +110,6 @@
           '<img src="' + g[0] + '" alt="' + esc(p.title) + ': ' + esc(g[3]) + '" width="' + g[1] + '" height="' + g[2] + '" loading="lazy" decoding="async"></button>' +
           '<figcaption>' + esc(g[3]) + '</figcaption></figure>';
       }).join('') + '</div></section>';
-  }
-
-  if (p.role) {
-    html += '<section class="proj-sec" data-reveal><h2>My role</h2><div class="chips">' +
-      p.role.map(function (r) { return '<span class="chip">' + esc(r) + '</span>'; }).join('') + '</div></section>';
-  }
-  if (p.process) {
-    var cols = ['var(--sun)', 'var(--pink)', 'var(--mint)', 'var(--lilac)', 'var(--sky)'];
-    html += '<section class="proj-sec" data-reveal><h2>Design process</h2><div class="steps">' +
-      p.process.map(function (s, i) { return '<div class="step" style="--c:' + cols[i % 5] + ';--r:' + (i % 2 ? 2 : -2) + 'deg"><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div>'; }).join('') + '</div></section>';
   }
 
   if (p.behance) {

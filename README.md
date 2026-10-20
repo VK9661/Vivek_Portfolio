@@ -36,7 +36,7 @@ Then open http://localhost:5173. Any static server works too, for example `npx s
 | `assets/js/pages/*.js` | The script for each page (home, work, journal, services, contact, project) |
 | `assets/js/main.js` | Shared nav, contact band, footer, theme, reveals, cursor, intro and page transitions |
 | `assets/cv/Vivek_Kumar_CV.pdf` | The downloadable CV (web copy, without the phone number) |
-| `assets/og.png` | Share image for link previews of the main pages; its source is `tools/og-template.html` in the portfolio folder |
+| `assets/og-portfolio.jpg` | Link-preview image of the portfolio link and the main pages; its source is `tools/og-template.html` in the portfolio folder |
 | `assets/og/<id>.jpg` | Each project's link-preview image, rendered from `tools/og-project.html` |
 | `assets/js/hero.js` | Home hero interactions: cursor colour, confetti, role pill, tilt, magnetic buttons |
 

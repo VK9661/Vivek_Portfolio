@@ -814,7 +814,6 @@ html[data-theme="dark"] .cta::before { opacity: .25; }
 .proj-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .proj-meta .chip { white-space: normal; text-align: left; }
 .ph .proj-meta .chip { --c: var(--accent); color: var(--ink); background: color-mix(in srgb, var(--c) var(--tint), var(--glass)); }
-.ph .proj-meta .chip--tools { --c: var(--paper-2); }
 .ph .btn-row { margin-top: 28px; }
 .ph-art { position: relative; margin-top: 12px; padding: clamp(18px, 3vw, 40px) clamp(8px, 2vw, 24px); }
 .ph-art .ast { z-index: 2; left: -2%; bottom: 6%; --c: var(--pink); --s: clamp(54px, 6vw, 90px); }
@@ -844,6 +843,8 @@ html[data-theme="dark"] .cta::before { opacity: .25; }
 .w-dot { flex: none; width: 16px; height: 16px; border-radius: 4px; background: var(--c); border: 2px solid var(--stk); transform: rotate(45deg); }
 .w-sec p { max-width: 40em; font-size: clamp(1.02rem, 1.4vw, 1.18rem); line-height: 1.65; font-weight: 500; color: var(--ink-2); }
 .w-sec p + p { margin-top: 12px; }
+/* Credits: small print under the write-up */
+.w-credits { max-width: 48em; padding-top: 16px; border-top: var(--bw) dashed var(--dash); font-size: .88rem; line-height: 1.6; font-weight: 500; color: var(--ink-2); }
 .w-list { display: grid; gap: 10px; max-width: 44em; margin-top: 6px; }
 .w-list li { position: relative; padding: 12px 16px 12px 46px; font-weight: 600; line-height: 1.45; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-md); box-shadow: var(--sh-sm), var(--hi); transition: transform .35s var(--ease-spring), box-shadow .3s; }
 .w-list li::before { content: ""; position: absolute; left: 16px; top: 1.05em; width: 14px; height: 14px; border-radius: 4px; background: var(--c); border: 2px solid var(--stk); transform: rotate(45deg); }
@@ -879,6 +880,9 @@ html[data-theme="dark"] .cta::before { opacity: .25; }
 @media (min-width: 601px) {
   .gal > :not(:first-child) .gal-open img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
   .gal > :first-child .gal-open img { max-height: 760px; object-fit: cover; object-position: top; }
+  /* Two highlights sit side by side at the same size */
+  .gal.gal--2 > :first-child { grid-column: auto; }
+  .gal.gal--2 > .gal-i .gal-open img { aspect-ratio: 14 / 9; max-height: none; object-fit: cover; object-position: center; }
 }
 @media (min-width: 1101px) {
   .gal--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
