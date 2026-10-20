@@ -29,16 +29,17 @@
 
 
   /* ---------- 1. Smooth scrolling (Lenis) ----------
-     Lenis smooths wheel and trackpad scrolling but keeps native scroll,
-     so sticky elements, keyboard scrolling and touch all still work. */
+     Lenis glides wheel and trackpad scrolling toward its target a little
+     each frame (lerp), which feels softer than a fixed duration. Touch
+     keeps the phone's own native scrolling, which is already the smoothest
+     there; sticky elements and keyboard scrolling still work as normal. */
   var lenis = null;
   if (window.Lenis && !reduceMotion) {
     lenis = new window.Lenis({
-      duration: 1.15,
-      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      lerp: 0.085,
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.4
+      wheelMultiplier: 0.9,
+      syncTouch: false
     });
     window.__lenis = lenis;
     var lenisFrame = function (time) { lenis.raf(time); requestAnimationFrame(lenisFrame); };
@@ -296,6 +297,22 @@
         .filter(function (k) { return k.hasAttribute('data-reveal'); })
         .forEach(function (k, i) { if (!k.style.getPropertyValue('--d')) k.style.setProperty('--d', ((i % 4) * .08) + 's'); });
     });
+  }
+
+  // While the page scrolls, small looping decorations rest (style.css), so scrolling gets every frame
+  var scrollRest = null;
+  window.addEventListener('scroll', function () {
+    if (!scrollRest) root.classList.add('is-scrolling');
+    clearTimeout(scrollRest);
+    scrollRest = setTimeout(function () { scrollRest = null; root.classList.remove('is-scrolling'); }, 200);
+  }, { passive: true });
+
+  // Looping decorations (marquees, spinning badges, the contact band rays) rest while off screen
+  if ('IntersectionObserver' in window) {
+    var ioLoop = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle('is-offscreen', !e.isIntersecting); });
+    }, { rootMargin: '120px 0px' });
+    $$('.hp, .tape, .ph-art, .ph-tape, .cta, .foot').forEach(function (el) { ioLoop.observe(el); });
   }
 
   var revealTargets = $$('[data-reveal], [data-words]');

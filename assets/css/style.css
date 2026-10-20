@@ -234,8 +234,10 @@ section { position: relative; }
 }
 .chip[style*="--c"] { background: color-mix(in srgb, var(--c) var(--tint), var(--glass)); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.dot { width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--mint); border: 2px solid var(--stk); animation: pulse 2.4s infinite; }
-@keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(111, 227, 178, .35); } }
+.dot { position: relative; isolation: isolate; width: 10px; height: 10px; flex: none; border-radius: 50%; background: var(--mint); border: 2px solid var(--stk); }
+/* The pulse is a ring that grows and fades: transform and opacity only, so it runs on the GPU */
+.dot::after { content: ""; position: absolute; z-index: -1; inset: -2px; border-radius: 50%; background: rgba(111, 227, 178, .55); animation: pulse 2.4s var(--ease-out) infinite; }
+@keyframes pulse { from { transform: scale(1); opacity: 1; } to { transform: scale(2.4); opacity: 0; } }
 
 /* Glass card */
 .card { background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); }
@@ -274,7 +276,7 @@ section { position: relative; }
 @keyframes phpop { from { scale: .4; opacity: 0; } }
 @keyframes fadeup { from { opacity: 0; transform: translateY(16px); } }
 @keyframes slide { to { transform: translateX(-50%); } }
-@keyframes blobmorph { 50% { border-radius: 58% 42% 55% 45% / 45% 58% 42% 55%; } }
+@keyframes blobsway { 50% { transform: rotate(-5deg) scale(1.04); } }
 
 
 /* ---------- 6. Overlays: toast, cursor, intro, curtain, theme switch ---------- */
@@ -433,6 +435,8 @@ html[data-theme="dark"] .theme-btn .moon { opacity: 1; transform: none; }
   background: conic-gradient(from 0deg, #FF5A8C, #FFCF33, #6FE3B2, #7FD8F5, #9DB0FF, #3350FF, #FF5A8C);
   filter: blur(70px); transform: translate3d(var(--bx, 50vw), var(--by, 40vh), 0); transition: opacity .6s; animation: huespin 6s linear infinite; will-change: transform; }
 @keyframes huespin { to { rotate: 360deg; } }
+.hp-blob { animation-play-state: paused; }
+.hp.is-lit .hp-blob { animation-play-state: running; }
 .hp.is-lit .hp-spot { opacity: 1; }
 .hp.is-lit .hp-blob { opacity: .38; }
 .hp-bit { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; background: var(--c); border: 2px solid var(--stk); border-radius: 3px; animation: bit 1.15s cubic-bezier(.2, .7, .3, 1) forwards; }
@@ -473,7 +477,8 @@ html[data-theme="dark"] .theme-btn .moon { opacity: 1; transform: none; }
   rotate: -6deg; animation: phpop .7s var(--ease-spring) .7s backwards, wiggle 5s ease-in-out 2.4s infinite;
   transition: width .5s var(--ease-spring), background-color .45s, color .3s, scale .2s;
 }
-@keyframes wiggle { 0%, 88%, 100% { rotate: -6deg; } 92% { rotate: 0deg; } 96% { rotate: -11deg; } }
+/* transform on top of the resting rotate: -6deg, so it runs on the GPU */
+@keyframes wiggle { 0%, 88%, 100% { transform: none; } 92% { transform: rotate(6deg); } 96% { transform: rotate(-5deg); } }
 .hp-role:active { scale: .95; }
 .hp-role-word { display: block; white-space: nowrap; line-height: 1.25em; transition: transform .26s cubic-bezier(.6, 0, .4, 1), opacity .26s; }
 .hp-role-word.is-out { transform: translateY(-110%); opacity: 0; }
@@ -493,7 +498,7 @@ html[data-theme="dark"] .theme-btn .moon { opacity: 1; transform: none; }
 .hp-spark1 { width: clamp(22px, 2.4vw, 34px); right: 12%; top: 2%; }
 .hp-spark1 path { fill: var(--blue); }
 .hp-spark1 svg { animation: twinkle 3s ease-in-out 1.2s infinite; }
-@keyframes twinkle { 50% { scale: .65; rotate: 45deg; } }
+@keyframes twinkle { 50% { transform: scale(.65) rotate(45deg); } }
 .hp-plus { display: none; width: 26px; left: -3%; top: 52%; }
 .hp-plus path { stroke: var(--mint); stroke-width: 5; stroke-linecap: round; fill: none; }
 .hp-loopy { width: 66px; left: 0; top: 46%; rotate: 150deg; }
@@ -675,7 +680,7 @@ html[data-theme="dark"] :is(.svc-tile--blue, .svc-card.svc-blue) { background: r
 
 /* ---------- 10. Contact band, footer ---------- */
 .cta { position: relative; overflow: hidden; padding: clamp(72px, 9vw, 120px) 0; background: linear-gradient(115deg, color-mix(in srgb, var(--pink) 40%, transparent), color-mix(in srgb, var(--lilac) 34%, transparent)); border-block: var(--bw) solid var(--glass-edge); }
-.cta::before { content: ""; position: absolute; left: 50%; top: 50%; width: 260vmax; height: 260vmax; translate: -50% -50%; background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, .22) 0 6deg, transparent 6deg 20deg); animation: spin 120s linear infinite; pointer-events: none; }
+.cta::before { content: ""; position: absolute; left: 50%; top: 50%; width: 200vmax; height: 200vmax; translate: -50% -50%; background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, .22) 0 6deg, transparent 6deg 20deg); animation: spin 120s linear infinite; will-change: transform; pointer-events: none; }
 html[data-theme="dark"] .cta { background: radial-gradient(70% 120% at 18% 50%, rgba(255, 90, 140, .34), transparent 70%), rgba(157, 176, 255, .06); }
 html[data-theme="dark"] .cta::before { opacity: .25; }
 .cta-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
@@ -817,8 +822,8 @@ html[data-theme="dark"] .cta::before { opacity: .25; }
 .ph .btn-row { margin-top: 28px; }
 .ph-art { position: relative; margin-top: 12px; padding: clamp(18px, 3vw, 40px) clamp(8px, 2vw, 24px); }
 .ph-art .ast { z-index: 2; left: -2%; bottom: 6%; --c: var(--pink); --s: clamp(54px, 6vw, 90px); }
-.ph-blob { position: absolute; z-index: -1; inset: 2% -4% 0 6%; border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%; background-color: var(--accent); background-image: radial-gradient(rgba(255, 255, 255, .4) 1.4px, transparent 1.8px); background-size: 16px 16px; border: var(--bw) solid var(--stk); opacity: .9; animation: blobmorph 12s ease-in-out infinite; }
-.ph-cover { --tape-r: -3deg; position: relative; margin: 0; padding: 12px; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); rotate: 2.5deg; translate: 0 calc(var(--sy, 0) * -30px); transition: transform .5s var(--ease-out); animation: phcover 1.1s cubic-bezier(.2, .9, .25, 1) .2s backwards; }
+.ph-blob { position: absolute; z-index: -1; inset: 2% -4% 0 6%; border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%; background-color: var(--accent); background-image: radial-gradient(rgba(255, 255, 255, .4) 1.4px, transparent 1.8px); background-size: 16px 16px; border: var(--bw) solid var(--stk); opacity: .9; animation: blobsway 12s ease-in-out infinite; }
+.ph-cover { --tape-r: -3deg; position: relative; margin: 0; padding: 12px; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); rotate: 2.5deg; transition: transform .5s var(--ease-out); will-change: transform, translate; animation: phcover 1.1s cubic-bezier(.2, .9, .25, 1) .2s backwards; }
 @keyframes phcover { from { opacity: 0; transform: translateY(60px) rotate(6deg) scale(.94); } }
 .ph-cover img { width: 100%; border: 2px solid var(--line); border-radius: var(--r-md); }
 .ph-year { --c: var(--sun); --s: clamp(92px, 9vw, 124px); position: absolute; z-index: 3; right: -2%; top: -4%; rotate: 12deg; font-size: .82rem; animation: phpop .8s var(--ease-spring) .7s both, spin 30s linear 1.5s infinite; }
@@ -1102,6 +1107,14 @@ html[data-theme="dark"] .form-error { color: #FF8FB3; }
 .work-card .media img { transition: clip-path 1.1s cubic-bezier(.2, .9, .25, 1) .12s, transform .7s var(--ease-out); }
 [data-reveal]:not(.is-in) .media img { clip-path: inset(0 0 100% 0); }
 
+
+/* Looping decorations rest while their section is off screen, and small ones
+   also rest while the page is being scrolled, so scrolling gets every frame (main.js) */
+.is-scrolling .hp-spark1 svg, .is-scrolling .hp-spark2 svg, .is-scrolling .hp-burst svg,
+.is-scrolling .scroll-badge svg, .is-scrolling .ast, .is-scrolling .ph-blob { animation-play-state: paused; }
+/* these also have an entrance animation first, which keeps playing */
+.is-scrolling .hp-role, .is-scrolling .ph-year { animation-play-state: running, paused; }
+.is-offscreen, .is-offscreen::before, .is-offscreen::after, .is-offscreen *, .is-offscreen ::before, .is-offscreen ::after { animation-play-state: paused !important; }
 
 /* ---------- 19. Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

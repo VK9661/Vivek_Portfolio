@@ -172,7 +172,17 @@
     });
     cover.addEventListener('pointerleave', function () { cover.style.transform = ''; });
   }
-  var art = document.querySelector('.ph-art');
-  var onScroll = function () { art.style.setProperty('--sy', Math.min(1, window.scrollY / 600).toFixed(3)); };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  // Once per frame at most, and only while the cover is still drifting (the first 600px)
+  var last = -1, queued = false;
+  var drift = function () {
+    queued = false;
+    var y = Math.min(1, window.scrollY / 600);
+    if (y === last) return;
+    last = y;
+    cover.style.translate = '0 ' + (y * -30).toFixed(1) + 'px';
+  };
+  window.addEventListener('scroll', function () {
+    if (!queued && (window.scrollY < 640 || last < 1)) { queued = true; requestAnimationFrame(drift); }
+  }, { passive: true });
+  drift();
 })();
