@@ -1,0 +1,7 @@
+# Local junk that never belongs in the repo
+__pycache__/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini

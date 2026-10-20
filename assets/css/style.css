@@ -888,7 +888,7 @@ html[data-theme="dark"] .cta::before { opacity: .25; }
   .gal--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Extra sections (role, process) */
+/* My role (chips) and Design process (five steps) */
 .proj-sec { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(20px, 5vw, 72px); padding: clamp(48px, 6vw, 84px) 0; border-bottom: var(--bw) dashed var(--dash); }
 .proj-sec h2 { font-size: clamp(1.6rem, 2.4vw, 2.2rem); font-stretch: 88%; }
 .proj-sec .chip { font-size: .9rem; }

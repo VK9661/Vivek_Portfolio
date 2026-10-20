@@ -72,7 +72,7 @@
     navSlot.innerHTML =
       '<a class="skip-link" href="#main">Skip to content</a>' +
       '<nav class="nav" aria-label="Primary">' +
-        '<a class="nav-logo" href="index.html" aria-label="Vivek Kumar, home"><span class="mono" aria-hidden="true">VK</span><img src="assets/img/avatar.webp" alt="" width="42" height="42"></a>' +
+        '<a class="nav-logo" href="index.html" aria-label="Vivek Kumar, home"><span class="mono" aria-hidden="true">VK</span><img src="assets/img/me/avatar.webp" alt="" width="42" height="42"></a>' +
         '<div class="nav-fold nav-fold--links"><span><span class="nav-links">' + LINKS.slice(1).map(function (l) {
           return '<a class="l" href="' + l.href + '"' + cur(l.key) + '>' + l.label + '</a>';
         }).join('') + '</span></span></div>' +

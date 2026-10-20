@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Project share image</title>
+<!-- Source for assets/img/share/<id>.jpg (1200 × 630), the link preview of each project.
+     Reads the project from assets/js/data.js. Rendered by tools/build-share.py. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Covered+By+Your+Grace&family=Plus+Jakarta+Sans:wght@500..800&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { position: relative; font-family: 'Plus Jakarta Sans', sans-serif; color: #1C1747; background: #F2F1FA;
+    background-image: radial-gradient(46% 60% at 96% 0%, rgba(157, 176, 255, .5), transparent 72%), radial-gradient(40% 50% at 0% 0%, rgba(127, 216, 245, .25), transparent 70%), radial-gradient(40% 50% at 100% 100%, rgba(255, 143, 179, .22), transparent 72%); }
+  body::after { content: ""; position: absolute; inset: 0; z-index: 0; background-image: radial-gradient(rgba(28, 23, 71, .1) 1.3px, transparent 1.7px); background-size: 28px 28px; }
+  .copy { position: absolute; z-index: 2; left: 64px; top: 0; bottom: 0; width: 460px; display: flex; flex-direction: column; justify-content: center; }
+  .by { font: 400 34px 'Covered By Your Grace', cursive; color: #3350FF; rotate: -3deg; display: inline-block; align-self: flex-start; }
+  .kind { align-self: flex-start; margin-top: 18px; padding: 8px 18px; font-weight: 800; font-size: 20px; background: var(--c); border: 2.5px solid #1C1747; border-radius: 999px; box-shadow: 3px 3px 0 #1C1747; }
+  .kind.on-dark { color: #fff; }
+  h1 { margin-top: 18px; font: 800 108px/.9 'Bricolage Grotesque', sans-serif; font-stretch: 80%; letter-spacing: -.03em; overflow-wrap: anywhere; }
+  .sum { margin-top: 18px; font-weight: 600; font-size: 25px; line-height: 1.35; color: #3B3663; }
+  .url { position: absolute; z-index: 2; left: 64px; bottom: 34px; font-weight: 700; font-size: 19px; color: #4A4570; }
+  .blob { position: absolute; z-index: 1; right: -60px; top: 50%; width: 700px; height: 560px; translate: 0 -50%; background: var(--c); opacity: .9; border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%; }
+  .cover { position: absolute; z-index: 2; right: 58px; top: 50%; width: 590px; translate: 0 -50%; rotate: 2.5deg; border: 3px solid #1C1747; border-radius: 22px; box-shadow: 8px 8px 0 #1C1747; overflow: hidden; background: #fff; }
+  .cover img { display: block; width: 100%; height: auto; }
+  .tape { position: absolute; z-index: 3; right: 290px; top: 50%; width: 130px; height: 34px; background: #FFCF33; opacity: .92; border: 2px dashed rgba(28, 23, 71, .45); rotate: -5deg; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <span class="by">a project by Vivek Kumar</span>
+    <span class="kind" id="kind"></span>
+    <h1 id="title"></h1>
+    <p class="sum" id="sum"></p>
+  </div>
+  <p class="url">vivek-portfolio-beta-eight.vercel.app</p>
+  <span class="blob"></span>
+  <div class="cover"><img id="cover" alt=""></div>
+  <span class="tape" id="tape"></span>
+<script src="../assets/js/data.js"></script>
+<script>
+  var SW = { blue: '#3350FF', ink: '#1C1747', sun: '#FFCF33', lilac: '#9DB0FF', sky: '#7FD8F5', mint: '#6FE3B2', pink: '#FF5A8C' };
+  var id = new URLSearchParams(location.search).get('id');
+  var p = window.PROJECTS.filter(function (x) { return x.id === id; })[0];
+  var c = (window.SWATCH || SW)[p.color] || SW[p.color] || '#FF5A8C';
+  document.body.style.setProperty('--c', c);
+  var k = document.getElementById('kind');
+  k.textContent = p.kind;
+  if (p.color === 'ink' || p.color === 'blue') k.classList.add('on-dark');
+  document.getElementById('title').textContent = p.title;
+  document.getElementById('sum').textContent = p.summary;
+  var img = document.getElementById('cover');
+  img.src = '../' + p.img;
+  // Sit the tape on the cover's top edge, whatever its height
+  img.onload = function () {
+    var h = 590 * p.h / p.w;
+    document.getElementById('tape').style.top = (315 - h / 2 - 16) + 'px';
+    document.title = 'ready';
+  };
+</script>
+</body>
+</html>
