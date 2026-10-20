@@ -1,0 +1,9 @@
+# Text files are stored with LF line endings, whatever the OS
+* text=auto eol=lf
+
+# Binary assets
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.pdf binary
