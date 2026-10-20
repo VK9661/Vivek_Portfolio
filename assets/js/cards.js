@@ -17,7 +17,7 @@
   window.swatchOf = swatch;
 
   window.workCard = function (p) {
-    return '<a class="work-card" href="project.html?id=' + p.id + '" style="--c:' + swatch(p) + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '" data-cursor="view">' +
+    return '<a class="work-card" href="project-' + p.id + '.html" style="--c:' + swatch(p) + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '" data-cursor="view">' +
       '<div class="media"><img' + fit(p) + ' src="' + p.img + '" alt="' + esc(p.title) + ' cover" width="' + p.w + '" height="' + p.h + '" loading="lazy"></div>' +
       '<div class="body">' +
         '<div><span class="eyebrow muted">' + esc(p.kind) + (p.year ? ' · ' + esc(p.year) : '') + '</span><h3>' + esc(p.title) + '</h3></div>' +
@@ -30,7 +30,7 @@
   window.rowItem = function (p) {
     // Rows draw ink text on the swatch (chip and hover fill), so ink projects borrow lilac
     var c = p.color === 'ink' ? (window.SWATCH || {}).lilac || '#9DB0FF' : swatch(p);
-    return '<a class="row-i" href="project.html?id=' + p.id + '" style="--c:' + c + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '" data-cursor="view">' +
+    return '<a class="row-i" href="project-' + p.id + '.html" style="--c:' + c + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '" data-cursor="view">' +
       '<span class="th"><img src="' + p.img + '" alt="" width="' + p.w + '" height="' + p.h + '" loading="lazy"></span>' +
       '<div><h3>' + esc(p.title) + '</h3><p>' + esc(p.summary) + '</p></div>' +
       '<span class="meta"><span class="chip">' + esc(p.kind) + (p.year ? ' · ' + esc(p.year) : '') + '</span><span class="round-ar" aria-hidden="true">&#8599;</span></span>' +

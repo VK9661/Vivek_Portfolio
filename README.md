@@ -25,7 +25,7 @@ Then open http://localhost:5173. Any static server works too, for example `npx s
 | --- | --- |
 | `index.html` | Home: name-led "Portfolio 2026" hero, tape marquee, selected work (one featured, three equal), the drawer with category filters, service tiles |
 | `work.html` | Filterable index of all projects (UI/UX, Brand, Graphic, Motion) |
-| `project.html?id=…` | Project page, rendered from `data.js` |
+| `project-<id>.html` | Each project's page, rendered from `data.js`. Generated from `project.html` by `tools/build-share.py` so its link preview shows that project |
 | `about.html` | Bio with CV download, at a glance, background and toolkit |
 | `services.html` | Tabbed services, process, capabilities, FAQ |
 | `journal.html` | Reading list: illustrated design articles and guides |
@@ -36,7 +36,8 @@ Then open http://localhost:5173. Any static server works too, for example `npx s
 | `assets/js/pages/*.js` | The script for each page (home, work, journal, services, contact, project) |
 | `assets/js/main.js` | Shared nav, contact band, footer, theme, reveals, cursor, intro and page transitions |
 | `assets/cv/Vivek_Kumar_CV.pdf` | The downloadable CV (web copy, without the phone number) |
-| `assets/og.png` | Share image for link previews; its source is `tools/og-template.html` in the portfolio folder |
+| `assets/og.png` | Share image for link previews of the main pages; its source is `tools/og-template.html` in the portfolio folder |
+| `assets/og/<id>.jpg` | Each project's link-preview image, rendered from `tools/og-project.html` |
 | `assets/js/hero.js` | Home hero interactions: cursor colour, confetti, role pill, tilt, magnetic buttons |
 
 Every page loads its scripts in the same order: `data.js`, `cards.js` (if needed), the page script, Lenis, `main.js`.
@@ -71,3 +72,15 @@ git checkout backup-riso-design -- .
 git commit -m "Restore riso design"
 git push
 ```
+
+## Link previews
+
+When a link is shared on WhatsApp, LinkedIn, X and similar apps, the preview card (image, title, description) comes from the `og:` tags in each page's `<head>`. These apps don't run JavaScript, so every project has its own static page.
+
+After adding a project or editing `project.html`, run this from the portfolio folder:
+
+```
+python tools/build-share.py
+```
+
+It renders `assets/og/<id>.jpg` and writes `project-<id>.html` for every project. Old `project.html?id=…` links still work and redirect to the new pages.

@@ -1,7 +1,7 @@
 /* =====================================================================
    PROJECTS — single source of truth for Home, Work, Project detail. Add a new work by adding an entry here.
 
-   id        : used in the URL  -> project.html?id=<id>
+   id        : used in the URL  -> project-<id>.html (built by tools/build-share.py)
    title     : project name
    kind      : short category label
    cats      : filters: ux | brand | graphic | motion

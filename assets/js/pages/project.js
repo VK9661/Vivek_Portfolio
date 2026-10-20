@@ -1,9 +1,11 @@
-/* Project page: renders project.html?id=<id> from window.PROJECTS, then the
-   cover tilt (mouse) and scroll drift. */
+/* Project page: renders project-<id>.html (or project.html?id=<id>) from
+   window.PROJECTS, then the cover tilt (mouse) and scroll drift. */
 (function () {
   var list = window.PROJECTS, esc = window.escapeHTML;
-  var id = new URLSearchParams(location.search).get('id');
+  var id = document.body.getAttribute('data-project') || new URLSearchParams(location.search).get('id');
   var idx = list.findIndex(function (p) { return p.id === id; });
+  // Old project.html?id= links move to the project's own page, whose link preview shows the project
+  if (idx > -1 && !document.body.hasAttribute('data-project')) { location.replace('project-' + id + '.html' + location.hash); return; }
   var root = document.getElementById('project');
 
   if (idx < 0) {
@@ -119,7 +121,7 @@
   if (prevCol === nextCol) nextCol = [window.SWATCH.pink, window.SWATCH.mint, window.SWATCH.sun].filter(function (c) { return c !== prevCol; })[0];
   var pg = function (q, dir) {
     var col = dir === 'prev' ? prevCol : nextCol, dark = col === window.SWATCH.ink;
-    return '<a class="pg pg--' + dir + (dark ? ' pg--dark' : '') + '" href="project.html?id=' + q.id + '" style="--c:' + col + '">' +
+    return '<a class="pg pg--' + dir + (dark ? ' pg--dark' : '') + '" href="project-' + q.id + '.html" style="--c:' + col + '">' +
       '<span class="pg-th"><img src="' + q.img + '" alt="" width="' + q.w + '" height="' + q.h + '" loading="lazy"></span>' +
       '<span class="pg-txt"><span class="pg-dir">' + (dir === 'prev' ? '← Previous project' : 'Next project →') + '</span><b>' + esc(q.title) + '</b><small>' + esc(q.kind) + '</small></span>' +
     '</a>';
