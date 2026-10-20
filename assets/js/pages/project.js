@@ -74,6 +74,21 @@
       '</div>' +
     '</section>';
 
+  // Outcome: what was delivered, how success would be measured, what it shows
+  if (p.outcome) {
+    var oc = function (title, items, col) {
+      return '<article class="oc" style="--c:' + col + '" data-reveal><h3>' + title + '</h3><ul class="oc-list">' +
+        items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></article>';
+    };
+    html += '<section class="outcome" aria-labelledby="oc-title"><div class="sec-head"><div><h2 class="display t-lg" id="oc-title">Outcome</h2>' +
+      (p.outcome.note ? '<p class="hand">' + esc(p.outcome.note) + '</p>' : '') + '</div></div>' +
+      '<div class="oc-grid">' +
+        oc('What I delivered', p.outcome.delivered, 'var(--mint)') +
+        oc('How I’d measure success', p.outcome.measure, 'var(--sun)') +
+        oc('What it shows', p.outcome.shows, 'var(--lilac)') +
+      '</div></section>';
+  }
+
   // A few key images from the presentation; tap one to see it larger
   if (p.gallery && p.gallery.length) {
     html += '<section class="gallery" aria-labelledby="gal-title"><div class="sec-head"><h2 class="display t-lg" id="gal-title">Highlights</h2></div>' +

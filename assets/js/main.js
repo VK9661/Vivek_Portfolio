@@ -290,7 +290,7 @@
     $$('.ph-copy > .lead, .ph-copy > .proj-meta, .ph-copy > .btn-row').forEach(function (el, i) { el.setAttribute('data-reveal', ''); el.style.setProperty('--d', (.3 + i * .1) + 's'); });
     $$('.page-hero > [data-reveal]').forEach(function (el, i) { el.style.setProperty('--d', (i * .08) + 's'); });
 
-    var STAGGER = '.work-grid, .cases, .rows, .svc-tiles, .glance dl, .gal, .steps-grid, .bento, .reads, .faq-list, .link-rows, .svc-list, .capboard, .w-list, .chips';
+    var STAGGER = '.work-grid, .cases, .rows, .svc-tiles, .glance dl, .gal, .oc-grid, .steps-grid, .bento, .reads, .faq-list, .link-rows, .svc-list, .capboard, .w-list, .chips';
     $$(STAGGER).forEach(function (g) {
       Array.prototype.slice.call(g.children)
         .filter(function (k) { return k.hasAttribute('data-reveal'); })
