@@ -106,43 +106,6 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: true,
-    summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
-    about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
-    year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
-    tools: ['Illustrator', 'Photoshop', 'After Effects', 'Adobe Firefly', 'Google Veo', 'Google Flow', 'ElevenLabs'],
-    img: 'assets/img/covers/chashni.jpg', w: 1400, h: 1095,
-    behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
-
-    facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects, Adobe Firefly, Google Veo, Google Flow, ElevenLabs'], ['Published', 'Oct 2026']],
-    writeup: [
-      { h: 'The challenge', p: ['Every Diwali, the same gift box does the rounds unopened, because nothing on it says what is inside.'] },
-      { h: 'The approach', p: ['One mark, one colour variable, four sweets. The pour on the lid and the drawer take the colour of the sweet, so the box names what it holds before anyone opens it.', 'The identity is bilingual, set in Devanagari and Latin.'] },
-      { h: 'The details', p: ['The campaign runs on a single line, "This one stops here", which lands three different ways across three reels:'], list: ['The Test: the standard', 'The Count: the problem', 'Keep One: the box you keep for yourself'] }
-    ],
-    credits: 'Concept, identity, packaging and motion by Vivek Kumar. AI was used to generate the kitchen footage (Adobe Firefly, Google Veo), the travertine plate (Google Flow) and the voice (ElevenLabs). Music: paulyudin, "Ambient" (Pixabay).',
-    role: ['Concept and naming', 'Brand identity', 'Bilingual typography', 'Packaging design', 'Social campaign', 'Motion design'],
-    process: [
-      ['Name', 'CHASHNI, after the one-thread syrup test'],
-      ['Identity', 'One mark in Devanagari and Latin'],
-      ['Packaging', 'A colour for each sweet, with dielines'],
-      ['Campaign', 'One line across three reels and three carousels'],
-      ['Motion', 'Edit, voice and AI-generated footage']
-    ],
-    outcome: {
-      note: 'A concept project, so these are the results it is designed for, not live numbers.',
-      delivered: ['A bilingual Devanagari and Latin identity', 'Print-ready packaging with dielines', 'Three reels and three carousels', 'One campaign line across every piece'],
-      measure: ['Can shoppers name the sweet from the box alone, in a quick shelf test', 'Reel completion and shares during Diwali week', 'How many buyers keep one box for themselves', 'Fewer gift boxes passed on unopened'],
-      shows: ['A brand name and concept drawn from a cultural detail', 'A packaging system run on one colour variable', 'Bilingual typography', 'A campaign carried across packaging, reels and carousels']
-    },
-    gallery: [
-      ['assets/img/gallery/chashni/01.webp', 1400, 2166, 'A box that says what it is'],
-      ['assets/img/gallery/chashni/02.webp', 1400, 1095, 'One variable, four values'],
-      ['assets/img/gallery/chashni/03.webp', 1400, 1806, 'Three carousels, ten slides'],
-      ['assets/img/gallery/chashni/04.webp', 1400, 1652, 'Two scripts, one family']
-    ]
-  },
-  {
     id: 'shady', title: 'Shady?', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'lilac', featured: true,
     summary: 'An AI scam checker for families: a calm answer, and the why, in seconds.',
     about: "Shady is a concept AI scam checker built for families, including first-time smartphone users. Paste any message and get a calm answer (Likely a scam, Not sure or Likely safe) with the red flags underlined in your own words and one clear next step. When it isn't sure, Shady asks someone you trust.",
@@ -177,6 +140,43 @@ window.PROJECTS = [
       ['assets/img/gallery/shady/02.webp', 1400, 1180, 'Not a score: an answer, with the evidence'],
       ['assets/img/gallery/shady/03.webp', 1400, 1060, 'Not sure? Shady asks a human'],
       ['assets/img/gallery/shady/04.webp', 1400, 1260, 'One calm system, light and dark']
+    ]
+  },
+  {
+    id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: true,
+    summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
+    about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
+    year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
+    tools: ['Illustrator', 'Photoshop', 'After Effects', 'Adobe Firefly', 'Google Veo', 'Google Flow', 'ElevenLabs'],
+    img: 'assets/img/covers/chashni.jpg', w: 1400, h: 1095,
+    behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
+
+    facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects, Adobe Firefly, Google Veo, Google Flow, ElevenLabs'], ['Published', 'Oct 2026']],
+    writeup: [
+      { h: 'The challenge', p: ['Every Diwali, the same gift box does the rounds unopened, because nothing on it says what is inside.'] },
+      { h: 'The approach', p: ['One mark, one colour variable, four sweets. The pour on the lid and the drawer take the colour of the sweet, so the box names what it holds before anyone opens it.', 'The identity is bilingual, set in Devanagari and Latin.'] },
+      { h: 'The details', p: ['The campaign runs on a single line, "This one stops here", which lands three different ways across three reels:'], list: ['The Test: the standard', 'The Count: the problem', 'Keep One: the box you keep for yourself'] }
+    ],
+    credits: 'Concept, identity, packaging and motion by Vivek Kumar. AI was used to generate the kitchen footage (Adobe Firefly, Google Veo), the travertine plate (Google Flow) and the voice (ElevenLabs). Music: paulyudin, "Ambient" (Pixabay).',
+    role: ['Concept and naming', 'Brand identity', 'Bilingual typography', 'Packaging design', 'Social campaign', 'Motion design'],
+    process: [
+      ['Name', 'CHASHNI, after the one-thread syrup test'],
+      ['Identity', 'One mark in Devanagari and Latin'],
+      ['Packaging', 'A colour for each sweet, with dielines'],
+      ['Campaign', 'One line across three reels and three carousels'],
+      ['Motion', 'Edit, voice and AI-generated footage']
+    ],
+    outcome: {
+      note: 'A concept project, so these are the results it is designed for, not live numbers.',
+      delivered: ['A bilingual Devanagari and Latin identity', 'Print-ready packaging with dielines', 'Three reels and three carousels', 'One campaign line across every piece'],
+      measure: ['Can shoppers name the sweet from the box alone, in a quick shelf test', 'Reel completion and shares during Diwali week', 'How many buyers keep one box for themselves', 'Fewer gift boxes passed on unopened'],
+      shows: ['A brand name and concept drawn from a cultural detail', 'A packaging system run on one colour variable', 'Bilingual typography', 'A campaign carried across packaging, reels and carousels']
+    },
+    gallery: [
+      ['assets/img/gallery/chashni/01.webp', 1400, 2166, 'A box that says what it is'],
+      ['assets/img/gallery/chashni/02.webp', 1400, 1095, 'One variable, four values'],
+      ['assets/img/gallery/chashni/03.webp', 1400, 1806, 'Three carousels, ten slides'],
+      ['assets/img/gallery/chashni/04.webp', 1400, 1652, 'Two scripts, one family']
     ]
   },
   {
