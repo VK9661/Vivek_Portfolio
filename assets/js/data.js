@@ -143,7 +143,44 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: true,
+    id: 'shady', title: 'Shady?', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'lilac', featured: true,
+    summary: 'An AI scam checker for families: a calm answer, and the why, in seconds.',
+    about: "Shady is a concept AI scam checker built for families, including first-time smartphone users. Paste any message and get a calm answer (Likely a scam, Not sure or Likely safe) with the red flags underlined in your own words and one clear next step. When it isn't sure, Shady asks someone you trust.",
+    year: '2026', published: 'Oct 2026', tags: ['AI product', 'Web app', 'Motion'],
+    tools: ['Figma', 'Illustrator', 'After Effects'],
+    img: 'assets/img/covers/shady.webp', w: 808, h: 632,
+    behance: 'https://www.behance.net/gallery/257390493/Shady-AI-Scam-Checker-UIUX-Case-Study',
+
+    facts: [['Type', 'Concept UI/UX case study'], ['Medium', 'Web app (installable), phone to desktop'], ['Tools', 'Figma, Illustrator, After Effects'], ['Published', 'Oct 2026']],
+    writeup: [
+      { h: 'The challenge', p: ['Scams win on speed and silence. 57% of adults worldwide met a scam last year, 64% of scams are over within a day of first contact, and 22% of targeted older people told no one because they felt too embarrassed.', 'Existing checkers give a score. People need the why, in their own language, and someone to ask.'] },
+      { h: 'The approach', p: ['Not a score, but an answer with the evidence. Shady gives an honest verdict with its confidence in words, underlines the red flags in the message itself and offers one clear next step. When it is not sure, one tap sends the message to someone you trust, and their reply comes back in the app.'] },
+      { h: 'The details', list: ['Honest, not absolute: always "likely", never "100% safe"', 'Every verdict points to the exact words, links or numbers', 'A "Take a breath" pause, because scammers want you to rush', 'Names, numbers and accounts are blurred before checking', 'Accessible by default: 18px text, 48px targets, 4.5:1 contrast, voice in and out, and verdicts never shown by colour alone', 'One light and dark design system, where every colour is a token'] }
+    ],
+    credits: 'Concept project. Statistics: GASA and Feedzai, Global State of Scams 2025; Age UK.',
+    role: ['Competitive research', 'Personas', 'User flows', 'AI UX principles', 'Design system', 'UI design', 'Accessibility', 'Prototyping', 'Motion design'],
+    process: [
+      ['Research', 'Five scam checkers compared, three personas'],
+      ['Define', 'Seven rules for an AI people can trust'],
+      ['Design', 'A calm light and dark system, 16 app and 6 web screens'],
+      ['Build', 'A working, installable web-app prototype'],
+      ['Launch', 'A 41-second launch film']
+    ],
+    outcome: {
+      note: 'A concept project. The prototype numbers come from my own tests; the rest are the results it is designed for, not live numbers.',
+      delivered: ['Brand, logo and a light and dark design system', '16 app screens and 6 web screens', 'A working web-app prototype: 36 of 36 tested flows pass, and 10 of 10 test messages are judged right', 'A 41-second launch film'],
+      measure: ['Time from pasting a message to knowing what to do', 'How often "Not sure" ends with a reply from family', 'Scams stopped before anyone clicks or pays', 'Whether older users feel calmer, and less embarrassed to ask'],
+      shows: ['Designing AI people can trust: honest, explainable and easy to correct', 'Accessibility built in from the first screen', 'Taking a product from research to a working prototype', 'Motion used to tell the story']
+    },
+    gallery: [
+      ['assets/img/gallery/shady/01.webp', 1400, 1100, 'Four calm steps'],
+      ['assets/img/gallery/shady/02.webp', 1400, 1180, 'Not a score: an answer, with the evidence'],
+      ['assets/img/gallery/shady/03.webp', 1400, 1060, 'Not sure? Shady asks a human'],
+      ['assets/img/gallery/shady/04.webp', 1400, 1260, 'One calm system, light and dark']
+    ]
+  },
+  {
+    id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: false,
     summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
     about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
     year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'],
