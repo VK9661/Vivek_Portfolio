@@ -255,7 +255,7 @@
         '</div>' +
         '<div class="foot-end"><span>© ' + new Date().getFullYear() + ' Vivek Kumar</span><a class="to-top" href="#main" aria-label="Back to top">↑</a></div>' +
       '</div>' +
-      '<div class="wrap foot-mark-wrap"><p class="foot-mark" aria-hidden="true">Vivek Kumar</p></div>';
+      '<div class="wrap foot-mark-wrap"><p class="foot-mark" aria-hidden="true" data-mark="Vivek Kumar"></p></div>';
   }
 
   /* ---------- 5b. Doodles around every section head, in the hero's colours ---------- */
