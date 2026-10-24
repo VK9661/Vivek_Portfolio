@@ -30,6 +30,10 @@
      process   : five steps under "Design process", [name, what happened]
      outcome   : { note, delivered, measure, shows }. No invented results: concept work says so.
      gallery   : 1 to 4 key boards from Behance, [path, w, h, caption]
+     video     : optional, the films from the Behance post. { label, host, items: [[id, w, h, title]] }
+                 host is 'vimeo' (default), 'youtube' or 'file' (id = assets/video/<id>.mp4, played on the page)
+                 the poster is assets/img/video/<id>.webp; nothing loads until someone presses play
+     loop      : optional, a short silent clip that plays over the card cover on hover (assets/video/loop/<id>.mp4)
    ===================================================================== */
 window.PROJECTS = [
   {
@@ -67,7 +71,9 @@ window.PROJECTS = [
       ['assets/img/gallery/fikr/02.webp', 1400, 4040, 'One tap to say "Taken"'],
       ['assets/img/gallery/fikr/03.webp', 1400, 2355, 'Colours'],
       ['assets/img/gallery/fikr/04.webp', 1400, 3201, 'The Taken screen, day and night']
-    ]
+    ],
+    video: { label: 'film', items: [['1234786917', 1920, 1080, 'FIKR film']] },
+    loop: 'assets/video/loop/fikr.mp4'
   },
   {
     id: 'volt-47', title: 'VOLT 47', kind: 'Brand identity', cats: ['brand', 'motion'], color: 'ink', featured: true,
@@ -104,7 +110,9 @@ window.PROJECTS = [
       ['assets/img/gallery/volt-47/02.webp', 1400, 1400, 'One angle, one light, two typefaces'],
       ['assets/img/gallery/volt-47/03.webp', 1400, 1400, 'Open 24/7'],
       ['assets/img/gallery/volt-47/04.webp', 1400, 1260, 'Carried, worn, hung up']
-    ]
+    ],
+    video: { label: 'logo reveal', host: 'file', items: [['volt-47-reveal', 1280, 720, 'VOLT 47 logo reveal']] },
+    loop: 'assets/video/loop/volt-47.mp4'
   },
   {
     id: 'shady', title: 'Shady?', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'lilac', featured: true,
@@ -141,7 +149,9 @@ window.PROJECTS = [
       ['assets/img/gallery/shady/02.webp', 1400, 1180, 'Not a score: an answer, with the evidence'],
       ['assets/img/gallery/shady/03.webp', 1400, 1060, 'Not sure? Shady asks a human'],
       ['assets/img/gallery/shady/04.webp', 1400, 1260, 'One calm system, light and dark']
-    ]
+    ],
+    video: { label: 'animation', items: [['1237869620', 1920, 1080, 'Shady? animation']] },
+    loop: 'assets/video/loop/shady.mp4'
   },
   {
     id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: true,
@@ -178,7 +188,8 @@ window.PROJECTS = [
       ['assets/img/gallery/chashni/02.webp', 1400, 1095, 'One variable, four values'],
       ['assets/img/gallery/chashni/03.webp', 1400, 1806, 'Three carousels, ten slides'],
       ['assets/img/gallery/chashni/04.webp', 1400, 1652, 'Two scripts, one family']
-    ]
+    ],
+    video: { label: 'reels', items: [['1234676395', 1080, 1920, 'Reel 1'], ['1234676523', 1080, 1920, 'Reel 2'], ['1234676656', 1080, 1920, 'Reel 3']] }
   },
   {
     id: 'bijli-bazaar', title: 'BIJLI BAZAAR', kind: 'Social posts', cats: ['graphic'], color: 'pink', featured: false,
@@ -215,7 +226,8 @@ window.PROJECTS = [
       ['assets/img/gallery/bijli-bazaar/02.webp', 1400, 882, 'Four type treatments, one per post'],
       ['assets/img/gallery/bijli-bazaar/03.webp', 1400, 1167, 'A status change: SOLD lands like a stamp'],
       ['assets/img/gallery/bijli-bazaar/04.webp', 1400, 1167, 'A list: twelve invented acts, three tiers']
-    ]
+    ],
+    loop: 'assets/video/loop/bijli-bazaar.mp4'
   },
   {
     id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: false,
@@ -322,7 +334,8 @@ window.PROJECTS = [
     gallery: [
       ['assets/img/gallery/achilles/01.webp', 1400, 905, 'The headline, filled with the coastline'],
       ['assets/img/gallery/achilles/02.webp', 1400, 905, 'The landing-page hero']
-    ]
+    ],
+    video: { label: 'animation', host: 'youtube', items: [['AX3CeYFNuXg', 1920, 1080, 'Achilles parallax animation']] }
   }
 ];
 

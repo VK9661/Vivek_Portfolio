@@ -53,7 +53,7 @@ for p in projects:
     pid = p['id']
     render('og-project.html', SHARE / (pid + '.jpg'), '?id=' + pid)
 
-    title = '%s — %s | Vivek Kumar' % (p['title'], p['kind'])
+    title = '%s: %s | Vivek Kumar' % (p['title'], p['kind'])
     url = URL + 'project-%s.html' % pid
     image = URL + 'assets/img/share/%s.jpg' % pid
     s = re.sub(r'<title>[^<]*</title>', '<title>%s</title>' % html.escape(title, quote=False), template, count=1)

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vivek-portfolio-beta-eight.vercel.app/sitemap.xml

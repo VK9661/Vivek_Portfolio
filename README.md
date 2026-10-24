@@ -78,14 +78,23 @@ Old `project.html?id=<id>` links redirect to the project's page.
 
 ## Design
 
-- **Look:** playful and illustrated. The hero's stickers, doodles and handwriting carry on down every page, on warm paper with a fine film grain.
-  - **Sticker cards:** cards have an ink outline (`--outline`) and a hard offset shadow in their own colour (`--c`). They sit slightly crooked and straighten on hover.
-  - **Section heads:** a handwritten `.kicker` above the title, one word in `<em class="hl">` with a marker swipe, and two doodles that main.js adds.
-  - **Colour blocks (`.pop`):** no two plain sections in a row. A pop section is a full-width colour field with wavy edges (`--pop`; `.pop--ink` for pastel fields with ink text). Inside a page column, `.pop--panel` makes it a framed panel instead; project Highlights use the project's own colour.
-  - **Blob buddy:** `.peek-buddy` peeks over a colour block; every `.blob` watches the cursor.
-  - **Glass** is only for what floats over the page: the nav pill and the card over the portrait.
-  - **Finale:** "Let's talk" and the footer are one dark ink block in both themes.
+The style is **sticker / neo-brutalist, playful and illustrated**: the hero's stickers, doodles and handwriting carry on down every page, on warm paper with a fine film grain. These are the rules; keep to them when adding anything.
+
+- **Surfaces:** everything is a solid sticker sheet (`--surface`) with an ink outline (`--glass-edge`, 2px via `--bw`) and a hard offset shadow (`--sh-sm` 2/3px, `--sh` 4/5px, `--sh-lg` 6/8px, colour `--hard`). No blur, no glass, no soft shadows.
+- **Interaction:** hover lifts a sticker a little; pressing moves it into its shadow (section 18f). Cards may sit slightly crooked and straighten on hover.
+- **Colour roles:**
+  - cobalt `#3350FF`: titles, links and focus;
+  - sun `#FFCF33`: the primary button, highlights and the marker swipe;
+  - pink, mint, sky, lilac: category colours, sticker shadows and pastel blocks;
+  - ink `#1C1747`: text and every outline.
+  Pastel blocks (`.pop--ink`) hold non-work sections, so the project images stay the most colourful thing on the page.
+- **Type scale:** headlines `.t-xxl` (page titles), `.t-xl` (Home sections), `.t-lg` (sections); body 1rem at 1.5 line height; labels .8 to .9rem. Bricolage Grotesque (headlines), Plus Jakarta Sans (text), Covered By Your Grace (handwritten notes only). The fonts are served from `assets/fonts`.
+- **Corners:** pill (`--r-pill`) for buttons, chips and the nav; 26px (`--r-lg`) for cards and panels; 16px (`--r-md`) for small cards and fields.
+- **Section heads:** a handwritten `.kicker` above the title, one word in `<em class="hl">` with a marker swipe, and two doodles that main.js adds.
+- **Colour blocks (`.pop`):** no two plain sections in a row. A pop section is a full-width colour field with flowing wavy edges (`--pop`); inside a page column, `.pop--panel` makes it a framed panel. Project Highlights use the project's own colour.
+- **Motion:** it comes from scrolling, hovering and pressing. At most one looping animation per screen (the wavy edges, the tape marquee, the role sticker, the theme switch). Decorations stay still. Everything stops for reduced motion.
+- **Contact wording:** "Say hello" everywhere (nav, hero, contact band).
+- **Blob buddy:** `.peek-buddy` peeks over a colour block; every `.blob` watches the cursor.
+- **Finale:** the contact band ("Got a project? Say hello.") and the footer are one dark ink block in both themes.
 - **Themes:** day (warm paper `#FAF9F6`) and night (dark ink `#0F0E17`). Visitors switch with the animated sun/moon switch (`.tsw`, built in main.js), which sits on its own outside the nav: top right on desktop, bottom right on smaller screens. The site follows the device setting, then remembers the visitor's choice (`localStorage` key `vk-theme`). An inline script in each `<head>` sets the theme before the first paint.
-- **Colours:** ink `#1C1747`, pink `#FF5A8C`, cobalt `#3350FF`, sun `#FFCF33`, mint `#6FE3B2`, sky `#7FD8F5`, lilac `#9DB0FF`.
-- **Type:** Bricolage Grotesque (headlines), Plus Jakarta Sans (text), Covered By Your Grace (handwritten notes).
 - **CSS:** written mobile first, with breakpoints at 381, 601, 901 and 1101px (`min-width` only). All tokens are at the top of `style.css`.

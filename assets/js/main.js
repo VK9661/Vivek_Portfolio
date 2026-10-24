@@ -177,7 +177,6 @@
       var dark = t === 'dark';
       root.setAttribute('data-theme', dark ? 'dark' : 'light');
       themeBtn.setAttribute('aria-checked', String(dark));
-      themeBtn.setAttribute('data-cursor', dark ? 'day mode' : 'night mode');
       if (metaTheme) metaTheme.setAttribute('content', dark ? '#0E0B25' : '#F2F1FA');
     };
     var switching = false;
@@ -221,11 +220,11 @@
           '<g class="eyes" fill="#1C1747"><rect x="98" y="98" width="15" height="30" rx="7.5"/><rect x="130" y="98" width="15" height="30" rx="7.5"/></g>' +
         '</svg>' +
         '<div>' +
-          '<h2 id="cta-title">Got a project?<br>Let’s talk.</h2>' +
+          '<h2 id="cta-title">Got a project?<br>Say hello.</h2>' +
           '<p class="lead">Open to design roles and freelance projects in graphic, UI/UX, motion and video. Send a note and I’ll reply soon.</p>' +
           '<div class="row-actions">' +
-            '<a class="mail" href="mailto:' + C.email + '?subject=Portfolio%20enquiry" data-cursor="write">' + C.email + '</a>' +
-            '<button class="btn btn--white btn--sm" type="button" data-copy="' + C.email + '" data-cursor="copy">Copy email</button>' +
+            '<a class="mail" href="mailto:' + C.email + '?subject=Portfolio%20enquiry">' + C.email + '</a>' +
+            '<button class="btn btn--white btn--sm" type="button" data-copy="' + C.email + '">Copy email</button>' +
           '</div>' +
           '<div class="chips socials">' +
             '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener">Behance ↗</a>' +
@@ -384,8 +383,8 @@
   });
 
 
-  /* ---------- 7. Blob eyes, "hello" cursor ---------- */
-  // Every blob on the page (the one in "Let's talk" and any peeking over a colour block) watches the cursor
+  /* ---------- 7. Blob eyes ---------- */
+  // Every blob on the page (the one in the contact band and any peeking over a colour block) watches the cursor
   var blobs = $$('.blob');
   if (blobs.length && finePointer && !reduceMotion) {
     window.addEventListener('pointermove', function (e) {
@@ -399,40 +398,6 @@
     });
   }
 
-  if (finePointer) {
-    var cbox = document.createElement('div');
-    cbox.className = 'cur'; cbox.setAttribute('aria-hidden', 'true');
-    cbox.innerHTML = '<i></i><span>hello</span>';
-    document.body.appendChild(cbox);
-    var lab = $('span', cbox), tx = 0, ty = 0, cx = 0, cy = 0, craf = null;
-    var LABELS = { a: 'open', button: 'click', copy: 'copy', write: 'write' };
-    var follow = function () {
-      cx += (tx - cx) * (reduceMotion ? 1 : .22); cy += (ty - cy) * (reduceMotion ? 1 : .22);
-      cbox.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px)';
-      craf = (Math.abs(tx - cx) + Math.abs(ty - cy) > .3) ? requestAnimationFrame(follow) : null;
-    };
-    window.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      tx = e.clientX; ty = e.clientY; cbox.classList.add('is-on');
-      if (!craf) craf = requestAnimationFrame(follow);
-    });
-    document.addEventListener('mouseleave', function () { cbox.classList.remove('is-on'); });
-    document.addEventListener('mouseover', function (e) {
-      var t = e.target.closest('[data-cursor], a, button, input, textarea, summary');
-      var txt = 'hello';
-      if (t) {
-        var k = t.getAttribute('data-cursor');
-        if (k) txt = LABELS[k] || k;
-        else if (/^(input|textarea)$/i.test(t.tagName)) txt = '';
-        else if (t.tagName === 'A' && t.target === '_blank') txt = 'new tab';
-        else txt = t.tagName === 'A' ? 'open' : 'click';
-      }
-      if (nav && mini && t && t.classList.contains('nav-logo')) txt = 'open menu bar';
-      cbox.classList.toggle('is-big', !!t);
-      cbox.classList.toggle('is-hidden', !txt);
-      if (txt) lab.textContent = txt;
-    });
-  }
 
 
   /* ---------- 8. Intro (Home, once per session) ---------- */

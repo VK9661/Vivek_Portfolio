@@ -6,12 +6,12 @@
 <script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
 (function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ShopUp — UI/UX case study | Vivek Kumar</title>
+<title>ShopUp: UI/UX case study | Vivek Kumar</title>
 <meta name="description" content="Shop smarter with faster delivery, better deals and personalised recommendations.">
 <link rel="canonical" href="https://vivek-portfolio-beta-eight.vercel.app/project-shopup.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Vivek Kumar">
-<meta property="og:title" content="ShopUp — UI/UX case study | Vivek Kumar">
+<meta property="og:title" content="ShopUp: UI/UX case study | Vivek Kumar">
 <meta property="og:description" content="Shop smarter with faster delivery, better deals and personalised recommendations.">
 <meta property="og:url" content="https://vivek-portfolio-beta-eight.vercel.app/project-shopup.html">
 <meta property="og:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/shopup.jpg">
@@ -21,15 +21,14 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ShopUp: UI/UX case study by Vivek Kumar">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ShopUp — UI/UX case study | Vivek Kumar">
+<meta name="twitter:title" content="ShopUp: UI/UX case study | Vivek Kumar">
 <meta name="twitter:description" content="Shop smarter with faster delivery, better deals and personalised recommendations.">
 <meta name="twitter:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/shopup.jpg">
 <meta name="theme-color" content="#F2F1FA">
 <link rel="icon" type="image/png" href="assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Covered+By+Your+Grace&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
 </head>

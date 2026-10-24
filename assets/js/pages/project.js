@@ -16,7 +16,7 @@
 
   var p = list[idx];
   var prev = list[(idx - 1 + list.length) % list.length], next = list[(idx + 1) % list.length];
-  document.title = p.title + ' — ' + p.kind + ' | Vivek Kumar';
+  document.title = p.title + ': ' + p.kind + ' | Vivek Kumar';
   var md = document.querySelector('meta[name="description"]'); if (md) md.content = p.summary;
 
   // Accent: the project's colour, but light enough to carry ink text (ink projects get sun, cobalt ones lilac)
@@ -29,6 +29,35 @@
   var intro = (function (t) { var m = t.match(/^(.+?[.!?]["”]?)\s+(.+)$/); return m ? [m[1], m[2]] : [t, '']; })(p.about || '');
   var tapeWords = [p.kind].concat(p.tags, p.published ? ['Published ' + p.published] : []);
   var tapeHTML = ''; for (var k = 0; k < 6; k++) tapeWords.forEach(function (w) { tapeHTML += '<span>' + esc(w) + '</span><i>✳</i>'; });
+
+  // At a glance: the problem, the idea and what was delivered, all taken from the write-up below
+  function glance() {
+    var ch = (p.writeup || []).filter(function (s) { return s.h === 'The challenge'; })[0];
+    var ap = (p.writeup || []).filter(function (s) { return s.h === 'The approach'; })[0];
+    var idea = ap && ap.p && ap.p[0] ? (ap.p[0].match(/^(.+?[.!?])(\s|$)/) || [0, ap.p[0]])[1] : '';
+    var cell = function (title, col, body) { return '<div class="gl-i" style="--c:' + col + '"><h2>' + title + '</h2>' + body + '</div>'; };
+    var list = function (items) { return '<ul>' + items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>'; };
+    var cells = '';
+    if (ch && ch.list) cells += cell('The problem', 'var(--pink)', (ch.p && ch.p[0] ? '<p class="gl-lead">' + esc(ch.p[0]) + '</p>' : '') + list(ch.list.slice(0, 2)));
+    if (idea) cells += cell('The idea', 'var(--sun)', '<p>' + esc(idea) + '</p>');
+    if (p.outcome && p.outcome.delivered) cells += cell('Delivered', 'var(--mint)', list(p.outcome.delivered.slice(0, 3)));
+    return cells ? '<section class="glance-card" aria-label="At a glance" data-reveal>' + cells + '</section>' : '';
+  }
+
+  // The films from the Behance post. A poster and a play button first; the player loads only on press
+  function watch() {
+    if (!p.video || !p.video.items || !p.video.items.length) return '';
+    var v = p.video, many = v.items.length > 1;
+    return '<section class="watch" aria-labelledby="watch-title">' +
+      '<div class="sec-head" data-reveal><div><span class="kicker" aria-hidden="true">press play</span><h2 class="display t-lg" id="watch-title">Watch the <em class="hl">' + esc(v.label) + '</em></h2></div></div>' +
+      '<div class="vids vids--' + v.items.length + '">' + v.items.map(function (it) {
+        return '<figure class="vid-f" data-reveal><button class="vid" type="button" data-host="' + esc(v.host || 'vimeo') + '" data-id="' + esc(it[0]) + '" data-title="' + esc(it[3]) + '" style="aspect-ratio:' + it[1] + ' / ' + it[2] + '">' +
+          '<img src="assets/img/video/' + esc(it[0]) + '.webp" alt="" loading="lazy" decoding="async">' +
+          '<span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>' +
+          '<span class="sr-only">Play ' + esc(it[3]) + '</span></button>' +
+          (many ? '<figcaption>' + esc(it[3]) + '</figcaption>' : '') + '</figure>';
+      }).join('') + '</div></section>';
+  }
 
   var html =
     '<header class="ph" style="--accent:' + accent + ';--c:' + sw + '">' +
@@ -57,6 +86,7 @@
     '</header>' +
     '<div class="ph-tape" aria-hidden="true" style="--accent:' + accent + '"><div class="track">' + tapeHTML + '</div></div>' +
     '<span id="story"></span>' +
+    glance() + watch() +
     '<section class="proj-overview">' +
       '<div class="facts card" data-reveal><h2 class="eyebrow">Project facts</h2><dl>' +
         (p.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
@@ -106,7 +136,7 @@
   if (p.gallery && p.gallery.length) {
     html += '<section class="gallery pop pop--ink pop--panel" style="--pop:color-mix(in srgb, ' + accent + ' 36%, #fff)" aria-labelledby="gal-title"><div class="sec-head"><div><span class="kicker" aria-hidden="true">a peek inside</span><h2 class="display t-lg" id="gal-title"><em class="hl">Highlights</em></h2></div></div>' +
       '<div class="gal gal--' + p.gallery.length + '">' + p.gallery.map(function (g) {
-        return '<figure class="gal-i" data-reveal><button class="gal-open" type="button" data-cursor="view" aria-label="View larger: ' + esc(g[3]) + '">' +
+        return '<figure class="gal-i" data-reveal><button class="gal-open" type="button" aria-label="View larger: ' + esc(g[3]) + '">' +
           '<img src="' + g[0] + '" alt="' + esc(p.title) + ': ' + esc(g[3]) + '" width="' + g[1] + '" height="' + g[2] + '" loading="lazy" decoding="async"></button>' +
           '<figcaption>' + esc(g[3]) + '</figcaption></figure>';
       }).join('') + '</div></section>';
@@ -129,6 +159,28 @@
   html += '<nav class="pager" aria-label="More projects">' + pg(prev, 'prev') + pg(next, 'next') + '</nav>';
 
   root.innerHTML = html;
+
+  // Press play: the poster becomes the player (Vimeo or YouTube without tracking, or the site's own file)
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('button.vid'); if (!b) return;
+    var id = b.getAttribute('data-id'), host = b.getAttribute('data-host'), f;
+    if (host === 'file') {
+      f = document.createElement('video');
+      f.src = 'assets/video/' + id + '.mp4';
+      f.controls = true; f.autoplay = true; f.playsInline = true;
+      f.setAttribute('aria-label', b.getAttribute('data-title'));
+    } else {
+      f = document.createElement('iframe');
+      f.src = host === 'youtube'
+        ? 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0'
+        : 'https://player.vimeo.com/video/' + id + '?autoplay=1&dnt=1&title=0&byline=0&portrait=0';
+      f.title = b.getAttribute('data-title');
+      f.allow = 'autoplay; fullscreen; picture-in-picture';
+    }
+    f.className = 'vid'; f.style.aspectRatio = b.style.aspectRatio;
+    b.replaceWith(f);
+    f.focus(); // keyboard users land on the player, not back at the top of the page
+  });
 })();
 
 (function () {

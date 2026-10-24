@@ -7,6 +7,7 @@
   Array.prototype.forEach.call(document.querySelectorAll('.tape .track'), function (t) { t.innerHTML = html; });
 
   var P = window.PROJECTS;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-count="projects"]'), function (n) { n.textContent = P.length; });
   document.getElementById('featured').innerHTML = P.filter(function (p) { return p.featured; }).map(window.workCard).join('');
 
   // The drawer opens on "More" (the projects not featured above). A category

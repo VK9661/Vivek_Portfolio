@@ -8,9 +8,9 @@
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var waitIntro = function (fn) { (function check() { if (document.body.classList.contains('intro-on')) setTimeout(check, 120); else fn(); })(); };
 
-  /* 1. "Port / folio": every letter is its own hover target */
+  /* 1. The headline: every letter is its own hover target (spaces stay plain text) */
   Array.prototype.forEach.call(hero.querySelectorAll('.hp-word'), function (w) {
-    w.innerHTML = w.textContent.split('').map(function (ch, i) { return '<b style="--i:' + i + '">' + ch + '</b>'; }).join('');
+    w.innerHTML = w.textContent.split('').map(function (ch, i) { return ch === ' ' ? ' ' : '<b style="--i:' + i + '">' + (ch === '&' ? '&amp;' : ch) + '</b>'; }).join('');
   });
 
   /* 2. Role pill: flips through every role, each with its own colour, and resizes to fit */
@@ -113,10 +113,10 @@
     vis.addEventListener('pointerleave', function () { photo.style.transform = ''; });
   }
 
-  /* 6. Magnetic CTAs and scroll badge */
-  Array.prototype.forEach.call(hero.querySelectorAll('.hp-ctas .btn, .hp-ctas .hp-link, .hp-scroll'), function (el) {
+  /* 6. Magnetic CTAs */
+  Array.prototype.forEach.call(hero.querySelectorAll('.hp-ctas .btn, .hp-ctas .hp-link'), function (el) {
     el.classList.add('is-magnetic');
-    var zone = el.classList.contains('hp-scroll') ? hero : el.parentElement;
+    var zone = el.parentElement;
     zone.addEventListener('pointermove', function (e) {
       var r = el.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
       if (Math.hypot(dx, dy) > Math.max(r.width, r.height) * 0.9) { el.style.translate = ''; return; }
