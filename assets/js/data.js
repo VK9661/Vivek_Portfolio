@@ -23,7 +23,8 @@
    Project page, top to bottom
      facts     : [label, value], always Type, Medium, Tools, Published
      writeup   : always three sections: The challenge, The approach, The details
-                 { h, p: [paragraphs], list: [items], quotes: [quotes] }
+                { h, p: [paragraphs], list: [items], quotes: [quotes] }
+                 The challenge is always one intro line + a list (the boxed style), on every project
      credits   : optional small print under the write-up (music, AI use, disclaimers)
      role      : chips under "My role"
      process   : five steps under "Design process", [name, what happened]
@@ -79,7 +80,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Self-initiated brand identity'], ['Medium', 'Logo, print, signage, social, motion'], ['Tools', 'Illustrator, Photoshop, Figma, After Effects'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'The challenge', p: ['A 24-hour gym never closes, so its identity has to work at any hour and at any size, from a 16px app icon to a lit shopfront sign.'] },
+      { h: 'The challenge', p: ['A 24-hour gym never closes, so its identity has to:'], list: ['Work at any hour, day or night', 'Hold at any size, from a 16px app icon to a lit shopfront sign'] },
       { h: 'The approach', p: ['One shape, read three ways: a wedge cut at 23°, three barbell plates locking around it, and a bolt struck out of the middle as negative space. That 23° angle then runs through everything after it.'] },
       { h: 'The details', list: ['The angle shapes the badge, the slash pattern, the towel stripes and the locker tag', 'Flat vector geometry with no strokes or live effects, so it holds at any size', 'Volt is the only colour that shouts, and never more than once per layout', 'Type set in Anton and Space Grotesk', 'An eight-second logo reveal with sound, 1920×1080'] }
     ],
@@ -116,7 +117,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Concept UI/UX case study'], ['Medium', 'Web app (installable), phone to desktop'], ['Tools', 'Figma, Illustrator, After Effects'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'The challenge', p: ['Scams win on speed and silence. 57% of adults worldwide met a scam last year, 64% of scams are over within a day of first contact, and 22% of targeted older people told no one because they felt too embarrassed.', 'Existing checkers give a score. People need the why, in their own language, and someone to ask.'] },
+      { h: 'The challenge', p: ['Scams win on speed and silence:'], list: ['57% of adults worldwide met a scam last year', '64% of scams are over within a day of first contact', '22% of targeted older people told no one because they felt too embarrassed', 'Existing checkers give a score, but people need the why, in their own language, and someone to ask'] },
       { h: 'The approach', p: ['Not a score, but an answer with the evidence. Shady gives an honest verdict with its confidence in words, underlines the red flags in the message itself and offers one clear next step. When it is not sure, one tap sends the message to someone you trust, and their reply comes back in the app.'] },
       { h: 'The details', list: ['Honest, not absolute: always "likely", never "100% safe"', 'Every verdict points to the exact words, links or numbers', 'A "Take a breath" pause, because scammers want you to rush', 'Names, numbers and accounts are blurred before checking', 'Accessible by default: 18px text, 48px targets, 4.5:1 contrast, voice in and out, and verdicts never shown by colour alone', 'One light and dark design system, where every colour is a token'] }
     ],
@@ -153,7 +154,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects, Adobe Firefly, Google Veo, Google Flow, ElevenLabs'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'The challenge', p: ['Every Diwali, the same gift box does the rounds unopened, because nothing on it says what is inside.'] },
+      { h: 'The challenge', p: ['Every Diwali, the same gift box does the rounds unopened:'], list: ['Nothing on the box says what is inside', 'So it gets passed on instead of opened'] },
       { h: 'The approach', p: ['One mark, one colour variable, four sweets. The pour on the lid and the drawer take the colour of the sweet, so the box names what it holds before anyone opens it.', 'The identity is bilingual, set in Devanagari and Latin.'] },
       { h: 'The details', p: ['The campaign runs on a single line, "This one stops here", which lands three different ways across three reels:'], list: ['The Test: the standard', 'The Count: the problem', 'Keep One: the box you keep for yourself'] }
     ],
@@ -190,7 +191,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Concept social campaign'], ['Medium', 'Nine posts, each in 4:5 and 9:16'], ['Tools', 'Illustrator, Photoshop, Figma'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'The challenge', p: ['Nine social posts where every post solves a different layout problem: a long headline, a number, a list, a quote, a date, a single object, a timetable, price tiers and a status change.', 'Most festival feeds are one template with the text swapped. But a line-up, a date and a house rule are different shapes of information.'] },
+      { h: 'The challenge', p: ['Nine social posts, where every post solves a different layout problem:'], list: ['A long headline, a number, a list, a quote and a date', 'A single object, a timetable, price tiers and a status change', 'Most festival feeds are one template with the text swapped, but a line-up, a date and a house rule are different shapes of information'] },
       { h: 'The approach', p: ['The festival is the feed. One fixed system holds all nine posts together, while each post gets its own layout. A night mela is lit by bulbs, wires and hand-painted signs, so light is the type.'] },
       { h: 'The details', list: ['Five named colours: Night, Rani, Genda, Mor and Kagaz', 'Two typefaces: Unbounded and Space Mono', 'Four type treatments, one per post: bulb marquee, sign-paint, tile-fill and misprint', 'Six fairground modules: chakri, genda, jhumka, bulbs, shamiana and ticket', 'A shamiana edge and a bilingual wordmark sign every post', 'Nine 9:16 Stories, recomposed rather than cropped'] }
     ],
@@ -227,7 +228,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop, Miro, Google Forms'], ['Published', 'May 2026']],
     writeup: [
-      { h: 'The challenge', p: ['Research surfaced recurring pain points, including:'], quotes: ['I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.', 'I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.'] },
+      { h: 'The challenge', p: ['Research surfaced recurring pain points, including:'], list: ['“I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.”', '“I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.”'] },
       { h: 'The approach', p: ['Unlike generic e-commerce giants, ShopUp is designed with the user at the centre: a smarter, more personalised shopping experience using AI-powered recommendations that understand taste, needs and budget.', 'A clutter-free interface, fast delivery and real-time customer support aim to make shopping seamless, not stressful, while curated collections, exclusive deals and local seller support help people discover unique products.'] },
       { h: 'The details', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick deliveries and a seamless experience, while the bold blue conveys trust, reliability and innovation.'] }
     ],
@@ -246,10 +247,10 @@ window.PROJECTS = [
       shows: ['A full design-thinking process, from research to UI', 'Turning real pain points (tracking, filters) into features', 'Brand and product design working together']
     },
     gallery: [
-      ['assets/img/gallery/shopup/01.webp', 1200, 1780, 'User persona'],
-      ['assets/img/gallery/shopup/02.webp', 1200, 1780, 'Style guide'],
-      ['assets/img/gallery/shopup/03.webp', 1200, 1780, 'UI designs'],
-      ['assets/img/gallery/shopup/04.webp', 1200, 1780, 'Final screens']
+      ['assets/img/gallery/shopup/01.webp', 1200, 1998, 'User persona'],
+      ['assets/img/gallery/shopup/02.webp', 1200, 1320, 'Style guide'],
+      ['assets/img/gallery/shopup/03.webp', 1200, 1500, 'Low-fidelity wireframes'],
+      ['assets/img/gallery/shopup/04.webp', 1200, 1714, 'UI designs']
     ]
   },
   {
@@ -263,7 +264,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Heuristic evaluation'], ['Medium', 'Mobile shopping app'], ['Tools', 'Figma, Photoshop'], ['Published', 'Jul 2025']],
     writeup: [
-      { h: 'The challenge', p: ['Bewakoof is a high-traffic shopping app. The aim was to find where its funnel creates friction, quickly and before any costly user testing.'] },
+      { h: 'The challenge', p: ['Bewakoof is a high-traffic shopping app. The aim was to:'], list: ['Find where its funnel creates friction', 'Do it quickly, before any costly user testing'] },
       { h: 'The approach', p: ["A heuristic evaluation: an expert review of the interface against Nielsen's 10 usability heuristics. Each issue is shown as the current screen next to a proposed fix."] },
       { h: 'The details', p: ['The screens in focus:'], list: ['Home: stories row (Specials, Shop Now, Plus Size, Accessories) and promotional banners', 'Offer cards such as "Joggers, buy 2 at ₹1699"', 'New Arrivals and product discovery', 'Bottom navigation: Men, Categories, Studio, Profile'] }
     ],
@@ -300,7 +301,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Parallax UI study'], ['Medium', 'Web landing page'], ['Tools', 'Figma, Photoshop'], ['Published', 'Jun 2025']],
     writeup: [
-      { h: 'The challenge', p: ['Give a landing-page hero depth and movement, while keeping one clear message and one action.'] },
+      { h: 'The challenge', p: ['A landing-page hero that has to:'], list: ['Give depth and movement', 'Keep one clear message and one action'] },
       { h: 'The approach', p: ['The headline "Achilles" is filled with the coastline itself, so the image shows through the letters while foreground bush and rocks sit on their own layers in front.'] },
       { h: 'The details', list: ['Navigation: Home, Customize, Pricing, Our Work, Contact', 'Short intro on Achilles Point’s rocky coastline, native bush and Rangitoto Island view', 'Single pill-shaped "Book Now" action'] }
     ],
