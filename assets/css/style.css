@@ -523,8 +523,6 @@ html[data-theme="dark"] .hp::before {
 @keyframes twinkle { 50% { transform: scale(.65) rotate(45deg); } }
 .hp-plus { display: none; width: 26px; left: -3%; top: 52%; }
 .hp-plus path { stroke: var(--mint); stroke-width: 5; stroke-linecap: round; fill: none; }
-.hp-loopy { width: 66px; left: 0; top: 46%; rotate: 150deg; }
-.hp-loopy path { stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; --dd: 1.25s; }
 .hp-burst { display: none; width: clamp(62px, 6.4vw, 96px); right: 4%; bottom: 10%; }
 .hp-burst path { stroke: var(--sun); stroke-width: 6; stroke-linecap: round; fill: none; }
 .hp-burst svg { animation: spin 18s linear infinite; }
@@ -597,7 +595,6 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
   .hp-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
   .hp-title { --ts: clamp(4.4rem, 13vw, 10rem); }
   .hp-visual { max-width: none; justify-self: stretch; padding: 34px 6% 112px 8%; }
-  .hp-loopy { left: -5%; }
   .hp-orbit { inset: -5% -5% -3% -6%; }
   .scroll-badge { left: calc(50% - 49px); bottom: 18px; width: 98px; height: 98px; }
   .scroll-badge text { font-size: 9.6px; }
@@ -754,7 +751,7 @@ footer.foot { position: relative; overflow: hidden; padding: 8px 0 36px; }
 /* A big sign-off wordmark closes the page */
 .foot-mark-wrap { container-type: inline-size; }
 /* sized to the footer width: the name is about four times as wide as its font size */
-.foot-mark { margin: 30px 0 4px; font: 800 calc(100cqw / 4.02)/.8 var(--f-display); font-stretch: 78%; letter-spacing: -.035em; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.5px rgba(244, 242, 255, .22); user-select: none; }
+.foot-mark { margin: 30px 0 4px; font: 800 calc(100cqw / 4.02)/.8 var(--f-display); font-stretch: 78%; letter-spacing: -.035em; white-space: nowrap; color: var(--night); -webkit-text-stroke: 3px rgba(244, 242, 255, .22); paint-order: stroke fill; user-select: none; }
 .foot-id { display: grid; gap: 4px; align-content: start; }
 .foot-id b { font: 800 1.5rem/1 var(--f-display); font-stretch: 85%; letter-spacing: -.01em; }
 .foot-id span { color: var(--ink-2); }
@@ -1242,7 +1239,10 @@ h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; ri
 .pop h2 em.hl { color: var(--sun); }
 .pop h2 em.hl::after { background: var(--pink); opacity: 1; height: .16em; bottom: -.04em; }
 .pop .filters .count { opacity: .7; }
-.pop--ink { color: var(--stk); }
+.pop--ink { color: var(--stk);
+  --ink: #1C1747; --ink-2: #433E66; --paper: #FAF9F6; --paper-2: rgba(28, 23, 71, .06); --surface: #FFFFFF; --glass: rgba(255, 255, 255, .78);
+  --glass-edge: rgba(255, 255, 255, .95); --line: rgba(28, 23, 71, .11); --dash: rgba(28, 23, 71, .25); --dash-soft: rgba(28, 23, 71, .2);
+  --text-accent: #3350FF; --title: #3350FF; --tint: 48%; --tint-hi: 62%; --hi: inset 0 1px 0 rgba(255, 255, 255, .9); --outline: var(--stk); }
 .pop--ink .display, .pop--ink .sec-head .hand { color: var(--stk); }
 .pop--ink .kicker, .pop--ink h2 em.hl { color: var(--stk); }
 .pop--ink h2 em.hl::after { background: #fff; height: .3em; bottom: .02em; }
