@@ -180,6 +180,43 @@ window.PROJECTS = [
     ]
   },
   {
+    id: 'bijli-bazaar', title: 'BIJLI BAZAAR', kind: 'Social posts', cats: ['graphic'], color: 'pink', featured: false,
+    summary: "Nine social posts for a night mela that doesn't exist, each solving a different layout problem.",
+    about: 'BIJLI BAZAAR (बिजली बाज़ार, "the electric market") is an invented three-night music festival: a night mela of bulbs, tent edges and hand-painted signs. Nine social posts announce it, each in 4:5 and 9:16, and no photograph does the work.',
+    year: '2026', published: 'Oct 2026', tags: ['Social media', 'Typography', 'Festival'],
+    tools: ['Illustrator', 'Photoshop', 'Figma'],
+    img: 'assets/img/covers/bijli-bazaar.webp', w: 808, h: 632,
+    behance: 'https://www.behance.net/gallery/257537299/BIJLI-BAZAAR-Social-Posts-for-a-Night-Mela',
+
+    facts: [['Type', 'Concept social campaign'], ['Medium', 'Nine posts, each in 4:5 and 9:16'], ['Tools', 'Illustrator, Photoshop, Figma'], ['Published', 'Oct 2026']],
+    writeup: [
+      { h: 'The challenge', p: ['Nine social posts where every post solves a different layout problem: a long headline, a number, a list, a quote, a date, a single object, a timetable, price tiers and a status change.', 'Most festival feeds are one template with the text swapped. But a line-up, a date and a house rule are different shapes of information.'] },
+      { h: 'The approach', p: ['The festival is the feed. One fixed system holds all nine posts together, while each post gets its own layout. A night mela is lit by bulbs, wires and hand-painted signs, so light is the type.'] },
+      { h: 'The details', list: ['Five named colours: Night, Rani, Genda, Mor and Kagaz', 'Two typefaces: Unbounded and Space Mono', 'Four type treatments, one per post: bulb marquee, sign-paint, tile-fill and misprint', 'Six fairground modules: chakri, genda, jhumka, bulbs, shamiana and ticket', 'A shamiana edge and a bilingual wordmark sign every post', 'Nine 9:16 Stories, recomposed rather than cropped'] }
+    ],
+    credits: 'Concept project: the festival, its acts, dates and prices are fictional and have no connection to any real event.',
+    role: ['Concept and naming', 'Art direction', 'Visual system', 'Typography', 'Layout', 'Illustration', 'Social media design'],
+    process: [
+      ['Premise', 'An invented three-night festival'],
+      ['System', 'Five colours, two typefaces, one edge'],
+      ['Kit', 'Six fairground modules, four type treatments'],
+      ['Posts', 'Nine layout problems, nine posts in 4:5'],
+      ['Stories', 'Every post recomposed for 9:16']
+    ],
+    outcome: {
+      note: 'A concept project, so these are the results it is designed for, not live numbers.',
+      delivered: ['Nine posts, each in 4:5 and 9:16: 18 artworks', 'A visual system: colours, type, four type treatments and six modules', 'A bilingual wordmark and monogram', 'A feed that reads as one long tent when posted in order'],
+      measure: ['Can people read the date, the line-up and the prices at a glance', 'Saves and shares on the line-up and timetable posts', 'Is the feed recognised as one festival, even without the logo', 'Story taps through all nine posts'],
+      shows: ['Layout: a different answer for each kind of information', 'A system strict enough to hold nine different posts', 'Typography as the image, with no photographs', 'Indian craft references in a contemporary system']
+    },
+    gallery: [
+      ['assets/img/gallery/bijli-bazaar/01.webp', 1400, 1241, 'The system: five colours, two typefaces'],
+      ['assets/img/gallery/bijli-bazaar/02.webp', 1400, 882, 'Four type treatments, one per post'],
+      ['assets/img/gallery/bijli-bazaar/03.webp', 1400, 1167, 'A status change: SOLD lands like a stamp'],
+      ['assets/img/gallery/bijli-bazaar/04.webp', 1400, 1167, 'A list: twelve invented acts, three tiers']
+    ]
+  },
+  {
     id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: false,
     summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
     about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
