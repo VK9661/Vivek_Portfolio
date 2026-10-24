@@ -1231,11 +1231,11 @@ h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; ri
 .pop { position: relative; z-index: 1; padding: var(--sec-y) 0; margin-block: 30px; color: #fff;
   background: radial-gradient(rgba(255, 255, 255, .2) 1.4px, transparent 1.7px) 0 0 / 22px 22px, var(--pop); }
 /* the wavy edges flow sideways: each strip is one wave longer than the block and slides by one wave, so the loop is seamless */
-.pop::before, .pop::after { content: ""; position: absolute; left: -96px; right: 0; height: 24px; background: var(--pop); pointer-events: none; animation: wave-flow 6s linear infinite; will-change: translate;
+.pop::before, .pop::after { content: ""; position: absolute; left: -96px; right: 0; height: 24px; background: var(--pop); pointer-events: none; animation: wave-flow 3.5s linear infinite; will-change: translate;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Cpath d='M0 24V13C12 13 12 3 24 3s12 10 24 10S60 3 72 3s12 10 24 10v11z'/%3E%3C/svg%3E") 0 0 / 96px 24px repeat-x;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Cpath d='M0 24V13C12 13 12 3 24 3s12 10 24 10S60 3 72 3s12 10 24 10v11z'/%3E%3C/svg%3E") 0 0 / 96px 24px repeat-x; }
 .pop::before { top: -23px; }
-.pop::after { bottom: -23px; transform: scaleY(-1); animation-direction: reverse; animation-duration: 7.5s; }
+.pop::after { bottom: -23px; transform: scaleY(-1); animation-direction: reverse; animation-duration: 4.5s; }
 @keyframes wave-flow { to { translate: 96px 0; } }
 .pop .display, .pop .sec-head .hand { color: #fff; }
 .pop .kicker { color: var(--sun); }
