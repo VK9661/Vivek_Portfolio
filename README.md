@@ -20,7 +20,7 @@ project-<id>.html     One page per project, generated from project.html (do not 
 assets/
   css/style.css       The whole stylesheet, in numbered sections (see its table of contents)
   js/data.js          ALL project content and contact links. Start here to change content.
-  js/cards.js         Project card markup (Home, Work) and grid balancing (Work)
+  js/cards.js         Project card markup, shared by Home and Work
   js/main.js          Shared on every page: nav, footer, contact band, theme, reveals, transitions
   js/hero.js          Home hero effects only
   js/pages/<page>.js  The script for one page (home, work, project, services, journal, contact)

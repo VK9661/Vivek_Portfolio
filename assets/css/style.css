@@ -661,18 +661,6 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
 .card-facts dt { font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .card-facts dd { font-weight: 600; }
 .card-cta { grid-column: 1 / -1; justify-self: start; margin-top: 18px; }
-/* Grids balance themselves (cards.js): a card that spans two columns lies on its side */
-.cases { grid-auto-flow: dense; }
-@media (min-width: 601px) {
-  .cases > .is-wide { grid-column: span 2; }
-  .cases > .work-card.is-wide { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
-  .cases > .work-card.is-wide .media { border-bottom: 0; border-right: var(--bw) solid var(--line); }
-  .cases > .work-card.is-wide .media img { height: 100%; }
-  .cases > .work-card.is-wide .body { align-content: center; padding: clamp(22px, 2.6vw, 36px); }
-  .cases > .work-card.is-wide h3 { font-size: clamp(1.9rem, 2.8vw, 2.6rem); }
-  .cases > .work-card.is-wide .card-cta { display: inline-flex; }
-}
-
 /* Drawer list: one row per project */
 .drawer-filters { margin: -12px 0 26px; }
 .rows { display: grid; gap: 14px; }
@@ -870,8 +858,12 @@ footer.foot { position: relative; overflow: hidden; padding: 8px 0 36px; }
 @media (min-width: 601px) {
   .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* Three cards per row (on six half-columns), so leftover cards on the last row sit in the middle (work.js) */
 @media (min-width: 1101px) {
-  .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cases { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .cases > * { grid-column: span 2; }
+  .cases > .is-centre-1 { grid-column: 3 / span 2; }
+  .cases > .is-centre-2 { grid-column: 2 / span 2; }
 }
 
 

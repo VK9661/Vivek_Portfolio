@@ -3,7 +3,14 @@
   var P = window.PROJECTS;
   var cases = document.getElementById('cases'), filters = document.getElementById('filters');
   cases.innerHTML = P.map(function (p, i) { return window.workCard(p, i, false); }).join('');
-  var balance = window.balanceGrid(cases);
+  // Even 3-column grid: leftover cards on the last row sit in the middle (style.css)
+  var balance = function () {
+    var shown = Array.prototype.filter.call(cases.children, function (c) { return !c.classList.contains('is-hidden'); });
+    Array.prototype.forEach.call(cases.children, function (c) { c.classList.remove('is-centre-1', 'is-centre-2'); });
+    var left = shown.length % 3;
+    if (left) shown[shown.length - left].classList.add('is-centre-' + left);
+  };
+  balance();
   var num = document.querySelector('[data-count="projects"]'); if (num) num.textContent = P.length;
 
   var CATS = [['all', 'All'], ['ux', 'UI/UX'], ['brand', 'Brand'], ['graphic', 'Graphic'], ['motion', 'Motion']];

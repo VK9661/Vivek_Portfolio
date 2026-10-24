@@ -29,23 +29,6 @@
       '</div></a>';
   };
 
-  /* Keeps a card grid free of a lonely last row: when the visible items don't
-     fill the last row, the first one or two span two columns (they lie on their
-     side), and dense flow packs the rest. Reruns on filter and resize. */
-  window.balanceGrid = function (grid) {
-    var run = function () {
-      var items = Array.prototype.filter.call(grid.children, function (el) { return !el.classList.contains('is-hidden'); });
-      Array.prototype.forEach.call(grid.children, function (el) { el.classList.remove('is-wide'); });
-      var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
-      var r = items.length % cols;
-      if (cols < 2 || r === 0) return;
-      items.slice(0, cols - r).forEach(function (el) { el.classList.add('is-wide'); });
-    };
-    run();
-    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
-    return run;
-  };
-
   window.rowItem = function (p) {
     // Rows draw ink text on the swatch (chip and hover fill), so ink projects borrow lilac
     var c = p.color === 'ink' ? (window.SWATCH || {}).lilac || '#9DB0FF' : swatch(p);
