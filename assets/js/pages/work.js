@@ -3,6 +3,8 @@
   var P = window.PROJECTS;
   var cases = document.getElementById('cases'), filters = document.getElementById('filters');
   cases.innerHTML = P.map(function (p, i) { return window.workCard(p, i, false); }).join('');
+  var balance = window.balanceGrid(cases);
+  var num = document.querySelector('[data-count="projects"]'); if (num) num.textContent = P.length;
 
   var CATS = [['all', 'All'], ['ux', 'UI/UX'], ['brand', 'Brand'], ['graphic', 'Graphic'], ['motion', 'Motion']];
   var count = function (k) { return k === 'all' ? P.length : P.filter(function (p) { return (p.cats || []).indexOf(k) > -1; }).length; };
@@ -17,6 +19,7 @@
       card.classList.toggle('is-hidden', !show);
       if (show) card.classList.add('is-in');
     });
+    balance();
     try { history.replaceState(null, '', k === 'all' ? location.pathname : '#' + k); } catch (e) {}
   };
   filters.addEventListener('click', function (e) { var b = e.target.closest('[data-f]'); if (b) apply(b.getAttribute('data-f')); });

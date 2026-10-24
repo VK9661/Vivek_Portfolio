@@ -117,12 +117,11 @@
       '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener">Open on Behance <span class="ar" aria-hidden="true">&#8599;</span></a></div></section>';
   }
 
-  // Previous / next: each card wears that project's own colour and a thumbnail
-  var prevCol = window.swatchOf(prev), nextCol = window.swatchOf(next);
-  if (prevCol === nextCol) nextCol = [window.SWATCH.pink, window.SWATCH.mint, window.SWATCH.sun].filter(function (c) { return c !== prevCol; })[0];
+  // Previous / next: a neutral card with a thumbnail; the project's colour is the accent bar
+  // (ink projects borrow lilac, so the bar shows on the dark theme too)
+  var accentOf = function (q) { return q.color === 'ink' ? window.SWATCH.lilac : window.swatchOf(q); };
   var pg = function (q, dir) {
-    var col = dir === 'prev' ? prevCol : nextCol, dark = col === window.SWATCH.ink;
-    return '<a class="pg pg--' + dir + (dark ? ' pg--dark' : '') + '" href="project-' + q.id + '.html" style="--c:' + col + '">' +
+    return '<a class="pg pg--' + dir + '" href="project-' + q.id + '.html" style="--c:' + accentOf(q) + '">' +
       '<span class="pg-th"><img src="' + q.img + '" alt="" width="' + q.w + '" height="' + q.h + '" loading="lazy"></span>' +
       '<span class="pg-txt"><span class="pg-dir">' + (dir === 'prev' ? '← Previous project' : 'Next project →') + '</span><b>' + esc(q.title) + '</b><small>' + esc(q.kind) + '</small></span>' +
     '</a>';

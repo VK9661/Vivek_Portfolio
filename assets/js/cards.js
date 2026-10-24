@@ -1,4 +1,4 @@
-/* Shared project-card renderers (Home, Work, Project pages). */
+/* Shared card helpers: project-card renderers (Home, Work) and grid balancing (Work, Reading list). */
 (function () {
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var swatch = function (p) { return (window.SWATCH || {})[p.color] || '#FF5A8C'; };
@@ -24,7 +24,26 @@
         '<span class="round-ar" aria-hidden="true">&#8599;</span>' +
         '<p>' + esc(p.summary) + '</p>' +
         '<div class="chips">' + cardTags(p).map(function (t) { return '<span class="chip">' + esc(t) + '</span>'; }).join('') + '</div>' +
+        '<dl class="card-facts">' + (p.facts || []).filter(function (f) { return f[0] !== 'Published'; }).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') + '</dl>' +
+        '<span class="btn btn--sm card-cta">View case study <span class="ar" aria-hidden="true">&#8599;</span></span>' +
       '</div></a>';
+  };
+
+  /* Keeps a card grid free of a lonely last row: when the visible items don't
+     fill the last row, the first one or two span two columns (they lie on their
+     side), and dense flow packs the rest. Reruns on filter and resize. */
+  window.balanceGrid = function (grid) {
+    var run = function () {
+      var items = Array.prototype.filter.call(grid.children, function (el) { return !el.classList.contains('is-hidden'); });
+      Array.prototype.forEach.call(grid.children, function (el) { el.classList.remove('is-wide'); });
+      var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+      var r = items.length % cols;
+      if (cols < 2 || r === 0) return;
+      items.slice(0, cols - r).forEach(function (el) { el.classList.add('is-wide'); });
+    };
+    run();
+    var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(run, 150); });
+    return run;
   };
 
   window.rowItem = function (p) {

@@ -32,11 +32,14 @@
     if (ART[i]) r.insertAdjacentHTML('afterbegin', '<span class="read-art" aria-hidden="true"><svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid meet">' + ART[i] + '</svg></span>');
   });
   var count = function (k) { return k === 'all' ? items.length : items.filter(function (r) { return r.getAttribute('data-cat') === k; }).length; };
+  var balance = window.balanceGrid(reads);
+  var num = document.querySelector('[data-count="reads"]'); if (num) num.textContent = items.length;
   rf.innerHTML = CATS.map(function (c, i) { return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '<span class="count">' + count(c[0]) + '</span></button>'; }).join('');
   rf.addEventListener('click', function (e) {
     var b = e.target.closest('[data-f]'); if (!b) return;
     var k = b.getAttribute('data-f');
     Array.prototype.forEach.call(rf.children, function (x) { x.setAttribute('aria-pressed', String(x === b)); });
     items.forEach(function (r) { var show = k === 'all' || r.getAttribute('data-cat') === k; r.classList.toggle('is-hidden', !show); if (show) r.classList.add('is-in'); });
+    balance();
   });
 })();

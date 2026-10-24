@@ -242,9 +242,11 @@
         '<div class="foot-id"><b>Vivek Kumar</b><span>Graphic, UI/UX &amp; motion designer, video editor</span>' +
           '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance · India, IST</span></div>' +
         '<nav class="foot-links" aria-label="Footer">' +
+          '<span class="foot-h">Pages</span>' +
           LINKS.concat([{ href: 'contact.html', label: 'Contact' }]).map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
         '</nav>' +
         '<div class="foot-links">' +
+          '<span class="foot-h">Elsewhere</span>' +
           '<a href="mailto:' + C.email + '">Email</a>' +
           '<a href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
           '<a href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
@@ -252,7 +254,8 @@
           '<a href="assets/cv/Vivek_Kumar_CV.pdf" download>Download CV</a>' +
         '</div>' +
         '<div class="foot-end"><span>© ' + new Date().getFullYear() + ' Vivek Kumar</span><a class="to-top" href="#main" aria-label="Back to top">↑</a></div>' +
-      '</div>';
+      '</div>' +
+      '<div class="wrap foot-mark-wrap"><p class="foot-mark" aria-hidden="true">Vivek Kumar</p></div>';
   }
 
   /* Reveal setup:
