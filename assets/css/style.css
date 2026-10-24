@@ -1242,13 +1242,43 @@ h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; ri
 .pop--ink { color: var(--stk);
   --ink: #1C1747; --ink-2: #433E66; --paper: #FAF9F6; --paper-2: rgba(28, 23, 71, .06); --surface: #FFFFFF; --glass: rgba(255, 255, 255, .78);
   --glass-edge: rgba(255, 255, 255, .95); --line: rgba(28, 23, 71, .11); --dash: rgba(28, 23, 71, .25); --dash-soft: rgba(28, 23, 71, .2);
-  --text-accent: #3350FF; --title: #3350FF; --tint: 48%; --tint-hi: 62%; --hi: inset 0 1px 0 rgba(255, 255, 255, .9); --outline: var(--stk); }
+  --band: #F2F0EB; --text-accent: #3350FF; --title: #3350FF; --tint: 48%; --tint-hi: 62%; --hi: inset 0 1px 0 rgba(255, 255, 255, .9); --outline: var(--stk); }
 .pop--ink .display, .pop--ink .sec-head .hand { color: var(--stk); }
 .pop--ink .kicker, .pop--ink h2 em.hl { color: var(--stk); }
 .pop--ink h2 em.hl::after { background: #fff; height: .3em; bottom: .02em; }
 .pop .row-i, .pop .bx, .pop .p-step { --outline: var(--stk); }
 .pop .row-i, .pop .bx, .pop .p-step, .pop .filters button:not([aria-pressed="true"]), .pop .btn--white { color: var(--ink); }
 .pop .row-i, .pop .p-step, .pop .bx { box-shadow: 5px 6px 0 var(--stk); }
+/* Contact: the whole page sits on a pastel block, with doodles and the blob saying hi */
+h1 em.hl { position: relative; z-index: 0; font-style: normal; color: var(--title); }
+h1 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.03em; right: -.05em; bottom: .04em; height: .26em; background: var(--sun); border-radius: .3em .1em .4em .1em; transform: rotate(-1.5deg) scaleX(0); transform-origin: left; transition: transform .7s cubic-bezier(.6, 0, .3, 1) .5s; }
+.is-in h1 em.hl::after { transform: rotate(-1.5deg) scaleX(1); }
+.pop--ink h1 em.hl { color: var(--blue); }
+.contact-pop { margin: -84px 0 0; padding: 84px 0 0; }
+.contact-pop::before { display: none; }
+.contact-intro { position: relative; }
+.c-buddy { position: absolute; z-index: 2; left: clamp(200px, 24vw, 330px); top: clamp(70px, 9vw, 120px); display: flex; align-items: flex-start; gap: 4px; pointer-events: none; }
+.blob--wave { width: clamp(84px, 9vw, 120px); rotate: 10deg; animation: buddy-bob 3.4s ease-in-out infinite; }
+@keyframes buddy-bob { 50% { translate: 0 -8px; rotate: 4deg; } }
+.c-buddy .peek-say { order: 2; margin-top: 4px; rotate: 5deg; border-radius: 16px 16px 16px 4px; }
+.c-deco { position: absolute; z-index: 0; pointer-events: none; }
+.c-deco svg { display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.c-spark { width: 34px; left: -26px; top: 64px; color: var(--blue); }
+.c-spark svg { fill: currentColor; animation: twinkle 3s ease-in-out infinite; }
+.c-burst { width: 74px; right: 4%; top: 40px; }
+.c-burst svg { stroke: var(--sun); stroke-width: 7; animation: spin 20s linear infinite; }
+.c-squig { width: 46px; right: 12%; bottom: 8px; }
+.c-squig svg { stroke: var(--pink); stroke-width: 4.5; }
+.is-scrolling .c-deco svg, .is-scrolling .blob--wave { animation-play-state: paused; }
+.contact-facts { gap: 12px; }
+.contact-facts div { position: relative; padding: 12px 16px 12px 44px; background: var(--surface); border: 2px solid var(--outline); border-radius: 14px; box-shadow: 3px 4px 0 var(--outline); }
+.contact-facts div::before { content: ""; position: absolute; left: 16px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 4px; background: var(--c); border: 2px solid var(--stk); rotate: 12deg; }
+.contact-pop .mail { border: 2px solid var(--outline); box-shadow: 4px 5px 0 var(--outline); }
+@media (max-width: 900px) {
+  .c-buddy { left: auto; right: 0; top: 40px; }
+  .c-buddy .peek-say { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { h1 em.hl::after { transform: rotate(-1.5deg) scaleX(1); } }
 /* inside a page column the colour block is a framed sticker panel instead of a full-width band */
 .pop--panel { margin-top: var(--sec-y); padding: clamp(36px, 5vw, 64px) clamp(18px, 4vw, 56px); border: 2px solid var(--stk); border-radius: clamp(22px, 3vw, 34px); box-shadow: 6px 8px 0 var(--outline); }
 .pop--panel::before, .pop--panel::after { display: none; }
