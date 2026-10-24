@@ -32,7 +32,13 @@
     if (ART[i]) r.insertAdjacentHTML('afterbegin', '<span class="read-art" aria-hidden="true"><svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid meet">' + ART[i] + '</svg></span>');
   });
   var count = function (k) { return k === 'all' ? items.length : items.filter(function (r) { return r.getAttribute('data-cat') === k; }).length; };
-  var balance = window.balanceGrid(reads);
+  // Even 3-column grid: when one card is left over on the last row, it sits in the middle
+  var balance = function () {
+    var shown = items.filter(function (r) { return !r.classList.contains('is-hidden'); });
+    items.forEach(function (r) { r.classList.remove('is-centre'); });
+    if (shown.length > 3 && shown.length % 3 === 1) shown[shown.length - 1].classList.add('is-centre');
+  };
+  balance();
   var num = document.querySelector('[data-count="reads"]'); if (num) num.textContent = items.length;
   rf.innerHTML = CATS.map(function (c, i) { return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '<span class="count">' + count(c[0]) + '</span></button>'; }).join('');
   rf.addEventListener('click', function (e) {

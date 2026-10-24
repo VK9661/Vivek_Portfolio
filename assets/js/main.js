@@ -258,6 +258,23 @@
       '<div class="wrap foot-mark-wrap"><p class="foot-mark" aria-hidden="true">Vivek Kumar</p></div>';
   }
 
+  /* ---------- 5b. Doodles around every section head, in the hero's colours ---------- */
+  var DOODLES = [
+    ['spark', '<svg viewBox="0 0 40 40"><path d="M20 0c1.5 11 7 17.5 20 20-13 2.5-18.5 9-20 20-1.5-11-7-17.5-20-20 13-2.5 18.5-9 20-20z"/></svg>'],
+    ['burst', '<svg viewBox="0 0 100 100"><path d="M50 4v30M50 66v30M4 50h30M66 50h30M17 17l21 21M62 62l21 21M83 17L62 38M38 62L17 83"/></svg>'],
+    ['squig', '<svg viewBox="0 0 70 50"><path d="M4 30c10-22 20-22 22 0s14 20 22 0 14-22 18-8"/></svg>'],
+    ['loop', '<svg viewBox="0 0 70 70"><path d="M10 18c26-10 40 6 30 20S16 50 30 58s26-6 30-16"/><path d="M52 36l9 7-11 3"/></svg>']
+  ];
+  var DCOLS = ['var(--pink)', 'var(--sun)', 'var(--mint)', 'var(--blue)', 'var(--lilac)'];
+  $$('.sec-head').forEach(function (h, i) {
+    var a = DOODLES[0], b = DOODLES[1 + (i % 3)];
+    var ca = DCOLS[i % DCOLS.length], cb = DCOLS[(i + 2) % DCOLS.length];
+    if (h.closest('.pop')) { ca = h.closest('.pop--ink') ? 'var(--pink)' : 'var(--sun)'; cb = h.closest('.pop--ink') ? 'var(--blue)' : '#fff'; }
+    h.insertAdjacentHTML('beforeend',
+      '<span class="s-doodle s-doodle--a s-doodle--' + a[0] + '" style="--dc:' + ca + '" aria-hidden="true">' + a[1] + '</span>' +
+      '<span class="s-doodle s-doodle--b s-doodle--' + b[0] + '" style="--dc:' + cb + '" aria-hidden="true">' + b[1] + '</span>');
+  });
+
   /* Reveal setup:
      1. Big headings rise in word by word.
      2. Common blocks get a reveal automatically, so new content animates too.
@@ -365,14 +382,17 @@
 
 
   /* ---------- 7. Blob eyes, "hello" cursor ---------- */
-  var eyes = $('.blob .eyes');
-  if (eyes && finePointer && !reduceMotion) {
-    var blob = $('.blob');
+  // Every blob on the page (the one in "Let's talk" and any peeking over a colour block) watches the cursor
+  var blobs = $$('.blob');
+  if (blobs.length && finePointer && !reduceMotion) {
     window.addEventListener('pointermove', function (e) {
-      var r = blob.getBoundingClientRect();
-      var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
-      var d = Math.hypot(dx, dy) || 1, m = Math.min(10, d / 30);
-      eyes.style.transform = 'translate(' + (dx / d * m).toFixed(1) + 'px,' + (dy / d * m).toFixed(1) + 'px)';
+      blobs.forEach(function (blob) {
+        var r = blob.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        var d = Math.hypot(dx, dy) || 1, m = Math.min(10, d / 30);
+        $('.eyes', blob).style.transform = 'translate(' + (dx / d * m).toFixed(1) + 'px,' + (dy / d * m).toFixed(1) + 'px)';
+      });
     });
   }
 

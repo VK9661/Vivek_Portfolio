@@ -662,9 +662,9 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
 .card-facts dd { font-weight: 600; }
 .card-cta { grid-column: 1 / -1; justify-self: start; margin-top: 18px; }
 /* Grids balance themselves (cards.js): a card that spans two columns lies on its side */
-.cases, .reads { grid-auto-flow: dense; }
+.cases { grid-auto-flow: dense; }
 @media (min-width: 601px) {
-  .cases > .is-wide, .reads > .is-wide { grid-column: span 2; }
+  .cases > .is-wide { grid-column: span 2; }
   .cases > .work-card.is-wide { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
   .cases > .work-card.is-wide .media { border-bottom: 0; border-right: var(--bw) solid var(--line); }
   .cases > .work-card.is-wide .media img { height: 100%; }
@@ -1117,16 +1117,8 @@ footer.foot { position: relative; overflow: hidden; padding: 8px 0 36px; }
 @media (min-width: 601px) { .reads { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 901px) { .journal-empty { grid-template-columns: minmax(0, 1fr) auto; } }
 @media (min-width: 1101px) { .reads { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-/* A card that spans two columns turns sideways: art on the left, text on the right */
-@media (min-width: 601px) {
-  .reads > .read.is-wide { display: grid; grid-template-columns: minmax(0, 46%) minmax(0, 1fr); grid-template-rows: 1fr auto auto auto 1fr auto; column-gap: 28px; row-gap: 10px; padding: 26px 26px 24px 0; }
-  .reads > .read.is-wide .read-art { grid-row: 1 / -1; height: auto; min-height: 100%; margin: -26px 0 -24px; border-bottom: 0; border-right: var(--bw) solid var(--line); }
-  .reads > .read.is-wide::before { inset: 0 0 0 46%; }
-  .reads > .read.is-wide .src { grid-row: 2; }
-  .reads > .read.is-wide h3 { grid-row: 3; font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
-  .reads > .read.is-wide p { grid-row: 4; font-size: 1rem; max-width: 34ch; }
-  .reads > .read.is-wide .foot { grid-row: 6; }
-}
+/* The list is an even 3-column grid; a lone last card sits in the middle column (journal.js) */
+@media (min-width: 1101px) { .reads > .is-centre { grid-column: 2; } }
 
 
 /* ---------- 17. Contact page, 404 ---------- */
@@ -1196,6 +1188,93 @@ html[data-theme="dark"] .form-error { color: #FF8FB3; }
 /* these also have an entrance animation first, which keeps playing */
 .is-scrolling .hp-role, .is-scrolling .ph-year { animation-play-state: running, paused; }
 .is-offscreen, .is-offscreen::before, .is-offscreen::after, .is-offscreen *, .is-offscreen ::before, .is-offscreen ::after { animation-play-state: paused !important; }
+
+/* ---------- 18b. Playful layer: the hero's stickers, doodles and handwriting, all the way down ---------- */
+:root { --outline: var(--stk); }
+:root[data-theme="dark"] { --outline: rgba(244, 242, 255, .82); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --outline: rgba(244, 242, 255, .82); } }
+
+/* A handwritten line above each section title, like "hi, I'm" in the hero */
+.kicker { display: block; width: max-content; margin: 0 0 6px 4px; font: 400 clamp(1.5rem, 2.3vw, 2.1rem)/1 var(--f-hand); color: var(--text-accent); transform: rotate(-3deg); transform-origin: 0 100%; }
+/* One word of each title gets a marker swipe */
+h2 em.hl { position: relative; z-index: 0; font-style: normal; color: var(--title); }
+h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; right: -.06em; bottom: .02em; height: .3em; background: var(--sun); border-radius: .3em .1em .4em .1em; transform: rotate(-1.2deg) scaleX(0); transform-origin: left; transition: transform .7s cubic-bezier(.6, 0, .3, 1) .45s; }
+.is-in h2 em.hl::after, h2.is-in em.hl::after, [data-words].is-in em.hl::after { transform: rotate(-1.2deg) scaleX(1); }
+:root[data-theme="dark"] h2 em.hl::after { opacity: .5; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) h2 em.hl::after { opacity: .5; } }
+
+/* Doodles scattered around every section head (main.js adds them) */
+.sec-head { position: relative; }
+.s-doodle { position: absolute; z-index: 0; pointer-events: none; color: var(--dc, var(--pink)); }
+.s-doodle svg { display: block; width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.s-doodle--spark svg { fill: currentColor; stroke: none; animation: twinkle 3.2s ease-in-out infinite; }
+.s-doodle--burst svg { animation: spin 22s linear infinite; }
+.s-doodle--a { width: clamp(26px, 2.6vw, 38px); left: min(46vw, 560px); top: -6px; }
+.s-doodle--b { width: clamp(46px, 4.6vw, 66px); left: min(58vw, 700px); top: 34%; }
+.is-scrolling .s-doodle svg { animation-play-state: paused; }
+
+/* Sticker cards: ink outline and a hard, coloured offset shadow, as on the hero's stickers */
+.work-card, .row-i, .svc-tile, .read, .bx, .p-step, .oc, .hero-aside, .facts, .form-card, .links-card, .journal-empty, .faq-item {
+  border: 2px solid var(--outline);
+  box-shadow: 5px 6px 0 var(--c, var(--outline));
+}
+.row-i, .faq-item, .facts, .form-card, .links-card, .journal-empty, .hero-aside { box-shadow: 4px 5px 0 var(--outline); }
+.w-list li { border: 2px solid var(--outline); box-shadow: 3px 3px 0 var(--outline); }
+.filters button { border: 2px solid var(--outline); box-shadow: 2px 3px 0 var(--outline); }
+.filters button[aria-pressed="true"] { background: var(--sun); color: var(--stk); }
+.filters button[aria-pressed="true"] .count { opacity: .85; }
+.work-card .media, .read-art { border-bottom: 2px solid var(--outline); }
+.work-card .media img { border-color: var(--outline); }
+/* cards sit a little crooked, like stickers pressed on by hand, and straighten when you reach for them */
+.work-grid > *:nth-child(even), .cases > *:nth-child(3n+2), .svc-tiles > *:nth-child(odd), .reads > *:nth-child(3n+1), .oc-grid > *:nth-child(even), .steps-grid > *:nth-child(even) { rotate: .7deg; }
+.work-grid > *:nth-child(3), .cases > *:nth-child(3n), .svc-tiles > *:nth-child(even), .reads > *:nth-child(3n), .oc-grid > *:nth-child(odd), .steps-grid > *:nth-child(odd) { rotate: -.6deg; }
+@media (hover: hover) and (pointer: fine) {
+  .work-card:hover, .svc-tile:hover, .read:hover, .row-i:hover { transform: translate3d(-3px, -5px, 0); rotate: 0deg; box-shadow: 9px 11px 0 var(--c, var(--outline)); }
+  .row-i:hover { box-shadow: 7px 8px 0 var(--outline); }
+  .work-card:hover .media img { transform: scale(1.025); }
+}
+.work-card, .svc-tile, .read, .row-i { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), rotate .35s var(--ease-out); }
+/* services tiles become real coloured stickers */
+.svc-tile { background: color-mix(in srgb, var(--c) 22%, var(--surface)); }
+
+/* Colour blocks: one section per page sits on a bold colour field with wavy edges and dots, like the portrait card */
+.pop { position: relative; z-index: 1; padding: var(--sec-y) 0; margin-block: 30px; color: #fff;
+  background: radial-gradient(rgba(255, 255, 255, .2) 1.4px, transparent 1.7px) 0 0 / 22px 22px, var(--pop); }
+.pop::before, .pop::after { content: ""; position: absolute; left: 0; right: 0; height: 24px; background: var(--pop); pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Cpath d='M0 24V13C12 13 12 3 24 3s12 10 24 10S60 3 72 3s12 10 24 10v11z'/%3E%3C/svg%3E") 0 0 / 96px 24px repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Cpath d='M0 24V13C12 13 12 3 24 3s12 10 24 10S60 3 72 3s12 10 24 10v11z'/%3E%3C/svg%3E") 0 0 / 96px 24px repeat-x; }
+.pop::before { top: -23px; }
+.pop::after { bottom: -23px; transform: scaleY(-1); }
+.pop .display, .pop .sec-head .hand { color: #fff; }
+.pop .kicker { color: var(--sun); }
+.pop h2 em.hl { color: var(--sun); }
+.pop h2 em.hl::after { background: var(--pink); opacity: 1; height: .16em; bottom: -.04em; }
+.pop .filters .count { opacity: .7; }
+.pop--ink { color: var(--stk); }
+.pop--ink .display, .pop--ink .sec-head .hand { color: var(--stk); }
+.pop--ink .kicker, .pop--ink h2 em.hl { color: var(--stk); }
+.pop--ink h2 em.hl::after { background: #fff; height: .3em; bottom: .02em; }
+.pop .row-i, .pop .bx, .pop .p-step { --outline: var(--stk); }
+.pop .row-i, .pop .bx, .pop .p-step, .pop .filters button:not([aria-pressed="true"]), .pop .btn--white { color: var(--ink); }
+.pop .row-i, .pop .p-step, .pop .bx { box-shadow: 5px 6px 0 var(--stk); }
+/* inside a page column the colour block is a framed sticker panel instead of a full-width band */
+.pop--panel { margin-top: var(--sec-y); padding: clamp(36px, 5vw, 64px) clamp(18px, 4vw, 56px); border: 2px solid var(--stk); border-radius: clamp(22px, 3vw, 34px); box-shadow: 6px 8px 0 var(--outline); }
+.pop--panel::before, .pop--panel::after { display: none; }
+.pop--panel .gal-i figcaption { color: var(--stk); }
+.services-band.pop { margin-top: clamp(90px, 11vw, 150px); }
+
+/* The blob from "Let's talk" peeks over the top of a colour block and watches the cursor */
+.peek-buddy { position: absolute; z-index: 2; right: clamp(20px, 8vw, 140px); top: 0; display: flex; align-items: flex-start; gap: 6px; transform: translateY(-62%); pointer-events: none; }
+.blob--peek { width: clamp(84px, 9vw, 124px); rotate: -8deg; }
+.peek-say { margin-top: 10px; padding: 8px 14px 9px; font: 400 clamp(1.1rem, 1.6vw, 1.4rem)/1 var(--f-hand); color: var(--stk); background: #fff; border: 2px solid var(--stk); border-radius: 16px 16px 4px 16px; box-shadow: 3px 3px 0 var(--stk); rotate: -4deg; white-space: nowrap; }
+@media (max-width: 600px) {
+  .peek-say { display: none; }
+  .s-doodle--b { display: none; }
+  .s-doodle--a { left: auto; right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  h2 em.hl::after { transform: rotate(-1.2deg) scaleX(1); }
+}
 
 /* ---------- 19. Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {

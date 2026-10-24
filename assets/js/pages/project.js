@@ -93,7 +93,7 @@
       return '<article class="oc" style="--c:' + col + '" data-reveal><h3>' + title + '</h3><ul class="oc-list">' +
         items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></article>';
     };
-    html += '<section class="outcome" aria-labelledby="oc-title"><div class="sec-head"><div><h2 class="display t-lg" id="oc-title">Outcome</h2>' +
+    html += '<section class="outcome" aria-labelledby="oc-title"><div class="sec-head"><div><span class="kicker" aria-hidden="true">how it landed</span><h2 class="display t-lg" id="oc-title"><em class="hl">Outcome</em></h2>' +
       (p.outcome.note ? '<p class="hand">' + esc(p.outcome.note) + '</p>' : '') + '</div></div>' +
       '<div class="oc-grid">' +
         oc('What I delivered', p.outcome.delivered, 'var(--mint)') +
@@ -104,7 +104,7 @@
 
   // A few key images from the presentation; tap one to see it larger
   if (p.gallery && p.gallery.length) {
-    html += '<section class="gallery" aria-labelledby="gal-title"><div class="sec-head"><h2 class="display t-lg" id="gal-title">Highlights</h2></div>' +
+    html += '<section class="gallery pop pop--ink pop--panel" style="--pop:color-mix(in srgb, ' + accent + ' 36%, #fff)" aria-labelledby="gal-title"><div class="sec-head"><div><span class="kicker" aria-hidden="true">a peek inside</span><h2 class="display t-lg" id="gal-title"><em class="hl">Highlights</em></h2></div></div>' +
       '<div class="gal gal--' + p.gallery.length + '">' + p.gallery.map(function (g) {
         return '<figure class="gal-i" data-reveal><button class="gal-open" type="button" data-cursor="view" aria-label="View larger: ' + esc(g[3]) + '">' +
           '<img src="' + g[0] + '" alt="' + esc(p.title) + ': ' + esc(g[3]) + '" width="' + g[1] + '" height="' + g[2] + '" loading="lazy" decoding="async"></button>' +

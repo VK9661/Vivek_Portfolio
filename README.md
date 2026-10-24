@@ -20,7 +20,7 @@ project-<id>.html     One page per project, generated from project.html (do not 
 assets/
   css/style.css       The whole stylesheet, in numbered sections (see its table of contents)
   js/data.js          ALL project content and contact links. Start here to change content.
-  js/cards.js         Project card markup (Home, Work) and grid balancing (Work, Reading list)
+  js/cards.js         Project card markup (Home, Work) and grid balancing (Work)
   js/main.js          Shared on every page: nav, footer, contact band, theme, reveals, transitions
   js/hero.js          Home hero effects only
   js/pages/<page>.js  The script for one page (home, work, project, services, journal, contact)
@@ -78,11 +78,12 @@ Old `project.html?id=<id>` links redirect to the project's page.
 
 ## Design
 
-- **Look:** tactile paper. Stickers, notes, tape, the polaroid and the hero doodles keep hard ink outlines on warm paper with a fine film grain.
-  - **Content** sits on solid paper sheets (`--surface`).
+- **Look:** playful and illustrated. The hero's stickers, doodles and handwriting carry on down every page, on warm paper with a fine film grain.
+  - **Sticker cards:** cards have an ink outline (`--outline`) and a hard offset shadow in their own colour (`--c`). They sit slightly crooked and straighten on hover.
+  - **Section heads:** a handwritten `.kicker` above the title, one word in `<em class="hl">` with a marker swipe, and two doodles that main.js adds.
+  - **Colour blocks (`.pop`):** no two plain sections in a row. A pop section is a full-width colour field with wavy edges (`--pop`; `.pop--ink` for pastel fields with ink text). Inside a page column, `.pop--panel` makes it a framed panel instead; project Highlights use the project's own colour.
+  - **Blob buddy:** `.peek-buddy` peeks over a colour block; every `.blob` watches the cursor.
   - **Glass** is only for what floats over the page: the nav pill and the card over the portrait.
-  - **Colour glows** appear only in the hero and the dark "Let's talk" finale; the page itself is never tinted.
-  - **Rhythm:** every second section sits on a deeper band (`.band`).
   - **Finale:** "Let's talk" and the footer are one dark ink block in both themes.
 - **Themes:** day (warm paper `#FAF9F6`) and night (dark ink `#0F0E17`). The site follows the device setting, then remembers the visitor's choice (`localStorage` key `vk-theme`). An inline script in each `<head>` sets the theme before the first paint.
 - **Colours:** ink `#1C1747`, pink `#FF5A8C`, cobalt `#3350FF`, sun `#FFCF33`, mint `#6FE3B2`, sky `#7FD8F5`, lilac `#9DB0FF`.
