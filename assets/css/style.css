@@ -517,22 +517,25 @@ html[data-theme="dark"] .hp::before {
 .hp-l2 { padding-left: .9em; }
 .hp-l2 > span { animation-delay: .25s; }
 @keyframes hprise { from { transform: translateY(108%) rotate(5deg); } }
+.hp-word { white-space: nowrap; } /* each letter is its own hover target, so never break inside a line */
 .hp-word b { display: inline-block; font-weight: inherit; transition: transform .45s var(--ease-spring), color .25s; }
 @media (hover: hover) {
   .hp-word b:hover { transform: translateY(-.1em) rotate(-8deg) scale(1.06); color: var(--pink); }
   .hp-word b:nth-child(even):hover { transform: translateY(-.1em) rotate(8deg) scale(1.06); color: var(--ink); }
 }
 
-/* role pill: flips through the roles (hero.js) */
+/* role pill: flips through the roles (hero.js). It sits right after the name,
+   so it reads "I'm Vivek Kumar, UI/UX designer"; it is a little smaller on the narrowest phones to stay on that line */
 .hp-role {
-  position: absolute; z-index: 2; top: calc(var(--ts) * 1.02); left: calc(var(--ts) * 4.6);
-  display: inline-flex; align-items: center; box-sizing: content-box; width: var(--rw, auto); height: 1.25em; overflow: hidden; padding: .5em 1.1em;
-  font: 800 clamp(.82rem, 1.15vw, 1.02rem)/1.1 var(--f-sans); letter-spacing: 0; white-space: nowrap; cursor: pointer;
+  position: relative; z-index: 2; margin-left: .3em; vertical-align: middle; top: -.1em;
+  display: inline-flex; align-items: center; box-sizing: content-box; width: var(--rw, auto); height: 1.25em; overflow: hidden; padding: .45em .85em;
+  font: 800 .74rem/1.1 var(--f-sans); letter-spacing: 0; white-space: nowrap; cursor: pointer;
   color: var(--rf, #fff); background: var(--rb, var(--pink)); border: var(--bw-stk) solid var(--stk); border-radius: var(--r-pill); box-shadow: 3px 3px 0 var(--stk);
-  rotate: -6deg; animation: phpop .7s var(--ease-spring) .7s backwards;
+  rotate: -4deg; animation: phpop .7s var(--ease-spring) .7s backwards;
   transition: width .5s var(--ease-spring), background-color .45s, color .3s, scale .2s;
 }
 .hp-role:active { scale: .95; }
+@media (min-width: 381px) { .hp-role { margin-left: .4em; padding: .5em 1.1em; font: 800 clamp(.82rem, 1.15vw, 1.02rem)/1.1 var(--f-sans); } }
 .hp-role-word { display: block; white-space: nowrap; line-height: 1.25em; transition: transform .26s cubic-bezier(.6, 0, .4, 1), opacity .26s; }
 .hp-role-word.is-out { transform: translateY(-110%); opacity: 0; }
 .hp-role-word.is-in-start { transform: translateY(110%); opacity: 0; transition: none; }
@@ -548,12 +551,12 @@ html[data-theme="dark"] .hp::before {
 /* doodles around the copy and the portrait */
 .hp-deco { position: absolute; pointer-events: none; }
 .hp-deco svg, .hp-smile svg { display: block; width: 100%; height: auto; overflow: visible; }
-.hp-spark1 { width: clamp(22px, 2.4vw, 34px); right: 12%; top: 2%; }
+.hp-spark1 { display: none; width: clamp(22px, 2.4vw, 34px); right: 12%; top: 2%; }
 .hp-spark1 path { fill: var(--blue); }
 @keyframes twinkle { 50% { transform: scale(.65) rotate(45deg); } }
-.hp-plus { display: none; width: 26px; left: -3%; top: 52%; }
+.hp-plus { display: none; width: 26px; left: -3%; top: 36%; }
 .hp-plus path { stroke: var(--mint); stroke-width: 5; stroke-linecap: round; fill: none; }
-.hp-burst { display: none; width: clamp(62px, 6.4vw, 96px); right: 4%; bottom: 10%; }
+.hp-burst { display: none; width: clamp(62px, 6.4vw, 96px); right: 3%; bottom: -4px; }
 .hp-burst path { stroke: var(--sun); stroke-width: 6; stroke-linecap: round; fill: none; }
 .hp-lines { width: 54px; right: 10%; top: -4%; z-index: 2; }
 .hp-lines path { stroke: var(--ink); stroke-width: 3.5; stroke-linecap: round; fill: none; }
@@ -606,7 +609,7 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
   .hp-ctas { margin-top: 28px; }
   .hp-visual { padding: 28px 7% 128px; }
   .hp-card { right: 6%; rotate: -2deg; }
-  .hp-plus, .hp-burst { display: block; }
+  .hp-spark1, .hp-plus, .hp-burst { display: block; }
 }
 @media (min-width: 901px) {
   .hp { min-height: calc(100dvh - 96px); padding-bottom: 136px; }
@@ -616,7 +619,7 @@ body.intro-on .hp *, body.intro-on .hp *::after { animation-play-state: paused !
   .hp-orbit { inset: -5% -5% -3% -6%; }
 }
 @media (min-width: 1101px) {
-  .hp-title { --ts: clamp(4.4rem, 8.4vw, 9rem); }
+  .hp-title { --ts: clamp(4.4rem, 7.3vw, 6.8rem); }
   .hp-card { right: 16%; }
 }
 
