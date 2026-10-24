@@ -77,10 +77,6 @@
         '<div class="nav-fold nav-fold--links"><span><span class="nav-links">' + LINKS.slice(1).map(function (l) {
           return '<a class="l" href="' + l.href + '"' + cur(l.key) + '>' + l.label + '</a>';
         }).join('') + '</span></span></div>' +
-        '<button class="theme-btn" type="button" aria-pressed="false" aria-label="Night mode">' +
-          '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>' +
-          '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>' +
-        '</button>' +
         '<div class="nav-fold nav-fold--menu"><span>' +
           '<button class="nav-menu" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Menu">' +
             '<span class="nav-fold nav-fold--label"><span><span class="nav-menu-text" aria-hidden="true">Menu</span></span></span><i aria-hidden="true"></i>' +
@@ -88,6 +84,14 @@
         '</span></div>' +
         '<div class="nav-fold nav-fold--cta"><span><a class="btn btn--sun btn--sm nav-cta" href="contact.html"' + cur('contact') + '>Say hello</a></span></div>' +
       '</nav>' +
+      // Day/night switch: its own sticker, outside the nav (style.css 18e)
+      '<button class="tsw" type="button" role="switch" aria-checked="false" aria-label="Night mode">' +
+        '<span class="tsw-sky" aria-hidden="true">' +
+          '<i class="tsw-star s1"></i><i class="tsw-star s2"></i><i class="tsw-star s3"></i><i class="tsw-star s4"></i>' +
+          '<i class="tsw-cloud c1"></i><i class="tsw-cloud c2"></i>' +
+        '</span>' +
+        '<span class="tsw-knob" aria-hidden="true"><span class="tsw-rays"></span><span class="tsw-face"><i></i><i></i></span></span>' +
+      '</button>' +
       '<div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">' +
         LINKS.concat([{ href: 'contact.html', key: 'contact', label: 'Contact' }]).map(function (l, i) {
           return '<a class="m" href="' + l.href + '"' + cur(l.key) + '><small>0' + (i + 1) + '</small>' + l.label + '</a>';
@@ -100,7 +104,7 @@
         '</div>' +
       '</div>';
 
-    nav = $('.nav'); themeBtn = $('.theme-btn'); menuBtn = $('.nav-menu'); panel = $('#menu-panel');
+    nav = $('.nav'); themeBtn = $('.tsw'); menuBtn = $('.nav-menu'); panel = $('#menu-panel');
     var menuText = $('.nav-menu-text');
     var menuOpen = function () { return panel.classList.contains('is-open'); };
     $$('#menu-panel > *').forEach(function (el, i) { el.style.setProperty('--i', i); });
@@ -149,14 +153,14 @@
 
     // Tapping the folded pill (not its buttons) unfolds it; keyboard focus does too
     nav.addEventListener('click', function (e) {
-      if (!mini || menuOpen() || e.target.closest('.theme-btn, .nav-menu')) return;
+      if (!mini || menuOpen() || e.target.closest('.nav-menu')) return;
       e.preventDefault();
       travel = 0;
       setMini(false);
     });
     // (keyboard focus only: a mouse or touch press also focuses, and must stay a tap)
     nav.addEventListener('focusin', function (e) {
-      if (mini && !menuOpen() && e.target.matches(':focus-visible') && !e.target.closest('.theme-btn, .nav-menu')) setMini(false);
+      if (mini && !menuOpen() && e.target.matches(':focus-visible') && !e.target.closest('.nav-menu')) setMini(false);
     });
     window.matchMedia('(min-width: 1101px)').addEventListener('change', function (m) { if (m.matches && !mini) setMenu(false); });
 
@@ -172,8 +176,7 @@
     var applyTheme = function (t) {
       var dark = t === 'dark';
       root.setAttribute('data-theme', dark ? 'dark' : 'light');
-      themeBtn.setAttribute('aria-pressed', String(dark));
-      themeBtn.setAttribute('aria-label', dark ? 'Day mode' : 'Night mode');
+      themeBtn.setAttribute('aria-checked', String(dark));
       themeBtn.setAttribute('data-cursor', dark ? 'day mode' : 'night mode');
       if (metaTheme) metaTheme.setAttribute('content', dark ? '#0E0B25' : '#F2F1FA');
     };

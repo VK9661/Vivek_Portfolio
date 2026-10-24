@@ -85,7 +85,7 @@ Old `project.html?id=<id>` links redirect to the project's page.
   - **Blob buddy:** `.peek-buddy` peeks over a colour block; every `.blob` watches the cursor.
   - **Glass** is only for what floats over the page: the nav pill and the card over the portrait.
   - **Finale:** "Let's talk" and the footer are one dark ink block in both themes.
-- **Themes:** day (warm paper `#FAF9F6`) and night (dark ink `#0F0E17`). The site follows the device setting, then remembers the visitor's choice (`localStorage` key `vk-theme`). An inline script in each `<head>` sets the theme before the first paint.
+- **Themes:** day (warm paper `#FAF9F6`) and night (dark ink `#0F0E17`). Visitors switch with the animated sun/moon switch (`.tsw`, built in main.js), which sits on its own outside the nav: top right on desktop, bottom right on smaller screens. The site follows the device setting, then remembers the visitor's choice (`localStorage` key `vk-theme`). An inline script in each `<head>` sets the theme before the first paint.
 - **Colours:** ink `#1C1747`, pink `#FF5A8C`, cobalt `#3350FF`, sun `#FFCF33`, mint `#6FE3B2`, sky `#7FD8F5`, lilac `#9DB0FF`.
 - **Type:** Bricolage Grotesque (headlines), Plus Jakarta Sans (text), Covered By Your Grace (handwritten notes).
 - **CSS:** written mobile first, with breakpoints at 381, 601, 901 and 1101px (`min-width` only). All tokens are at the top of `style.css`.
