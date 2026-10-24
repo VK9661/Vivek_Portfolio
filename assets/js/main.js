@@ -332,7 +332,7 @@
     var ioLoop = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { e.target.classList.toggle('is-offscreen', !e.isIntersecting); });
     }, { rootMargin: '120px 0px' });
-    $$('.hp, .tape, .ph-art, .ph-tape, .cta, .foot').forEach(function (el) { ioLoop.observe(el); });
+    $$('.hp, .tape, .ph-art, .ph-tape, .cta, .foot, .pop').forEach(function (el) { ioLoop.observe(el); });
   }
 
   var revealTargets = $$('[data-reveal], [data-words]');
