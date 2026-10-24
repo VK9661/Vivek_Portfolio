@@ -1237,6 +1237,8 @@ h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; ri
 .pop::before { top: -23px; }
 .pop::after { bottom: -23px; transform: scaleY(-1); animation-direction: reverse; animation-duration: 4.5s; }
 @keyframes wave-flow { to { translate: 96px 0; } }
+/* a colour block right before "Let's talk" touches it, so its waves sit straight on the dark block */
+.pop:has(+ [data-site-cta]) { margin-bottom: 0; }
 .pop .display, .pop .sec-head .hand { color: #fff; }
 .pop .kicker { color: var(--sun); }
 .pop h2 em.hl { color: var(--sun); }
