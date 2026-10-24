@@ -189,7 +189,8 @@ window.PROJECTS = [
       ['assets/img/gallery/chashni/03.webp', 1400, 1806, 'Three carousels, ten slides'],
       ['assets/img/gallery/chashni/04.webp', 1400, 1652, 'Two scripts, one family']
     ],
-    video: { label: 'reels', items: [['1234676395', 1080, 1920, 'Reel 1'], ['1234676523', 1080, 1920, 'Reel 2'], ['1234676656', 1080, 1920, 'Reel 3']] }
+    video: { label: 'reels', items: [['1234676395', 1080, 1920, 'Reel 1'], ['1234676523', 1080, 1920, 'Reel 2'], ['1234676656', 1080, 1920, 'Reel 3']] },
+    loop: 'assets/video/loop/chashni.mp4'
   },
   {
     id: 'bijli-bazaar', title: 'BIJLI BAZAAR', kind: 'Social posts', cats: ['graphic'], color: 'pink', featured: false,
