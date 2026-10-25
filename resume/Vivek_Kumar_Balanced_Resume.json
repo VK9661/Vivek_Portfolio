@@ -1,5 +1,5 @@
 {
-  "output": "Vivek_Kumar_General_Resume.pdf",
+  "output": "Vivek_Kumar_Balanced_Resume.pdf",
   "name": "Vivek Kumar",
   "title": "Graphic & UI/UX Designer",
   "phone": "+91 9060961564",
@@ -9,7 +9,7 @@
     "behance": "https://www.behance.net/vivekgupta143",
     "linkedin": "https://www.linkedin.com/in/vivek-kumar-9641312a8"
   },
-  "profile": "Graphic & UI/UX Designer with about a year of hands-on experience across brand identity, websites and product interfaces. At AlgoRoot I rebuilt brand identities, redesigned the company website and revamped AI product UIs, taking work from wireframes to developer-ready Figma files. I combine a strong base in typography, layout and visual hierarchy with user research, design systems and motion design from my Dice Academy certification.",
+  "profile": "Graphic & UI/UX Designer with about a year of hands-on experience across brand identity, packaging, social campaigns and product interfaces. At AlgoRoot I rebuilt brand identities, redesigned the company website and revamped AI product UIs, taking work from wireframes to developer-ready Figma files. My recent case studies pair user research and accessible design systems with motion, from a medicine-care app for older parents to a bilingual Diwali packaging campaign.",
   "experience": [
     {
       "company": "AlgoRoot Private Limited",
@@ -27,46 +27,45 @@
   ],
   "projects": [
     {
-      "name": "VOLT 47",
-      "tag": "Gym Brand Identity · Self-initiated",
+      "name": "FIKR",
+      "tag": "Healthcare App · UI/UX Case Study",
       "bullets": [
-        "Built a 24-hour city gym identity around one logo shape read three ways: a wedge cut at 23°, three barbell plates and a bolt in negative space; flat vector that holds from a 16 px app icon to a lit shopfront sign.",
-        "Delivered logo suite, colour and type system (Anton + Space Grotesk), pattern, eight applications, a three-post social kit and an eight-second logo reveal with sound."
+        "Concept app where a parent confirms medicines with one \"Taken\" tap, so a child far away is reassured without the parent feeling watched. Five interviews, affinity mapping, personas, user flows, wireframes, a Material 3 system with night mode, bilingual UI and an After Effects film."
       ]
     },
     {
-      "name": "Watien Boutique",
-      "tag": "Luxury Brand Identity · Self-initiated",
+      "name": "VOLT 47",
+      "tag": "Gym Brand Identity · Self-initiated",
       "bullets": [
-        "Identity for a luxury bag and jewellery boutique (name means \"soul\" in Arabic): logo, custom typography, deep green and gold palette, packaging, merchandise mockups, signage and brand presentation."
+        "24-hour gym identity built on one mark read three ways (a 23° wedge, three barbell plates, a negative-space bolt): logo suite, colour and type system, pattern, eight applications, social kit and an eight-second logo reveal with sound."
+      ]
+    },
+    {
+      "name": "Shady?",
+      "tag": "AI Scam Checker · UI/UX Case Study",
+      "bullets": [
+        "AI scam checker for families: a calm verdict, the red flags underlined and one next step. Competitor review, three personas, a token-based light and dark design system, accessible screens, a prototype and a launch film."
+      ]
+    },
+    {
+      "name": "CHASHNI",
+      "tag": "Packaging & Social Campaign · Concept",
+      "bullets": [
+        "Bilingual (Devanagari + Latin) Diwali mithai brand whose box colour names the sweet inside: print-ready packaging with dielines, plus one campaign line across three reels and three carousels."
       ]
     },
     {
       "name": "ShopUp",
       "tag": "E-commerce UX Case Study",
       "bullets": [
-        "Ran user research and usability testing with 6 participants, then redesigned product discovery and checkout and added real-time delivery tracking."
+        "Research and usability testing with 6 participants; redesigned discovery and checkout and added real-time delivery tracking."
       ]
     },
     {
-      "name": "Talksy",
-      "tag": "Mobile App UI",
+      "name": "BIJLI BAZAAR",
+      "tag": "Social Posts · Concept",
       "bullets": [
-        "Designed a messaging app in Figma covering onboarding, chat and settings, backed by a reusable design system."
-      ]
-    },
-    {
-      "name": "Bewakoof",
-      "tag": "Heuristic Evaluation",
-      "bullets": [
-        "Audited the app against Nielsen's 10 heuristics, severity-rated the gaps and wrote prioritised recommendations."
-      ]
-    },
-    {
-      "name": "Social Media & Poster Design",
-      "tag": "Self-initiated",
-      "bullets": [
-        "Social posts for gaming, F&B, beauty/skincare and lifestyle brands; cinematic, sport, product advertising and editorial typographic posters."
+        "Designed nine posts for a fictional night mela, each in 4:5 and 9:16, every one solving a different layout problem inside one system of five colours, two typefaces and four type treatments."
       ]
     }
   ],
@@ -100,7 +99,7 @@
       "school": "Dice Academy",
       "detail": "Graphics, UI/UX & Motion Design",
       "place": "New Delhi",
-      "dates": "2025"
+      "dates": "Oct 2024 – Nov 2025"
     },
     {
       "school": "Veer Kunwar Singh University",
