@@ -1,6 +1,7 @@
 """Build a one-page A4 resume PDF from a JSON file.
 
-Usage: python build_resume.py Vivek_Kumar_General_Resume.json
+Usage: python build_resume.py UI_UX_Designer/Vivek_Kumar_UI_UX_Designer_Resume.json
+The PDF is written next to the JSON (set RESUME_OUT_DIR to override).
 Requires: pip install weasyprint pypdf
 """
 import base64
@@ -129,8 +130,7 @@ def build(data):
 def main():
     src = Path(sys.argv[1]).resolve()
     data = json.loads(src.read_text(encoding="utf-8"))
-    # Defaults to ~/Desktop/Vivek_Resume; set RESUME_OUT_DIR to override.
-    out_dir = Path(os.environ.get("RESUME_OUT_DIR", Path.home() / "Desktop" / "Vivek_Resume"))
+    out_dir = Path(os.environ.get("RESUME_OUT_DIR", src.parent))
     out_dir.mkdir(parents=True, exist_ok=True)
     out = out_dir / data["output"]
     HTML(string=build(data)).write_pdf(out)
