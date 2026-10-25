@@ -1,0 +1,106 @@
+{
+  "output": "Vivek_Kumar_Graphic_Designer_Resume.pdf",
+  "name": "Vivek Kumar",
+  "title": "Graphic Designer",
+  "phone": "+91 9060961564",
+  "email": "vivekgupta9661@gmail.com",
+  "links": {
+    "portfolio": "https://vivek-portfolio-beta-eight.vercel.app",
+    "behance": "https://www.behance.net/vivekgupta143",
+    "linkedin": "https://www.linkedin.com/in/vivek-kumar-9641312a8"
+  },
+  "profile": "Graphic Designer with about a year of hands-on experience in brand identity, packaging, social media and marketing design. At AlgoRoot I redesigned the company logo, built a new visual identity for AlgoJob and redesigned the website with clearer hierarchy and typography. I bring a strong eye for typography, colour and layout, plus motion skills for logo animation and social content from my Dice Academy certification.",
+  "experience": [
+    {
+      "company": "AlgoRoot Private Limited",
+      "role": "UI/UX Designer",
+      "location": "Bhubaneswar, Odisha",
+      "dates": "Aug 2025 – Aug 2026",
+      "bullets": [
+        "Rebuilt brand identity: redesigned the AlgoRoot logo and created a new visual identity for AlgoJob.",
+        "Redesigned the AlgoRoot website end to end, bringing clearer visual hierarchy, typography and consistency across pages.",
+        "Redesigned a 16-slide pitch deck, an investor one-pager and a four-template onboarding email system.",
+        "Revamped the UI/UX of AlgoJob's AI career platform and redesigned the AlgoVox product interface.",
+        "Worked with dev and marketing teams in an agile setup."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "VOLT 47",
+      "tag": "Gym Brand Identity · Self-initiated",
+      "bullets": [
+        "Built a 24-hour gym identity around one logo shape read three ways: a wedge cut at 23°, three barbell plates and a bolt in negative space, holding from a 16 px app icon to a lit shopfront sign.",
+        "Delivered logo suite, colour and type system (Anton + Space Grotesk), pattern, eight applications, a three-post social kit and an eight-second logo reveal with sound."
+      ]
+    },
+    {
+      "name": "CHASHNI",
+      "tag": "Packaging & Social Campaign · Concept",
+      "bullets": [
+        "Created a bilingual (Devanagari + Latin) Diwali mithai brand whose box colour names the sweet inside, with print-ready packaging and dielines.",
+        "Carried one campaign line, \"This one stops here\", across three reels and three carousels."
+      ]
+    },
+    {
+      "name": "BIJLI BAZAAR",
+      "tag": "Social Posts · Concept",
+      "bullets": [
+        "Designed nine posts for a fictional night mela, each in 4:5 and 9:16, every one solving a different layout problem inside one system of five colours, two typefaces and four type treatments."
+      ]
+    },
+    {
+      "name": "Watien Boutique",
+      "tag": "Luxury Brand Identity · Self-initiated",
+      "bullets": [
+        "Identity for a luxury bag and jewellery boutique (name means \"soul\" in Arabic): logo, custom typography, deep green and gold palette, packaging, merchandise mockups, signage and brand presentation."
+      ]
+    },
+    {
+      "name": "Social Media & Poster Design",
+      "tag": "Self-initiated",
+      "bullets": [
+        "Social posts for gaming, F&B, beauty/skincare and lifestyle brands; cinematic, sport, product advertising and editorial typographic posters."
+      ]
+    }
+  ],
+  "skills": [
+    [
+      "Graphic",
+      "Branding, Logo Design, Visual Identity, Typography, Colour Theory, Layout & Composition, Visual Hierarchy, Pattern Design, Social Media Design, Poster Design, Marketing Asset Design, Illustrations, Visual Storytelling"
+    ],
+    [
+      "Motion",
+      "Motion Graphics, Logo Animation, UI Animation, Micro-interactions, Parallax and Carousel animation, 2D Animation, Frame-by-Frame Animation, Animation Principles"
+    ],
+    [
+      "Collaboration",
+      "Brand Guidelines, Cross-functional Teams, Agile Workflow, Stakeholder Comms"
+    ],
+    [
+      "UI/UX",
+      "Wireframing, Mockups, Prototyping, User Flows, High-Fidelity UI, Design Systems, Component Libraries, Interaction Design, Responsive Design, Information Architecture, User Research, Usability Testing, Heuristic Evaluation, Accessibility (WCAG), Design Thinking, Developer Handoff"
+    ]
+  ],
+  "tools": [
+    "Adobe Illustrator",
+    "Adobe Photoshop",
+    "Adobe After Effects",
+    "Figma",
+    "Canva"
+  ],
+  "education": [
+    {
+      "school": "Dice Academy",
+      "detail": "Graphics, UI/UX & Motion Design",
+      "place": "New Delhi",
+      "dates": "Oct 2024 – Nov 2025"
+    },
+    {
+      "school": "Veer Kunwar Singh University",
+      "detail": "Bachelor of Commerce (B.Com)",
+      "place": "Arrah, Bihar",
+      "dates": "2018 – 2021"
+    }
+  ]
+}

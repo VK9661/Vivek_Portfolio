@@ -1,0 +1,107 @@
+{
+  "output": "Vivek_Kumar_UI_UX_Designer_Resume.pdf",
+  "name": "Vivek Kumar",
+  "title": "UI/UX Designer",
+  "phone": "+91 9060961564",
+  "email": "vivekgupta9661@gmail.com",
+  "links": {
+    "portfolio": "https://vivek-portfolio-beta-eight.vercel.app",
+    "behance": "https://www.behance.net/vivekgupta143",
+    "linkedin": "https://www.linkedin.com/in/vivek-kumar-9641312a8"
+  },
+  "profile": "UI/UX Designer with about a year of hands-on experience designing websites and AI product interfaces. At AlgoRoot I revamped AlgoJob's AI career platform and the AlgoVox interface, taking work from wireframes and prototypes to high-fidelity Figma files with developer handoff. My case studies combine user research, accessible design systems and motion, from a medicine-care app for older parents to an AI scam checker for families.",
+  "experience": [
+    {
+      "company": "AlgoRoot Private Limited",
+      "role": "UI/UX Designer",
+      "location": "Bhubaneswar, Odisha",
+      "dates": "Aug 2025 – Aug 2026",
+      "bullets": [
+        "Revamped the UI/UX of AlgoJob's AI career platform, simplifying navigation and information architecture.",
+        "Redesigned the AlgoVox product interface and the AlgoRoot website end to end, with clearer visual hierarchy and consistency.",
+        "Produced wireframes, prototypes and high-fidelity Figma files with developer handoff documentation.",
+        "Applied WCAG accessibility standards while working with dev and marketing teams in an agile setup.",
+        "Wrote a UX/UI competitive research report on SkillWiz, an EdTech platform."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "FIKR",
+      "tag": "Healthcare App · UI/UX Case Study",
+      "bullets": [
+        "Designed a concept app where a parent confirms medicines with one \"Taken\" tap, so a child living far away is reassured without the parent feeling watched.",
+        "Ran five user interviews and affinity mapping, then built personas, user flows, wireframes, a Material 3 design system with night mode and a bilingual UI."
+      ]
+    },
+    {
+      "name": "Shady?",
+      "tag": "AI Scam Checker · UI/UX Case Study",
+      "bullets": [
+        "Designed an AI scam checker for families that gives a calm verdict, underlines the red flags in the message and offers one next step, or asks a trusted person when unsure.",
+        "Compared five existing checkers, built three personas and a token-based light and dark design system, with accessibility built in: large text and touch targets, and verdicts never shown by colour alone."
+      ]
+    },
+    {
+      "name": "ShopUp",
+      "tag": "E-commerce UX Case Study",
+      "bullets": [
+        "Ran user research and usability testing with 6 participants, plus persona, empathy map and competitive analysis.",
+        "Redesigned product discovery and checkout and added real-time delivery tracking, from information architecture to high-fidelity UI."
+      ]
+    },
+    {
+      "name": "Bewakoof",
+      "tag": "Heuristic Evaluation",
+      "bullets": [
+        "Audited the app against Nielsen's 10 heuristics, severity-rated the gaps and wrote prioritised recommendations."
+      ]
+    },
+    {
+      "name": "Talksy",
+      "tag": "Mobile App UI",
+      "bullets": [
+        "Designed a messaging app in Figma covering onboarding, chat and settings, backed by a reusable design system."
+      ]
+    }
+  ],
+  "skills": [
+    [
+      "UI/UX",
+      "Wireframing, Mockups, Prototyping, User Flows, High-Fidelity UI, Design Systems, Component Libraries, Interaction Design, Responsive Design, Information Architecture, User Research, Usability Testing, Heuristic Evaluation, Accessibility (WCAG), Design Thinking, Developer Handoff"
+    ],
+    [
+      "Motion",
+      "Motion Graphics, Logo Animation, UI Animation, Micro-interactions, Parallax and Carousel animation, 2D Animation, Frame-by-Frame Animation, Animation Principles"
+    ],
+    [
+      "Graphic",
+      "Branding, Logo Design, Visual Identity, Typography, Colour Theory, Layout & Composition, Visual Hierarchy, Pattern Design, Social Media Design, Poster Design, Marketing Asset Design, Illustrations, Visual Storytelling"
+    ],
+    [
+      "Collaboration",
+      "Brand Guidelines, Cross-functional Teams, Agile Workflow, Stakeholder Comms"
+    ]
+  ],
+  "tools": [
+    "Figma",
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "Adobe After Effects",
+    "Canva"
+  ],
+  "education": [
+    {
+      "school": "Dice Academy",
+      "detail": "Graphics, UI/UX & Motion Design",
+      "place": "New Delhi",
+      "dates": "Oct 2024 – Nov 2025"
+    },
+    {
+      "school": "Veer Kunwar Singh University",
+      "detail": "Bachelor of Commerce (B.Com)",
+      "place": "Arrah, Bihar",
+      "dates": "2018 – 2021"
+    }
+  ]
+}
