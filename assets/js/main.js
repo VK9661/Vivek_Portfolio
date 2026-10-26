@@ -255,6 +255,7 @@
           '<a href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
           '<a href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
           '<a href="assets/cv/Vivek_Kumar_CV.pdf" download>Download CV</a>' +
+          '<a href="assets/cv/Vivek_Kumar_Portfolio.pdf" download>Download portfolio PDF</a>' +
         '</div>' +
         '<div class="foot-end"><span>© ' + new Date().getFullYear() + ' Vivek Kumar</span><a class="to-top" href="#main" aria-label="Back to top">↑</a></div>' +
       '</div>' +
