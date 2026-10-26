@@ -251,6 +251,7 @@
           '<span class="foot-h">Elsewhere</span>' +
           '<a href="mailto:' + C.email + '">Email</a>' +
           '<a href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
+          '<a href="' + C.book + '" target="_blank" rel="noopener">Portfolio book on Behance</a>' +
           '<a href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
           '<a href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
           '<a href="assets/cv/Vivek_Kumar_CV.pdf" download>Download CV</a>' +

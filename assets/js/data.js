@@ -344,6 +344,7 @@ window.PROJECTS = [
 window.CONTACT = {
   email: 'vivekgupta9661@gmail.com',
   behance: 'https://www.behance.net/vivekgupta143',
+  book: 'https://www.behance.net/gallery/257604137/Viveks-Portfolio-2026-Brand-UIUX-Motion',
   linkedin: 'https://www.linkedin.com/in/vivek-kumar-9641312a8',
   instagram: 'https://www.instagram.com/16__vivek__'
 };
