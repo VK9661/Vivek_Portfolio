@@ -228,7 +228,8 @@ window.PROJECTS = [
       ['assets/img/gallery/enough/03.webp', 1400, 1660, 'One dinner, six states'],
       ['assets/img/gallery/enough/04.webp', 1400, 1960, 'Inside the fridge']
     ],
-    video: { label: 'film', items: [['1234800947', 1080, 1920, 'ENOUGH. film']] }
+    video: { label: 'film', items: [['1234800947', 1080, 1920, 'ENOUGH. film']] },
+    loop: 'assets/video/loop/enough.mp4'
   },
   {
     id: 'bijli-bazaar', title: 'BIJLI BAZAAR', kind: 'Social posts', cats: ['graphic'], color: 'pink', featured: false,
