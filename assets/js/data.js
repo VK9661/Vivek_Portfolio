@@ -193,6 +193,44 @@ window.PROJECTS = [
     loop: 'assets/video/loop/chashni.mp4'
   },
   {
+    id: 'enough', title: 'ENOUGH.', kind: 'Kinetic typography film', cats: ['motion'], color: 'pink', featured: false,
+    summary: 'A film about food waste, narrated by the dinner you didn\'t finish.',
+    about: 'A personal concept film about food waste, told by the dinner itself. In 42.6 seconds it moves from the plate to the fridge to the bin, and the typography changes with it.',
+    year: '2026', published: 'Oct 2026', tags: ['Motion', 'Kinetic typography', 'Social impact'],
+    tools: ['After Effects', 'Figma'],
+    img: 'assets/img/covers/enough.webp', w: 1400, h: 1095,
+    behance: 'https://www.behance.net/gallery/257694299/ENOUGH-The-dinner-you-didnt-finish',
+
+    facts: [['Type', 'Concept motion film'], ['Medium', 'Vertical video, 1080 × 1920'], ['Tools', 'After Effects, Figma'], ['Published', 'Oct 2026']],
+    writeup: [
+      { h: 'The challenge', p: ['Food waste is a numbers story, and numbers are hard to feel:'], list: ['1 billion meals are thrown away every day, and 60% of food waste happens at home', 'Everyone agrees it is a problem; nobody thinks it is them'] },
+      { h: 'The approach', p: ['The film gives the numbers a narrator: the dinner itself. It goes from the plate to the fridge to the bin, and the type goes off with it.', '"That\'s enough" is said once as an excuse and given back at the end as a demand: ENOUGH.'] },
+      { h: 'The details', list: ['Seven acts, seven moves: land, print, push, rot, reveal, still, slam', 'A printed receipt, decaying type and rolling counters', 'Timed to a measured voice on a 76 BPM grid', 'Three typefaces: Bricolage Grotesque, Instrument Serif and JetBrains Mono', 'Every move is a real keyframe, with no expressions'] }
+    ],
+    credits: 'Personal concept project. Concept, script and motion by Vivek Kumar. Images are AI-generated (Google Flow) and the voices are AI-generated (ElevenLabs). Music: "Sad" by The Mountain (Pixabay). Data: UNEP Food Waste Index Report 2024 and FAO, The State of Food Security and Nutrition in the World 2026.',
+    role: ['Concept', 'Scriptwriting', 'Art direction', 'Kinetic typography', 'Motion design'],
+    process: [
+      ['Insight', 'Food waste data from UNEP and FAO'],
+      ['Script', 'The dinner tells its own story, in seven acts'],
+      ['Art direction', 'One thali in six states, from full to empty'],
+      ['Type and colour', 'Three typefaces; tomato and mould as the accents'],
+      ['Animate', 'After Effects, on a 76 BPM grid']
+    ],
+    outcome: {
+      note: 'A personal concept film, so these are the results it is designed for, not live numbers.',
+      delivered: ['A 42.6-second vertical film, 1080 × 1920', 'Seven acts, each with its own motion device', 'A visual system of five colours and three typefaces', 'Boards on the premise, structure, art direction and motion'],
+      measure: ['How many viewers watch to the end', 'Shares and saves of the film', 'Whether viewers remember the line "that\'s enough"'],
+      shows: ['Kinetic typography that carries a story', 'Turning data into something people feel', 'Art direction of one subject in six states', 'Motion timed to voice and music']
+    },
+    gallery: [
+      ['assets/img/gallery/enough/01.webp', 1400, 1200, 'A film narrated by the dinner you didn\'t finish'],
+      ['assets/img/gallery/enough/02.webp', 1400, 857, 'Seven acts'],
+      ['assets/img/gallery/enough/03.webp', 1400, 1660, 'One dinner, six states'],
+      ['assets/img/gallery/enough/04.webp', 1400, 1960, 'Inside the fridge']
+    ],
+    video: { label: 'film', items: [['1234800947', 1080, 1920, 'ENOUGH. film']] }
+  },
+  {
     id: 'bijli-bazaar', title: 'BIJLI BAZAAR', kind: 'Social posts', cats: ['graphic'], color: 'pink', featured: false,
     summary: "Nine social posts for a night mela that doesn't exist, each solving a different layout problem.",
     about: 'BIJLI BAZAAR (बिजली बाज़ार, "the electric market") is an invented three-night music festival: a night mela of bulbs, tent edges and hand-painted signs. Nine social posts announce it, each in 4:5 and 9:16, and no photograph does the work.',

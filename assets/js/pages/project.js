@@ -51,7 +51,7 @@
     return '<section class="watch" aria-labelledby="watch-title">' +
       '<div class="sec-head" data-reveal><div><span class="kicker" aria-hidden="true">press play</span><h2 class="display t-lg" id="watch-title">Watch the <em class="hl">' + esc(v.label) + '</em></h2></div></div>' +
       '<div class="vids vids--' + v.items.length + '">' + v.items.map(function (it) {
-        return '<figure class="vid-f" data-reveal><button class="vid" type="button" data-host="' + esc(v.host || 'vimeo') + '" data-id="' + esc(it[0]) + '" data-title="' + esc(it[3]) + '" style="aspect-ratio:' + it[1] + ' / ' + it[2] + '">' +
+        return '<figure class="vid-f' + (it[2] > it[1] ? ' vid-f--tall' : '') + '" data-reveal><button class="vid" type="button" data-host="' + esc(v.host || 'vimeo') + '" data-id="' + esc(it[0]) + '" data-title="' + esc(it[3]) + '" style="aspect-ratio:' + it[1] + ' / ' + it[2] + '">' +
           '<img src="assets/img/video/' + esc(it[0]) + '.webp" alt="" loading="lazy" decoding="async">' +
           '<span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>' +
           '<span class="sr-only">Play ' + esc(it[3]) + '</span></button>' +
