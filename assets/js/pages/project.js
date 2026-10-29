@@ -30,7 +30,7 @@
   var tapeWords = [p.kind].concat(p.tags, p.published ? ['Published ' + p.published] : []);
   var tapeHTML = ''; for (var k = 0; k < 6; k++) tapeWords.forEach(function (w) { tapeHTML += '<span>' + esc(w) + '</span><i>✳</i>'; });
 
-  // At a glance: the problem, the idea and what was delivered, all taken from the write-up below
+  // At a glance: the problem, the idea and either verified proof or what was delivered
   function glance() {
     var ch = (p.writeup || []).filter(function (s) { return s.h === 'The challenge'; })[0];
     var ap = (p.writeup || []).filter(function (s) { return s.h === 'The approach'; })[0];
@@ -40,7 +40,8 @@
     var cells = '';
     if (ch && ch.list) cells += cell('The problem', 'var(--pink)', (ch.p && ch.p[0] ? '<p class="gl-lead">' + esc(ch.p[0]) + '</p>' : '') + list(ch.list.slice(0, 2)));
     if (idea) cells += cell('The idea', 'var(--sun)', '<p>' + esc(idea) + '</p>');
-    if (p.outcome && p.outcome.delivered) cells += cell('Delivered', 'var(--mint)', list(p.outcome.delivered.slice(0, 3)));
+    if (p.proof && p.proof.length) cells += cell('Evidence', 'var(--mint)', list(p.proof.slice(0, 3)));
+    else if (p.outcome && p.outcome.delivered) cells += cell('Delivered', 'var(--mint)', list(p.outcome.delivered.slice(0, 3)));
     return cells ? '<section class="glance-card" aria-label="At a glance" data-reveal>' + cells + '</section>' : '';
   }
 

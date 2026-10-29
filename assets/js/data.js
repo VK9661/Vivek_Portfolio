@@ -28,6 +28,7 @@
      credits   : optional small print under the write-up (music, AI use, disclaimers)
      role      : chips under "My role"
      process   : five steps under "Design process", [name, what happened]
+     proof     : optional verified evidence shown in the At a glance card, up to 3 items
      outcome   : { note, delivered, measure, shows }. No invented results: concept work says so.
      gallery   : 1 to 4 key boards from Behance, [path, w, h, caption]
      video     : optional, the films from the Behance post. { label, host, items: [[id, w, h, title]] }
@@ -60,6 +61,7 @@ window.PROJECTS = [
       ['Design', 'Logo, Material 3 system and final screens'],
       ['Animate', 'An After Effects film of the app']
     ],
+    proof: ['Five interviews, affinity mapping and personas', 'User flows and wireframes', 'A Material 3 design system with a night mode'],
     outcome: {
       note: 'A concept project, so these are the results it is designed for, not live numbers.',
       delivered: ['Research from five interviews, with affinity mapping', 'Personas, user flows and wireframes', 'A Material 3 design system with a night mode', 'Final screens and an After Effects film'],
@@ -138,6 +140,7 @@ window.PROJECTS = [
       ['Build', 'A working, installable web-app prototype'],
       ['Launch', 'A 41-second launch film']
     ],
+    proof: ['A working, installable web-app prototype', 'Own tests: 36 of 36 flows pass', 'Own tests: 10 of 10 test messages are judged right'],
     outcome: {
       note: 'A concept project. The prototype numbers come from my own tests; the rest are the results it is designed for, not live numbers.',
       delivered: ['Brand, logo and a light and dark design system', '16 app screens and 6 web screens', 'A working web-app prototype: 36 of 36 tested flows pass, and 10 of 10 test messages are judged right', 'A 41-second launch film'],
@@ -292,6 +295,7 @@ window.PROJECTS = [
       ['Design', 'Paper wireframing, visual design, prototype'],
       ['Testing', 'Usability checks, survey insights, improvements']
     ],
+    proof: ['User research and usability testing with six participants', 'Persona, empathy map and competitive analysis', 'Information architecture, user flows and wireframes'],
     outcome: {
       note: 'A concept project, so these are the results it is designed for, not live numbers.',
       delivered: ['User research and usability testing with six participants', 'Persona, empathy map and competitive analysis', 'Information architecture, user flows and wireframes', 'Style guide, high-fidelity UI and the ShopUp logo'],
