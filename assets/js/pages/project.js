@@ -203,7 +203,7 @@
   box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><figure><figcaption></figcaption></figure>';
   document.body.appendChild(box);
   // the image element is created on first open, so the page never holds an <img> without a source
-  var img = null, cap = box.querySelector('figcaption'), closeBtn = box.querySelector('.lightbox-close'), opener = null, blocked = [], closeTimer = null;
+  var img = null, cap = box.querySelector('figcaption'), closeBtn = box.querySelector('.lightbox-close'), opener = null, blocked = [], closeTimer = null, previousOverflow = '';
   var setPageInert = function (on) {
     if (on) {
       blocked = Array.prototype.map.call(document.body.children, function (node) { return { node: node, wasInert: node.inert }; }).filter(function (item) { return item.node !== box; });
@@ -215,11 +215,11 @@
   };
   var close = function () {
     box.classList.remove('is-open');
-    if (window.__lenis) window.__lenis.start();
     clearTimeout(closeTimer);
     closeTimer = setTimeout(function () {
       box.hidden = true;
       setPageInert(false);
+      document.documentElement.style.overflow = previousOverflow;
       if (opener) opener.focus({ preventScroll: true });
     }, 300);
   };
@@ -229,8 +229,9 @@
     if (!img) { img = document.createElement('img'); box.querySelector('figure').insertBefore(img, cap); }
     opener = b; img.src = src.src; img.alt = src.alt; cap.textContent = b.parentNode.querySelector('figcaption').textContent;
     clearTimeout(closeTimer); setPageInert(true);
+    previousOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
     box.hidden = false; void box.offsetWidth; box.classList.add('is-open');
-    if (window.__lenis) window.__lenis.stop();
     closeBtn.focus({ preventScroll: true });
   });
   box.addEventListener('click', function (e) { if (e.target === box || e.target.closest('.lightbox-close')) close(); });

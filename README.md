@@ -2,7 +2,7 @@
 
 Live: https://vivek-portfolio-beta-eight.vercel.app
 
-Plain HTML, CSS and JavaScript. No build step and no dependencies (Lenis smooth scroll loads from a CDN). Every push to `main` deploys to Vercel.
+Plain HTML, CSS and JavaScript. No build step and no runtime dependencies. Every push to `main` deploys to Vercel.
 
 ## Map
 
@@ -39,7 +39,7 @@ tools/                Not deployed (see .vercelignore)
   capture-linkedin.js LinkedIn showcase screenshots (+ mockup-template.html)
 ```
 
-Every page loads its scripts in the same order: `data.js`, `cards.js` (if needed), the page script, Lenis, `main.js`.
+Every page loads its scripts in the same order: `data.js`, `cards.js` (if needed), the page script, then `main.js`. Scrolling stays native so page rendering never waits on a third-party library.
 
 ## Run locally
 
