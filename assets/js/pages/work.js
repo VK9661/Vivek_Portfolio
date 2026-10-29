@@ -2,8 +2,7 @@
 (function () {
   var P = window.PROJECTS;
   var cases = document.getElementById('cases'), filters = document.getElementById('filters');
-  var eagerCount = matchMedia('(min-width: 1101px)').matches ? 3 : matchMedia('(min-width: 601px)').matches ? 2 : 1;
-  cases.innerHTML = P.map(function (p, i) { return window.workCard(p, { eager: i < eagerCount }); }).join('');
+  cases.innerHTML = P.map(function (p, i) { return window.workCard(p, i, false); }).join('');
   // Even 3-column grid: leftover cards on the last row sit in the middle (style.css)
   var balance = function () {
     var shown = Array.prototype.filter.call(cases.children, function (c) { return !c.classList.contains('is-hidden'); });

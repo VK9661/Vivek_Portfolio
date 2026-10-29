@@ -9,7 +9,7 @@
    this file, so their content gets reveals and cursor labels too.
 
    Contents
-     1. Smooth scrolling              6. Toast and copy email
+     1. Smooth scrolling (Lenis)      6. Toast and copy email
      2. Nav: build, menu              7. Blob eyes, "hello" cursor
      3. Nav: fold on scroll           8. Intro (Home, once a session)
      4. Day / night theme             9. Page transitions
@@ -27,15 +27,18 @@
   var C = window.CONTACT || {};
   var page = document.body.getAttribute('data-page') || '';
 
-  /* ---------- 1. Smooth scrolling ----------
-     Lenis is self-hosted, so the inertial glide never waits on a third-party
-     network. Touch stays native and reduced-motion visitors skip it entirely. */
+
+  /* ---------- 1. Smooth scrolling (Lenis) ----------
+     Lenis glides wheel and trackpad scrolling toward its target a little
+     each frame (lerp), which feels softer than a fixed duration. Touch
+     keeps the phone's own native scrolling, which is already the smoothest
+     there; sticky elements and keyboard scrolling still work as normal. */
   var lenis = null;
   if (window.Lenis && !reduceMotion) {
     lenis = new window.Lenis({
-      lerp: 0.12,
+      lerp: 0.085,
       smoothWheel: true,
-      wheelMultiplier: 0.95,
+      wheelMultiplier: 0.9,
       syncTouch: false
     });
     window.__lenis = lenis;
@@ -48,7 +51,7 @@
       var target = (id === '#' || id === '#main') ? 0 : document.querySelector(id);
       if (target === null) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -100, duration: 1 });
+      lenis.scrollTo(target, { offset: -100, duration: 1.4 });
     });
   }
 
@@ -95,9 +98,9 @@
         }).join('') +
         '<div class="chips">' +
           '<a class="chip" href="mailto:' + C.email + '">Email</a>' +
-          '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener noreferrer">Behance</a>' +
-          '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
-          '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener noreferrer">Instagram</a>' +
+          '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
+          '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
+          '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
         '</div>' +
       '</div>';
 
@@ -113,8 +116,9 @@
       menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
       menuText.textContent = open ? 'Close' : 'Menu';
       behind.forEach(function (el) { el.inert = open; });
-      root.style.overflow = open ? 'hidden' : '';
+      // one scroll lock only: Lenis when it runs, otherwise the page itself
       if (lenis) { if (open) lenis.stop(); else lenis.start(); }
+      else root.style.overflow = open ? 'hidden' : '';
       if (open) { var first = $('a.m', panel); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 250); }
     };
     menuBtn.addEventListener('click', function () { setMenu(!menuOpen()); });
@@ -223,9 +227,9 @@
             '<button class="btn btn--white btn--sm" type="button" data-copy="' + C.email + '">Copy email</button>' +
           '</div>' +
           '<div class="chips socials">' +
-            '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener noreferrer">Behance ↗</a>' +
-            '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>' +
-            '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener noreferrer">Instagram ↗</a>' +
+            '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener">Behance ↗</a>' +
+            '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn ↗</a>' +
+            '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener">Instagram ↗</a>' +
           '</div>' +
           '<p class="hand reply">my inbox is open, I reply faster than I should</p>' +
         '</div>' +
@@ -238,7 +242,7 @@
     footSlot.innerHTML =
       '<div class="wrap foot-grid">' +
         '<div class="foot-id"><b>Vivek Kumar</b><span>Graphic, UI/UX &amp; motion designer, video editor</span>' +
-          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance</span></div>' +
+          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance · India, IST</span></div>' +
         '<nav class="foot-links" aria-label="Footer">' +
           '<span class="foot-h">Pages</span>' +
           LINKS.concat([{ href: 'contact.html', label: 'Contact' }]).map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
@@ -246,10 +250,10 @@
         '<div class="foot-links">' +
           '<span class="foot-h">Elsewhere</span>' +
           '<a href="mailto:' + C.email + '">Email</a>' +
-          '<a href="' + C.behance + '" target="_blank" rel="noopener noreferrer">Behance</a>' +
-          '<a href="' + C.book + '" target="_blank" rel="noopener noreferrer">Portfolio book on Behance</a>' +
-          '<a href="' + C.linkedin + '" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
-          '<a href="' + C.instagram + '" target="_blank" rel="noopener noreferrer">Instagram</a>' +
+          '<a href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
+          '<a href="' + C.book + '" target="_blank" rel="noopener">Portfolio book on Behance</a>' +
+          '<a href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
+          '<a href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
           '<a href="assets/cv/Vivek_Kumar_CV.pdf" download>Download CV</a>' +
           '<a href="assets/cv/Vivek_Kumar_Portfolio.pdf" download>Download portfolio PDF</a>' +
         '</div>' +
@@ -308,14 +312,14 @@
     var AUTO = ['.page-hero > *:not(.ast)', '.sec-head', '.proj-sec', '.faq-item', '.link-rows a', '.cta-grid > *', '.cta .socials',
       '.foot-grid', '.svc-list .svc', '.cap-col', '.filters', '.journal-empty', '.read', '.w-list li'];
     $$(AUTO.join(',')).forEach(function (el) { if (!el.hasAttribute('data-reveal') && !el.closest('[data-reveal]')) el.setAttribute('data-reveal', ''); });
-    $$('.ph-copy > .lead, .ph-copy > .proj-meta, .ph-copy > .btn-row').forEach(function (el, i) { el.setAttribute('data-reveal', ''); el.style.setProperty('--d', (.12 + i * .06) + 's'); });
-    $$('.page-hero > [data-reveal]').forEach(function (el, i) { el.style.setProperty('--d', (i * .05) + 's'); });
+    $$('.ph-copy > .lead, .ph-copy > .proj-meta, .ph-copy > .btn-row').forEach(function (el, i) { el.setAttribute('data-reveal', ''); el.style.setProperty('--d', (.3 + i * .1) + 's'); });
+    $$('.page-hero > [data-reveal]').forEach(function (el, i) { el.style.setProperty('--d', (i * .08) + 's'); });
 
     var STAGGER = '.work-grid, .cases, .rows, .svc-tiles, .glance dl, .gal, .oc-grid, .steps-grid, .bento, .reads, .faq-list, .link-rows, .svc-list, .capboard, .w-list, .chips';
     $$(STAGGER).forEach(function (g) {
       Array.prototype.slice.call(g.children)
         .filter(function (k) { return k.hasAttribute('data-reveal'); })
-        .forEach(function (k, i) { if (!k.style.getPropertyValue('--d')) k.style.setProperty('--d', ((i % 4) * .05) + 's'); });
+        .forEach(function (k, i) { if (!k.style.getPropertyValue('--d')) k.style.setProperty('--d', ((i % 4) * .08) + 's'); });
     });
   }
 
@@ -418,20 +422,20 @@
       document.body.classList.remove('intro-on');
       root.classList.remove('is-locked');
       if (lenis) lenis.start();
-      setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 100);
+      setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 350);
       document.removeEventListener('keydown', finish);
-      setTimeout(function () { intro.remove(); }, 700);
+      setTimeout(function () { intro.remove(); }, 1400);
     };
     var type = function () {
       if (finished) return;
-      if (ci < lines[li].length) { out.textContent += lines[li][ci++]; setTimeout(type, li ? 24 : 26); }
-      else if (li < lines.length - 1) setTimeout(function () { out.textContent = ''; li++; ci = 0; type(); }, 120);
-      else setTimeout(finish, 180);
+      if (ci < lines[li].length) { out.textContent += lines[li][ci++]; setTimeout(type, li ? 46 : 50); }
+      else if (li < lines.length - 1) setTimeout(function () { out.textContent = ''; li++; ci = 0; type(); }, 300);
+      else setTimeout(finish, 320);
     };
-    setTimeout(type, 90);
+    setTimeout(type, 250);
     intro.addEventListener('click', finish);
     document.addEventListener('keydown', finish);
-    setTimeout(finish, 2800); // never trap the visitor
+    setTimeout(finish, 5000); // never trap the visitor
   }
 
 
@@ -448,14 +452,14 @@
   var lift = function () {
     if (!root.classList.contains('is-arriving') || root.classList.contains('is-revealing')) return;
     root.classList.add('is-revealing');
-    setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 70);
-    setTimeout(function () { root.classList.remove('is-arriving', 'is-revealing'); }, 420);
+    setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 180);
+    setTimeout(function () { root.classList.remove('is-arriving', 'is-revealing'); }, 720);
   };
   if (root.classList.contains('is-arriving')) {
     var fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-    Promise.race([fontsReady, new Promise(function (r) { setTimeout(r, 140); })]).then(function () {
+    Promise.race([fontsReady, new Promise(function (r) { setTimeout(r, 450); })]).then(function () {
       requestAnimationFrame(function () { requestAnimationFrame(lift); });
-      setTimeout(lift, 80); // in case rAF is throttled
+      setTimeout(lift, 120); // in case rAF is throttled
     });
   }
 
@@ -490,7 +494,7 @@
     var went = false;
     var go = function () { if (went) return; went = true; window.location.href = a.href; };
     curtain.addEventListener('transitionend', go, { once: true });
-    setTimeout(go, 340); // fallback
+    setTimeout(go, 650); // fallback
     requestAnimationFrame(function () { curtain.classList.add('is-in'); });
     setTimeout(function () { curtain.classList.add('is-in'); }, 30);
   });

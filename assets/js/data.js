@@ -28,7 +28,6 @@
      credits   : optional small print under the write-up (music, AI use, disclaimers)
      role      : chips under "My role"
      process   : five steps under "Design process", [name, what happened]
-     proof     : optional verified evidence shown in the At a glance card, up to 3 items
      outcome   : { note, delivered, measure, shows }. No invented results: concept work says so.
      gallery   : 1 to 4 key boards from Behance, [path, w, h, caption]
      video     : optional, the films from the Behance post. { label, host, items: [[id, w, h, title]] }
@@ -61,7 +60,6 @@ window.PROJECTS = [
       ['Design', 'Logo, Material 3 system and final screens'],
       ['Animate', 'An After Effects film of the app']
     ],
-    proof: ['Five interviews, affinity mapping and personas', 'User flows and wireframes', 'A Material 3 design system with a night mode'],
     outcome: {
       note: 'A concept project, so these are the results it is designed for, not live numbers.',
       delivered: ['Research from five interviews, with affinity mapping', 'Personas, user flows and wireframes', 'A Material 3 design system with a night mode', 'Final screens and an After Effects film'],
@@ -140,7 +138,6 @@ window.PROJECTS = [
       ['Build', 'A working, installable web-app prototype'],
       ['Launch', 'A 41-second launch film']
     ],
-    proof: ['A working, installable web-app prototype', 'Own tests: 36 of 36 flows pass', 'Own tests: 10 of 10 test messages are judged right'],
     outcome: {
       note: 'A concept project. The prototype numbers come from my own tests; the rest are the results it is designed for, not live numbers.',
       delivered: ['Brand, logo and a light and dark design system', '16 app screens and 6 web screens', 'A working web-app prototype: 36 of 36 tested flows pass, and 10 of 10 test messages are judged right', 'A 41-second launch film'],
@@ -161,11 +158,11 @@ window.PROJECTS = [
     summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
     about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
-    tools: ['Illustrator', 'Photoshop', 'After Effects'],
+    tools: ['Illustrator', 'Photoshop', 'After Effects', 'Adobe Firefly', 'Google Veo', 'Google Flow', 'ElevenLabs'],
     img: 'assets/img/covers/chashni.jpg', w: 1400, h: 1095,
     behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
 
-    facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects'], ['Published', 'Oct 2026']],
+    facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects, Adobe Firefly, Google Veo, Google Flow, ElevenLabs'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The challenge', p: ['Every Diwali, the same gift box does the rounds unopened:'], list: ['Nothing on the box says what is inside', 'So it gets passed on instead of opened'] },
       { h: 'The approach', p: ['One mark, one colour variable, four sweets. The pour on the lid and the drawer take the colour of the sweet, so the box names what it holds before anyone opens it.', 'The identity is bilingual, set in Devanagari and Latin.'] },
@@ -277,11 +274,11 @@ window.PROJECTS = [
     summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
     about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
     year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'],
-    tools: ['Figma', 'Illustrator', 'Photoshop'],
+    tools: ['Figma', 'Illustrator', 'Photoshop', 'Miro', 'Google Forms'],
     img: 'assets/img/covers/shopup.jpg', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/248983891/ShopUp-Case-Study',
 
-    facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop'], ['Published', 'May 2026']],
+    facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop, Miro, Google Forms'], ['Published', 'May 2026']],
     writeup: [
       { h: 'The challenge', p: ['Research surfaced recurring pain points, including:'], list: ['“I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.”', '“I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.”'] },
       { h: 'The approach', p: ['Unlike generic e-commerce giants, ShopUp is designed with the user at the centre: a smarter, more personalised shopping experience using AI-powered recommendations that understand taste, needs and budget.', 'A clutter-free interface, fast delivery and real-time customer support aim to make shopping seamless, not stressful, while curated collections, exclusive deals and local seller support help people discover unique products.'] },
@@ -295,7 +292,6 @@ window.PROJECTS = [
       ['Design', 'Paper wireframing, visual design, prototype'],
       ['Testing', 'Usability checks, survey insights, improvements']
     ],
-    proof: ['User research and usability testing with six participants', 'Persona, empathy map and competitive analysis', 'Information architecture, user flows and wireframes'],
     outcome: {
       note: 'A concept project, so these are the results it is designed for, not live numbers.',
       delivered: ['User research and usability testing with six participants', 'Persona, empathy map and competitive analysis', 'Information architecture, user flows and wireframes', 'Style guide, high-fidelity UI and the ShopUp logo'],
