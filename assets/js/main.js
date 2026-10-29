@@ -98,9 +98,9 @@
         }).join('') +
         '<div class="chips">' +
           '<a class="chip" href="mailto:' + C.email + '">Email</a>' +
-          '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
-          '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
-          '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
+          '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener noreferrer">Behance</a>' +
+          '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
+          '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener noreferrer">Instagram</a>' +
         '</div>' +
       '</div>';
 
@@ -227,9 +227,9 @@
             '<button class="btn btn--white btn--sm" type="button" data-copy="' + C.email + '">Copy email</button>' +
           '</div>' +
           '<div class="chips socials">' +
-            '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener">Behance ↗</a>' +
-            '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn ↗</a>' +
-            '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener">Instagram ↗</a>' +
+            '<a class="chip" href="' + C.behance + '" target="_blank" rel="noopener noreferrer">Behance ↗</a>' +
+            '<a class="chip" href="' + C.linkedin + '" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>' +
+            '<a class="chip" href="' + C.instagram + '" target="_blank" rel="noopener noreferrer">Instagram ↗</a>' +
           '</div>' +
           '<p class="hand reply">my inbox is open, I reply faster than I should</p>' +
         '</div>' +
@@ -242,7 +242,7 @@
     footSlot.innerHTML =
       '<div class="wrap foot-grid">' +
         '<div class="foot-id"><b>Vivek Kumar</b><span>Graphic, UI/UX &amp; motion designer, video editor</span>' +
-          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance · India, IST</span></div>' +
+          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance</span></div>' +
         '<nav class="foot-links" aria-label="Footer">' +
           '<span class="foot-h">Pages</span>' +
           LINKS.concat([{ href: 'contact.html', label: 'Contact' }]).map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
@@ -250,10 +250,10 @@
         '<div class="foot-links">' +
           '<span class="foot-h">Elsewhere</span>' +
           '<a href="mailto:' + C.email + '">Email</a>' +
-          '<a href="' + C.behance + '" target="_blank" rel="noopener">Behance</a>' +
-          '<a href="' + C.book + '" target="_blank" rel="noopener">Portfolio book on Behance</a>' +
-          '<a href="' + C.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
-          '<a href="' + C.instagram + '" target="_blank" rel="noopener">Instagram</a>' +
+          '<a href="' + C.behance + '" target="_blank" rel="noopener noreferrer">Behance</a>' +
+          '<a href="' + C.book + '" target="_blank" rel="noopener noreferrer">Portfolio book on Behance</a>' +
+          '<a href="' + C.linkedin + '" target="_blank" rel="noopener noreferrer">LinkedIn</a>' +
+          '<a href="' + C.instagram + '" target="_blank" rel="noopener noreferrer">Instagram</a>' +
           '<a href="assets/cv/Vivek_Kumar_CV.pdf" download>Download CV</a>' +
           '<a href="assets/cv/Vivek_Kumar_Portfolio.pdf" download>Download portfolio PDF</a>' +
         '</div>' +

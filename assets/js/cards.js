@@ -18,9 +18,10 @@
   window.escapeHTML = esc;
   window.swatchOf = swatch;
 
-  window.workCard = function (p) {
+  window.workCard = function (p, options) {
+    var eager = options && options.eager;
     return '<a class="work-card" href="project-' + p.id + '.html" style="--c:' + swatch(p) + '" data-reveal data-cats="' + (p.cats || []).join(' ') + '">' +
-      '<div class="media"><span class="m-box"><img' + fit(p) + ' src="' + p.img + '" alt="' + esc(p.title) + ' cover" width="' + p.w + '" height="' + p.h + '" loading="lazy">' +
+      '<div class="media"><span class="m-box"><img' + fit(p) + ' src="' + p.img + '" alt="' + esc(p.title) + ' cover" width="' + p.w + '" height="' + p.h + '" loading="' + (eager ? 'eager' : 'lazy') + '"' + (eager ? ' fetchpriority="high"' : '') + '>' +
         (p.loop ? '<video class="card-loop" data-src="' + p.loop + '" muted loop playsinline preload="none" aria-hidden="true"></video>' : '') + '</span></div>' +
       '<div class="body">' +
         '<div><span class="eyebrow muted">' + esc(p.kind) + (cardDate(p) ? ' · ' + esc(cardDate(p)) : '') + '</span><h3>' + esc(p.title) + '</h3></div>' +

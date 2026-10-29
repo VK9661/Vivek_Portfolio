@@ -60,6 +60,16 @@
       }).join('') + '</div></section>';
   }
 
+  // Give recruiters one final interface before the long case-study narrative.
+  function preview() {
+    if ((p.cats || []).indexOf('ux') < 0 || !p.gallery || !p.gallery.length) return '';
+    var g = p.gallery[0];
+    return '<section class="case-preview" aria-labelledby="preview-title" data-reveal>' +
+      '<div class="case-preview-copy"><span class="kicker" aria-hidden="true">final interface</span><h2 class="display t-lg" id="preview-title">A quick <em class="hl">look</em></h2></div>' +
+      '<figure><img src="' + g[0] + '" alt="' + esc(p.title) + ': ' + esc(g[3]) + '" width="' + g[1] + '" height="' + g[2] + '" loading="lazy" decoding="async"><figcaption>' + esc(g[3]) + '</figcaption></figure>' +
+    '</section>';
+  }
+
   var html =
     '<header class="ph" style="--accent:' + accent + ';--c:' + sw + '">' +
       '<div class="ph-bar">' +
@@ -72,7 +82,7 @@
           '<h1 class="ph-title">' + esc(p.title) + '</h1>' +
           '<p class="lead">' + esc(p.summary) + '</p>' + meta +
           '<div class="btn-row">' +
-            (p.behance ? '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener">View on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') +
+            (p.behance ? '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener noreferrer">View on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') +
             '<a class="btn btn--white" href="#story">Read the story <span class="ar" aria-hidden="true">&#8595;</span></a>' +
           '</div>' +
         '</div>' +
@@ -87,11 +97,11 @@
     '</header>' +
     '<div class="ph-tape" aria-hidden="true" style="--accent:' + accent + '"><div class="track">' + tapeHTML + '</div></div>' +
     '<span id="story"></span>' +
-    glance() + watch() +
+    glance() + preview() + watch() +
     '<section class="proj-overview">' +
       '<div class="facts card" data-reveal><h2 class="eyebrow">Project facts</h2><dl>' +
         (p.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
-      '</dl>' + (p.behance ? '<a class="btn btn--sm btn--sun" href="' + p.behance + '" target="_blank" rel="noopener">Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') + '</div>' +
+      '</dl>' + (p.behance ? '<a class="btn btn--sm btn--sun" href="' + p.behance + '" target="_blank" rel="noopener noreferrer">Behance <span class="ar" aria-hidden="true">&#8599;</span></a>' : '') + '</div>' +
       '<div class="writeup">' +
         '<div class="w-intro" data-reveal><p class="intro-p">' + esc(intro[0]) + '</p>' + (intro[1] ? '<p class="intro-rest">' + esc(intro[1]) + '</p>' : '') + '</div>' +
         (p.writeup || []).map(function (s, i) {
@@ -145,7 +155,7 @@
 
   if (p.behance) {
     html += '<section class="pending"><div class="card taped" data-reveal><h2>See every frame</h2><p>The full ' + esc(p.title) + ' presentation, with all boards' + (p.cats.indexOf('motion') > -1 ? ' and the animation' : '') + ', lives on Behance.</p>' +
-      '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener">Open on Behance <span class="ar" aria-hidden="true">&#8599;</span></a></div></section>';
+      '<a class="btn" href="' + p.behance + '" target="_blank" rel="noopener noreferrer">Open on Behance <span class="ar" aria-hidden="true">&#8599;</span></a></div></section>';
   }
 
   // Previous / next: a neutral card with a thumbnail; the project's colour is the accent bar
@@ -193,24 +203,42 @@
   box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><figure><figcaption></figcaption></figure>';
   document.body.appendChild(box);
   // the image element is created on first open, so the page never holds an <img> without a source
-  var img = null, cap = box.querySelector('figcaption'), closeBtn = box.querySelector('.lightbox-close'), opener = null;
+  var img = null, cap = box.querySelector('figcaption'), closeBtn = box.querySelector('.lightbox-close'), opener = null, blocked = [], closeTimer = null;
+  var setPageInert = function (on) {
+    if (on) {
+      blocked = Array.prototype.map.call(document.body.children, function (node) { return { node: node, wasInert: node.inert }; }).filter(function (item) { return item.node !== box; });
+      blocked.forEach(function (item) { item.node.inert = true; });
+    } else {
+      blocked.forEach(function (item) { item.node.inert = item.wasInert; });
+      blocked = [];
+    }
+  };
   var close = function () {
     box.classList.remove('is-open');
     if (window.__lenis) window.__lenis.start();
-    setTimeout(function () { box.hidden = true; }, 300);
-    if (opener) opener.focus({ preventScroll: true });
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function () {
+      box.hidden = true;
+      setPageInert(false);
+      if (opener) opener.focus({ preventScroll: true });
+    }, 300);
   };
   gal.addEventListener('click', function (e) {
     var b = e.target.closest('.gal-open'); if (!b) return;
     var src = b.querySelector('img');
     if (!img) { img = document.createElement('img'); box.querySelector('figure').insertBefore(img, cap); }
     opener = b; img.src = src.src; img.alt = src.alt; cap.textContent = b.parentNode.querySelector('figcaption').textContent;
+    clearTimeout(closeTimer); setPageInert(true);
     box.hidden = false; void box.offsetWidth; box.classList.add('is-open');
     if (window.__lenis) window.__lenis.stop();
     closeBtn.focus({ preventScroll: true });
   });
   box.addEventListener('click', function (e) { if (e.target === box || e.target.closest('.lightbox-close')) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (box.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus({ preventScroll: true }); }
+  });
 })();
 
 (function () {

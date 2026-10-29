@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reading list | Vivek Kumar</title>
 <meta name="description" content="A design reading list by Vivek Kumar: UX, UI, branding, type and motion.">
+<link rel="canonical" href="https://vivek-portfolio-beta-eight.vercel.app/journal.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vivek Kumar">
 <meta property="og:title" content="Reading list | Vivek Kumar">
@@ -25,6 +26,8 @@
 <meta name="theme-color" content="#F2F1FA">
 <link rel="icon" type="image/png" href="assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
 </head>
@@ -46,29 +49,20 @@
       </aside>
     </header>
 
-    <section class="card journal-empty" aria-labelledby="own-title">
-      <div>
-        <span class="eyebrow muted">From me</span>
-        <h2 id="own-title">My own write-ups are on the way.</h2>
-        <p class="muted">Until then, the latest work lives on Behance.</p>
-      </div>
-      <a class="btn" href="https://www.behance.net/vivekgupta143" target="_blank" rel="noopener">Follow on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>
-    </section>
-
     <h2 class="sr-only">Articles and guides</h2>
     <div class="filters" id="read-filters" role="group" aria-label="Filter the reading list"></div>
     <!-- To add a read: copy an <a class="read"> below. data-cat: ux | ui | brand | type | motion -->
     <div class="reads" id="reads" aria-live="polite">
-      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener"><span class="src">Nielsen Norman Group</span><h3>10 Usability Heuristics for User Interface Design</h3><p>Jakob Nielsen's ten general principles for interaction design, and the usual basis for a heuristic evaluation.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://lawsofux.com/" target="_blank" rel="noopener"><span class="src">Jon Yablonski</span><h3>Laws of UX</h3><p>Psychology principles like Fitts's law, Hick's law and the Peak-End rule, explained for designers.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://www.refactoringui.com/" target="_blank" rel="noopener"><span class="src">Adam Wathan &amp; Steve Schoger</span><h3>Refactoring UI</h3><p>Practical tactics for better-looking interfaces: hierarchy, spacing, colour and depth.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://developer.apple.com/design/human-interface-guidelines/" target="_blank" rel="noopener"><span class="src">Apple</span><h3>Human Interface Guidelines</h3><p>Apple's guidance for designing apps across iPhone, iPad, Mac and its other platforms.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://m3.material.io/" target="_blank" rel="noopener"><span class="src">Google</span><h3>Material Design 3</h3><p>Google's open-source design system: components, design tokens and usage guidelines.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://www.smashingmagazine.com/" target="_blank" rel="noopener"><span class="src">Smashing Magazine</span><h3>Smashing Magazine</h3><p>A long-running magazine for web designers and developers, covering UX, accessibility and front-end.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://www.figma.com/blog/" target="_blank" rel="noopener"><span class="src">Figma</span><h3>Figma Blog</h3><p>Product news, design practice and stories from the team behind the tool.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="brand" style="--c:var(--pink)" href="https://www.underconsideration.com/brandnew/" target="_blank" rel="noopener"><span class="src">UnderConsideration</span><h3>Brand New</h3><p>Opinions on corporate and brand identity work, with before-and-after looks at new logos.</p><span class="foot"><span class="chip">Brand</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="type" style="--c:var(--sun)" href="https://fonts.google.com/knowledge" target="_blank" rel="noopener"><span class="src">Google Fonts</span><h3>Fonts Knowledge</h3><p>Free lessons on typography, from choosing and pairing type to variable fonts.</p><span class="foot"><span class="chip">Type</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
-      <a class="read" data-cat="motion" style="--c:var(--lilac)" href="https://www.schoolofmotion.com/blog" target="_blank" rel="noopener"><span class="src">School of Motion</span><h3>School of Motion Blog</h3><p>Tutorials, ideas and resources on motion design and After Effects.</p><span class="foot"><span class="chip">Motion</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener noreferrer"><span class="src">Nielsen Norman Group</span><h3>10 Usability Heuristics for User Interface Design</h3><p>Jakob Nielsen's ten general principles for interaction design, and the usual basis for a heuristic evaluation.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://lawsofux.com/" target="_blank" rel="noopener noreferrer"><span class="src">Jon Yablonski</span><h3>Laws of UX</h3><p>Psychology principles like Fitts's law, Hick's law and the Peak-End rule, explained for designers.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://www.refactoringui.com/" target="_blank" rel="noopener noreferrer"><span class="src">Adam Wathan &amp; Steve Schoger</span><h3>Refactoring UI</h3><p>Practical tactics for better-looking interfaces: hierarchy, spacing, colour and depth.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://developer.apple.com/design/human-interface-guidelines/" target="_blank" rel="noopener noreferrer"><span class="src">Apple</span><h3>Human Interface Guidelines</h3><p>Apple's guidance for designing apps across iPhone, iPad, Mac and its other platforms.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://m3.material.io/" target="_blank" rel="noopener noreferrer"><span class="src">Google</span><h3>Material Design 3</h3><p>Google's open-source design system: components, design tokens and usage guidelines.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ux" style="--c:var(--mint)" href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer"><span class="src">Smashing Magazine</span><h3>Smashing Magazine</h3><p>A long-running magazine for web designers and developers, covering UX, accessibility and front-end.</p><span class="foot"><span class="chip">UX</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="ui" style="--c:var(--sky)" href="https://www.figma.com/blog/" target="_blank" rel="noopener noreferrer"><span class="src">Figma</span><h3>Figma Blog</h3><p>Product news, design practice and stories from the team behind the tool.</p><span class="foot"><span class="chip">UI</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="brand" style="--c:var(--pink)" href="https://www.underconsideration.com/brandnew/" target="_blank" rel="noopener noreferrer"><span class="src">UnderConsideration</span><h3>Brand New</h3><p>Opinions on corporate and brand identity work, with before-and-after looks at new logos.</p><span class="foot"><span class="chip">Brand</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="type" style="--c:var(--sun)" href="https://fonts.google.com/knowledge" target="_blank" rel="noopener noreferrer"><span class="src">Google Fonts</span><h3>Fonts Knowledge</h3><p>Free lessons on typography, from choosing and pairing type to variable fonts.</p><span class="foot"><span class="chip">Type</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
+      <a class="read" data-cat="motion" style="--c:var(--lilac)" href="https://www.schoolofmotion.com/blog" target="_blank" rel="noopener noreferrer"><span class="src">School of Motion</span><h3>School of Motion Blog</h3><p>Tutorials, ideas and resources on motion design and After Effects.</p><span class="foot"><span class="chip">Motion</span><span class="round-ar" aria-hidden="true">&#8599;</span></span></a>
     </div>
   </div>
 
