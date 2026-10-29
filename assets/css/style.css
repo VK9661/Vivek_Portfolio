@@ -381,6 +381,12 @@ html.is-arriving.is-revealing::before { transform: translate3d(0, -100%, 0); tra
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 ::view-transition-new(root) { z-index: 2; }
 
+/* Self-hosted Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
 
 /* ---------- 7. Nav, menu, day/night switch ----------
    One floating glass pill. Scrolling down the page folds it to a compact

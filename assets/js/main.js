@@ -9,7 +9,7 @@
    this file, so their content gets reveals and cursor labels too.
 
    Contents
-     1. Native scrolling              6. Toast and copy email
+     1. Smooth scrolling              6. Toast and copy email
      2. Nav: build, menu              7. Blob eyes, "hello" cursor
      3. Nav: fold on scroll           8. Intro (Home, once a session)
      4. Day / night theme             9. Page transitions
@@ -27,10 +27,30 @@
   var C = window.CONTACT || {};
   var page = document.body.getAttribute('data-page') || '';
 
-  /* ---------- 1. Native scrolling ----------
-     CSS handles smooth in-page jumps. Keeping scrolling native removes an
-     external blocking request and lets the browser own wheel, touch and
-     keyboard input without a permanent animation loop. */
+  /* ---------- 1. Smooth scrolling ----------
+     Lenis is self-hosted, so the inertial glide never waits on a third-party
+     network. Touch stays native and reduced-motion visitors skip it entirely. */
+  var lenis = null;
+  if (window.Lenis && !reduceMotion) {
+    lenis = new window.Lenis({
+      lerp: 0.12,
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      syncTouch: false
+    });
+    window.__lenis = lenis;
+    var lenisFrame = function (time) { lenis.raf(time); requestAnimationFrame(lenisFrame); };
+    requestAnimationFrame(lenisFrame);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a || a.classList.contains('skip-link')) return;
+      var id = a.getAttribute('href');
+      var target = (id === '#' || id === '#main') ? 0 : document.querySelector(id);
+      if (target === null) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -100, duration: 1 });
+    });
+  }
 
 
   /* ---------- 2. Nav: build, menu ---------- */
@@ -94,6 +114,7 @@
       menuText.textContent = open ? 'Close' : 'Menu';
       behind.forEach(function (el) { el.inert = open; });
       root.style.overflow = open ? 'hidden' : '';
+      if (lenis) { if (open) lenis.stop(); else lenis.start(); }
       if (open) { var first = $('a.m', panel); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 250); }
     };
     menuBtn.addEventListener('click', function () { setMenu(!menuOpen()); });
@@ -389,12 +410,14 @@
     document.body.appendChild(intro);
     document.body.classList.add('intro-on');
     root.classList.add('is-locked');
+    if (lenis) lenis.stop();
     var out = $('.typed', intro), lines = ['Hey there!', 'Welcome to my portfolio.'], li = 0, ci = 0, finished = false;
     var finish = function () {
       if (finished) return; finished = true;
       intro.classList.add('is-out');
       document.body.classList.remove('intro-on');
       root.classList.remove('is-locked');
+      if (lenis) lenis.start();
       setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 100);
       document.removeEventListener('keydown', finish);
       setTimeout(function () { intro.remove(); }, 700);
@@ -463,6 +486,7 @@
     if (leaving) return;
     leaving = true;
     try { sessionStorage.setItem('vk-curtain', '1'); } catch (err) {}
+    if (lenis) lenis.stop();
     var went = false;
     var go = function () { if (went) return; went = true; window.location.href = a.href; };
     curtain.addEventListener('transitionend', go, { once: true });
@@ -474,5 +498,6 @@
     if (!e.persisted) return;
     leaving = false; curtain.className = 'curtain';
     root.classList.remove('is-arriving', 'is-revealing');
+    if (lenis) lenis.start();
   });
 })();

@@ -215,6 +215,7 @@
   };
   var close = function () {
     box.classList.remove('is-open');
+    if (window.__lenis) window.__lenis.start();
     clearTimeout(closeTimer);
     closeTimer = setTimeout(function () {
       box.hidden = true;
@@ -232,6 +233,7 @@
     previousOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = 'hidden';
     box.hidden = false; void box.offsetWidth; box.classList.add('is-open');
+    if (window.__lenis) window.__lenis.stop();
     closeBtn.focus({ preventScroll: true });
   });
   box.addEventListener('click', function (e) { if (e.target === box || e.target.closest('.lightbox-close')) close(); });
