@@ -180,6 +180,7 @@ window.PROJECTS = [
     outcome: {
       note: 'A concept project, so these are the checks it is designed to pass, not live results.',
       delivered: ['Wordmark, seal and monogram', 'Named colour and typography system', 'Repeat patterns based on real weave drafts', 'Membership, stationery, archive, signage and bag applications', 'A 7-page brand guide'],
+      measure: ['Can people understand the link between a weave draft and the identity without explanation', 'Does the wordmark and seal stay clear from a membership card to signage', 'Is the one-gold-finish rule used consistently across applications', 'Are the ink, foil and deboss layers clear enough for production handoff'],
       shows: ['Building a brand system from its subject', 'Translating weaving logic into repeat patterns', 'Premium identity design with restrained colour and finish', 'Preparing flat artwork and brand guidelines']
     },
     gallery: [
