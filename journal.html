@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>/* Before the first paint: theme (saved choice, else the device setting) and the page-transition cover */
-(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}try{if(sessionStorage.getItem("vk-curtain")==="1"){d.classList.add("is-arriving");setTimeout(function(){d.classList.remove("is-arriving","is-revealing")},2500)}}catch(e){}})(document.documentElement);</script>
+<script>/* Before the first paint: theme (saved choice, else the device setting) */
+(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reading list | Vivek Kumar</title>
 <meta name="description" content="A design reading list by Vivek Kumar: UX, UI, branding, type and motion.">
@@ -30,7 +30,7 @@
 </head>
 <body data-page="journal">
 <header data-site-nav>
-  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="journal.html">Reading list</a><a href="contact.html">Contact</a></nav></noscript>
+  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a></nav></noscript>
 </header>
 
 <main id="main">
@@ -45,15 +45,6 @@
         <p>reads I come back to, on UX, UI, brand, type and motion.</p>
       </aside>
     </header>
-
-    <section class="card journal-empty" aria-labelledby="own-title">
-      <div>
-        <span class="eyebrow muted">From me</span>
-        <h2 id="own-title">My own write-ups are on the way.</h2>
-        <p class="muted">Until then, the latest work lives on Behance.</p>
-      </div>
-      <a class="btn" href="https://www.behance.net/vivekgupta143" target="_blank" rel="noopener">Follow on Behance <span class="ar" aria-hidden="true">&#8599;</span></a>
-    </section>
 
     <h2 class="sr-only">Articles and guides</h2>
     <div class="filters" id="read-filters" role="group" aria-label="Filter the reading list"></div>

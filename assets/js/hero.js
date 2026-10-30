@@ -6,7 +6,6 @@
   if (!hero) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var waitIntro = function (fn) { (function check() { if (document.body.classList.contains('intro-on')) setTimeout(check, 120); else fn(); })(); };
 
   /* 1. The headline: every letter is its own hover target (spaces stay plain text) */
   Array.prototype.forEach.call(hero.querySelectorAll('.hp-word'), function (w) {
@@ -42,7 +41,7 @@
   pill.addEventListener('click', function () { next(); start(); });
   pill.addEventListener('mouseenter', function () { clearInterval(rtimer); });
   pill.addEventListener('mouseleave', start);
-  waitIntro(function () { setTimeout(start, 1400); });
+  setTimeout(start, 1400);
 
   if (reduce || !fine) return;
 

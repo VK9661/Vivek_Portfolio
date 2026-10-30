@@ -2,7 +2,7 @@
 
 Live: https://vivek-portfolio-beta-eight.vercel.app
 
-Plain HTML, CSS and JavaScript. No build step and no dependencies (Lenis smooth scroll loads from a CDN). Every push to `main` deploys to Vercel.
+Plain HTML, CSS and JavaScript. No build step. Lenis smooth scrolling loads from a CDN. Every push to `main` deploys to Vercel.
 
 ## Map
 
@@ -11,7 +11,7 @@ index.html            Home: hero, selected work, the drawer, service tiles
 work.html             All projects, with category filters
 about.html            Bio, CV download, background, toolkit
 services.html         Services, process, capabilities, FAQ
-journal.html          Reading list
+journal.html          Reading list (linked from the footer)
 contact.html          Email, socials, note form
 404.html              Not-found page
 project.html          Project page template
@@ -56,16 +56,19 @@ Then open http://localhost:5173.
 3. Run `python tools/build-share.py`. It needs Python with Pillow, Node and Chrome. It writes the project's page and its link-preview image.
 4. Commit and push.
 
-Every project page shows the same sections:
+Every project page uses this shared sequence:
 1. Hero
-2. Project facts (Type, Medium, Tools, Published)
-3. The challenge, The approach, The details
-4. Credits, only where a project has them
-5. My role
-6. Design process
-7. Outcome
-8. Highlights
-9. The Behance link
+2. First look: the first gallery board, shown early and opened larger on request
+3. Film, when the project has one
+4. Project facts (Type, Medium, Tools, Published)
+5. The challenge, The approach, The details
+6. Credits, only where a project has them
+7. My role and design process
+8. Outcome, including proposed success checks for concept work
+9. Highlights: the remaining gallery boards
+10. The Behance link
+
+The gallery board is rendered once in the page. Keep generated imagery and voices in `credits`, separate from the designer's own tool list. Main navigation focuses on Work, About, Services and Contact; the curated Reading list remains accessible from the footer.
 
 ## Link previews
 
@@ -96,5 +99,6 @@ The style is **sticker / neo-brutalist, playful and illustrated**: the hero's st
 - **Contact wording:** "Say hello" everywhere (nav, hero, contact band).
 - **Blob buddy:** `.peek-buddy` peeks over a colour block; every `.blob` watches the cursor.
 - **Finale:** the contact band ("Got a project? Say hello.") and the footer are one dark ink block in both themes.
-- **Themes:** day (warm paper `#FAF9F6`) and night (dark ink `#0F0E17`). Visitors switch with the animated sun/moon switch (`.tsw`, built in main.js), which sits on its own outside the nav: top right on desktop, bottom right on smaller screens. The site follows the device setting, then remembers the visitor's choice (`localStorage` key `vk-theme`). An inline script in each `<head>` sets the theme before the first paint.
+- **Themes:** day (warm paper `#FAF9F6`) and night (dark ink `#0F0E17`). Visitors switch with the animated sun/moon switch (`.tsw`, built in main.js), inside the nav on phones and beside it on desktop. The site follows the device setting, then remembers the visitor's choice (`localStorage` key `vk-theme`). An inline script in each `<head>` sets the theme before the first paint.
+- **Navigation:** links navigate immediately. Page content reveals after loading; no blocking intro or transition curtain.
 - **CSS:** written mobile first, with breakpoints at 381, 601, 901 and 1101px (`min-width` only). All tokens are at the top of `style.css`.

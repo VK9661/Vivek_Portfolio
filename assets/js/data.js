@@ -195,11 +195,11 @@ window.PROJECTS = [
     summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
     about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
-    tools: ['Illustrator', 'Photoshop', 'After Effects', 'Adobe Firefly', 'Google Veo', 'Google Flow', 'ElevenLabs'],
+    tools: ['Illustrator', 'Photoshop', 'After Effects'],
     img: 'assets/img/covers/chashni.jpg', w: 1400, h: 1095,
     behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
 
-    facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects, Adobe Firefly, Google Veo, Google Flow, ElevenLabs'], ['Published', 'Oct 2026']],
+    facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The challenge', p: ['Every Diwali, the same gift box does the rounds unopened:'], list: ['Nothing on the box says what is inside', 'So it gets passed on instead of opened'] },
       { h: 'The approach', p: ['One mark, one colour variable, four sweets. The pour on the lid and the drawer take the colour of the sweet, so the box names what it holds before anyone opens it.', 'The identity is bilingual, set in Devanagari and Latin.'] },
@@ -311,11 +311,11 @@ window.PROJECTS = [
     summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
     about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
     year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'],
-    tools: ['Figma', 'Illustrator', 'Photoshop', 'Miro', 'Google Forms'],
+    tools: ['Figma', 'Illustrator', 'Photoshop'],
     img: 'assets/img/covers/shopup.jpg', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/248983891/ShopUp-Case-Study',
 
-    facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop, Miro, Google Forms'], ['Published', 'May 2026']],
+    facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop'], ['Published', 'May 2026']],
     writeup: [
       { h: 'The challenge', p: ['Research surfaced recurring pain points, including:'], list: ['“I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.”', '“I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.”'] },
       { h: 'The approach', p: ['Unlike generic e-commerce giants, ShopUp is designed with the user at the centre: a smarter, more personalised shopping experience using AI-powered recommendations that understand taste, needs and budget.', 'A clutter-free interface, fast delivery and real-time customer support aim to make shopping seamless, not stressful, while curated collections, exclusive deals and local seller support help people discover unique products.'] },

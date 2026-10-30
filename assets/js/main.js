@@ -11,8 +11,8 @@
    Contents
      1. Smooth scrolling (Lenis)      6. Toast and copy email
      2. Nav: build, menu              7. Blob eyes, "hello" cursor
-     3. Nav: fold on scroll           8. Intro (Home, once a session)
-     4. Day / night theme             9. Page transitions
+      3. Nav: fold on scroll           8. Link prefetch
+      4. Day / night theme
      5. Contact band, footer,
         reveals
    ===================================================================== */
@@ -64,6 +64,7 @@
     { href: 'services.html', key: 'services', label: 'Services' },
     { href: 'journal.html', key: 'journal', label: 'Reading list' }
   ];
+  var NAV_LINKS = LINKS.filter(function (l) { return l.key !== 'journal'; });
   var current = page === 'project' ? 'work' : page;
   var cur = function (k) { return k === current ? ' aria-current="page"' : ''; };
 
@@ -74,7 +75,7 @@
       '<a class="skip-link" href="#main">Skip to content</a>' +
       '<nav class="nav" aria-label="Primary">' +
         '<a class="nav-logo" href="index.html" aria-label="Vivek Kumar, home"><span class="mono" aria-hidden="true">VK</span><img src="assets/img/me/avatar.webp" alt="" width="42" height="42"></a>' +
-        '<div class="nav-fold nav-fold--links"><span><span class="nav-links">' + LINKS.slice(1).map(function (l) {
+        '<div class="nav-fold nav-fold--links"><span><span class="nav-links">' + NAV_LINKS.slice(1).map(function (l) {
           return '<a class="l" href="' + l.href + '"' + cur(l.key) + '>' + l.label + '</a>';
         }).join('') + '</span></span></div>' +
         '<div class="nav-fold nav-fold--menu"><span>' +
@@ -83,17 +84,16 @@
           '</button>' +
         '</span></div>' +
         '<div class="nav-fold nav-fold--cta"><span><a class="btn btn--sun btn--sm nav-cta" href="contact.html"' + cur('contact') + '>Say hello</a></span></div>' +
-      '</nav>' +
-      // Day/night switch: its own sticker, outside the nav (style.css 18e)
+      // The switch stays in the nav on small screens, clear of page content.
       '<button class="tsw" type="button" role="switch" aria-checked="false" aria-label="Night mode">' +
         '<span class="tsw-sky" aria-hidden="true">' +
           '<i class="tsw-star s1"></i><i class="tsw-star s2"></i><i class="tsw-star s3"></i><i class="tsw-star s4"></i>' +
           '<i class="tsw-cloud c1"></i><i class="tsw-cloud c2"></i>' +
         '</span>' +
         '<span class="tsw-knob" aria-hidden="true"><span class="tsw-rays"></span><span class="tsw-face"><i></i><i></i></span></span>' +
-      '</button>' +
+      '</button></nav>' +
       '<div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">' +
-        LINKS.concat([{ href: 'contact.html', key: 'contact', label: 'Contact' }]).map(function (l, i) {
+        NAV_LINKS.concat([{ href: 'contact.html', key: 'contact', label: 'Contact' }]).map(function (l, i) {
           return '<a class="m" href="' + l.href + '"' + cur(l.key) + '><small>0' + (i + 1) + '</small>' + l.label + '</a>';
         }).join('') +
         '<div class="chips">' +
@@ -153,7 +153,7 @@
 
     // Tapping the folded pill (not its buttons) unfolds it; keyboard focus does too
     nav.addEventListener('click', function (e) {
-      if (!mini || menuOpen() || e.target.closest('.nav-menu')) return;
+      if (!mini || menuOpen() || e.target.closest('.nav-menu, .tsw')) return;
       e.preventDefault();
       travel = 0;
       setMini(false);
@@ -242,7 +242,7 @@
     footSlot.innerHTML =
       '<div class="wrap foot-grid">' +
         '<div class="foot-id"><b>Vivek Kumar</b><span>Graphic, UI/UX &amp; motion designer, video editor</span>' +
-          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance · India, IST</span></div>' +
+          '<span class="foot-avail"><i class="dot" aria-hidden="true"></i>Open to roles and freelance projects</span></div>' +
         '<nav class="foot-links" aria-label="Footer">' +
           '<span class="foot-h">Pages</span>' +
           LINKS.concat([{ href: 'contact.html', label: 'Contact' }]).map(function (l) { return '<a href="' + l.href + '">' + l.label + '</a>'; }).join('') +
@@ -341,13 +341,7 @@
 
   var revealTargets = $$('[data-reveal], [data-words]');
   if ('IntersectionObserver' in window && !reduceMotion) {
-    // While the intro or the arrival curtain is up, hold reveals so they play once the page is visible
-    var held = [];
-    var show = function (el) {
-      if (document.body.classList.contains('intro-on') || (root.classList.contains('is-arriving') && !root.classList.contains('is-revealing'))) { held.push(el); return; }
-      el.classList.add('is-in');
-    };
-    window.__flushReveals = function () { held.splice(0).forEach(function (el) { el.classList.add('is-in'); }); };
+    var show = function (el) { el.classList.add('is-in'); };
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
@@ -402,67 +396,7 @@
 
 
 
-  /* ---------- 8. Intro (Home, once per session) ---------- */
-  var introSeen = true;
-  try { introSeen = sessionStorage.getItem('vk-intro') === '1'; sessionStorage.setItem('vk-intro', '1'); } catch (e) {}
-  if (page === 'home' && !introSeen && !reduceMotion) {
-    var touch = window.matchMedia('(hover: none)').matches;
-    var intro = document.createElement('div');
-    intro.className = 'intro'; intro.setAttribute('aria-hidden', 'true');
-    intro.innerHTML = '<div class="bubble"><span class="typed"></span><i class="caret"></i></div>' +
-      '<p class="skiphint"><span>' + (touch ? 'tap anywhere to skip' : 'click or press any key to skip') + '</span></p>';
-    document.body.appendChild(intro);
-    document.body.classList.add('intro-on');
-    root.classList.add('is-locked');
-    if (lenis) lenis.stop();
-    var out = $('.typed', intro), lines = ['Hey there!', 'Welcome to my portfolio.'], li = 0, ci = 0, finished = false;
-    var finish = function () {
-      if (finished) return; finished = true;
-      intro.classList.add('is-out');
-      document.body.classList.remove('intro-on');
-      root.classList.remove('is-locked');
-      if (lenis) lenis.start();
-      setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 350);
-      document.removeEventListener('keydown', finish);
-      setTimeout(function () { intro.remove(); }, 1400);
-    };
-    var type = function () {
-      if (finished) return;
-      if (ci < lines[li].length) { out.textContent += lines[li][ci++]; setTimeout(type, li ? 46 : 50); }
-      else if (li < lines.length - 1) setTimeout(function () { out.textContent = ''; li++; ci = 0; type(); }, 300);
-      else setTimeout(finish, 320);
-    };
-    setTimeout(type, 250);
-    intro.addEventListener('click', finish);
-    document.addEventListener('keydown', finish);
-    setTimeout(finish, 5000); // never trap the visitor
-  }
-
-
-  /* ---------- 9. Page transitions: cobalt curtain ----------
-     Leaving: a cobalt panel slides up over the page, then we navigate.
-     Arriving: the inline head script adds html.is-arriving BEFORE the first
-     paint, so the same cobalt panel is already there (no flash). Once fonts
-     are ready it lifts off with a single GPU transform. */
-  var curtain = document.createElement('div');
-  curtain.className = 'curtain'; curtain.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(curtain);
-  try { sessionStorage.removeItem('vk-curtain'); } catch (e) {}
-
-  var lift = function () {
-    if (!root.classList.contains('is-arriving') || root.classList.contains('is-revealing')) return;
-    root.classList.add('is-revealing');
-    setTimeout(function () { if (window.__flushReveals) window.__flushReveals(); }, 180);
-    setTimeout(function () { root.classList.remove('is-arriving', 'is-revealing'); }, 720);
-  };
-  if (root.classList.contains('is-arriving')) {
-    var fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
-    Promise.race([fontsReady, new Promise(function (r) { setTimeout(r, 450); })]).then(function () {
-      requestAnimationFrame(function () { requestAnimationFrame(lift); });
-      setTimeout(lift, 120); // in case rAF is throttled
-    });
-  }
-
+  /* ---------- 8. Prefetch likely next pages without delaying navigation ---------- */
   var isInternal = function (a) {
     var href = a.getAttribute('href');
     return href && a.target !== '_blank' && href.charAt(0) !== '#' && !/^(mailto|tel|https?):/i.test(href) && !a.hasAttribute('download');
@@ -496,29 +430,4 @@
     else setTimeout(warmFeatured, 1400);
   }
 
-  var leaving = false;
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('a');
-    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0 || !isInternal(a)) return;
-    if (reduceMotion) return;
-    e.preventDefault();
-    if (leaving) return;
-    leaving = true;
-    var openingCard = a.closest('.work-grid .work-card');
-    if (openingCard) openingCard.classList.add('is-opening');
-    try { sessionStorage.setItem('vk-curtain', '1'); } catch (err) {}
-    if (lenis) lenis.stop();
-    var went = false;
-    var go = function () { if (went) return; went = true; window.location.href = a.href; };
-    curtain.addEventListener('transitionend', go, { once: true });
-    setTimeout(go, 650); // fallback
-    requestAnimationFrame(function () { curtain.classList.add('is-in'); });
-    setTimeout(function () { curtain.classList.add('is-in'); }, 30);
-  });
-  window.addEventListener('pageshow', function (e) {
-    if (!e.persisted) return;
-    leaving = false; curtain.className = 'curtain';
-    root.classList.remove('is-arriving', 'is-revealing');
-    if (lenis) lenis.start();
-  });
 })();

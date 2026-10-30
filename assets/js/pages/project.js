@@ -30,18 +30,16 @@
   var tapeWords = [p.kind].concat(p.tags, p.published ? ['Published ' + p.published] : []);
   var tapeHTML = ''; for (var k = 0; k < 6; k++) tapeWords.forEach(function (w) { tapeHTML += '<span>' + esc(w) + '</span><i>✳</i>'; });
 
-  // At a glance: the problem, the idea and what was delivered, all taken from the write-up below
-  function glance() {
-    var ch = (p.writeup || []).filter(function (s) { return s.h === 'The challenge'; })[0];
-    var ap = (p.writeup || []).filter(function (s) { return s.h === 'The approach'; })[0];
-    var idea = ap && ap.p && ap.p[0] ? (ap.p[0].match(/^(.+?[.!?])(\s|$)/) || [0, ap.p[0]])[1] : '';
-    var cell = function (title, col, body) { return '<div class="gl-i" style="--c:' + col + '"><h2>' + title + '</h2>' + body + '</div>'; };
-    var list = function (items) { return '<ul>' + items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>'; };
-    var cells = '';
-    if (ch && ch.list) cells += cell('The problem', 'var(--pink)', (ch.p && ch.p[0] ? '<p class="gl-lead">' + esc(ch.p[0]) + '</p>' : '') + list(ch.list.slice(0, 2)));
-    if (idea) cells += cell('The idea', 'var(--sun)', '<p>' + esc(idea) + '</p>');
-    if (p.outcome && p.outcome.delivered) cells += cell('Delivered', 'var(--mint)', list(p.outcome.delivered.slice(0, 3)));
-    return cells ? '<section class="glance-card" aria-label="At a glance" data-reveal>' + cells + '</section>' : '';
+  // Lead with one real presentation board, then continue with the story.
+  var firstBoard = p.gallery && p.gallery[0];
+  var moreBoards = p.gallery ? p.gallery.slice(1) : [];
+  function firstLook() {
+    if (!firstBoard) return '';
+    return '<section class="proj-feature" aria-labelledby="feature-title">' +
+      '<div class="sec-head"><div><span class="kicker" aria-hidden="true">the work</span><h2 class="display t-lg" id="feature-title">First <em class="hl">look</em></h2></div></div>' +
+      '<figure class="gal-i" data-reveal><button class="gal-open" type="button" aria-label="View larger: ' + esc(firstBoard[3]) + '">' +
+        '<img src="' + firstBoard[0] + '" alt="' + esc(p.title) + ': ' + esc(firstBoard[3]) + '" width="' + firstBoard[1] + '" height="' + firstBoard[2] + '" loading="eager" decoding="async"></button>' +
+      '<figcaption>' + esc(firstBoard[3]) + '</figcaption></figure></section>';
   }
 
   // The films from the Behance post. A poster and a play button first; the player loads only on press
@@ -85,8 +83,8 @@
       '</div>' +
     '</header>' +
     '<div class="ph-tape" aria-hidden="true" style="--accent:' + accent + '"><div class="track">' + tapeHTML + '</div></div>' +
+    firstLook() + watch() +
     '<span id="story"></span>' +
-    glance() + watch() +
     '<section class="proj-overview">' +
       '<div class="facts card" data-reveal><h2 class="eyebrow">Project facts</h2><dl>' +
         (p.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
@@ -134,9 +132,9 @@
   }
 
   // A few key images from the presentation; tap one to see it larger
-  if (p.gallery && p.gallery.length) {
+  if (moreBoards.length) {
     html += '<section class="gallery pop pop--ink pop--panel" style="--pop:color-mix(in srgb, ' + accent + ' 36%, #fff)" aria-labelledby="gal-title"><div class="sec-head"><div><span class="kicker" aria-hidden="true">a peek inside</span><h2 class="display t-lg" id="gal-title"><em class="hl">Highlights</em></h2></div></div>' +
-      '<div class="gal gal--' + p.gallery.length + '">' + p.gallery.map(function (g) {
+      '<div class="gal gal--' + moreBoards.length + '">' + moreBoards.map(function (g) {
         return '<figure class="gal-i" data-reveal><button class="gal-open" type="button" aria-label="View larger: ' + esc(g[3]) + '">' +
           '<img src="' + g[0] + '" alt="' + esc(p.title) + ': ' + esc(g[3]) + '" width="' + g[1] + '" height="' + g[2] + '" loading="lazy" decoding="async"></button>' +
           '<figcaption>' + esc(g[3]) + '</figcaption></figure>';
@@ -186,8 +184,8 @@
 
 (function () {
   // Lightbox for the highlights: opens the image at full size, Esc or a tap closes it
-  var gal = document.querySelector('.gal');
-  if (!gal) return;
+  var galleries = document.getElementById('project');
+  if (!galleries || !galleries.querySelector('.gal-open')) return;
   var box = document.createElement('div');
   box.className = 'lightbox'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Image viewer'); box.hidden = true;
   box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><figure><figcaption></figcaption></figure>';
@@ -200,7 +198,7 @@
     setTimeout(function () { box.hidden = true; }, 300);
     if (opener) opener.focus({ preventScroll: true });
   };
-  gal.addEventListener('click', function (e) {
+  galleries.addEventListener('click', function (e) {
     var b = e.target.closest('.gal-open'); if (!b) return;
     var src = b.querySelector('img');
     if (!img) { img = document.createElement('img'); box.querySelector('figure').insertBefore(img, cap); }
