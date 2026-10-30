@@ -28,32 +28,11 @@
   var page = document.body.getAttribute('data-page') || '';
 
 
-  /* ---------- 1. Smooth scrolling (Lenis) ----------
-     Lenis glides wheel and trackpad scrolling toward its target a little
-     each frame (lerp), which feels softer than a fixed duration. Touch
-     keeps the phone's own native scrolling, which is already the smoothest
-     there; sticky elements and keyboard scrolling still work as normal. */
+  /* ---------- 1. Native scrolling + Scroll Craft ----------
+     One scroll position drives the narrative effects. Native wheel, touch,
+     keyboard, and anchor behaviour remain available on every page. */
   var lenis = null;
-  if (window.Lenis && !reduceMotion) {
-    lenis = new window.Lenis({
-      lerp: 0.085,
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      syncTouch: false
-    });
-    window.__lenis = lenis;
-    var lenisFrame = function (time) { lenis.raf(time); requestAnimationFrame(lenisFrame); };
-    requestAnimationFrame(lenisFrame);
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a[href^="#"]');
-      if (!a || a.classList.contains('skip-link')) return;
-      var id = a.getAttribute('href');
-      var target = (id === '#' || id === '#main') ? 0 : document.querySelector(id);
-      if (target === null) return;
-      e.preventDefault();
-      lenis.scrollTo(target, { offset: -100, duration: 1.4 });
-    });
-  }
+  window.__lenis = null;
 
 
   /* ---------- 2. Nav: build, menu ---------- */
@@ -504,4 +483,27 @@
     root.classList.remove('is-arriving', 'is-revealing');
     if (lenis) lenis.start();
   });
+
+  /* Scroll Craft is the sole scroll-driven motion controller. Its flow acts
+     enhance the existing semantic sections without trapping normal scrolling. */
+  var scSections = document.querySelectorAll('main > section');
+  scSections.forEach(function (section) {
+    section.setAttribute('data-sc-act', 'flow');
+    section.querySelectorAll('.sec-head, .proj-overview, .proj-sec, .svc-tiles, .proof, .reads, .cases').forEach(function (child) {
+      child.setAttribute('data-sc-in', '');
+    });
+  });
+  if (page === 'home') {
+    var hero = document.querySelector('.hp');
+    if (hero) {
+      [['.hp-fx', '-0.8'], ['.hp-photo-wrap', '-0.35'], ['.hp-card', '0.3']].forEach(function (layer) {
+        var el = hero.querySelector(layer[0]);
+        if (el) el.setAttribute('data-sc-parallax', layer[1]);
+      });
+    }
+  }
+  var scScript = document.createElement('script');
+  scScript.src = 'assets/js/scrollcraft.js';
+  scScript.onload = function () { window.ScrollCraft.mount(document.body); };
+  document.body.appendChild(scScript);
 })();

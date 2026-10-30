@@ -1,5 +1,6 @@
 # Repo files that are not part of the website
 tools/
+scrollcraft/
 README.md
 .gitattributes
 .gitignore

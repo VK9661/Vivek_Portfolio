@@ -1452,3 +1452,105 @@ video.vid { cursor: auto; }
   .hp-blob, .hp-bit { display: none; animation: none; }
   .ph-blob, .ph-year { animation: none; }
 }
+/* 2026 portfolio redesign: editorial gallery system. The project images carry
+   the colour; the interface gives them a quieter, more deliberate frame. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-sc-in] { transition: opacity .75s ease, transform .75s cubic-bezier(.2,.8,.2,1); }
+  .sc-ready [data-sc-in]:not(.sc-in) { opacity: .22; transform: translateY(28px); }
+  [data-sc-parallax] { transition: opacity .3s ease; }
+}
+:root {
+  --bg: #e8e5dd;
+  --paper: #e8e5dd;
+  --band: #dedad1;
+  --ink: #151818;
+  --ink-2: #454b49;
+  --stk: #151818;
+  --blue: #154a42;
+  --title: #154a42;
+  --text-accent: #154a42;
+  --sun: #e9a344;
+  --surface: #f5f3ed;
+  --glass-hi: #f5f3ed;
+  --glass-edge: #262d2b;
+  --hard: transparent;
+  --sh-sm: none;
+  --sh: none;
+  --sh-lg: none;
+  --r-lg: 6px;
+  --r-md: 4px;
+  --r-pill: 4px;
+  --max: 1440px;
+  --sec-y: clamp(84px, 10vw, 152px);
+}
+html[data-theme="dark"] {
+  --bg: #101817;
+  --paper: #101817;
+  --band: #192321;
+  --ink: #f1eee5;
+  --ink-2: #bec9c4;
+  --surface: #20302c;
+  --glass-hi: #20302c;
+  --glass-edge: #9cb6a9;
+  --title: #b5d5c8;
+  --text-accent: #b5d5c8;
+  --blue: #b5d5c8;
+  --hard: transparent;
+}
+body { letter-spacing: -.012em; }
+.nav { border-radius: 5px; box-shadow: none; }
+.nav-logo .mono { font-weight: 800; letter-spacing: -.09em; }
+.btn, .btn--white, .chip, .filters button { border-radius: 4px; box-shadow: none; }
+.btn:hover, .btn--white:hover { box-shadow: none; transform: translateY(-3px); }
+.display { letter-spacing: -.045em; line-height: 1.03; }
+.hp-title { letter-spacing: -.01em; line-height: .93; }
+.sec-head { border-top: 1px solid var(--line); padding-top: 24px; }
+.sec-head .kicker { font-family: var(--f-sans); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; }
+.sec-head .hand { font-family: var(--f-sans); font-weight: 500; }
+.hp { min-height: min(900px, 100svh); overflow: hidden; }
+.hp-grid { min-height: min(900px, 100svh); }
+.hp-title { color: var(--ink); }
+.hp-sub { max-width: 39ch; font-size: clamp(1.04rem, 1.5vw, 1.3rem); }
+.hp-photo { border-radius: 4px; box-shadow: none; }
+.hp-card { border-radius: 4px; box-shadow: none; }
+.hp-orbit, .hp-deco, .hp-smile, .peek-buddy { opacity: .32; }
+.hp-deco, .hp-smile, .hp-orbit, .hp-fx, .hp-card { display: none; }
+.hp-visual { max-width: 650px; padding: 0; }
+.hp-photo-wrap { border: 0; }
+.hp-photo { overflow: hidden; background: #899b91; }
+.hp-photo img { display: block; width: 100%; }
+.hp-hello .hand { font-family: var(--f-sans); font-size: .45em; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
+.hp-role { rotate: 0deg; box-shadow: none; border-radius: 3px; }
+.tape-band { border-block: 1px solid currentColor; }
+.tape-band { background: var(--ink); color: var(--paper); }
+.work-grid { gap: clamp(18px, 2vw, 30px); }
+.work-card, .row-i, .svc-tile, .read, .bx, .p-step, .oc, .hero-aside, .facts, .form-card, .links-card, .journal-empty, .faq-item {
+  border-radius: 4px; box-shadow: none; rotate: 0deg;
+}
+.work-card:hover, .svc-tile:hover, .read:hover, .row-i:hover { rotate: 0deg; box-shadow: none; transform: translateY(-4px); }
+.work-card .media { padding: 0; background: var(--band); }
+.work-card .media img { border: 0; border-radius: 0; }
+.work-card .body { padding: clamp(18px, 2vw, 30px); }
+.work-card h3 { letter-spacing: -.055em; }
+.work-grid > :first-child, .work-grid > :nth-child(4) { rotate: 0deg; }
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  #work .work-grid > :first-child { perspective: 1100px; }
+  #work .work-grid > :first-child .media {
+    transform-origin: left center;
+    transform: rotateY(calc((1 - var(--sc-p, 1)) * -13deg));
+    transition: none;
+  }
+}
+.pop { border-radius: 0; }
+.home-about { background: #b9ccc0; }
+html[data-theme="dark"] .home-about { background: #304c40; }
+.proj-sec { border-bottom: 1px solid var(--line); }
+@media (max-width: 600px) {
+  .hp { min-height: auto; }
+  .hp-grid { min-height: auto; padding-top: 120px; padding-bottom: 60px; }
+  .hp-title { font-size: clamp(3.3rem, 12vw, 5.7rem); }
+  .work-grid > :first-child, .work-grid > :nth-child(4) { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-sc-in], [data-sc-parallax] { transform: none !important; opacity: 1 !important; }
+}
