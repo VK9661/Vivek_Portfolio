@@ -485,6 +485,8 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0 || !isInternal(a)) return;
+    // Let the browser carry the featured FIKR cover into its case study.
+    if (a.matches('#featured > .work-card:first-child')) return;
     if (reduceMotion) return;
     e.preventDefault();
     if (leaving) return;

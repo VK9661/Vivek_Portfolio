@@ -1441,6 +1441,42 @@ video.vid { cursor: auto; }
   transform: translate(3px, 4px) !important; box-shadow: 0 0 0 var(--hard) !important; transition-duration: .08s !important; }
 
 /* ---------- 19. Reduced motion ---------- */
+/* FIKR: a compact, scannable sequence from interview insight to interface. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  body[data-page="home"] #featured > .work-card:first-child .media,
+  body[data-project="fikr"] .ph-cover { view-transition-name: fikr-cover; }
+  ::view-transition-old(fikr-cover), ::view-transition-new(fikr-cover) { animation-duration: .48s; animation-timing-function: cubic-bezier(.2,.8,.2,1); }
+}
+/* A small scroll response adds depth to the existing hero without changing its art. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
+    .hp-photo { animation: hp-scroll-depth linear both; animation-timeline: scroll(root block); animation-range: 0px 900px; }
+    .hp-card { animation: hp-scroll-card linear both; animation-timeline: scroll(root block); animation-range: 0px 900px; }
+    @keyframes hp-scroll-depth { from { transform: translateY(0); } to { transform: translateY(36px); } }
+    @keyframes hp-scroll-card { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+  }
+}
+.fikr-journey { padding: clamp(64px, 8vw, 112px) 0; }
+.fikr-journey-list { display: grid; gap: clamp(32px, 6vw, 80px); }
+.fikr-beat { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; }
+.fikr-beat-copy { max-width: 34rem; }
+.fikr-beat h3 { font: 800 clamp(2rem, 4vw, 4rem)/1 var(--f-display); color: var(--title); }
+.fikr-beat p { max-width: 40ch; margin-top: 16px; font-size: clamp(1rem, 1.4vw, 1.25rem); line-height: 1.6; }
+.fikr-beat figure { overflow: hidden; margin: 0; border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--sh); }
+.fikr-beat img { display: block; width: 100%; max-height: 560px; object-fit: cover; object-position: top; }
+.fikr-beat figcaption { padding: 12px 18px; font-size: .85rem; font-weight: 700; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fikr-beat figure { animation: fikr-art-reveal linear both; animation-timeline: view(block); animation-range: entry 0% entry 70%; }
+    @keyframes fikr-art-reveal { from { clip-path: inset(0 0 100% 0 round 20px); } to { clip-path: inset(0 0 0 0 round 20px); } }
+  }
+}
+@media (min-width: 901px) {
+  .fikr-beat { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .fikr-beat:nth-child(even) .fikr-beat-copy { order: 2; padding-left: clamp(20px, 4vw, 70px); }
+  .fikr-beat:nth-child(even) figure { order: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
   [data-reveal] { opacity: 1; transform: none; }
