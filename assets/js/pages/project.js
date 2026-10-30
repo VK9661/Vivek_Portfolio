@@ -120,6 +120,7 @@
   // Outcome: what was delivered, how success would be measured, what it shows
   if (p.outcome) {
     var oc = function (title, items, col) {
+      if (!items || !items.length) return '';
       return '<article class="oc" style="--c:' + col + '" data-reveal><h3>' + title + '</h3><ul class="oc-list">' +
         items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></article>';
     };

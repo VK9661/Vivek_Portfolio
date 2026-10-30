@@ -154,7 +154,43 @@ window.PROJECTS = [
     loop: 'assets/video/loop/shady.mp4'
   },
   {
-    id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: true,
+    id: 'draft-room', title: 'The Draft Room', kind: 'Brand identity', cats: ['brand', 'graphic'], color: 'ink', featured: true,
+    summary: 'A library of weave drafts where every printed pattern can also be woven.',
+    about: "The Draft Room is a concept brand for a members' library of weave drafts, the drawings a weaver follows to make cloth. Every pattern across the identity follows real threading, tie-up, treadling and drawdown logic, so each printed pattern could also be woven.",
+    year: '2026', published: 'Oct 2026', tags: ['Brand identity', 'Typography', 'Pattern design'],
+    tools: ['Illustrator', 'Photoshop', 'Figma'],
+    img: 'assets/img/covers/draft-room.webp', w: 1616, h: 1264,
+    behance: 'https://www.behance.net/gallery/257811161/The-Draft-Room-Brand-Identity',
+
+    facts: [['Type', 'Concept brand identity'], ['Medium', 'Logo, print and brand guidelines'], ['Tools', 'Illustrator, Photoshop, Figma'], ['Published', 'Oct 2026']],
+    writeup: [
+      { h: 'The challenge', p: ['A library of weave drafts needs an identity that can:'], list: ['Respect the structure of weaving instead of using textile motifs as decoration', 'Work across membership cards, stationery, archive boxes, signage and a cotton bag'] },
+      { h: 'The approach', p: ['I started with the draft itself. The wordmark, seal, monogram and repeat patterns all follow real weaving logic, so the printed system could also be woven.'] },
+      { h: 'The details', list: ['A Bodoni Moda wordmark with a woven seal and monogram', 'Five named colours: Kora, Neel, Siyahi, Sut and Zari', 'Matte gold used once on each object', 'Flat artwork separated into ink, foil and deboss layers', 'A 7-page guide covering the marks, colour, type, patterns and finishes'] }
+    ],
+    credits: 'Concept project. Identity, patterns, artwork and brand system by Vivek Kumar. Mock-up imagery was created with ChatGPT from his prompts.',
+    role: ['Brand identity', 'Logo design', 'Typography', 'Pattern design', 'Brand applications', 'Brand guidelines'],
+    process: [
+      ['Draft logic', 'Threading, tie-up, treadling and drawdown'],
+      ['Marks', 'A wordmark, woven seal and monogram'],
+      ['System', 'Colour, typography and repeat patterns'],
+      ['Applications', 'Membership, stationery, archive, signage and bag'],
+      ['Guidelines', 'A 7-page guide to the complete system']
+    ],
+    outcome: {
+      note: 'A concept project, so these are the checks it is designed to pass, not live results.',
+      delivered: ['Wordmark, seal and monogram', 'Named colour and typography system', 'Repeat patterns based on real weave drafts', 'Membership, stationery, archive, signage and bag applications', 'A 7-page brand guide'],
+      shows: ['Building a brand system from its subject', 'Translating weaving logic into repeat patterns', 'Premium identity design with restrained colour and finish', 'Preparing flat artwork and brand guidelines']
+    },
+    gallery: [
+      ['assets/img/gallery/draft-room/01.webp', 1400, 947, 'The journey of a draft'],
+      ['assets/img/gallery/draft-room/02.webp', 1400, 1000, 'Wordmark, seal and monogram'],
+      ['assets/img/gallery/draft-room/03.webp', 1400, 1000, 'A pattern that can be woven'],
+      ['assets/img/gallery/draft-room/04.webp', 1400, 1226, 'The reading room']
+    ]
+  },
+  {
+    id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: false,
     summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
     about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
