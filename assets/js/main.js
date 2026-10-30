@@ -481,16 +481,31 @@
   document.addEventListener('pointerover', prefetch, { passive: true });
   document.addEventListener('touchstart', prefetch, { passive: true });
 
+  // Warm the featured case study before a visitor reaches Selected Work.
+  if (page === 'home') {
+    var warmFeatured = function () {
+      var featured = $('#featured > .work-card:first-child');
+      if (!featured || fetched[featured.href]) return;
+      fetched[featured.href] = 1;
+      var hint = document.createElement('link');
+      hint.rel = 'prefetch';
+      hint.href = featured.href;
+      document.head.appendChild(hint);
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(warmFeatured, { timeout: 2500 });
+    else setTimeout(warmFeatured, 1400);
+  }
+
   var leaving = false;
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0 || !isInternal(a)) return;
-    // Let the browser carry the featured FIKR cover into its case study.
-    if (a.matches('#featured > .work-card:first-child')) return;
     if (reduceMotion) return;
     e.preventDefault();
     if (leaving) return;
     leaving = true;
+    var openingCard = a.closest('.work-grid .work-card');
+    if (openingCard) openingCard.classList.add('is-opening');
     try { sessionStorage.setItem('vk-curtain', '1'); } catch (err) {}
     if (lenis) lenis.stop();
     var went = false;

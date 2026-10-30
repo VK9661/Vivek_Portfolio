@@ -59,22 +59,6 @@
       }).join('') + '</div></section>';
   }
 
-  // FIKR's case-study decisions, using the existing verified project content.
-  // This preview sits before the long-form write-up; the full story remains below.
-  function fikrJourney() {
-    if (id !== 'fikr') return '';
-    var beats = [
-      ['Listen', 'Five interviews revealed how being asked about medicine can feel.', p.gallery[0]],
-      ['Simplify', 'One large Taken button gives parents a clear action.', p.gallery[1]],
-      ['Reassure', 'The child sees silence when all is well, with an alert when attention is needed.', p.gallery[3]]
-    ];
-    return '<section class="fikr-journey" aria-labelledby="fikr-journey-title">' +
-      '<div class="sec-head"><div><span class="kicker" aria-hidden="true">from insight to interface</span><h2 class="display t-lg" id="fikr-journey-title">One decision at a <em class="hl">time.</em></h2></div></div>' +
-      '<div class="fikr-journey-list">' + beats.map(function (beat) {
-        return '<article class="fikr-beat" data-reveal><div class="fikr-beat-copy"><h3>' + esc(beat[0]) + '</h3><p>' + esc(beat[1]) + '</p></div><figure><img src="' + beat[2][0] + '" alt="FIKR: ' + esc(beat[2][3]) + '" width="' + beat[2][1] + '" height="' + beat[2][2] + '" loading="lazy" decoding="async"><figcaption>' + esc(beat[2][3]) + '</figcaption></figure></article>';
-      }).join('') + '</div></section>';
-  }
-
   var html =
     '<header class="ph" style="--accent:' + accent + ';--c:' + sw + '">' +
       '<div class="ph-bar">' +
@@ -102,7 +86,7 @@
     '</header>' +
     '<div class="ph-tape" aria-hidden="true" style="--accent:' + accent + '"><div class="track">' + tapeHTML + '</div></div>' +
     '<span id="story"></span>' +
-    glance() + fikrJourney() + watch() +
+    glance() + watch() +
     '<section class="proj-overview">' +
       '<div class="facts card" data-reveal><h2 class="eyebrow">Project facts</h2><dl>' +
         (p.facts || []).map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
