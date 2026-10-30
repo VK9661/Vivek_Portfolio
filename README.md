@@ -2,7 +2,7 @@
 
 Live: https://vivek-portfolio-beta-eight.vercel.app
 
-Plain HTML, CSS and JavaScript. No build step or external runtime dependency. Scroll Craft drives scroll effects while native scrolling handles wheel, touch, keyboard and anchors. Every push to `main` deploys to Vercel.
+Plain HTML, CSS and JavaScript. No build step and no dependencies (Lenis smooth scroll loads from a CDN). Every push to `main` deploys to Vercel.
 
 ## Map
 
@@ -39,7 +39,7 @@ tools/                Not deployed (see .vercelignore)
   capture-linkedin.js LinkedIn showcase screenshots (+ mockup-template.html)
 ```
 
-Every page loads its scripts in the same order: `data.js`, `cards.js` (if needed), the page script, `main.js`. The shared script loads the local Scroll Craft runtime.
+Every page loads its scripts in the same order: `data.js`, `cards.js` (if needed), the page script, Lenis, `main.js`.
 
 ## Run locally
 
@@ -78,7 +78,7 @@ Old `project.html?id=<id>` links redirect to the project's page.
 
 ## Design
 
-The current visual direction is an **editorial project gallery**: deep green ink, warm paper, restrained amber accents, sharper geometry and project artwork as the main colour. The final redesign layer is at the end of `assets/css/style.css`; use its tokens and component overrides when adding anything.
+The style is **sticker / neo-brutalist, playful and illustrated**: the hero's stickers, doodles and handwriting carry on down every page, on warm paper with a fine film grain. These are the rules; keep to them when adding anything.
 
 - **Surfaces:** everything is a solid sticker sheet (`--surface`) with an ink outline (`--glass-edge`, 2px via `--bw`) and a hard offset shadow (`--sh-sm` 2/3px, `--sh` 4/5px, `--sh-lg` 6/8px, colour `--hard`). No blur, no glass, no soft shadows.
 - **Interaction:** hover lifts a sticker a little; pressing moves it into its shadow (section 18f). Cards may sit slightly crooked and straighten on hover.
