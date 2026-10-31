@@ -76,7 +76,7 @@
   if (photo && vis) {
     vis.addEventListener('pointermove', function (e) {
       var r = photo.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      photo.style.transform = 'perspective(1000px) rotateX(' + (-y * 9).toFixed(2) + 'deg) rotateY(' + (x * 11).toFixed(2) + 'deg)';
+      photo.style.transform = 'perspective(1000px) rotateX(' + (-y * 3.5).toFixed(2) + 'deg) rotateY(' + (x * 4).toFixed(2) + 'deg)';
     });
     vis.addEventListener('pointerleave', function () { photo.style.transform = ''; });
   }

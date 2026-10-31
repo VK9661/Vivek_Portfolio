@@ -552,9 +552,10 @@ html.lenis, html.lenis body { height: auto; }
 
 @media (min-width: 601px) {
   .hp-visual { height: clamp(440px, 74vw, 560px); }
-  .hp-tag--1 { left: 14%; } .hp-tag--2 { right: 13%; } .hp-tag--3 { left: 17%; } .hp-tag--4 { right: 16%; }
+  .hp-tag--1 { left: 24%; } .hp-tag--2 { right: 24%; } .hp-tag--3 { left: 27%; } .hp-tag--4 { right: 26%; }
 }
 @media (min-width: 901px) {
+  .hp { padding-bottom: 104px; } /* room for the peek card, so it never reaches the tape */
   .hp > .wrap { position: relative; }
   .hp-stage {
     min-height: clamp(560px, calc(100dvh - 150px), 720px); padding-bottom: var(--pad);
@@ -567,12 +568,13 @@ html.lenis, html.lenis body { height: auto; }
   .hp-title { --ts: clamp(2.6rem, 4.1vw, 4.2rem); grid-area: title; align-self: start; margin-top: 4px; text-align: right; }
   .hp-visual { position: absolute; inset: 0; height: auto; margin: 0; }
   .hp-photo-wrap { height: 90%; }
-  .hp-tag--1 { left: 21%; top: 60%; } .hp-tag--2 { right: 21%; top: 64%; }
-  .hp-tag--3 { left: 24%; top: 80%; } .hp-tag--4 { right: 23%; top: 84%; }
-  .hp-smile { left: calc(50% - clamp(150px, 15vw, 210px)); top: 7%; }
+  /* the stickers sit on the shirt, so the letters of the name stay clear on both sides */
+  .hp-tag--1 { left: 30%; top: 60%; } .hp-tag--2 { right: 30%; top: 66%; }
+  .hp-tag--3 { left: 32%; top: 80%; } .hp-tag--4 { right: 31%; top: 86%; }
+  .hp-smile { left: calc(50% - clamp(175px, 16vw, 210px)); top: 7%; }
   .hp-burst { right: 12%; top: 44%; }
 
-  .hp-peek { position: absolute; z-index: 4; right: calc(var(--gutter) + 3%); bottom: calc(-1 * clamp(70px, 9vh, 110px)); display: block; width: clamp(180px, 16vw, 230px);
+  .hp-peek { position: absolute; z-index: 4; right: calc(var(--gutter) + 3%); bottom: -64px; display: block; width: clamp(180px, 16vw, 230px);
     padding: 8px 8px 10px; text-decoration: none; color: var(--stk); background: var(--sun); border: var(--bw-stk) solid var(--stk); border-radius: 18px; box-shadow: var(--sh);
     rotate: 6deg; transition: rotate .45s var(--ease-spring), translate .45s var(--ease-spring); animation: phpop .8s var(--ease-spring) 1.2s backwards; }
   .hp-peek img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 2px solid var(--stk); border-radius: 12px; background: var(--surface); }
