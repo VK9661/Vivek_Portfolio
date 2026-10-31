@@ -9,37 +9,41 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1200px; height: 630px; overflow: hidden; }
-  body { position: relative; font-family: 'Plus Jakarta Sans', sans-serif; color: #1C1747; background: #F2F1FA;
-    background-image: radial-gradient(46% 60% at 96% 0%, rgba(157, 176, 255, .55), transparent 72%), radial-gradient(40% 50% at 0% 0%, rgba(127, 216, 245, .25), transparent 70%), radial-gradient(40% 50% at 100% 100%, rgba(255, 143, 179, .22), transparent 72%); }
-  body::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(28, 23, 71, .1) 1.3px, transparent 1.7px); background-size: 28px 28px; }
-  .copy { position: absolute; z-index: 2; left: 72px; top: 92px; width: 640px; }
-  .hi { font: 400 40px 'Covered By Your Grace', cursive; color: #3350FF; rotate: -3deg; display: inline-block; }
-  h1 { margin-top: 6px; font: 800 132px/.86 'Bricolage Grotesque', sans-serif; font-stretch: 80%; letter-spacing: -.03em; }
-  .roles { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-  .pill { padding: 9px 18px; font-weight: 800; font-size: 21px; border: 2.5px solid #1C1747; border-radius: 999px; box-shadow: 3px 3px 0 #1C1747; }
-  .url { position: absolute; z-index: 2; left: 72px; bottom: 54px; font-weight: 700; font-size: 22px; color: #4A4570; }
-  .photo { position: absolute; z-index: 1; right: 64px; bottom: 0; width: 400px; height: 520px; overflow: hidden; border-radius: 34px 130px 0 0; background: #9DB0FF; background-image: radial-gradient(rgba(255, 255, 255, .38) 1.4px, transparent 1.8px); background-size: 16px 16px; }
-  .photo img { position: absolute; left: 50%; bottom: 0; width: 112%; translate: -50% 0; }
-  .orbit { position: absolute; z-index: 0; right: 40px; bottom: -20px; width: 450px; height: 570px; border: 2.5px solid #3350FF; border-radius: 60px 170px 50px 90px; rotate: -5deg; }
-  .smile { position: absolute; z-index: 3; right: 404px; top: 92px; width: 74px; }
-  .badge { position: absolute; z-index: 3; right: 60px; top: 40px; padding: 10px 18px; font: 800 20px/1 'Bricolage Grotesque', sans-serif; background: #FFCF33; border: 2.5px solid #1C1747; border-radius: 999px; box-shadow: 3px 3px 0 #1C1747; rotate: 6deg; }
+  /* mirrors the home hero: cobalt band, paper band, giant name behind the cut-out portrait */
+  body { position: relative; font-family: 'Plus Jakarta Sans', sans-serif; color: #1C1747; background: #3350FF; }
+  .band { position: absolute; left: 0; right: 0; top: 352px; bottom: 0; background: #FFFFFF; border-top: 3px solid #1C1747; }
+  .big { position: absolute; z-index: 1; left: 0; right: 0; bottom: -70px; text-align: center; white-space: nowrap;
+    font: 800 430px/.8 'Bricolage Grotesque', sans-serif; font-stretch: 100%; letter-spacing: -.02em; color: #3350FF; }
+  .big span { display: inline-block; }
+  .big .lift { color: #FF5A8C; translate: 0 -28px; rotate: -7deg; scale: 1.05; text-shadow: 12px 16px 0 #1C1747; }
+  .photo { position: absolute; z-index: 2; left: 50%; bottom: 0; height: 540px; translate: -50% 0; }
+  .card { position: absolute; z-index: 3; left: 52px; top: 58px; width: 430px; padding: 26px 30px 30px; background: #FAF9F6;
+    border: 3px solid #1C1747; border-radius: 26px; box-shadow: 6px 8px 0 #1C1747; rotate: -2.5deg; }
+  .card::before { content: ""; position: absolute; top: -16px; left: 42%; width: 110px; height: 30px; rotate: 4deg; background: rgba(255, 207, 51, .92); border: 2px dashed rgba(28, 23, 71, .35); }
+  .hi { font: 400 34px 'Covered By Your Grace', cursive; color: #3350FF; }
+  .hi b { font: 800 36px 'Bricolage Grotesque', sans-serif; font-stretch: 85%; color: #1C1747; margin-left: 6px; }
+  h1 { margin-top: 10px; font: 800 62px/.92 'Bricolage Grotesque', sans-serif; font-stretch: 80%; letter-spacing: -.03em; color: #3350FF; }
+  .url { margin-top: 18px; font-weight: 700; font-size: 18px; white-space: nowrap; color: #4A4570; }
+  .roles { position: absolute; z-index: 3; right: 52px; top: 48px; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+  .roles .hand { font: 400 30px 'Covered By Your Grace', cursive; color: #FFCF33; }
+  .pill { padding: 10px 20px; font-weight: 800; font-size: 22px; border: 2.5px solid #1C1747; border-radius: 999px; box-shadow: 3px 4px 0 #1C1747; }
 </style>
 </head>
 <body>
-  <div class="copy">
-    <span class="hi">hi, I'm</span>
-    <h1>Vivek<br>Kumar</h1>
-    <div class="roles">
-      <span class="pill" style="background:#FF5A8C">Graphic</span>
-      <span class="pill" style="background:#9DB0FF">UI/UX</span>
-      <span class="pill" style="background:#FFCF33">Motion</span>
-      <span class="pill" style="background:#6FE3B2">Video</span>
-    </div>
+  <div class="band"></div>
+  <p class="big"><span>V</span><span>I</span><span>V</span><span>E</span><span class="lift">K</span></p>
+  <img class="photo" src="../assets/img/me/portrait-cutout.webp" alt="">
+  <div class="card">
+    <p class="hi">hi, I&#8217;m <b>Vivek Kumar</b></p>
+    <h1>I design brands,<br>apps &amp; motion.</h1>
+    <p class="url">vivek-portfolio-beta-eight.vercel.app</p>
   </div>
-  <p class="url">vivek-portfolio-beta-eight.vercel.app</p>
-  <span class="orbit"></span>
-  <div class="photo"><img src="../assets/img/me/portrait-cutout.webp" alt=""></div>
-  <svg class="smile" viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#6FE3B2" stroke="#1C1747" stroke-width="3"/><rect x="21" y="20" width="6" height="13" rx="3" fill="#1C1747"/><rect x="37" y="20" width="6" height="13" rx="3" fill="#1C1747"/><path d="M19 40c7 7 19 7 26 0" fill="none" stroke="#1C1747" stroke-width="3" stroke-linecap="round"/></svg>
-  <span class="badge">Portfolio 2026</span>
+  <div class="roles">
+    <span class="hand">what I do</span>
+    <span class="pill" style="background:#FF5A8C;rotate:-4deg">Graphic designer</span>
+    <span class="pill" style="background:#FFCF33;rotate:3deg;margin-right:22px">UI/UX designer</span>
+    <span class="pill" style="background:#6FE3B2;rotate:-2deg">Motion designer</span>
+    <span class="pill" style="background:#7FD8F5;rotate:4deg;margin-right:16px">Video editor</span>
+  </div>
 </body>
 </html>
