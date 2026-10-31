@@ -11,7 +11,7 @@ index.html            Home: hero, selected work, the drawer, service tiles
 work.html             All projects, with category filters
 about.html            Bio, CV download, background, toolkit
 services.html         Services, process, capabilities, FAQ
-journal.html          Reading list (linked from the footer)
+journal.html          Reading list (not linked from the nav or footer; reachable by its URL)
 contact.html          Email, socials, note form
 404.html              Not-found page
 project.html          Project page template

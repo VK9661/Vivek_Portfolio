@@ -61,10 +61,8 @@
     { href: 'index.html', key: 'home', label: 'Home' },
     { href: 'work.html', key: 'work', label: 'Work' },
     { href: 'about.html', key: 'about', label: 'About' },
-    { href: 'services.html', key: 'services', label: 'Services' },
-    { href: 'journal.html', key: 'journal', label: 'Reading list' }
+    { href: 'services.html', key: 'services', label: 'Services' }
   ];
-  var NAV_LINKS = LINKS.filter(function (l) { return l.key !== 'journal'; });
   var current = page === 'project' ? 'work' : page;
   var cur = function (k) { return k === current ? ' aria-current="page"' : ''; };
 
@@ -75,7 +73,7 @@
       '<a class="skip-link" href="#main">Skip to content</a>' +
       '<nav class="nav" aria-label="Primary">' +
         '<a class="nav-logo" href="index.html" aria-label="Vivek Kumar, home"><span class="mono" aria-hidden="true">VK</span><img src="assets/img/me/avatar.webp" alt="" width="42" height="42"></a>' +
-        '<div class="nav-fold nav-fold--links"><span><span class="nav-links">' + NAV_LINKS.slice(1).map(function (l) {
+        '<div class="nav-fold nav-fold--links"><span><span class="nav-links">' + LINKS.slice(1).map(function (l) {
           return '<a class="l" href="' + l.href + '"' + cur(l.key) + '>' + l.label + '</a>';
         }).join('') + '</span></span></div>' +
         '<div class="nav-fold nav-fold--menu"><span>' +
@@ -93,7 +91,7 @@
         '<span class="tsw-knob" aria-hidden="true"><span class="tsw-rays"></span><span class="tsw-face"><i></i><i></i></span></span>' +
       '</button></nav>' +
       '<div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">' +
-        NAV_LINKS.concat([{ href: 'contact.html', key: 'contact', label: 'Contact' }]).map(function (l, i) {
+        LINKS.concat([{ href: 'contact.html', key: 'contact', label: 'Contact' }]).map(function (l, i) {
           return '<a class="m" href="' + l.href + '"' + cur(l.key) + '><small>0' + (i + 1) + '</small>' + l.label + '</a>';
         }).join('') +
         '<div class="chips">' +
