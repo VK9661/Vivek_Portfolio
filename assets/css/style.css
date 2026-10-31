@@ -518,6 +518,11 @@ html.lenis, html.lenis body { height: auto; }
 .hp-visual::before { content: ""; position: absolute; z-index: 0; left: 0; right: 0; top: var(--split); bottom: 0; background: var(--surface); border-top: var(--bw-stk) solid var(--glass-edge); }
 .hp-big { position: absolute; z-index: 1; left: 0; right: 0; bottom: -.13em; margin: 0; text-align: center; white-space: nowrap;
   font: 800 37cqi/.8 var(--f-display); font-stretch: 100%; letter-spacing: -.02em; color: var(--title); }
+/* hero.js splits the name into letters; with a fine pointer, letters near the cursor lift and take a colour */
+.hp-big > span { display: inline-block; }
+.hp-big.is-live > span { --p: 0; transform: translateY(calc(var(--p) * -.12em)) rotate(calc(var(--p) * var(--tw))) scale(calc(1 + var(--p) * .05));
+  color: color-mix(in srgb, var(--c) calc(var(--p) * 100%), var(--title)); text-shadow: calc(var(--p) * .035em) calc(var(--p) * .045em) 0 var(--stk);
+  transition: transform .6s var(--ease-spring), color .35s ease, text-shadow .35s ease; }
 .hp-photo-wrap { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; width: fit-content; height: 94%; margin: 0 auto; }
 .hp-photo { height: 100%; margin: 0; animation: hpphoto 1s cubic-bezier(.2, .9, .25, 1) .25s backwards; }
 .hp-photo img { display: block; width: auto; height: 100%; max-width: none; }

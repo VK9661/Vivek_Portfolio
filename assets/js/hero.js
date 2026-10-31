@@ -1,5 +1,6 @@
 /* Home hero interactions: letter hover, cursor colour, confetti trail,
-   depth drift (doodles and role stickers), smiley eyes, magnetic CTAs.
+   depth drift (doodles and role stickers), smiley eyes, magnetic CTAs,
+   giant-name letters that lift near the cursor.
    Loaded after main.js on index.html only. */
 (function () {
   var hero = document.getElementById('hero');
@@ -11,6 +12,17 @@
   Array.prototype.forEach.call(hero.querySelectorAll('.hp-word'), function (w) {
     w.innerHTML = w.textContent.split('').map(function (ch, i) { return ch === ' ' ? ' ' : '<b style="--i:' + i + '">' + (ch === '&' ? '&amp;' : ch) + '</b>'; }).join('');
   });
+
+  /* 1b. The giant name: one span per letter, so each can react to the cursor (5) */
+  var big = hero.querySelector('.hp-big');
+  var bigLetters = [];
+  if (big) {
+    var TINTS = ['var(--pink)', 'var(--sun)', 'var(--sky)', 'var(--mint)', 'var(--pink)'];
+    big.innerHTML = big.textContent.split('').map(function (ch, i) {
+      return '<span style="--c:' + TINTS[i % TINTS.length] + ';--tw:' + (i % 2 ? 7 : -7) + 'deg">' + ch + '</span>';
+    }).join('');
+    bigLetters = Array.prototype.slice.call(big.children);
+  }
 
   if (reduce || !fine) return;
 
@@ -70,6 +82,25 @@
     }
   });
   hero.addEventListener('pointerleave', function () { px = 0; py = 0; if (!praf) praf = requestAnimationFrame(drift); });
+
+  /* 5. The giant name: letters near the cursor lift, tilt and take a palette colour, like a sticker peeled up */
+  if (big && bigLetters.length) {
+    big.classList.add('is-live');
+    var bigRaf = null, bigX = 0, bigY = 0;
+    var lift = function () {
+      bigRaf = null;
+      bigLetters.forEach(function (el) {
+        var r = el.getBoundingClientRect(), reach = r.width * 1.1;
+        var d = Math.hypot(bigX - (r.left + r.width / 2), bigY - (r.top + r.height / 2));
+        el.style.setProperty('--p', Math.max(0, 1 - d / reach).toFixed(3));
+      });
+    };
+    hero.addEventListener('pointermove', function (e) {
+      bigX = e.clientX; bigY = e.clientY;
+      if (!bigRaf) bigRaf = requestAnimationFrame(lift);
+    });
+    hero.addEventListener('pointerleave', function () { bigLetters.forEach(function (el) { el.style.setProperty('--p', 0); }); });
+  }
 
   /* 4. Magnetic CTAs */
   Array.prototype.forEach.call(hero.querySelectorAll('.hp-ctas .btn, .hp-ctas .hp-link'), function (el) {
