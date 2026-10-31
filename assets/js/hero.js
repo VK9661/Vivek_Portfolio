@@ -1,5 +1,5 @@
-/* Home hero interactions: letter hover, role rotator, cursor colour,
-   confetti trail, depth drift, smiley eyes, portrait tilt, magnetic CTAs.
+/* Home hero interactions: letter hover, cursor colour, confetti trail,
+   depth drift (doodles and role stickers), smiley eyes, portrait tilt, magnetic CTAs.
    Loaded after main.js on index.html only. */
 (function () {
   var hero = document.getElementById('hero');
@@ -12,40 +12,9 @@
     w.innerHTML = w.textContent.split('').map(function (ch, i) { return ch === ' ' ? ' ' : '<b style="--i:' + i + '">' + (ch === '&' ? '&amp;' : ch) + '</b>'; }).join('');
   });
 
-  /* 2. Role pill: flips through every role, each with its own colour, and resizes to fit */
-  var ROLES = [['Graphic designer', '#FF5A8C', '#1C1747'], ['UI/UX designer', '#3350FF', '#fff'], ['Motion designer', '#FFCF33', '#1C1747'], ['Video editor', '#6FE3B2', '#1C1747']];
-  var pill = hero.querySelector('.hp-role'), word = pill.querySelector('.hp-role-word'), ri = 0, rtimer = null;
-  var measure = document.createElement('span');
-  measure.className = 'hp-role-word';
-  measure.setAttribute('aria-hidden', 'true');
-  measure.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;left:0;top:0';
-  pill.appendChild(measure);
-  // offsetWidth ignores transforms, so the pop-in scale animation can't skew the measurement
-  var fit = function (t) { measure.textContent = t; pill.style.setProperty('--rw', (measure.offsetWidth + 1) + 'px'); };
-  var paint = function () { pill.style.setProperty('--rb', ROLES[ri][1]); pill.style.setProperty('--rf', ROLES[ri][2]); };
-  var next = function () {
-    ri = (ri + 1) % ROLES.length;
-    if (reduce) { word.textContent = ROLES[ri][0]; fit(ROLES[ri][0]); paint(); return; }
-    word.classList.add('is-out');
-    setTimeout(function () {
-      word.textContent = ROLES[ri][0]; fit(ROLES[ri][0]); paint();
-      word.classList.remove('is-out'); word.classList.add('is-in-start');
-      void word.offsetWidth;
-      word.classList.remove('is-in-start');
-    }, 260);
-  };
-  var start = function () { if (reduce) return; clearInterval(rtimer); rtimer = setInterval(next, 2200); };
-  paint(); fit(ROLES[0][0]);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fit(word.textContent); });
-  window.addEventListener('resize', function () { fit(word.textContent); });
-  pill.addEventListener('click', function () { next(); start(); });
-  pill.addEventListener('mouseenter', function () { clearInterval(rtimer); });
-  pill.addEventListener('mouseleave', start);
-  setTimeout(start, 1400);
-
   if (reduce || !fine) return;
 
-  /* 3. Cursor colour: a colour-shifting glow and a lit dot grid follow the cursor,
+  /* 2. Cursor colour: a colour-shifting glow and a lit dot grid follow the cursor,
         and small palette confetti spills off it as it moves */
   var fx = hero.querySelector('.hp-fx');
   var COLORS = ['#FF5A8C', '#FFCF33', '#7FD8F5', '#6FE3B2', '#9DB0FF', '#3350FF'];
@@ -82,7 +51,7 @@
   });
   hero.addEventListener('pointerleave', function () { hero.classList.remove('is-lit'); });
 
-  /* 4. Doodles drift with the cursor at different depths; the smiley's eyes look at it */
+  /* 3. Doodles and stickers drift with the cursor at different depths; the smiley's eyes look at it */
   var items = Array.prototype.slice.call(hero.querySelectorAll('[data-depth]'));
   var eyes = hero.querySelector('.hp-eyes'), smile = hero.querySelector('.hp-smile');
   var px = 0, py = 0, cx = 0, cy = 0, praf = null;
@@ -102,7 +71,7 @@
   });
   hero.addEventListener('pointerleave', function () { px = 0; py = 0; if (!praf) praf = requestAnimationFrame(drift); });
 
-  /* 5. Portrait tilts toward the cursor */
+  /* 4. Portrait tilts toward the cursor */
   var photo = hero.querySelector('.hp-photo-wrap'), vis = hero.querySelector('.hp-visual');
   if (photo && vis) {
     vis.addEventListener('pointermove', function (e) {
@@ -112,7 +81,7 @@
     vis.addEventListener('pointerleave', function () { photo.style.transform = ''; });
   }
 
-  /* 6. Magnetic CTAs */
+  /* 5. Magnetic CTAs */
   Array.prototype.forEach.call(hero.querySelectorAll('.hp-ctas .btn, .hp-ctas .hp-link'), function (el) {
     el.classList.add('is-magnetic');
     var zone = el.parentElement;
