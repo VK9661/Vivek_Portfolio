@@ -53,7 +53,7 @@ Then open http://localhost:5173.
 
 1. Add the cover to `assets/img/covers/<id>` and up to four boards to `assets/img/gallery/<id>/`.
 2. Add an entry to `assets/js/data.js`. Copy an existing project: every project has the same fields, and the comment at the top of the file explains each one.
-3. Run `python tools/build-share.py`. It needs Python with Pillow, Node and Chrome. It writes the project's page and its link-preview image.
+3. Run `python tools/build-share.py`. It needs Python with Pillow, Node and Chrome. It writes the project's page and its link-preview image, and pre-renders the page body (nav, case study, footer) into the file so the content is there before JavaScript runs. Rerun it after any change to `data.js`, `project.html`, `cards.js`, `pages/project.js` or the nav and footer in `main.js`.
 4. Commit and push.
 
 Every project page uses this shared sequence:

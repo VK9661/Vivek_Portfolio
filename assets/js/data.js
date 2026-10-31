@@ -34,6 +34,7 @@
                  host is 'vimeo' (default), 'youtube' or 'file' (id = assets/video/<id>.mp4, played on the page)
                  the poster is assets/img/video/<id>.webp; nothing loads until someone presses play
      loop      : optional, a short silent clip that plays over the card cover on hover (assets/video/loop/<id>.mp4)
+     coverCrop : optional, true = a wide Home card crops the cover to fill its frame (patterns only, never covers with text near the edges)
    ===================================================================== */
 window.PROJECTS = [
   {
@@ -159,7 +160,7 @@ window.PROJECTS = [
     about: "The Draft Room is a concept brand for a members' library of weave drafts, the drawings a weaver follows to make cloth. Every pattern across the identity follows real threading, tie-up, treadling and drawdown logic, so each printed pattern could also be woven.",
     year: '2026', published: 'Oct 2026', tags: ['Brand identity', 'Typography', 'Pattern design'],
     tools: ['Illustrator', 'Photoshop', 'Figma'],
-    img: 'assets/img/covers/draft-room.webp', w: 1616, h: 1264,
+    img: 'assets/img/covers/draft-room.webp', w: 1616, h: 1264, coverCrop: true,
     behance: 'https://www.behance.net/gallery/257811161/The-Draft-Room-Brand-Identity',
 
     facts: [['Type', 'Concept brand identity'], ['Medium', 'Logo, print and brand guidelines'], ['Tools', 'Illustrator, Photoshop, Figma'], ['Published', 'Oct 2026']],
@@ -312,7 +313,7 @@ window.PROJECTS = [
     about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
     year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'],
     tools: ['Figma', 'Illustrator', 'Photoshop'],
-    img: 'assets/img/covers/shopup.jpg', w: 1448, h: 1086,
+    img: 'assets/img/covers/shopup.webp', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/248983891/ShopUp-Case-Study',
 
     facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop'], ['Published', 'May 2026']],
@@ -348,7 +349,7 @@ window.PROJECTS = [
     about: "A heuristic evaluation of the Bewakoof shopping app: a structured review of what's working and what isn't across a high-traffic ecommerce funnel.",
     year: '2025', published: 'Jul 2025', tags: ['UX research', 'Audit'],
     tools: ['Figma', 'Photoshop'],
-    img: 'assets/img/covers/bewakoof.jpg', w: 1448, h: 1086,
+    img: 'assets/img/covers/bewakoof.webp', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/229827375/Heuristic-Evaluation-%28Bewakoof%29',
 
     facts: [['Type', 'Heuristic evaluation'], ['Medium', 'Mobile shopping app'], ['Tools', 'Figma, Photoshop'], ['Published', 'Jul 2025']],
@@ -385,7 +386,7 @@ window.PROJECTS = [
     about: 'A second parallax study with layered depth, built around a coastal landing-page hero for Achilles Point.',
     year: '2025', published: 'Jun 2025', tags: ['Motion', 'Parallax', 'Web'],
     tools: ['Figma', 'Photoshop'],
-    img: 'assets/img/covers/achilles.jpg', w: 1448, h: 1086,
+    img: 'assets/img/covers/achilles.webp', w: 1448, h: 1086,
     behance: 'https://www.behance.net/gallery/228224255/Parallax',
 
     facts: [['Type', 'Parallax UI study'], ['Medium', 'Web landing page'], ['Tools', 'Figma, Photoshop'], ['Published', 'Jun 2025']],

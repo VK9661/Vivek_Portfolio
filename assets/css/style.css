@@ -233,7 +233,7 @@ section { position: relative; }
 
 
 /* ---------- 3. Type ---------- */
-.display, h1, h2, h3 { font-family: var(--f-display); font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-ligatures: none; }
+.display, h1, h2, h3 { font-family: var(--f-display); font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-ligatures: none; text-wrap: balance; }
 .display { font-stretch: 78%; line-height: .9; letter-spacing: -.02em; }
 .t-xxl { font-size: clamp(4.2rem, 12vw, 10.5rem); }
 .t-xl { font-size: clamp(3rem, 8vw, 6.6rem); }
@@ -512,7 +512,7 @@ html[data-theme="dark"] .hp::before {
   position: relative; z-index: 2; margin-left: .3em; vertical-align: middle; top: -.1em;
   display: inline-flex; align-items: center; box-sizing: content-box; width: var(--rw, auto); height: 1.25em; overflow: hidden; padding: .45em .85em;
   font: 800 .74rem/1.1 var(--f-sans); letter-spacing: 0; white-space: nowrap; cursor: pointer;
-  color: var(--rf, #fff); background: var(--rb, var(--pink)); border: var(--bw-stk) solid var(--stk); border-radius: var(--r-pill); box-shadow: 3px 3px 0 var(--stk);
+  color: var(--rf, var(--stk)); background: var(--rb, var(--pink)); border: var(--bw-stk) solid var(--stk); border-radius: var(--r-pill); box-shadow: 3px 3px 0 var(--stk);
   rotate: -4deg; animation: phpop .7s var(--ease-spring) .7s backwards;
   transition: width .5s var(--ease-spring), background-color .45s, color .3s, scale .2s;
 }
@@ -611,6 +611,13 @@ html[data-theme="dark"] .hp-name::after { background: color-mix(in srgb, var(--s
 .tape { position: absolute; left: -5%; top: 34px; width: 110%; overflow: hidden; white-space: nowrap; background: var(--sun); color: var(--stk); border-block: var(--bw-stk) solid var(--stk); transform: rotate(-2deg); }
 .tape .track { display: inline-flex; gap: 2.2rem; padding: .7rem 0; font: 800 clamp(1.3rem, 2.6vw, 2rem)/1.2 var(--f-display); font-stretch: 88%; letter-spacing: -.01em; animation: slide 40s linear infinite; }
 .tape .track i { font-style: normal; opacity: .5; }
+/* Phones: a slightly smaller portrait and tighter tape so the first project arrives sooner */
+@media (max-width: 600px) {
+  .hp { padding-bottom: 24px; }
+  .hp-visual { max-width: 320px; padding-bottom: 136px; }
+  .tape-band { height: 86px; }
+  .tape { top: 22px; }
+}
 @media (min-width: 601px) {
   .tape-band { height: 140px; }
   .tape { top: 44px; transform: rotate(-1.6deg); }
@@ -1370,6 +1377,10 @@ html[data-theme="dark"] .tsw-star.s2 { animation-delay: -.8s; } html[data-theme=
   .work-grid > :first-child p, .work-grid > :nth-child(4) p { font-size: 1.05rem; }
   .work-grid > :first-child .card-facts { display: none; }
   .work-grid > :first-child .card-cta, .work-grid > :nth-child(4) .card-cta { display: inline-flex; }
+  /* a pattern cover may crop, so it fills the whole frame instead of floating in it */
+  .work-grid > :is(:first-child, :nth-child(4)) .media:has(img.crop) { align-items: stretch; }
+  .work-grid > :is(:first-child, :nth-child(4)) .m-box:has(img.crop) { height: 100%; }
+  .work-grid > :is(:first-child, :nth-child(4)) .media img.crop { height: 100%; aspect-ratio: auto; }
 }
 .proof { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .proof-i { position: relative; display: grid; gap: 8px; padding: 20px 22px 22px; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-md); box-shadow: 4px 5px 0 var(--hard); }

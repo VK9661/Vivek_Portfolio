@@ -2,8 +2,9 @@
 (function () {
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var swatch = function (p) { return (window.SWATCH || {})[p.color] || '#FF5A8C'; };
-  // 4:3 covers fill the frame; other ratios are shown whole (contain), never cropped
-  var fit = function (p) { return Math.abs(p.w / p.h - 4 / 3) < 0.03 ? ' class="fill"' : ''; };
+  // 4:3 covers fill the frame; other ratios are shown whole (contain), never cropped,
+  // unless the project allows a crop (coverCrop), which lets a wide Home card fill its whole frame
+  var fit = function (p) { return p.coverCrop ? ' class="fill crop"' : Math.abs(p.w / p.h - 4 / 3) < 0.03 ? ' class="fill"' : ''; };
   // At most two tags on a card: never one that repeats the project type, and "Motion" first when present
   var cardTags = function (p) {
     var kind = (p.kind || '').toLowerCase();
