@@ -483,13 +483,15 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes twinkle { 50% { transform: scale(.65) rotate(45deg); } }
 @keyframes hl { to { transform: scaleX(1); } }
 
-/* the words, on the cobalt band */
-.hp-intro, .hp-title, .hp-sub, .hp-ctas { position: relative; z-index: 3; }
+/* the words, on a taped paper card (cream in both themes) */
+.hp-card { --card: #FAF9F6; position: relative; z-index: 3; justify-self: start; max-width: 470px; padding: 22px 22px 26px; color: var(--stk);
+  background: var(--card); border: var(--bw-stk) solid var(--stk); border-radius: 26px; box-shadow: 6px 8px 0 var(--stk); rotate: -1.5deg; }
+.hp-card::before { content: ""; position: absolute; top: -16px; left: 42%; width: 120px; height: 32px; rotate: 4deg; background: rgba(255, 207, 51, .9); border: 2px dashed rgba(28, 23, 71, .35); }
 .hp-open { display: inline-flex; align-items: center; gap: 8px; padding: .4em .9em; font-weight: 800; font-size: .82rem; border: 2px solid currentColor; border-radius: var(--r-pill); }
 .hp-open .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); }
 .hp-hello { margin-top: 16px; font: 800 clamp(1.45rem, 2.3vw, 2.1rem)/1.1 var(--f-display); font-stretch: 85%; letter-spacing: -.01em; animation: fadeup .8s ease .15s backwards; }
-.hp-hello .hand { margin-right: .2em; font-size: 1.15em; color: var(--sun); }
-.hp-title { --ts: clamp(2.5rem, 11vw, 4rem); margin-top: 14px; font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: var(--ts); line-height: .9; letter-spacing: -.03em; color: var(--on-blue); }
+.hp-hello .hand { margin-right: .2em; font-size: 1.15em; color: var(--blue); }
+.hp-title { --ts: clamp(2.5rem, 11vw, 4rem); margin-top: 14px; font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: var(--ts); line-height: .9; letter-spacing: -.03em; color: var(--blue); }
 .hp-line { display: block; overflow: hidden; padding: .18em .05em .1em; margin: -.18em -.05em -.1em; }
 .hp-line > span { display: inline-block; animation: hprise 1s cubic-bezier(.2, .9, .25, 1) backwards; }
 .hp-l1 > span { animation-delay: .1s; }
@@ -498,24 +500,25 @@ html.lenis, html.lenis body { height: auto; }
 .hp-word { white-space: nowrap; } /* each letter is its own hover target, so never break inside a line */
 .hp-word b { display: inline-block; font-weight: inherit; transition: transform .45s var(--ease-spring), color .25s; }
 @media (hover: hover) {
-  .hp-word b:hover { transform: translateY(-.1em) rotate(-8deg) scale(1.06); color: var(--sun); }
-  .hp-word b:nth-child(even):hover { transform: translateY(-.1em) rotate(8deg) scale(1.06); color: var(--pink); }
+  .hp-word b:hover { transform: translateY(-.1em) rotate(-8deg) scale(1.06); color: var(--pink); }
+  .hp-word b:nth-child(even):hover { transform: translateY(-.1em) rotate(8deg) scale(1.06); color: var(--stk); }
 }
 .hp-sub { margin-top: 16px; max-width: 22em; font-size: clamp(1.02rem, 1.3vw, 1.15rem); font-weight: 600; line-height: 1.45; animation: fadeup .8s ease .55s backwards; }
 .hp-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 22px; animation: fadeup .8s ease .7s backwards; }
-.hp-link { position: relative; display: inline-flex; align-items: center; gap: 8px; padding-bottom: 8px; font-weight: 800; color: var(--on-blue); text-decoration: none; }
+.hp-link { position: relative; display: inline-flex; align-items: center; gap: 8px; padding-bottom: 8px; font-weight: 800; color: var(--stk); text-decoration: none; }
 .hp-link > span { display: inline-block; transition: transform .35s var(--ease-spring); }
 .hp-link svg { position: absolute; left: -4px; bottom: -4px; width: calc(100% + 8px); height: 12px; overflow: visible; }
-.hp-link path { stroke: var(--sun); stroke-width: 2.6; stroke-linecap: round; --dd: 1.15s; }
+.hp-link path { stroke: var(--blue); stroke-width: 2.6; stroke-linecap: round; --dd: 1.15s; }
 @media (hover: hover) { .hp-link:hover > span { transform: translateY(4px); } }
 .hp-stage :focus-visible { outline-color: var(--sun); }
+.hp-card :focus-visible { outline-color: var(--blue); }
 
 /* the picture: paper band, giant name, portrait, stickers */
 .hp-visual { position: relative; z-index: 1; height: clamp(380px, 108vw, 540px); margin: 22px calc(-1 * var(--pad-x)) 0; container-type: inline-size; }
 .hp-visual::before { content: ""; position: absolute; z-index: 0; left: 0; right: 0; top: var(--split); bottom: 0; background: var(--surface); border-top: var(--bw-stk) solid var(--glass-edge); }
 .hp-big { position: absolute; z-index: 1; left: 0; right: 0; bottom: -.13em; margin: 0; text-align: center; white-space: nowrap;
   font: 800 37cqi/.8 var(--f-display); font-stretch: 100%; letter-spacing: -.02em; color: var(--title); }
-.hp-photo-wrap { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; width: fit-content; height: 94%; margin: 0 auto; transform-origin: 50% 100%; transition: transform .5s var(--ease-out); }
+.hp-photo-wrap { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; width: fit-content; height: 94%; margin: 0 auto; }
 .hp-photo { height: 100%; margin: 0; animation: hpphoto 1s cubic-bezier(.2, .9, .25, 1) .25s backwards; }
 .hp-photo img { display: block; width: auto; height: 100%; max-width: none; }
 @keyframes hpphoto { from { opacity: 0; transform: translateY(44px); } }
@@ -537,6 +540,8 @@ html.lenis, html.lenis body { height: auto; }
 .hp-smile rect { fill: var(--stk); }
 .hp-smile path { fill: none; stroke: var(--stk); stroke-width: 3; stroke-linecap: round; }
 .hp-eyes { transition: transform .2s var(--ease-out); }
+/* handwritten note with an arrow pointing at him (wide screens only) */
+.hp-note { display: none; }
 @media (hover: hover) { .hp-visual:hover .hp-smile { rotate: -18deg; } }
 
 /* Phones: the portrait fills the width, so the name moves up behind his head, tone on tone on the cobalt band */
@@ -569,21 +574,28 @@ html.lenis, html.lenis body { height: auto; }
 @media (min-width: 901px) {
   .hp-stage {
     min-height: max(620px, 100svh); padding-bottom: var(--pad);
-    grid-template-columns: minmax(0, 1fr) 30% minmax(0, 1fr); grid-template-rows: auto auto auto 1fr;
-    grid-template-areas: "intro . title" "sub . title" "ctas . title" ". . .";
+    grid-template-columns: minmax(0, 1fr) 30% minmax(0, 1fr); grid-template-rows: auto 1fr;
   }
-  .hp-intro { grid-area: intro; }
-  .hp-sub { grid-area: sub; }
-  .hp-ctas { grid-area: ctas; }
-  .hp-title { --ts: clamp(2.6rem, 4.1vw, 4.2rem); grid-area: title; align-self: start; margin-top: 4px; text-align: right; }
+  .hp-card { align-self: start; margin-top: 10px; padding: 26px 30px 30px; rotate: -2.5deg; }
+  .hp-title { --ts: clamp(2.6rem, 3.6vw, 3.9rem); }
   .hp-visual { position: absolute; inset: 0; height: auto; margin: 0; }
   .hp-photo-wrap { height: 86%; max-height: 980px; }
   .hp-big { font-size: min(37cqi, 70svh); } /* as wide as the screen, never taller than the paper band */
-  /* the stickers sit on the shirt, so the letters of the name stay clear on both sides */
-  .hp-tag--1 { left: 30%; top: 60%; } .hp-tag--2 { right: 30%; top: 66%; }
-  .hp-tag--3 { left: 32%; top: 80%; } .hp-tag--4 { right: 31%; top: 86%; }
-  .hp-smile { left: calc(50% + max(136px, 22svh)); top: 34%; } /* right of his head, so it follows the portrait, not the text */
-  .hp-burst { right: 12%; top: 44%; }
+  /* the role stickers leave the shirt and stack in a column on the right, under a handwritten label */
+  .hp-tags { position: absolute; z-index: 3; top: calc(var(--nav-h) + 28px); right: var(--pad-x); display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+  .hp-tags::before { content: "what I do"; font: 400 clamp(1.4rem, 1.8vw, 1.8rem)/1 var(--f-hand); color: var(--sun); }
+  .hp-tag { position: static; font-size: clamp(.95rem, 1.2vw, 1.15rem); padding: .55em 1.1em; }
+  .hp-tag--1 { rotate: -4deg; } .hp-tag--2 { rotate: 3deg; margin-right: 26px; } .hp-tag--3 { rotate: -2deg; } .hp-tag--4 { rotate: 4deg; margin-right: 18px; }
+  .hp-smile { left: auto; right: calc(var(--pad-x) + 40px); top: 60%; }
+  .hp-burst { display: none; }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) { .hp-photo-wrap { height: 76%; } } /* narrow laptops: keep his face clear of the card */
+@media (min-width: 1201px) {
+  .hp-note { position: absolute; z-index: 3; left: calc(50% + 140px); top: 43%; display: block; margin: 0; pointer-events: none; }
+  .hp-note span { display: block; font: 400 clamp(2rem, 2.6vw, 2.8rem)/1 var(--f-hand); color: var(--sun); white-space: nowrap; rotate: -6deg; }
+  .hp-note svg { display: block; width: clamp(120px, 11vw, 160px); margin: 4px 0 0 -46px; rotate: 6deg; overflow: visible; }
+  .hp-note path { fill: none; stroke: var(--sun); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
 }
 
 

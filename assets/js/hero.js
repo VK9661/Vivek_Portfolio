@@ -1,5 +1,5 @@
 /* Home hero interactions: letter hover, cursor colour, confetti trail,
-   depth drift (doodles and role stickers), smiley eyes, portrait tilt, magnetic CTAs.
+   depth drift (doodles and role stickers), smiley eyes, magnetic CTAs.
    Loaded after main.js on index.html only. */
 (function () {
   var hero = document.getElementById('hero');
@@ -71,17 +71,7 @@
   });
   hero.addEventListener('pointerleave', function () { px = 0; py = 0; if (!praf) praf = requestAnimationFrame(drift); });
 
-  /* 4. Portrait tilts toward the cursor */
-  var photo = hero.querySelector('.hp-photo-wrap'), vis = hero.querySelector('.hp-visual');
-  if (photo && vis) {
-    vis.addEventListener('pointermove', function (e) {
-      var r = photo.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-      photo.style.transform = 'perspective(1000px) rotateX(' + (-y * 3.5).toFixed(2) + 'deg) rotateY(' + (x * 4).toFixed(2) + 'deg)';
-    });
-    vis.addEventListener('pointerleave', function () { photo.style.transform = ''; });
-  }
-
-  /* 5. Magnetic CTAs */
+  /* 4. Magnetic CTAs */
   Array.prototype.forEach.call(hero.querySelectorAll('.hp-ctas .btn, .hp-ctas .hp-link'), function (el) {
     el.classList.add('is-magnetic');
     var zone = el.parentElement;
