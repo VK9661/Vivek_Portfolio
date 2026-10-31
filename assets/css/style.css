@@ -446,24 +446,25 @@ html.lenis, html.lenis body { height: auto; }
 
 
 /* ---------- 8. Home hero: the name behind the portrait ---------- */
-/* One sticker sheet: a cobalt band holds the words, a paper band below holds a giant VIVEK,
-   and the cut-out portrait stands across both with the name behind his shoulders.
-   Role stickers sit around him; on desktop the first project peeks out under the sheet. */
-.hp { position: relative; isolation: isolate; padding: 8px 0 clamp(40px, 6vw, 96px); }
+/* Full screen, edge to edge, starting under the floating nav: a cobalt band holds the words, a paper band
+   below holds a giant VIVEK, and the cut-out portrait stands across both with the name behind his shoulders.
+   Role stickers sit around him; a spinning scroll-down sticker sits at the bottom centre. */
+.hp { position: relative; isolation: isolate; margin-top: -84px; } /* pulls the band up under the nav (main's top padding) */
 .hp-stage {
   --pad: clamp(22px, 4.2vw, 56px);
   --on-blue: #FAF9F6;                    /* text on the cobalt band, both themes */
+  --pad-x: max(var(--pad), calc((100% - var(--max)) / 2 + var(--gutter))); /* words line up with the site's container */
+  --nav-h: 84px;
   --split: 56%;                          /* where the cobalt band meets the paper band, inside .hp-visual */
   position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start;
-  padding: var(--pad) var(--pad) 0; overflow: hidden; color: var(--on-blue);
-  background: var(--blue); border: var(--bw-stk) solid var(--glass-edge); border-radius: clamp(26px, 3.4vw, 44px); box-shadow: var(--sh-lg);
-  animation: fadeup .8s ease .05s backwards;
+  padding: calc(var(--nav-h) + 14px) var(--pad-x) 0; overflow: hidden; color: var(--on-blue);
+  background: var(--blue); border-bottom: var(--bw-stk) solid var(--glass-edge);
 }
 
 /* cursor colour glow, lit dot grid and confetti (driven by hero.js) */
-.hp-fx { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.hp-fx { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .hp-spot { position: absolute; inset: 0; opacity: 0; transition: opacity .5s;
-  background: radial-gradient(rgba(51, 80, 255, .6) 1.6px, transparent 2px) 0 0 / 28px 28px;
+  background: radial-gradient(rgba(250, 249, 246, .45) 1.6px, transparent 2px) 0 0 / 28px 28px;
   -webkit-mask-image: radial-gradient(230px circle at var(--mx, 50%) var(--my, 50%), #000 10%, transparent 75%);
           mask-image: radial-gradient(230px circle at var(--mx, 50%) var(--my, 50%), #000 10%, transparent 75%); }
 .hp-blob { position: absolute; left: 0; top: 0; width: 440px; height: 440px; margin: -220px 0 0 -220px; border-radius: 50%; opacity: 0;
@@ -510,7 +511,7 @@ html.lenis, html.lenis body { height: auto; }
 .hp-stage :focus-visible { outline-color: var(--sun); }
 
 /* the picture: paper band, giant name, portrait, stickers */
-.hp-visual { position: relative; z-index: 1; height: clamp(380px, 108vw, 540px); margin: 22px calc(-1 * var(--pad)) 0; container-type: inline-size; }
+.hp-visual { position: relative; z-index: 1; height: clamp(380px, 108vw, 540px); margin: 22px calc(-1 * var(--pad-x)) 0; container-type: inline-size; }
 .hp-visual::before { content: ""; position: absolute; z-index: 0; left: 0; right: 0; top: var(--split); bottom: 0; background: var(--surface); border-top: var(--bw-stk) solid var(--glass-edge); }
 .hp-big { position: absolute; z-index: 1; left: 0; right: 0; bottom: -.13em; margin: 0; text-align: center; white-space: nowrap;
   font: 800 37cqi/.8 var(--f-display); font-stretch: 100%; letter-spacing: -.02em; color: var(--title); }
@@ -545,20 +546,29 @@ html.lenis, html.lenis body { height: auto; }
   .hp-burst { right: 5%; top: 34%; }
 }
 
-/* the first project, peeking out under the sheet (desktop) */
-.hp-peek { display: none; }
+/* scroll-down sticker: a sun disc with words running round it, bottom centre */
+.hp-scroll { --s: clamp(88px, 8vw, 118px); position: absolute; z-index: 4; left: calc(50% - var(--s) / 2); bottom: clamp(14px, 3vh, 30px); display: grid; place-items: center; width: var(--s); height: var(--s);
+  color: var(--stk); text-decoration: none; background: var(--sun); border: var(--bw-stk) solid var(--stk); border-radius: 50%; box-shadow: var(--sh);
+  animation: phpop .7s var(--ease-spring) 1.2s backwards; transition: translate .35s var(--ease-spring), box-shadow .3s; }
+.hp-scroll svg { position: absolute; inset: 7%; width: 86%; height: 86%; overflow: visible; animation: hp-spin 14s linear infinite; }
+.hp-scroll text { font: 800 14px var(--f-sans); fill: var(--stk); }
+.hp-scroll > span { font: 800 1.5rem/1 var(--f-sans); animation: hp-bob 1.6s ease-in-out infinite; }
+@keyframes hp-spin { to { rotate: 360deg; } }
+@keyframes hp-bob { 50% { translate: 0 5px; } }
+@media (hover: hover) { .hp-scroll:hover { translate: 0 -4px; box-shadow: var(--sh-lg); } }
+.hp-scroll:focus-visible { outline-color: var(--ink); }
 
 .is-magnetic { transition: translate .35s var(--ease-out); }
 
 @media (min-width: 601px) {
+  .hp { margin-top: -96px; }
+  .hp-stage { --nav-h: 96px; }
   .hp-visual { height: clamp(440px, 74vw, 560px); }
   .hp-tag--1 { left: 24%; } .hp-tag--2 { right: 24%; } .hp-tag--3 { left: 27%; } .hp-tag--4 { right: 26%; }
 }
 @media (min-width: 901px) {
-  .hp { padding-bottom: 104px; } /* room for the peek card, so it never reaches the tape */
-  .hp > .wrap { position: relative; }
   .hp-stage {
-    min-height: clamp(560px, calc(100dvh - 150px), 720px); padding-bottom: var(--pad);
+    min-height: max(620px, 100svh); padding-bottom: var(--pad);
     grid-template-columns: minmax(0, 1fr) 30% minmax(0, 1fr); grid-template-rows: auto auto auto 1fr;
     grid-template-areas: "intro . title" "sub . title" "ctas . title" ". . .";
   }
@@ -567,19 +577,13 @@ html.lenis, html.lenis body { height: auto; }
   .hp-ctas { grid-area: ctas; }
   .hp-title { --ts: clamp(2.6rem, 4.1vw, 4.2rem); grid-area: title; align-self: start; margin-top: 4px; text-align: right; }
   .hp-visual { position: absolute; inset: 0; height: auto; margin: 0; }
-  .hp-photo-wrap { height: 90%; }
+  .hp-photo-wrap { height: 86%; max-height: 980px; }
+  .hp-big { font-size: min(37cqi, 70svh); } /* as wide as the screen, never taller than the paper band */
   /* the stickers sit on the shirt, so the letters of the name stay clear on both sides */
   .hp-tag--1 { left: 30%; top: 60%; } .hp-tag--2 { right: 30%; top: 66%; }
   .hp-tag--3 { left: 32%; top: 80%; } .hp-tag--4 { right: 31%; top: 86%; }
-  .hp-smile { left: calc(50% - clamp(175px, 16vw, 210px)); top: 7%; }
+  .hp-smile { left: calc(50% + max(136px, 22svh)); top: 34%; } /* right of his head, so it follows the portrait, not the text */
   .hp-burst { right: 12%; top: 44%; }
-
-  .hp-peek { position: absolute; z-index: 4; right: calc(var(--gutter) + 3%); bottom: -64px; display: block; width: clamp(180px, 16vw, 230px);
-    padding: 8px 8px 10px; text-decoration: none; color: var(--stk); background: var(--sun); border: var(--bw-stk) solid var(--stk); border-radius: 18px; box-shadow: var(--sh);
-    rotate: 6deg; transition: rotate .45s var(--ease-spring), translate .45s var(--ease-spring); animation: phpop .8s var(--ease-spring) 1.2s backwards; }
-  .hp-peek img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 2px solid var(--stk); border-radius: 12px; background: var(--surface); }
-  .hp-peek span { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; padding: 0 4px; font-weight: 800; font-size: .86rem; }
-  @media (hover: hover) { .hp-peek:hover { rotate: 0deg; translate: 0 -10px; } }
 }
 
 

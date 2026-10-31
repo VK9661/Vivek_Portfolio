@@ -8,16 +8,7 @@
 
   var P = window.PROJECTS;
   Array.prototype.forEach.call(document.querySelectorAll('[data-count="projects"]'), function (n) { n.textContent = P.length; });
-  var featured = P.filter(function (p) { return p.featured; });
-  document.getElementById('featured').innerHTML = featured.map(window.workCard).join('');
-
-  // The hero's peek card: the first featured project, hanging under the sheet (desktop)
-  var peek = document.getElementById('hero-peek'), first = featured[0];
-  if (peek && first) {
-    peek.href = 'project-' + first.id + '.html';
-    peek.setAttribute('aria-label', 'Latest project: ' + first.title);
-    peek.innerHTML = '<img src="' + first.img + '" alt="" width="' + first.w + '" height="' + first.h + '" loading="lazy"><span>' + window.escapeHTML(first.title) + '<b aria-hidden="true">&#8599;</b></span>';
-  }
+  document.getElementById('featured').innerHTML = P.filter(function (p) { return p.featured; }).map(window.workCard).join('');
 
   // The drawer opens on "More" (the projects not featured above). A category
   // lists every project in it, featured ones included, and its count matches.
