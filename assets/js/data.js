@@ -192,6 +192,45 @@ window.PROJECTS = [
     ]
   },
   {
+    id: 'truepost', title: 'TRUEPOST', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'mint', featured: false,
+    summary: 'A check between the counting machine and the bank, so a wrong cash deposit cannot post.',
+    about: "TRUEPOST is a concept checking layer for bank branches, built for a fictional bank. Before a cash deposit posts, two independent sources have to agree: the slip amount the cashier types blind has to match the note-counting machine, and the customer confirms their own name and amount on a screen, Hindi first. When everything matches it costs the cashier nothing. When it doesn't, the Post button disappears.",
+    year: '2026', published: 'Nov 2026', tags: ['Enterprise UI/UX', 'Fintech', 'Design system'],
+    tools: ['Figma', 'Figma AI', 'ElevenLabs'],
+    img: 'assets/img/covers/truepost.webp', w: 808, h: 632,
+    behance: 'https://www.behance.net/gallery/257948447/TRUEPOST-Cash-deposit-check-(UXUI-case-study)',
+
+    facts: [['Type', 'Concept UI/UX case study'], ['Medium', 'Cashier console, customer display and manager app'], ['Tools', 'Figma, Figma AI, ElevenLabs'], ['Published', 'Nov 2026']],
+    writeup: [
+      { h: 'The challenge', p: ['A cash deposit posts from one typed number:'], list: ['In a story from a branch visit, ₹25,000 was credited as ₹2,50,000 to the wrong account, and the person refused to return it', 'One extra zero, two swapped digits or one wrong account digit is enough, and fixing it afterwards runs through notices, the ombudsman and courts', 'An "Are you sure?" pop-up is clicked through by habit within a day', 'Online transfers show the receiver’s name before money moves, but the cash counter still trusts one typed number'] },
+      { h: 'The approach', p: ['Two independent sources before any cash posts. The cashier types the slip amount blind, before the machine total appears, and it has to match the count. The customer confirms the name and amount on their own screen, in Hindi first. When everything matches, nothing extra is asked of the cashier. When it doesn’t, the layout itself changes.'] },
+      { h: 'The details', list: ['Quiet when right, impossible to miss when wrong: a hatched lock bar replaces the action bar and the Post button disappears', 'Three ways out: re-enter the slip, recount the notes, or ask the manager, who approves from a phone with the amount written on the button', 'A customer display in Hindi first, with the amount in words and the account half hidden', 'A design system in Figma: 30 colour variables in Light and Dark modes, IBM Plex Sans, Devanagari and Mono, Indian lakh and crore formatting', 'Match, Hold and Lock always carry an icon and words, never colour alone, and all 40 text and background pairs pass WCAG contrast', 'A clickable prototype and a 54-second explainer film'] }
+    ],
+    credits: 'Concept project. Kalpit Bank and every person, account and number shown are fictional. Desk research from 18 public sources, with no interviews; the personas are fictional profiles built from them. The slip and counting-machine photos and the persona portraits were generated with Figma AI. The explainer motion was made with Claude (AI) from my Figma screens, with an AI voice-over from ElevenLabs. Music: “Happy World – Light Ethnic Electronic Music” by Sonican, via Pixabay (Pixabay Content License).',
+    role: ['Desk research', 'Personas', 'User flows', 'Design system', 'UI design', 'Hindi and English UI', 'Accessibility', 'Prototyping', 'Explainer film'],
+    process: [
+      ['Research', '18 public sources, 9 error types, 3 users'],
+      ['Define', 'Two sources must agree before cash posts'],
+      ['Design', 'Cashier console, customer display and manager app'],
+      ['Build', 'A Figma design system and a clickable prototype'],
+      ['Launch', 'A 54-second explainer film']
+    ],
+    outcome: {
+      note: 'A concept project for a fictional bank, so these are the checks it is designed to pass, not live results.',
+      delivered: ['A research report: 18 public sources, 9 error types and 3 users', 'A design system with 30 colour variables in Light and Dark modes', 'Three surfaces: a cashier console (1440), a customer display (820) and a manager app (393)', 'Wireframes, final screens and a clickable prototype', 'A 54-second explainer film'],
+      measure: ['Whether a matching deposit posts with no extra step for the cashier', 'How often a mismatch is caught before the money posts', 'Whether a customer can confirm their name and amount in one tap', 'Whether a manager can decide on a hold from one phone screen'],
+      shows: ['Error-prevention design for an enterprise tool', 'A design system with light and dark modes', 'A bilingual Hindi and English interface', 'Accessibility built in from the first screen']
+    },
+    gallery: [
+      ['assets/img/gallery/truepost/01.webp', 1400, 1560, 'One extra zero. Typed as ₹2,50,000.'],
+      ['assets/img/gallery/truepost/02.webp', 1400, 1560, 'A match costs nothing. One key posts it.'],
+      ['assets/img/gallery/truepost/03.webp', 1400, 1640, 'Impossible to miss. No Post button to press.'],
+      ['assets/img/gallery/truepost/04.webp', 1400, 1420, 'The customer reads it back. Hindi first.']
+    ],
+    video: { label: 'explainer film', items: [['1242492531', 1920, 1080, 'TRUEPOST explainer film']] },
+    loop: 'assets/video/loop/truepost.mp4'
+  },
+  {
     id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: false,
     summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
     about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
