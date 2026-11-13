@@ -1,4 +1,4 @@
-/* Shared card helpers: project-card renderers (Home, Work) and grid balancing (Work, Reading list). */
+/* Shared card helpers: project-card renderers (Home, Work) and grid balancing (Work). */
 (function () {
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var swatch = function (p) { return (window.SWATCH || {})[p.color] || '#FF5A8C'; };

@@ -25,6 +25,7 @@
      writeup   : always three sections: The challenge, The approach, The details
                 { h, p: [paragraphs], list: [items], quotes: [quotes] }
                  The challenge is always one intro line + a list (the boxed style), on every project
+     seo       : optional longer text for the search description; falls back to summary
      credits   : optional small print under the write-up (music, AI use, disclaimers)
      role      : chips under "My role"
      process   : five steps under "Design process", [name, what happened]
@@ -40,6 +41,7 @@ window.PROJECTS = [
   {
     id: 'fikr', title: 'FIKR', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'blue', featured: true,
     summary: 'Medicine care for a parent who lives far away.',
+    seo: 'FIKR is a concept mobile app for medicine care when a parent lives far away, designed to ease the worry without making parents feel monitored. UI/UX case study.',
     about: 'Every evening, millions of adult children ask, "Papa, medicines le liye?" The answer is always "Haan beta." But nobody can be sure. FIKR (फ़िक्र) is a concept app designed to ease this worry without making parents feel monitored.',
     year: '2026', published: 'Oct 2026', tags: ['Mobile app', 'Healthcare', 'Motion'],
     tools: ['Figma', 'Photoshop', 'After Effects'],
@@ -79,10 +81,11 @@ window.PROJECTS = [
   {
     id: 'volt-47', title: 'VOLT 47', kind: 'Brand identity', cats: ['brand', 'motion'], color: 'ink', featured: true,
     summary: 'A 24/7 gym brand where the lights never go off.',
+    seo: 'VOLT 47 is a self-initiated brand identity and logo animation for a 24-hour gym in a dense city, across logo, print, signage, social and motion.',
     about: 'VOLT 47 is a self-initiated brand identity and logo animation for a 24-hour gym in a dense city: the kind of place that fills at 6am, empties at noon and fills again long after midnight.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Brand identity', 'Logo animation'],
     tools: ['Illustrator', 'Photoshop', 'Figma', 'After Effects'],
-    img: 'assets/img/covers/volt-47.jpg', w: 1100, h: 826,
+    img: 'assets/img/covers/volt-47.webp', w: 1100, h: 826,
     behance: 'https://www.behance.net/gallery/256688019/VOLT-47-247-Gym-Brand-Identity-Logo-Animation',
 
     facts: [['Type', 'Self-initiated brand identity'], ['Medium', 'Logo, print, signage, social, motion'], ['Tools', 'Illustrator, Photoshop, Figma, After Effects'], ['Published', 'Oct 2026']],
@@ -236,7 +239,7 @@ window.PROJECTS = [
     about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
     tools: ['Illustrator', 'Photoshop', 'After Effects'],
-    img: 'assets/img/covers/chashni.jpg', w: 1400, h: 1095,
+    img: 'assets/img/covers/chashni.webp', w: 1400, h: 1095,
     behance: 'https://www.behance.net/gallery/256926977/CHASHNI-This-one-stops-here',
 
     facts: [['Type', 'Concept brand, packaging and campaign'], ['Medium', 'Packaging, reels, carousels'], ['Tools', 'Illustrator, Photoshop, After Effects'], ['Published', 'Oct 2026']],
@@ -422,6 +425,7 @@ window.PROJECTS = [
   {
     id: 'achilles', title: 'Achilles', kind: 'Parallax UI animation', cats: ['motion'], color: 'sky', featured: false,
     summary: 'A parallax study built around a coastal landing-page hero.',
+    seo: 'A parallax UI study with layered depth, built around a coastal landing-page hero for Achilles Point. Designed in Figma and Photoshop.',
     about: 'A second parallax study with layered depth, built around a coastal landing-page hero for Achilles Point.',
     year: '2025', published: 'Jun 2025', tags: ['Motion', 'Parallax', 'Web'],
     tools: ['Figma', 'Photoshop'],

@@ -106,7 +106,7 @@ for p in projects:
     image = URL + 'assets/img/share/%s.jpg' % pid
     s = re.sub(r'<title>[^<]*</title>', '<title>%s</title>' % html.escape(title, quote=False), template, count=1)
     for attr, key, value in [
-        ('name', 'description', p['summary']),
+        ('name', 'description', p.get('seo') or p['summary']),
         ('property', 'og:type', 'article'),
         ('property', 'og:title', title),
         ('property', 'og:description', p['summary']),

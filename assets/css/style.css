@@ -18,7 +18,6 @@
      4. Buttons, chips, cards        13. Work index
      5. Stickers and doodles         14. Project page
      6. Overlays: toast, lightbox    15. Services
-                                    16. Journal
      7. Nav, menu, day/night switch  17. Contact page, 404
      8. Home hero                    18. Reveals
      9. Home sections                19. Reduced motion
@@ -279,11 +278,11 @@ section { position: relative; }
   .btn-row { gap: 14px; }
 }
 
-/* Round arrow button (work cards, reads, services) */
+/* Round arrow button (work cards, services) */
 .round-ar { display: grid; place-items: center; width: 46px; height: 46px; flex: none; border: var(--bw) solid var(--glass-edge); border-radius: 50%; background: var(--surface); color: var(--ink); box-shadow: var(--sh-sm), var(--hi); font-size: 1.1rem; font-weight: 800; transition: transform .4s var(--ease-spring), background-color .2s, color .2s; }
 
 @media (hover: hover) {
-  .round-ar:hover, a:hover > .round-ar, a:hover .meta .round-ar, .work-card:hover .round-ar, .read:hover .round-ar { background: var(--sun); color: var(--stk); border-color: var(--stk); }
+  .round-ar:hover, a:hover > .round-ar, a:hover .meta .round-ar, .work-card:hover .round-ar { background: var(--sun); color: var(--stk); border-color: var(--stk); }
 }
 
 /* Chip */
@@ -302,7 +301,7 @@ section { position: relative; }
 /* Glass card */
 .card { background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); }
 
-/* Filter pills (Home drawer, Work, Journal) */
+/* Filter pills (Home drawer, Work) */
 .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
 .filters button { min-height: 44px; padding: 0 1.3em; font-weight: 700; font-size: .95rem; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-pill); box-shadow: var(--sh-sm), var(--hi); transition: background-color .18s, color .18s, transform .12s var(--ease-out); }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
@@ -1092,35 +1091,6 @@ footer.foot { position: relative; overflow: hidden; padding: 8px 0 36px; }
 }
 
 
-/* ---------- 16. Journal ---------- */
-.reads { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding-bottom: clamp(60px, 8vw, 110px); }
-.reads > * { min-width: 0; }
-.read { position: relative; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; gap: 10px; min-height: 230px; padding: 0 22px 24px; text-decoration: none; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-lg); box-shadow: var(--sh), var(--hi); transition: transform .45s var(--ease-out), box-shadow .4s var(--ease-out); }
-.read::before { content: ""; position: absolute; inset: 150px 0 0; z-index: -1; background: color-mix(in srgb, var(--c) var(--tint-hi), transparent); transform: translateY(101%); transition: transform .5s var(--ease-out); }
-.read.is-hidden { display: none; }
-.read-art { position: relative; height: 150px; margin: 0 -22px 8px; overflow: hidden; border-bottom: var(--bw) solid var(--line); background-color: color-mix(in srgb, var(--c) 55%, #fff); background-image: radial-gradient(rgba(255, 255, 255, .35) 1.3px, transparent 1.7px); background-size: 14px 14px; }
-.read-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.read-art .m1, .read-art .m2, .read-art .m3 { transition: transform .7s var(--ease-spring); transform-box: fill-box; transform-origin: center; }
-.read .src { font-weight: 700; font-size: .88rem; color: var(--ink-2); }
-.read h3 { font-size: clamp(1.35rem, 2vw, 1.7rem); font-stretch: 88%; line-height: 1.02; }
-.read p { font-size: .95rem; font-weight: 500; line-height: 1.5; color: var(--ink-2); }
-.read .foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding: 0; }
-.read .chip { background: color-mix(in srgb, var(--c) var(--tint), var(--glass)); }
-@media (hover: hover) {
-  .read:hover { transform: translateY(-6px); box-shadow: var(--sh-lg), var(--hi), 0 22px 60px -14px color-mix(in srgb, var(--c, #9DB0FF) 60%, transparent); }
-  .read:hover::before { transform: none; }
-  .read:hover p, .read:hover .src { color: var(--ink); }
-  .read:hover .round-ar { transform: rotate(-45deg); }
-  .read:hover .read-art .m1 { transform: translate(-8px, -6px) rotate(-6deg); }
-  .read:hover .read-art .m2 { transform: translate(8px, 4px) rotate(8deg) scale(1.08); }
-  .read:hover .read-art .m3 { transform: translateY(-10px) scale(1.12); }
-}
-@media (min-width: 601px) { .reads { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1101px) { .reads { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-/* The list is an even 3-column grid; a lone last card sits in the middle column (journal.js) */
-@media (min-width: 1101px) { .reads > .is-centre { grid-column: 2; } }
-
-
 /* ---------- 17. Contact page, 404 ---------- */
 .contact-wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(70px, 9vw, 120px); }
 .contact-wrap > * { min-width: 0; }
@@ -1211,7 +1181,7 @@ h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; ri
 .s-doodle--b { width: clamp(46px, 4.6vw, 66px); right: 3%; top: -34px; }
 
 /* Sticker cards: ink outline and a hard, coloured offset shadow, as on the hero's stickers */
-.work-card, .row-i, .svc-tile, .read, .bx, .p-step, .oc, .hero-aside, .facts, .form-card, .links-card, .faq-item {
+.work-card, .row-i, .svc-tile, .bx, .p-step, .oc, .hero-aside, .facts, .form-card, .links-card, .faq-item {
   border: 2px solid var(--outline);
   box-shadow: 5px 6px 0 var(--c, var(--outline));
 }
@@ -1220,17 +1190,17 @@ h2 em.hl::after { content: ""; position: absolute; z-index: -1; left: -.04em; ri
 .filters button { border: 2px solid var(--outline); box-shadow: 2px 3px 0 var(--outline); }
 .filters button[aria-pressed="true"] { background: var(--sun); color: var(--stk); }
 .filters button[aria-pressed="true"] .count { opacity: .85; }
-.work-card .media, .read-art { border-bottom: 2px solid var(--outline); }
+.work-card .media { border-bottom: 2px solid var(--outline); }
 .work-card .media img { border-color: var(--outline); }
 /* cards sit a little crooked, like stickers pressed on by hand, and straighten when you reach for them */
-.work-grid > *:nth-child(even), .cases > *:nth-child(3n+2), .svc-tiles > *:nth-child(odd), .reads > *:nth-child(3n+1), .oc-grid > *:nth-child(even), .steps-grid > *:nth-child(even) { rotate: .7deg; }
-.work-grid > *:nth-child(3), .cases > *:nth-child(3n), .svc-tiles > *:nth-child(even), .reads > *:nth-child(3n), .oc-grid > *:nth-child(odd), .steps-grid > *:nth-child(odd) { rotate: -.6deg; }
+.work-grid > *:nth-child(even), .cases > *:nth-child(3n+2), .svc-tiles > *:nth-child(odd), .oc-grid > *:nth-child(even), .steps-grid > *:nth-child(even) { rotate: .7deg; }
+.work-grid > *:nth-child(3), .cases > *:nth-child(3n), .svc-tiles > *:nth-child(even), .oc-grid > *:nth-child(odd), .steps-grid > *:nth-child(odd) { rotate: -.6deg; }
 @media (hover: hover) and (pointer: fine) {
-  .work-card:hover, .svc-tile:hover, .read:hover, .row-i:hover { transform: translate3d(-3px, -5px, 0); rotate: 0deg; box-shadow: 9px 11px 0 var(--c, var(--outline)); }
+  .work-card:hover, .svc-tile:hover, .row-i:hover { transform: translate3d(-3px, -5px, 0); rotate: 0deg; box-shadow: 9px 11px 0 var(--c, var(--outline)); }
   .row-i:hover { box-shadow: 7px 8px 0 var(--outline); }
   .work-card:hover .media img { transform: scale(1.025); }
 }
-.work-card, .svc-tile, .read, .row-i { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), rotate .35s var(--ease-out); }
+.work-card, .svc-tile, .row-i { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), rotate .35s var(--ease-out); }
 /* services tiles become real coloured stickers */
 .svc-tile { background: color-mix(in srgb, var(--c) 22%, var(--surface)); }
 
@@ -1416,7 +1386,7 @@ iframe.vid { cursor: auto; }
 video.vid { cursor: auto; }
 
 /* ---------- 18f. Press: a clicked sticker moves into its shadow ---------- */
-.work-card:active, .svc-tile:active, .read:active, .row-i:active, .pg:active, .mail:active, .filters button:active, .to-top:active {
+.work-card:active, .svc-tile:active, .row-i:active, .pg:active, .mail:active, .filters button:active, .to-top:active {
   transform: translate(3px, 4px) !important; box-shadow: 0 0 0 var(--hard) !important; transition-duration: .08s !important; }
 
 /* ---------- 19. Reduced motion ---------- */

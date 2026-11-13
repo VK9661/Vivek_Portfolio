@@ -17,7 +17,7 @@
   var p = list[idx];
   var prev = list[(idx - 1 + list.length) % list.length], next = list[(idx + 1) % list.length];
   document.title = p.title + ': ' + p.kind + ' | Vivek Kumar';
-  var md = document.querySelector('meta[name="description"]'); if (md) md.content = p.summary;
+  var md = document.querySelector('meta[name="description"]'); if (md) md.content = p.seo || p.summary;
 
   // Accent: the project's colour, but light enough to carry ink text (ink projects get sun, cobalt ones lilac)
   var sw = window.swatchOf(p), accent = p.color === 'ink' ? window.SWATCH.sun : p.color === 'blue' ? window.SWATCH.lilac : sw;

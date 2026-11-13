@@ -117,11 +117,6 @@ async function scrollTo(sel, offset = 110) {
   await sleep(800);
   await shot('07_about.png');
 
-  // 08 Journal reading list
-  await go(BASE + 'journal.html');
-  await scrollTo('#read-filters', 330);
-  await shot('08_journal.png');
-
   // 09 Contact
   await go(BASE + 'contact.html');
   await sleep(800);
