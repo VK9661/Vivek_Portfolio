@@ -90,7 +90,7 @@ The style is **sticker / neo-brutalist, playful and illustrated**: the hero's st
   - pink, mint, sky, lilac: category colours, sticker shadows and pastel blocks;
   - ink `#1C1747`: text and every outline.
   Pastel blocks (`.pop--ink`) hold non-work sections, so the project images stay the most colourful thing on the page.
-- **Type scale:** headlines `.t-xxl` (page titles), `.t-xl` (Home sections), `.t-lg` (sections); body 1rem at 1.5 line height; labels .8 to .9rem. Bricolage Grotesque (headlines), Plus Jakarta Sans (text), Covered By Your Grace (handwritten notes only). The fonts are served from `assets/fonts`.
+- **Type scale:** headlines `.t-xxl` (page titles), `.t-xl` (Home sections), `.t-lg` (sections); body 1rem at 1.5 line height; labels .8 to .9rem. Bricolage Grotesque (headlines), Schibsted Grotesk (text), Covered By Your Grace (handwritten notes only). The fonts are served from `assets/fonts`.
 - **Corners:** pill (`--r-pill`) for buttons, chips and the nav; 26px (`--r-lg`) for cards and panels; 16px (`--r-md`) for small cards and fields.
 - **Section heads:** a handwritten `.kicker` above the title, one word in `<em class="hl">` with a marker swipe, and two doodles that main.js adds.
 - **Colour blocks (`.pop`):** no two plain sections in a row. A pop section is a full-width colour field with flowing wavy edges (`--pop`); inside a page column, `.pop--panel` makes it a framed panel. Project Highlights use the project's own colour.
