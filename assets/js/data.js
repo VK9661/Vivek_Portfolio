@@ -51,7 +51,7 @@ window.PROJECTS = [
     facts: [['Type', 'Concept UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Photoshop, After Effects'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The challenge', p: ['Five interviews surfaced two things:'], list: ['Being asked can hurt more than taking the medicine', 'Routines often break during trips, illness or festivals'] },
-      { h: 'The approach', p: ['Parents tap one haldi button: Taken. The child sees silence when all is well, and a clear alert when something needs attention. FIKR turns everyday worry into quiet reassurance, without making parents feel monitored.'] },
+      { h: 'The approach', p: ['Parents tap one haldi button: Taken. The child sees silence when all is well, and a clear alert when something needs attention.'] },
       { h: 'The details', list: ['One large "Taken" button, and one action per screen', 'Large type for older eyes', 'A bilingual interface with a spoken language option', 'A Material 3 design system with a night mode'] }
     ],
     credits: 'Concept project. Persona photos are AI-generated. Music: "Classical Vibes 4" by Mixkit.',
@@ -130,8 +130,8 @@ window.PROJECTS = [
     facts: [['Type', 'Concept UI/UX case study'], ['Medium', 'Web app (installable), phone to desktop'], ['Tools', 'Figma, Illustrator, After Effects'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The challenge', p: ['Scams win on speed and silence:'], list: ['57% of adults worldwide met a scam last year', '64% of scams are over within a day of first contact', '22% of targeted older people told no one because they felt too embarrassed', 'Existing checkers give a score, but people need the why, in their own language, and someone to ask'] },
-      { h: 'The approach', p: ['Not a score, but an answer with the evidence. Shady gives an honest verdict with its confidence in words, underlines the red flags in the message itself and offers one clear next step. When it is not sure, one tap sends the message to someone you trust, and their reply comes back in the app.'] },
-      { h: 'The details', list: ['Honest, not absolute: always "likely", never "100% safe"', 'Every verdict points to the exact words, links or numbers', 'A "Take a breath" pause, because scammers want you to rush', 'Names, numbers and accounts are blurred before checking', 'Accessible by default: 18px text, 48px targets, 4.5:1 contrast, voice in and out, and verdicts never shown by colour alone', 'One light and dark design system, where every colour is a token'] }
+      { h: 'The approach', p: ['Shady answers with the evidence. It gives an honest verdict with its confidence in words, underlines the red flags in the message itself and offers one clear next step. When it is not sure, one tap sends the message to someone you trust, and their reply comes back in the app.'] },
+      { h: 'The details', list: ['Verdicts say "likely" and never "100% safe"', 'Every verdict points to the exact words, links or numbers', 'A "Take a breath" pause, because scammers want you to rush', 'Names, numbers and accounts are blurred before checking', 'Accessible by default: 18px text, 48px targets, 4.5:1 contrast, voice in and out, and verdicts never shown by colour alone', 'One light and dark design system, where every colour is a token'] }
     ],
     credits: 'Concept project. Statistics: GASA and Feedzai, Global State of Scams 2025; Age UK.',
     role: ['Competitive research', 'Personas', 'User flows', 'AI UX principles', 'Design system', 'UI design', 'Accessibility', 'Prototyping', 'Motion design'],
@@ -323,7 +323,7 @@ window.PROJECTS = [
     facts: [['Type', 'Concept social campaign'], ['Medium', 'Nine posts, each in 4:5 and 9:16'], ['Tools', 'Illustrator, Photoshop, Figma'], ['Published', 'Oct 2026']],
     writeup: [
       { h: 'The challenge', p: ['Nine social posts, where every post solves a different layout problem:'], list: ['A long headline, a number, a list, a quote and a date', 'A single object, a timetable, price tiers and a status change', 'Most festival feeds are one template with the text swapped, but a line-up, a date and a house rule are different shapes of information'] },
-      { h: 'The approach', p: ['The festival is the feed. One fixed system holds all nine posts together, while each post gets its own layout. A night mela is lit by bulbs, wires and hand-painted signs, so light is the type.'] },
+      { h: 'The approach', p: ['One fixed system holds all nine posts together as one festival feed, while each post gets its own layout. A night mela is lit by bulbs, wires and hand-painted signs, so the type is built from light.'] },
       { h: 'The details', list: ['Five named colours: Night, Rani, Genda, Mor and Kagaz', 'Two typefaces: Unbounded and Space Mono', 'Four type treatments, one per post: bulb marquee, sign-paint, tile-fill and misprint', 'Six fairground modules: chakri, genda, jhumka, bulbs, shamiana and ticket', 'A shamiana edge and a bilingual wordmark sign every post', 'Nine 9:16 Stories, recomposed rather than cropped'] }
     ],
     credits: 'Concept project: the festival, its acts, dates and prices are fictional and have no connection to any real event.',
@@ -351,8 +351,8 @@ window.PROJECTS = [
   },
   {
     id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: false,
-    summary: 'Shop smarter with faster delivery, better deals and personalised recommendations.',
-    about: 'ShopUp is a next-gen shopping app concept that personalises the experience using AI-driven recommendations. The case study explores a minimalist, user-centric approach to mobile shopping and follows a full design-thinking process, from research to high-fidelity UI.',
+    summary: 'A mobile shopping app concept built around faster delivery, better deals and personalised recommendations.',
+    about: 'ShopUp is a shopping app concept that uses AI recommendations to personalise what each shopper sees. The case study follows a full design-thinking process, from research to high-fidelity UI, for a simple and uncluttered mobile shop.',
     year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'],
     tools: ['Figma', 'Illustrator', 'Photoshop'],
     img: 'assets/img/covers/shopup.webp', w: 1448, h: 1086,
@@ -361,10 +361,10 @@ window.PROJECTS = [
     facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop'], ['Published', 'May 2026']],
     writeup: [
       { h: 'The challenge', p: ['Research surfaced recurring pain points, including:'], list: ['“I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.”', '“I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.”'] },
-      { h: 'The approach', p: ['Unlike generic e-commerce giants, ShopUp is designed with the user at the centre: a smarter, more personalised shopping experience using AI-powered recommendations that understand taste, needs and budget.', 'A clutter-free interface, fast delivery and real-time customer support aim to make shopping seamless, not stressful, while curated collections, exclusive deals and local seller support help people discover unique products.'] },
-      { h: 'The details', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick deliveries and a seamless experience, while the bold blue conveys trust, reliability and innovation.'] }
+      { h: 'The approach', p: ["ShopUp puts the user at the centre, with AI recommendations that learn each person's taste, needs and budget.", 'The interface stays uncluttered, and fast delivery and real-time customer support are there to make shopping less stressful. Curated collections, exclusive deals and support for local sellers help people discover unique products.'] },
+      { h: 'The details', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick delivery, and the bold blue is there to signal trust and reliability.'] }
     ],
-    role: ['Design Strategy', 'Problem Solution', 'Information Architecture', 'Empathy Mapping', 'Usability Testing', 'User Flow', 'Prototyping', 'Wireframes', 'Competitive Analysis', 'Visual Design', 'User Research', 'User Persona'],
+    role: ['Design strategy', 'Problem and solution', 'Information architecture', 'Empathy mapping', 'Usability testing', 'User flow', 'Prototyping', 'Wireframes', 'Competitive analysis', 'Visual design', 'User research', 'User persona'],
     process: [
       ['Empathize', 'User research, user interviews, competitive analysis'],
       ['Define', 'User persona, goal statement, empathy mapping'],
