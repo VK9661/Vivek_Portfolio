@@ -11,7 +11,6 @@ index.html            Home: hero, selected work, the drawer, service tiles
 work.html             All projects, with category filters
 about.html            Bio, CV download, background, toolkit
 services.html         Services, process, capabilities, FAQ
-journal.html          Reading list (not linked from the nav or footer; reachable by its URL)
 contact.html          Email, socials, note form
 404.html              Not-found page
 project.html          Project page template
@@ -23,7 +22,7 @@ assets/
   js/cards.js         Project card markup, shared by Home and Work
   js/main.js          Shared on every page: nav, footer, contact band, theme, reveals, prefetch
   js/hero.js          Home hero effects only
-  js/pages/<page>.js  The script for one page (home, work, project, services, journal, contact)
+  js/pages/<page>.js  The script for one page (home, work, project, services, contact)
   img/covers/<id>     Project cover images
   img/gallery/<id>/   Project highlight boards (01.webp to 04.webp)
   img/share/          Link-preview images: portfolio.jpg and <id>.jpg
@@ -68,7 +67,7 @@ Every project page uses this shared sequence:
 9. Highlights: the remaining gallery boards
 10. The Behance link
 
-The gallery board is rendered once in the page. Keep generated imagery and voices in `credits`, separate from the designer's own tool list. Main navigation focuses on Work, About, Services and Contact; the curated Reading list remains accessible from the footer.
+The gallery board is rendered once in the page. Keep generated imagery and voices in `credits`, separate from the designer's own tool list. Main navigation focuses on Work, About, Services and Contact.
 
 ## Link previews
 

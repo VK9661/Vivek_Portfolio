@@ -1436,3 +1436,6 @@ video.vid { cursor: auto; }
   .hp-blob, .hp-bit { display: none; animation: none; }
   .ph-blob, .ph-year { animation: none; }
 }
+
+/* Text links inside FAQ answers: at least 24px tall for touch */
+.faq-a a { display: inline-block; min-height: 24px; }

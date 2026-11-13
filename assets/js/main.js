@@ -372,8 +372,9 @@
     var b = e.target.closest('[data-copy]'); if (!b) return;
     var text = b.getAttribute('data-copy');
     var done = function () { window.showToast('Email copied'); };
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, function () { window.prompt('Copy the email:', text); });
-    else window.prompt('Copy the email:', text);
+    var fail = function () { window.showToast('Could not copy. Email: ' + text); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fail);
+    else fail();
   });
 
 
