@@ -10,7 +10,7 @@
      kind      : short category label
      cats      : filters, any of ux | brand | graphic | motion
      color     : card colour, pink | blue | sun | mint | sky | lilac | ink
-     featured  : true = shown in the Home "Selected work" grid (keep to 4)
+     featured  : true = shown in the Home "Selected work" grid (keep to 5; the fifth card runs full width)
      summary   : one line, shown on cards
      about     : intro paragraph on the project page
      year      : shown on cards
@@ -195,7 +195,7 @@ window.PROJECTS = [
     ]
   },
   {
-    id: 'truepost', title: 'TRUEPOST', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'mint', featured: false,
+    id: 'truepost', title: 'TRUEPOST', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'mint', featured: true,
     summary: 'A check between the counting machine and the bank, so a wrong cash deposit cannot post.',
     about: "TRUEPOST is a concept checking layer for bank branches, built for a fictional bank. Before a cash deposit posts, two independent sources have to agree: the slip amount the cashier types blind has to match the note-counting machine, and the customer confirms their own name and amount on a screen, Hindi first. When everything matches it costs the cashier nothing. When it doesn't, the Post button disappears.",
     year: '2026', published: 'Nov 2026', tags: ['Enterprise UI/UX', 'Fintech', 'Design system'],

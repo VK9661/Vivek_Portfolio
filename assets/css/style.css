@@ -1332,22 +1332,23 @@ html[data-theme="dark"] .tsw-star.s2 { animation-delay: -.8s; } html[data-theme=
 @keyframes tsw-squash { 30% { scale: 1.18 .86; } 60% { scale: .94 1.06; } }
 
 
-/* ---------- 18g. Home: a mixed-size grid for the four featured projects, and the short About ---------- */
-/* five half-columns: wide, narrow / narrow, wide. Wide cards lie on their side */
+/* ---------- 18g. Home: a mixed-size grid for the five featured projects, and the short About ---------- */
+/* five half-columns: wide, narrow / narrow, wide / the fifth runs full width. Wide cards lie on their side */
 @media (min-width: 901px) {
   .work-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .work-grid > * { grid-column: span 2; }
-  .work-grid > :first-child, .work-grid > :nth-child(4) { grid-column: span 3; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-  .work-grid > :first-child .media, .work-grid > :nth-child(4) .media { border-bottom: 0; border-right: var(--bw) solid var(--glass-edge); display: grid; align-items: center; }
-  .work-grid > :first-child .body, .work-grid > :nth-child(4) .body { align-content: center; padding: clamp(22px, 2.6vw, 36px); }
-  .work-grid > :first-child h3, .work-grid > :nth-child(4) h3 { font-size: clamp(2.2rem, 3.2vw, 3.2rem); }
-  .work-grid > :first-child p, .work-grid > :nth-child(4) p { font-size: 1.05rem; }
+  .work-grid > :first-child, .work-grid > :is(:nth-child(4), :nth-child(5)) { grid-column: span 3; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  .work-grid > :first-child .media, .work-grid > :is(:nth-child(4), :nth-child(5)) .media { border-bottom: 0; border-right: var(--bw) solid var(--glass-edge); display: grid; align-items: center; }
+  .work-grid > :first-child .body, .work-grid > :is(:nth-child(4), :nth-child(5)) .body { align-content: center; padding: clamp(22px, 2.6vw, 36px); }
+  .work-grid > :first-child h3, .work-grid > :is(:nth-child(4), :nth-child(5)) h3 { font-size: clamp(2.2rem, 3.2vw, 3.2rem); }
+  .work-grid > :first-child p, .work-grid > :is(:nth-child(4), :nth-child(5)) p { font-size: 1.05rem; }
   .work-grid > :first-child .card-facts { display: none; }
-  .work-grid > :first-child .card-cta, .work-grid > :nth-child(4) .card-cta { display: inline-flex; }
+  .work-grid > :first-child .card-cta, .work-grid > :is(:nth-child(4), :nth-child(5)) .card-cta { display: inline-flex; }
+  .work-grid > :nth-child(5) { grid-column: 1 / -1; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
   /* a pattern cover may crop, so it fills the whole frame instead of floating in it */
-  .work-grid > :is(:first-child, :nth-child(4)) .media:has(img.crop) { align-items: stretch; }
-  .work-grid > :is(:first-child, :nth-child(4)) .m-box:has(img.crop) { height: 100%; }
-  .work-grid > :is(:first-child, :nth-child(4)) .media img.crop { height: 100%; aspect-ratio: auto; }
+  .work-grid > :is(:first-child, :nth-child(4), :nth-child(5)) .media:has(img.crop) { align-items: stretch; }
+  .work-grid > :is(:first-child, :nth-child(4), :nth-child(5)) .m-box:has(img.crop) { height: 100%; }
+  .work-grid > :is(:first-child, :nth-child(4), :nth-child(5)) .media img.crop { height: 100%; aspect-ratio: auto; }
 }
 .proof { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .proof-i { position: relative; display: grid; gap: 8px; padding: 20px 22px 22px; background: var(--surface); border: var(--bw) solid var(--glass-edge); border-radius: var(--r-md); box-shadow: 4px 5px 0 var(--hard); }
