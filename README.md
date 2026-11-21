@@ -27,13 +27,14 @@ assets/
   img/gallery/<id>/   Project boards (01.webp to 04.webp)
   img/share/          Link-preview images: portfolio.jpg and <id>.jpg
   img/me/             Portraits (portrait-cutout.webp feeds the particle hero)
-  icons/              Favicons and home-screen icon (favicon.ico is also at the root)
+  icons/              Favicons, home-screen and app icons (favicon.ico is also at the root; site.webmanifest lists them)
   cv/                 The downloadable CV (web copy, without the phone number) and portfolio PDF
 
 tools/                Not deployed (see .vercelignore)
   serve.js            Local server
   build-share.py      Builds the link previews, the project-<id>.html pages and sitemap.xml
-  og.html             Link-preview template (?id=<id> for a project)
+  og-portfolio.html   Main link preview: the infinity ribbon of project images (3D, needs WebGL); images in og-src/
+  og.html             Project link-preview template (?id=<id>)
   capture-linkedin.js LinkedIn showcase screenshots (+ mockup-template.html)
 ```
 

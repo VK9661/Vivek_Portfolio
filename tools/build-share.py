@@ -4,7 +4,7 @@ Apps such as WhatsApp, LinkedIn and X read the og: tags in a page's <head> and d
 JavaScript, so every project needs its own static page with its own tags.
 
 It writes:
-  assets/img/share/portfolio.jpg   preview of the portfolio link, from tools/og.html
+  assets/img/share/portfolio.jpg   preview of the portfolio link, from tools/og-portfolio.html (3D ribbon, images in tools/og-src/)
   assets/img/share/<id>.jpg        preview of each project, from tools/og.html?id=<id>
   project-<id>.html                project.html with that project's title, description and
                                    preview image in the head, and data-id on <body>
@@ -23,7 +23,7 @@ ROOT = TOOLS.parent
 SHARE = ROOT / 'assets/img/share'
 URL = 'https://vivek-portfolio-beta-eight.vercel.app/'
 CHROME = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
-V = '4'  # bump when the preview images change, so apps fetch them again
+V = '5'  # bump when the preview images change, so apps fetch them again
 
 
 def projects():
@@ -33,13 +33,13 @@ def projects():
     return json.loads(out)
 
 
-def render(query, out):
-    """Screenshot tools/og.html at 1200 x 630 with headless Chrome and save it as a JPG."""
+def render(query, out, page='og.html'):
+    """Screenshot a template in tools/ at 1200 x 630 with headless Chrome and save it as a JPG."""
     with tempfile.TemporaryDirectory() as tmp:
         png = os.path.join(tmp, 'shot.png')
-        subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files',
-                        '--virtual-time-budget=9000', '--window-size=1200,630', '--user-data-dir=' + os.path.join(tmp, 'profile'),
-                        '--screenshot=' + png, (TOOLS / 'og.html').as_uri() + query], check=True, capture_output=True)
+        subprocess.run([CHROME, '--headless=new', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--hide-scrollbars', '--allow-file-access-from-files',
+                        '--virtual-time-budget=25000', '--window-size=1200,630', '--user-data-dir=' + os.path.join(tmp, 'profile'),
+                        '--screenshot=' + png, (TOOLS / page).as_uri() + query], check=True, capture_output=True)
         Image.open(png).convert('RGB').save(out, quality=86, optimize=True, progressive=True)
 
 
@@ -53,7 +53,7 @@ def meta(page, key, value, attr='property'):
 def main():
     P = projects()
     if '--pages' not in sys.argv:
-        render('', SHARE / 'portfolio.jpg')
+        render('', SHARE / 'portfolio.jpg', 'og-portfolio.html')
         for p in P:
             render('?id=' + p['id'], SHARE / (p['id'] + '.jpg'))
         print('previews:', len(P) + 1)
