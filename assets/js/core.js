@@ -30,7 +30,7 @@ const roll = t => `<span class="r" data-r="${t}">${t}</span>`;
 export function chrome(page) {
   const top = $('.top');
   if (top) top.innerHTML = `
-    <a class="logo" href="index.html" aria-label="Vivek Kumar, home"><span class="lg-t" aria-hidden="true">Vivek Kumar</span><sup aria-hidden="true"><i class="lg-c">©</i>${String(YEAR).slice(2)}</sup></a>
+    <a class="logo" href="index.html"><span class="sr">Vivek Kumar, home</span><span class="lg-t" aria-hidden="true">Vivek Kumar</span><sup aria-hidden="true"><i class="lg-c">©</i>${String(YEAR).slice(2)}</sup></a>
     <nav class="links" aria-label="Main">${NAV.map(([k, t, h]) => `<a href="${h}" class="ul"${k === page ? ' aria-current="page"' : ''}>${roll(t)}</a>`).join('')}</nav>
     <p class="status mono"><i></i>Available for projects</p>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="r" data-r="Menu">Menu</span></button>`;
@@ -43,7 +43,7 @@ export function chrome(page) {
 
   const foot = $('[data-foot]');
   if (foot) foot.outerHTML = `
-  <section class="contact" id="contact-block" aria-labelledby="ct">
+  <section class="contact" id="contact-block"${page === 'contact' ? '' : ' aria-labelledby="ct"'}>
     ${page === 'contact' ? '' : `
     <div class="marq" aria-hidden="true"><div class="mq-row"><span>Let's work together</span><i></i><span>Let's work together</span><i></i><span>Let's work together</span><i></i><span>Let's work together</span><i></i></div></div>
     <h2 id="ct" class="sr">Contact</h2>
@@ -51,7 +51,7 @@ export function chrome(page) {
       <p class="mono label">( Got a role, a project or a question? )</p>
       <a class="mail" href="mailto:${C.email}" data-cursor="Write"><span class="mail-t">${C.email}</span><span class="mail-arr" aria-hidden="true">→</span></a>
     </div>`}
-    <footer class="foot">
+    <footer class="foot"${page === 'contact' ? ' role="contentinfo"' : ''}>
       <div class="f-cols">
         <div><p class="mono label">Elsewhere</p><a class="ul" href="${C.behance}" target="_blank" rel="noopener">Behance</a><a class="ul" href="${C.book}" target="_blank" rel="noopener">Portfolio book</a><a class="ul" href="${C.linkedin}" target="_blank" rel="noopener">LinkedIn</a><a class="ul" href="${C.instagram}" target="_blank" rel="noopener">Instagram</a></div>
         <div><p class="mono label">Pages</p>${[['Home', 'index.html'], ...NAV.map(n => [n[1], n[2]])].map(([t, h]) => `<a class="ul" href="${h}">${t}</a>`).join('')}</div>
@@ -141,7 +141,7 @@ export function boot() {
   $$('.label, .sec-note').forEach(l => { if (l.closest('[data-in]')) return; gsap.from(l, { autoAlpha: 0, y: 14, duration: .9, ease: 'out', scrollTrigger: { trigger: l, start: 'top 92%' } }); });
   $$('[data-up]').forEach(el => gsap.from(el.dataset.up ? $$(el.dataset.up, el) : el, { y: 40, autoAlpha: 0, duration: 1, ease: 'out', stagger: .07, scrollTrigger: { trigger: el, start: 'top 88%' } }));
   $$('[data-fill]').forEach(el => {
-    const s = SplitText.create(el, { type: 'words', wordsClass: 'w' });
+    const s = SplitText.create(el, { type: 'words', wordsClass: 'w', aria: 'none' });
     gsap.to(s.words, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 50%', scrub: true } });
   });
   $$('[data-wipe]').forEach(el => {

@@ -109,7 +109,7 @@ function buildProject() {
       <p class="mono" style="text-align:right;color:var(--fg)">${p.year}<br><span style="color:var(--mute)">Published ${esc(p.published)}</span></p>
     </div>
   </header>
-  <div class="pj-cover" style="aspect-ratio:${p.w}/${p.h};width:min(calc(100% - 2 * var(--pad)), calc(86vh * ${p.w} / ${p.h}))"><img src="${cover(p.id)}" alt="${esc(p.title)} cover" width="${p.w}" height="${p.h}"></div>
+  <div class="pj-cover" style="aspect-ratio:${p.w}/${p.h};width:min(calc(100% - 2 * var(--pad)), calc(86vh * ${p.w} / ${p.h}))"><img src="${cover(p.id)}" alt="${esc(p.title)} cover" width="${p.w}" height="${p.h}" fetchpriority="high"></div>
 
   <section class="sec" aria-labelledby="f-h">
     <h2 id="f-h" class="sr">Project facts</h2>
@@ -231,7 +231,7 @@ function buildServices() {
   const CP = [['Research', ['User research & interviews', 'Problem framing', 'Heuristic audits', 'Usability testing', 'User flows']], ['Design', ['Wireframes & prototypes', 'High-fidelity UI', 'Typography & hierarchy', 'Responsive design', 'Interaction design']], ['Systems', ['Design systems', 'Brand identity & logos', 'Poster & campaign design', 'Social media creatives', 'Engineering handoff']], ['Motion', ['After Effects animation', 'UI micro-interactions', 'Parallax & carousel', 'Logo reveals & intros', 'Video editing']]];
   const FQ = [['What kind of work do you take on?', 'Graphic design, UI/UX design, motion graphics and video editing: websites, mobile apps, brand identities, social media creatives, posters and ads, and motion pieces.'], ['Are you open to new roles or freelance work?', 'Yes, both: full-time design roles and freelance projects in graphic, UI/UX, motion and video. Email me.'], ['What tools do you design with?', 'Figma, Canva, Photoshop, Illustrator and After Effects. I also use Claude, ChatGPT and Lovable for parts of the work.']];
 
-  $('#svc').innerHTML = SV.map(([t, d, l, c], k) => {
+  $('#svc').innerHTML = '<h2 class="sr">What I offer</h2>' + SV.map(([t, d, l, c], k) => {
     const rel = P.filter(p => p.cats.includes(c)).slice(0, 3);
     return `<article class="sv" style="top:${90 + k * 14}px">
       <span class="sv-no">${pad(k + 1)}</span>
