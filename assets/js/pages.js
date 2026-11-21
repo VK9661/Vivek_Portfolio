@@ -202,8 +202,8 @@ function buildProject() {
 function buildAbout() {
   const fill = (el, items) => { const one = items.map(t => `<span>${t}</span><i></i>`).join(''); el.innerHTML = `<div aria-hidden="true" style="display:contents">${one.repeat(4)}</div>`; };
   const rows = $$('.tl-row');
-  fill(rows[0], ['Figma', 'Canva', 'Photoshop', 'Illustrator', 'After Effects']);
-  fill(rows[1], ['Claude AI', 'ChatGPT', 'Lovable', 'Claude AI', 'ChatGPT', 'Lovable']);
+  fill(rows[0], ['Figma', 'Canva', 'Photoshop', 'Illustrator', 'After Effects', 'Premiere Pro', 'CapCut']);
+  fill(rows[1], ['Claude AI', 'ChatGPT', 'Gemini', 'NotebookLM', 'Google Flow', 'Midjourney', 'Stitch', 'Lovable']);
   return () => {
     if (!ANIM()) return;
     rows.forEach(r => {
@@ -229,7 +229,7 @@ function buildServices() {
   ];
   const PR = [['Research', 'Talk to users and study the market, so the problem is clear before any solution.'], ['Strategy', 'Agree on the goals, the scope and what success looks like.'], ['Wireframe', 'Sketch the flows and structure, and check the logic before any visual design.'], ['Design', 'Type, colour, hierarchy and the final polish.'], ['Prototype', 'Stitch the screens together so they click and swipe like the real thing.'], ['Iterate', 'Test with people, fix what doesn’t work, and keep improving after launch.']];
   const CP = [['Research', ['User research & interviews', 'Problem framing', 'Heuristic audits', 'Usability testing', 'User flows']], ['Design', ['Wireframes & prototypes', 'High-fidelity UI', 'Typography & hierarchy', 'Responsive design', 'Interaction design']], ['Systems', ['Design systems', 'Brand identity & logos', 'Poster & campaign design', 'Social media creatives', 'Engineering handoff']], ['Motion', ['After Effects animation', 'UI micro-interactions', 'Parallax & carousel', 'Logo reveals & intros', 'Video editing']]];
-  const FQ = [['What kind of work do you take on?', 'Graphic design, UI/UX design, motion graphics and video editing: websites, mobile apps, brand identities, social media creatives, posters and ads, and motion pieces.'], ['Are you open to new roles or freelance work?', 'Yes, both: full-time design roles and freelance projects in graphic, UI/UX, motion and video. Email me.'], ['What tools do you design with?', 'Figma, Canva, Photoshop, Illustrator and After Effects. I also use Claude, ChatGPT and Lovable for parts of the work.']];
+  const FQ = [['What kind of work do you take on?', 'Graphic design, UI/UX design, motion graphics and video editing: websites, mobile apps, brand identities, social media creatives, posters and ads, and motion pieces.'], ['Are you open to new roles or freelance work?', 'Yes, both: full-time design roles and freelance projects in graphic, UI/UX, motion and video. Email me.'], ['What tools do you design with?', 'Figma, Canva, Photoshop, Illustrator, After Effects, Premiere Pro and CapCut. For parts of the work I also use AI tools: Claude, ChatGPT, Gemini, NotebookLM, Google Flow, Midjourney, Stitch and Lovable.']];
 
   $('#svc').innerHTML = '<h2 class="sr">What I offer</h2>' + SV.map(([t, d, l, c], k) => {
     const rel = P.filter(p => p.cats.includes(c)).slice(0, 3);

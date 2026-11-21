@@ -83,7 +83,8 @@ export function chrome(page) {
 export function boot() {
   const mouse = { x: innerWidth / 2, y: innerHeight / 2 };
   addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  if (RM || !window.gsap) { $('.pt')?.remove(); return { mouse, lenis: null, arrived: Promise.resolve() }; }
+  const unveil = () => document.documentElement.classList.remove('pt-in');
+  if (RM || !window.gsap) { unveil(); $('.pt')?.remove(); return { mouse, lenis: null, arrived: Promise.resolve() }; }
 
   gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
   if (window.Flip) gsap.registerPlugin(Flip);
@@ -187,18 +188,18 @@ export function boot() {
   const from = sessionStorage.getItem('vk-pt');
   if (from) {
     sessionStorage.removeItem('vk-pt'); setLbl(...from.split('|'));
-    gsap.set(pt, { autoAlpha: 1 }); gsap.set(bars, { scaleY: 1, transformOrigin: '50% 0%' }); gsap.set('.pt-lbl > *', { yPercent: 0 });
+    gsap.set(pt, { autoAlpha: 1 }); gsap.set(bars, { scaleY: 1, transformOrigin: '50% 0%' }); gsap.set('.pt-lbl > *', { yPercent: 0 }); unveil();
     arrive = new Promise(r => gsap.timeline({ delay: .1, onComplete: () => gsap.set(pt, { autoAlpha: 0 }) })
       .to('.pt-lbl > *', { yPercent: -120, duration: .6, ease: 'ease', stagger: .05 })
       .to(bars, { scaleY: 0, duration: .9, ease: 'ease', stagger: { each: .06, from: 'start' } }, .25)
       .add(r, .55));
-  } else gsap.set(pt, { autoAlpha: 0 });
+  } else { gsap.set(pt, { autoAlpha: 0 }); unveil(); }
   let leaving = false;
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank' || a.hasAttribute('download')) return;
     const h = a.getAttribute('href'); if (!h || h.startsWith('#') || /^(mailto|tel|https?):/.test(h) || !/\.html([?#]|$)/.test(h)) return;
     e.preventDefault(); if (leaving) return; leaving = true;
-    const k = keyOf(h), id = (h.match(/[?&]id=([^&#]+)/) || h.match(/project-([^/?#]+)\.html/) || [])[1]; setLbl(k, id && decodeURIComponent(id)); sessionStorage.setItem('vk-pt', k + (id ? '|' + decodeURIComponent(id) : ''));
+    const k = keyOf(h), id = (h.match(/[?&]id=([^&#]+)/) || h.match(/project-([^/?#]+)\.html/) || [])[1]; setLbl(k, id && decodeURIComponent(id)); sessionStorage.setItem('vk-pt', k + (id ? '|' + decodeURIComponent(id) : '')); sessionStorage.setItem('vk-pt-l', ptT.textContent);
     if (document.documentElement.classList.contains('menu-open')) $('.menu-btn')?.click();
     gsap.set(pt, { autoAlpha: 1 }); gsap.set(bars, { transformOrigin: '50% 100%' });
     gsap.timeline({ onComplete: () => { location.href = h; } })

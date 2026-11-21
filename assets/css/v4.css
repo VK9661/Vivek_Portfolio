@@ -216,6 +216,11 @@ html.menu-open{overflow:hidden}
 .pt-t::after{content:'.';color:var(--acc)}
 .pt-no{display:block;color:var(--fg);padding-bottom:1.2em}
 html.rm .pt,html.no-js .pt{display:none}
+/* arriving through a transition: cover the page with the closed shutters before the first paint,
+   until core.js puts the real shutters in place (failsafe: lifts after 4s if scripts never load) */
+html.pt-in::after{content:'';position:fixed;inset:0;z-index:94;pointer-events:none;background:linear-gradient(90deg,#141416 0 20%,#18181B 20% 40%,#141416 40% 60%,#18181B 60% 80%,#141416 80%);animation:pt-fail 0s 4s forwards}
+html.pt-in::before{content:attr(data-pt-l);position:fixed;left:var(--pad);right:calc(var(--pad) + .26em);bottom:var(--pad);text-align:right;white-space:nowrap;z-index:95;pointer-events:none;font:600 clamp(64px,13vw,220px)/.85 var(--disp);letter-spacing:-.042em;word-spacing:.1em;color:var(--fg);animation:pt-fail 0s 4s forwards}
+@keyframes pt-fail{to{visibility:hidden}}
 
 /* every inner page opens with the same hero */
 .pg-hero{position:relative;min-height:88svh;padding:150px var(--pad) 6vh;display:grid;grid-template-columns:calc((100% - var(--gap)) / 4) 1fr;grid-template-rows:auto 1fr auto;gap:var(--gap);border-bottom:1px solid var(--line)}

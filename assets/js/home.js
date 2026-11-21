@@ -48,8 +48,10 @@ function ring() {
     const old = $$('span', tT);
     if (instant || RM || !window.gsap) { tT.replaceChildren(next); tK.textContent = `${p.kind} · ${p.year}`; tS.textContent = p.summary; return; }
     tT.appendChild(next);
-    gsap.fromTo(next, { yPercent: 105 * dir }, { yPercent: 0, duration: .9, ease: 'out' });
-    gsap.to(old, { yPercent: -105 * dir, duration: .9, ease: 'out', onComplete: () => old.forEach(o => o.remove()) });
+    gsap.killTweensOf(old);
+    const H = tT.offsetHeight * 1.05;
+    gsap.fromTo(next, { y: H * dir }, { y: 0, duration: .9, ease: 'out' });
+    gsap.to(old, { y: -H * dir, duration: .9, ease: 'out', onComplete: () => old.forEach(o => o.remove()) });
     gsap.to([tK, tS], { autoAlpha: 0, y: -8, duration: .25, ease: 'power2.in', onComplete: () => { tK.textContent = `${p.kind} · ${p.year}`; tS.textContent = p.summary; gsap.to([tK, tS], { autoAlpha: 1, y: 0, duration: .5, ease: 'out', stagger: .05 }); } });
   };
 
