@@ -1,5 +1,5 @@
 /* =====================================================================
-   PROJECTS: the single source of truth for Home, Work and every project page.
+   PROJECTS: the single source of truth for Home, Works and every project page.
    Add a project by adding an entry here, then run: python tools/build-share.py
 
    Every project has the same fields, in this order:
@@ -9,8 +9,8 @@
      title     : project name
      kind      : short category label
      cats      : filters, any of ux | brand | graphic | motion
-     color     : card colour, pink | blue | sun | mint | sky | lilac | ink
-     featured  : true = shown in the Home "Selected work" grid (keep to 5; the fifth card runs full width)
+     color     : legacy field, not used by the v4 design
+     featured  : true = shown on the Home "Selected work" ring (keep to 5)
      summary   : one line, shown on cards
      about     : intro paragraph on the project page
      year      : shown on cards
@@ -129,7 +129,7 @@ window.PROJECTS = [
 
     facts: [['Type', 'Concept UI/UX case study'], ['Medium', 'Web app (installable), phone to desktop'], ['Tools', 'Figma, Illustrator, After Effects'], ['Published', 'Oct 2026']],
     writeup: [
-      { h: 'The challenge', p: ['Scams win on speed and silence:'], list: ['57% of adults worldwide met a scam last year', '64% of scams are over within a day of first contact', '22% of targeted older people told no one because they felt too embarrassed', 'Existing checkers give a score, but people need the why, in their own language, and someone to ask'] },
+      { h: 'The challenge', p: ['Scams depend on speed, and on people keeping quiet:'], list: ['57% of adults worldwide met a scam last year', '64% of scams are over within a day of first contact', '22% of targeted older people told no one because they felt too embarrassed', 'Existing checkers give a score, but people need the why, in their own language, and someone to ask'] },
       { h: 'The approach', p: ['Shady answers with the evidence. It gives an honest verdict with its confidence in words, underlines the red flags in the message itself and offers one clear next step. When it is not sure, one tap sends the message to someone you trust, and their reply comes back in the app.'] },
       { h: 'The details', list: ['Verdicts say "likely" and never "100% safe"', 'Every verdict points to the exact words, links or numbers', 'A "Take a breath" pause, because scammers want you to rush', 'Names, numbers and accounts are blurred before checking', 'Accessible by default: 18px text, 48px targets, 4.5:1 contrast, voice in and out, and verdicts never shown by colour alone', 'One light and dark design system, where every colour is a token'] }
     ],
@@ -361,8 +361,8 @@ window.PROJECTS = [
     facts: [['Type', 'UI/UX case study'], ['Medium', 'Mobile app'], ['Tools', 'Figma, Illustrator, Photoshop'], ['Published', 'May 2026']],
     writeup: [
       { h: 'The challenge', p: ['Research surfaced recurring pain points, including:'], list: ['“I often get delayed or wrong deliveries, and the tracking information isn’t clear or updated.”', '“I get overwhelmed navigating through the app filters, menus, and categories aren’t intuitive.”'] },
-      { h: 'The approach', p: ["ShopUp puts the user at the centre, with AI recommendations that learn each person's taste, needs and budget.", 'The interface stays uncluttered, and fast delivery and real-time customer support are there to make shopping less stressful. Curated collections, exclusive deals and support for local sellers help people discover unique products.'] },
-      { h: 'The details', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick delivery, and the bold blue is there to signal trust and reliability.'] }
+      { h: 'The approach', p: ["ShopUp uses AI recommendations that learn each shopper's taste, needs and budget.", 'The interface stays uncluttered. Fast delivery and real-time customer support aim to make shopping less stressful, and curated collections, exclusive deals and local sellers help people find new products.'] },
+      { h: 'The details', p: ['The ShopUp mark combines a delivery truck and a shopping basket into one fast-moving cart. It stands for quick delivery, and the blue is meant to signal trust and reliability.'] }
     ],
     role: ['Design strategy', 'Problem and solution', 'Information architecture', 'Empathy mapping', 'Usability testing', 'User flow', 'Prototyping', 'Wireframes', 'Competitive analysis', 'Visual design', 'User research', 'User persona'],
     process: [
@@ -376,7 +376,7 @@ window.PROJECTS = [
       note: 'A concept project, so these are the results it is designed for, not live numbers.',
       delivered: ['User research and usability testing with six participants', 'Persona, empathy map and competitive analysis', 'Information architecture, user flows and wireframes', 'Style guide, high-fidelity UI and the ShopUp logo'],
       measure: ['Time to find a product using filters', 'Checkout completion', 'Support questions about where an order is (clearer tracking should cut them)', 'Repeat orders from recommendations'],
-      shows: ['A full design-thinking process, from research to UI', 'Turning real pain points (tracking, filters) into features', 'Brand and product design working together']
+      shows: ['A full design-thinking process, from research to UI', 'Turning real pain points (tracking, filters) into features', 'Brand and product design in one project']
     },
     gallery: [
       ['assets/img/gallery/shopup/01.webp', 1200, 1998, 'User persona'],

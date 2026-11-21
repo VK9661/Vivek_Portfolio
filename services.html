@@ -1,120 +1,75 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-<script>/* Before the first paint: theme (saved choice, else the device setting) */
-(function(d){try{var t=localStorage.getItem("vk-theme");if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";d.setAttribute("data-theme",t)}catch(e){d.setAttribute("data-theme","light")}})(document.documentElement);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services | Vivek Kumar</title>
-<meta name="description" content="Website and app design, brand identity, social media creatives, posters, motion graphics and video editing by Vivek Kumar.">
+<meta name="description" content="Website and mobile app design, brand identity, social media creatives, posters and ads, motion and video by Vivek Kumar.">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="canonical" href="https://vivek-portfolio-beta-eight.vercel.app/services.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vivek Kumar">
 <meta property="og:title" content="Services | Vivek Kumar">
-<meta property="og:description" content="Website and app design, brand identity, social media creatives, posters, motion graphics and video editing by Vivek Kumar.">
+<meta property="og:description" content="Website and mobile app design, brand identity, social media creatives, posters and ads, motion and video by Vivek Kumar.">
 <meta property="og:url" content="https://vivek-portfolio-beta-eight.vercel.app/services.html">
-<meta property="og:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/portfolio.jpg?v=3">
-<meta property="og:image:secure_url" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/portfolio.jpg?v=3">
-<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/portfolio.jpg?v=4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Vivek Kumar, graphic, UI/UX and motion designer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Services | Vivek Kumar">
-<meta name="twitter:description" content="Website and app design, brand identity, social media creatives, posters, motion graphics and video editing by Vivek Kumar.">
-<meta name="twitter:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/portfolio.jpg?v=3">
-<meta name="theme-color" content="#F2F1FA">
-<link rel="icon" type="image/png" href="assets/icons/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/css/style.css">
-<noscript><style>[data-reveal]{opacity:1;transform:none}.svc-panel{opacity:1;visibility:visible;position:relative;transform:none}</style></noscript>
+<meta name="twitter:description" content="Website and mobile app design, brand identity, social media creatives, posters and ads, motion and video by Vivek Kumar.">
+<meta name="twitter:image" content="https://vivek-portfolio-beta-eight.vercel.app/assets/img/share/portfolio.jpg?v=4">
+<script>document.documentElement.classList.remove('no-js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rm');</script>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/v4.css">
 </head>
 <body data-page="services">
-<header data-site-nav>
-  <noscript><nav class="wrap noscript-nav"><a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="services.html">Services</a><a href="contact.html">Contact</a></nav></noscript>
-</header>
+<div class="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-lbl"></span></div>
+<canvas class="fx" id="fx" aria-hidden="true"></canvas>
+<header class="top"></header>
+<main id="top">
+  <section class="pg-hero" aria-labelledby="pt">
+    <div class="crumb" data-in><p class="mono">( 04 · Services )</p><p class="mono">Open to roles and freelance projects</p></div>
+    <h1 id="pt" class="pg-title"><span class="ln"><span>Services</span></span></h1>
+    <div class="pg-intro" data-in><p>Graphic design, UI/UX design, motion graphics and video editing: websites, mobile apps, brand identities, social media creatives, posters and ads, and motion pieces.</p><p class="mono">Six ways to work together<br>↓</p></div>
+  </section>
 
-<main id="main">
-  <div class="wrap">
-    <header class="page-hero">
-      <span class="chip" style="--c:var(--pink)">Services</span>
-      <h1 class="display t-xxl">What I can<br>do for you</h1>
-      <p class="hand"><span class="hover-word">hover</span> or tap one to see what’s inside</p>
-      <aside class="card hero-aside" aria-label="Availability">
-        <span class="eyebrow"><i class="dot" aria-hidden="true"></i>Available now</span>
-        <b class="ha-line">Open to full-time design roles and freelance projects</b>
-        <a class="btn btn--sm" href="contact.html">Say hello <span class="ar" aria-hidden="true">&#8599;</span></a>
-      </aside>
-      <svg class="ast" style="--c:var(--sun)" viewBox="-50 -50 100 100" aria-hidden="true"><path d="M0-31V31M-31 0H31M-22-22L22 22M-22 22L22-22" stroke="currentColor" stroke-width="21" stroke-linecap="round"/></svg>
-    </header>
+  <section class="svc" id="svc" aria-label="What I offer"></section>
 
-    <section class="svc-grid" aria-label="Services" data-reveal>
-      <div class="svc-list" role="tablist" aria-orientation="vertical" aria-label="Services">
-        <button class="svc" role="tab" id="t0" aria-controls="p0" aria-selected="true">Website design<span class="ar" aria-hidden="true">&rarr;</span></button>
-        <button class="svc" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">Mobile app design<span class="ar" aria-hidden="true">&rarr;</span></button>
-        <button class="svc" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Brand identity<span class="ar" aria-hidden="true">&rarr;</span></button>
-        <button class="svc" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">Social media creatives<span class="ar" aria-hidden="true">&rarr;</span></button>
-        <button class="svc" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">Posters and ads<span class="ar" aria-hidden="true">&rarr;</span></button>
-        <button class="svc" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1">Motion and video<span class="ar" aria-hidden="true">&rarr;</span></button>
-      </div>
-      <div class="svc-panels">
-        <div class="svc-panel is-on" role="tabpanel" id="p0" aria-labelledby="t0"><div class="svc-card taped" style="--c:var(--pink)"><p>Landing pages and web products that read clearly and convert, from first sketch to a handoff-ready Figma file.</p><ul><li>Wireframes and user flows</li><li>High-fidelity prototyping</li><li>Design systems</li><li>Usability testing</li></ul></div></div>
-        <div class="svc-panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden><div class="svc-card taped" style="--c:var(--sun)"><p>Mobile flows built for how people use their thumbs, with research behind every screen.</p><ul><li>User research and interviews</li><li>Information architecture</li><li>Interaction patterns</li><li>Interactive prototypes</li></ul></div></div>
-        <div class="svc-panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden><div class="svc-card taped" style="--c:var(--mint)"><p>Logos and visual systems that stay consistent from a business card to a billboard.</p><ul><li>Logo design</li><li>Brand systems</li><li>Typography and colour</li><li>Packaging and collateral</li></ul></div></div>
-        <div class="svc-panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden><div class="svc-card taped" style="--c:var(--lilac)"><p>Campaign and content creatives that look like one brand across every platform.</p><ul><li>Post and carousel design</li><li>Campaign systems</li><li>Typography and hierarchy</li></ul></div></div>
-        <div class="svc-panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden><div class="svc-card taped" style="--c:var(--sky)"><p>Marketing posters and ads with one clear message and a layout that earns the second look.</p><ul><li>Poster design</li><li>Ad creatives</li><li>Editorial and print layouts</li></ul></div></div>
-        <div class="svc-panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden><div class="svc-card svc-blue taped" style="--c:var(--blue)"><p>Motion that explains a product or brand and gives it some feel, plus video edits cut for pace.</p><ul><li>After Effects animation</li><li>UI micro-interactions</li><li>Parallax and carousel animation</li><li>Logo reveals and intros</li><li>Kinetic typography</li><li>Short-form video editing</li></ul></div></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- PROCESS -->
-  <section class="sec pop pop--ink services-band" style="--pop:var(--sun)" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="sec-head" data-reveal><div><span class="kicker" aria-hidden="true">step by step</span><h2 class="display t-lg" id="how-title">How I <em class="hl">work</em></h2><p class="hand">the order stays, the depth flexes with the project</p></div></div>
-      <ol class="steps-grid">
-        <li class="p-step" style="--c:var(--sky)" data-reveal><span class="n">1</span><h3>Research</h3><p>Talk to users, study the market and frame the problem before reaching for solutions.</p></li>
-        <li class="p-step" style="--c:var(--sun);--d:.06s" data-reveal><span class="n">2</span><h3>Strategy</h3><p>Define the goals, the scope and what success looks like for the project.</p></li>
-        <li class="p-step" style="--c:var(--pink);--d:.12s" data-reveal><span class="n">3</span><h3>Wireframe</h3><p>Sketch flows, structure information and test the logic before any pixels.</p></li>
-        <li class="p-step" style="--c:var(--mint)" data-reveal><span class="n">4</span><h3>Design</h3><p>Build the visual layer: type, colour, hierarchy and the polish that makes it feel right.</p></li>
-        <li class="p-step" style="--c:var(--lilac);--d:.06s" data-reveal><span class="n">5</span><h3>Prototype</h3><p>Stitch the screens together so they click and swipe like the real thing.</p></li>
-        <li class="p-step" style="--c:var(--sun);--d:.12s" data-reveal><span class="n">6</span><h3>Iterate</h3><p>Test, learn and refine, and keep improving after launch.</p></li>
-      </ol>
+  <section class="proc" aria-labelledby="prh">
+    <div class="pr-pin">
+      <div class="pr-head"><div><p class="mono label">( Process )</p><h2 id="prh" class="h-sec" style="margin-top:16px">How a project moves</h2></div><p class="mono" style="color:var(--fg)"><span id="prn">01</span> / 06</p></div>
+      <div class="pr-track" id="prt"><div class="pr-line"><i id="prl"></i></div></div>
     </div>
   </section>
 
-  <!-- CAPABILITIES BOARD -->
-  <section class="sec" aria-labelledby="cap-title">
-    <div class="wrap">
-      <div class="sec-head" data-reveal><div><span class="kicker" aria-hidden="true">the toolbox</span><h2 class="display t-lg" id="cap-title">Core <em class="hl">capabilities</em></h2><p class="hand">the skills behind the services</p></div></div>
-      <div class="capboard" id="capboard" data-reveal>
-        <div class="cap-col" style="--c:var(--mint);--cl:var(--mint)"><h3>Research</h3><div class="chips"><span class="chip">User research &amp; interviews</span><span class="chip">Problem framing</span><span class="chip">Heuristic audits</span><span class="chip">Usability testing</span><span class="chip">User flows</span></div></div>
-        <div class="cap-col" style="--c:var(--lilac);--cl:var(--lilac)"><h3>Design</h3><div class="chips"><span class="chip">Wireframes &amp; prototypes</span><span class="chip">High-fidelity UI</span><span class="chip">Typography &amp; hierarchy</span><span class="chip">Responsive design</span><span class="chip">Interaction design</span></div></div>
-        <div class="cap-col" style="--c:var(--sun);--cl:var(--sun)"><h3>Systems</h3><div class="chips"><span class="chip">Design systems</span><span class="chip">Brand identity &amp; logos</span><span class="chip">Poster &amp; campaign design</span><span class="chip">Social media creatives</span><span class="chip">Engineering handoff</span></div></div>
-        <div class="cap-col" style="--c:var(--pink);--cl:var(--pink)"><h3>Motion</h3><div class="chips"><span class="chip">After Effects animation</span><span class="chip">UI micro-interactions</span><span class="chip">Parallax &amp; carousel</span><span class="chip">Logo reveals &amp; intros</span><span class="chip">Video editing</span></div></div>
-      </div>
-    </div>
+  <section class="sec" aria-labelledby="cph">
+    <div class="sec-grid"><p class="mono label">( Capabilities )</p><h2 id="cph" class="h-sec split">The full toolkit</h2></div>
+    <div class="capg" id="capg"></div>
   </section>
 
-  <!-- FAQ -->
-  <section class="sec pop pop--ink" style="--pop:#BDF2DA" aria-labelledby="faq-title">
-    <div class="wrap">
-      <div class="sec-head" data-reveal><div><span class="kicker" aria-hidden="true">good to know</span><h2 class="display t-lg" id="faq-title">Questions, <em class="hl">answered</em></h2></div></div>
-      <div class="faq-list">
-        <div class="faq-item" style="--c:#FFF6D6"><h3><button class="faq-q" type="button" id="q1" aria-expanded="false" aria-controls="a1">What kind of work do you take on?<span class="pm" aria-hidden="true">+</span></button></h3><div class="faq-a" id="a1" role="region" aria-labelledby="q1"><div><p>Graphic design, UI/UX design, motion graphics and video editing: websites, mobile apps, brand identities, social media creatives, posters and ads, and motion pieces.</p></div></div></div>
-        <div class="faq-item" style="--c:#E3FBF1"><h3><button class="faq-q" type="button" id="q2" aria-expanded="false" aria-controls="a2">Are you open to new roles or freelance work?<span class="pm" aria-hidden="true">+</span></button></h3><div class="faq-a" id="a2" role="region" aria-labelledby="q2"><div><p>Yes. I’m open to design roles and freelance projects in graphic, UI/UX, motion and video. <a href="contact.html">Send me a note</a>.</p></div></div></div>
-        <div class="faq-item" style="--c:#FFE5EE"><h3><button class="faq-q" type="button" id="q3" aria-expanded="false" aria-controls="a3">What tools do you design with?<span class="pm" aria-hidden="true">+</span></button></h3><div class="faq-a" id="a3" role="region" aria-labelledby="q3"><div><p>Figma, Canva, Photoshop, Illustrator and After Effects. I also use Claude, ChatGPT and Lovable during parts of my process.</p></div></div></div>
-      </div>
-    </div>
+  <section class="sec" aria-labelledby="fqh" style="padding-top:4vh">
+    <div class="sec-grid" style="margin-bottom:6vh"><p class="mono label">( FAQ )</p><h2 id="fqh" class="h-sec split">Questions people ask</h2></div>
+    <ul class="cap-list" data-acc style="margin:0" id="faq"></ul>
   </section>
-
-  <div data-site-cta></div>
 </main>
-
-<footer data-site-foot></footer>
-
+<div data-foot></div>
 <script src="assets/js/data.js"></script>
-<script src="assets/js/pages/services.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+<script type="module" src="assets/js/pages.js"></script>
 </body>
 </html>
