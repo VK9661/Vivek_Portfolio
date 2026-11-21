@@ -121,6 +121,7 @@ window.PROJECTS = [
   {
     id: 'shady', title: 'Shady?', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'lilac', featured: true,
     summary: 'An AI scam checker for families: a calm answer, and the why, in seconds.',
+    seo: "Shady is a concept AI scam checker for families. Paste any message and get a calm answer, the red flags underlined and one clear next step. UI/UX case study.",
     about: "Shady is a concept AI scam checker built for families, including first-time smartphone users. Paste any message and get a calm answer (Likely a scam, Not sure or Likely safe) with the red flags underlined in your own words and one clear next step. When it isn't sure, Shady asks someone you trust.",
     year: '2026', published: 'Oct 2026', tags: ['AI product', 'Web app', 'Motion'],
     tools: ['Figma', 'Illustrator', 'After Effects'],
@@ -160,6 +161,7 @@ window.PROJECTS = [
   {
     id: 'draft-room', title: 'The Draft Room', kind: 'Brand identity', cats: ['brand', 'graphic'], color: 'ink', featured: true,
     summary: 'A library of weave drafts where every printed pattern can also be woven.',
+    seo: "The Draft Room is a concept brand identity for a members' library of weave drafts, where every printed pattern follows real weaving logic and could be woven.",
     about: "The Draft Room is a concept brand for a members' library of weave drafts, the drawings a weaver follows to make cloth. Every pattern across the identity follows real threading, tie-up, treadling and drawdown logic, so each printed pattern could also be woven.",
     year: '2026', published: 'Oct 2026', tags: ['Brand identity', 'Typography', 'Pattern design'],
     tools: ['Illustrator', 'Photoshop', 'Figma'],
@@ -197,6 +199,7 @@ window.PROJECTS = [
   {
     id: 'truepost', title: 'TRUEPOST', kind: 'UI/UX case study', cats: ['ux', 'motion'], color: 'mint', featured: true,
     summary: 'A check between the counting machine and the bank, so a wrong cash deposit cannot post.',
+    seo: "TRUEPOST is a concept checking layer for bank branches: a cash deposit posts only when the cashier's amount, the counting machine and the customer all agree. UI/UX case study.",
     about: "TRUEPOST is a concept checking layer for bank branches, built for a fictional bank. Before a cash deposit posts, two independent sources have to agree: the slip amount the cashier types blind has to match the note-counting machine, and the customer confirms their own name and amount on a screen, Hindi first. When everything matches it costs the cashier nothing. When it doesn't, the Post button disappears.",
     year: '2026', published: 'Nov 2026', tags: ['Enterprise UI/UX', 'Fintech', 'Design system'],
     tools: ['Figma', 'Figma AI', 'ElevenLabs'],
@@ -236,6 +239,7 @@ window.PROJECTS = [
   {
     id: 'chashni', title: 'CHASHNI', kind: 'Social campaign + packaging', cats: ['brand', 'graphic', 'motion'], color: 'sun', featured: false,
     summary: 'A Diwali mithai brand whose box names the sweet before anyone opens it.',
+    seo: "CHASHNI is a concept Diwali mithai brand whose gift box names the sweet on the lid. Brand identity, packaging and a social campaign of reels and carousels.",
     about: 'CHASHNI is a concept Diwali gifting brand named after the sugar syrup that binds every mithai, and after the test a halwai uses to judge it: one thread between finger and thumb. Every Diwali the same gift box does the rounds unopened, because nothing on it says what is inside. CHASHNI puts the answer on the lid.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Packaging', 'Social campaign', 'Brand identity'],
     tools: ['Illustrator', 'Photoshop', 'After Effects'],
@@ -275,6 +279,7 @@ window.PROJECTS = [
   {
     id: 'enough', title: 'ENOUGH.', kind: 'Kinetic typography film', cats: ['motion'], color: 'pink', featured: false,
     summary: 'A film about food waste, narrated by the dinner you didn\'t finish.',
+    seo: "ENOUGH. is a 42.6-second concept film about food waste, narrated by the dinner itself as it moves from plate to fridge to bin, in kinetic typography.",
     about: 'A personal concept film about food waste, told by the dinner itself. In 42.6 seconds it moves from the plate to the fridge to the bin, and the typography changes with it.',
     year: '2026', published: 'Oct 2026', tags: ['Motion', 'Kinetic typography', 'Social impact'],
     tools: ['After Effects', 'Figma'],
@@ -314,6 +319,7 @@ window.PROJECTS = [
   {
     id: 'bijli-bazaar', title: 'BIJLI BAZAAR', kind: 'Social posts', cats: ['graphic'], color: 'pink', featured: false,
     summary: "Nine social posts for a night mela that doesn't exist, each solving a different layout problem.",
+    seo: "BIJLI BAZAAR is a concept social campaign for an invented three-night music festival: nine posts in 4:5 and 9:16, built from type and illustration with no photographs.",
     about: 'BIJLI BAZAAR (बिजली बाज़ार, "the electric market") is an invented three-night music festival: a night mela of bulbs, tent edges and hand-painted signs. Nine social posts announce it, each in 4:5 and 9:16, and no photograph does the work.',
     year: '2026', published: 'Oct 2026', tags: ['Social media', 'Typography', 'Festival'],
     tools: ['Illustrator', 'Photoshop', 'Figma'],
@@ -352,6 +358,7 @@ window.PROJECTS = [
   {
     id: 'shopup', title: 'ShopUp', kind: 'UI/UX case study', cats: ['ux'], color: 'lilac', featured: false,
     summary: 'A mobile shopping app concept built around faster delivery, better deals and personalised recommendations.',
+    seo: "ShopUp is a mobile shopping app concept that uses AI recommendations to personalise what each shopper sees. A full UI/UX case study, from research to high-fidelity UI.",
     about: 'ShopUp is a shopping app concept that uses AI recommendations to personalise what each shopper sees. The case study follows a full design-thinking process, from research to high-fidelity UI, for a simple and uncluttered mobile shop.',
     year: '2026', published: 'May 2026', tags: ['Mobile', 'Ecommerce', 'Case study'],
     tools: ['Figma', 'Illustrator', 'Photoshop'],
@@ -388,6 +395,7 @@ window.PROJECTS = [
   {
     id: 'bewakoof', title: 'Bewakoof', kind: 'Heuristic evaluation', cats: ['ux'], color: 'sun', featured: false,
     summary: "What's working and what isn't across a high-traffic ecommerce funnel.",
+    seo: "A heuristic evaluation of the Bewakoof shopping app: a UX audit of what's working and what isn't across a high-traffic ecommerce funnel, with redesign proposals.",
     about: "A heuristic evaluation of the Bewakoof shopping app: a structured review of what's working and what isn't across a high-traffic ecommerce funnel.",
     year: '2025', published: 'Jul 2025', tags: ['UX research', 'Audit'],
     tools: ['Figma', 'Photoshop'],

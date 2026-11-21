@@ -516,7 +516,11 @@ html.pt-in::before{content:attr(data-pt-l);position:fixed;left:var(--pad);right:
   .rg-title{font-size:14vw}
   .rg-info{bottom:84px;right:var(--pad);max-width:none}.rg-sum{min-height:0}
   .rg-foot{grid-template-columns:1fr auto;bottom:22px}.rg-hint{display:none}.rg-foot .rg-all{grid-column:2}
-  .wk-bar{flex-direction:column;align-items:flex-start;padding-top:76px}
+  .wk-bar{gap:12px;padding:78px var(--pad) 22px;background:linear-gradient(var(--bg) calc(100% - 20px),rgba(10,10,11,0))}
+  .chips{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-right:28px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;height:36px;padding:0 14px;font-size:13px;line-height:36px}
+  .views{flex:none}.views button{height:28px;padding:0 11px;font-size:12px;line-height:28px}
   .wk-grid{grid-template-columns:1fr;row-gap:8vh}.wk-grid .card{grid-column:1!important;margin-top:0!important}
   .pj-hero{padding-top:120px}.pj-sub{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(3){padding-left:0;border-left:0}
   .wu-i{grid-template-columns:1fr}.wu-i h3{position:static}

@@ -43,6 +43,8 @@ function buildWorks() {
 
     const apply = (c, animate) => {
       $$('.chip', chips).forEach(b => b.setAttribute('aria-pressed', b.dataset.c === c));
+      const on = $(`.chip[data-c="${c}"]`, chips); // on phones the chips are one sideways-scrolling row
+      if (on && chips.scrollWidth > chips.clientWidth) chips.scrollTo({ left: on.offsetLeft - chips.offsetLeft - (chips.clientWidth - on.offsetWidth) / 2, behavior: animate ? 'smooth' : 'auto' });
       const cards = $$('.card'), rows = $$('#list .row');
       const state = animate && window.Flip && root.dataset.view === 'grid' ? Flip.getState(cards) : null;
       let n = 0;
