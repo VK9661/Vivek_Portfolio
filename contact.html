@@ -28,6 +28,8 @@
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js">
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -39,10 +41,10 @@
 <header class="top"></header>
 <main id="top">
   <section class="ct-hero" aria-labelledby="pt">
-    <div class="crumb" data-in style="display:flex;justify-content:space-between;gap:20px"><p class="mono">( 05 · Contact )</p><p class="mono">Got a role, a project or just a question?</p></div>
+    <div class="crumb" data-in style="display:flex;justify-content:space-between;gap:20px"><p class="mono">05 · Contact</p><p class="mono note">Got a role, a project or just a question?</p></div>
     <h1 id="pt" class="hello pg-title"><span class="sr">Say hello.</span><span class="ln" aria-hidden="true"><span data-chars>Say</span></span><span class="ln" aria-hidden="true"><span data-chars data-dot>hello</span></span></h1>
     <div class="ct-mail" data-in>
-      <p class="mono">Write to me</p>
+      <p class="mono note">Write to me</p>
       <a class="big" id="mail" href="mailto:vivekgupta9661@gmail.com" data-cursor="Write">vivekgupta9661@gmail.com</a>
       <button class="btn ghost copy" type="button" id="copy"><span class="r" data-r="Copy email">Copy email</span><i class="arr">⧉</i><span class="toast" role="status" aria-live="polite">Copied</span></button>
     </div>
@@ -50,7 +52,7 @@
 
   <section class="ct-grid" aria-label="Get in touch">
     <form class="form" id="form" novalidate>
-      <p class="mono label">( Draft an email )</p>
+      <p class="mono label">Draft an email</p>
       <h2 class="split">Prefer to write here?</h2>
       <p>This opens a draft in your email app. Nothing is sent from this page.</p>
       <label class="fld"><span>Your name</span><input name="name" autocomplete="name" placeholder=" " required></label>
@@ -62,7 +64,7 @@
     </form>
     <div class="side">
       <div data-up=":scope > *">
-        <p class="mono label" style="margin-bottom:16px">( Downloads )</p>
+        <p class="mono label" style="margin-bottom:16px">Downloads</p>
         <div class="dl"><a href="assets/cv/Vivek_Kumar_CV.pdf" download>CV <i>↓</i></a><a href="assets/cv/Vivek_Kumar_Portfolio.pdf" download>Portfolio PDF <i>↓</i></a></div>
       </div>
       <dl class="kv" data-up=":scope > div">
@@ -70,7 +72,7 @@
         <div><dt class="mono">Works in</dt><dd>Graphic, UI/UX, motion and video</dd></div>
       </dl>
       <div>
-        <p class="mono label" style="margin-bottom:16px">( Elsewhere )</p>
+        <p class="mono label" style="margin-bottom:16px">Elsewhere</p>
         <nav class="links-big" id="else" aria-label="Elsewhere" data-up=":scope > a"></nav>
       </div>
     </div>
@@ -84,7 +86,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
 <script type="module" src="assets/js/pages.js"></script>
 </body>
 </html>

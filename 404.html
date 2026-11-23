@@ -16,6 +16,8 @@
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js">
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,8 +29,8 @@
 <header class="top"></header>
 <main id="top">
   <section class="pg-hero nf-hero" aria-labelledby="pt">
-    <div class="crumb" data-in><p class="mono">( 404 · Page not found )</p><p class="mono nf-path" id="nf-path"></p></div>
-    <h1 id="pt" class="pg-title"><span class="ln"><span>Lost</span></span><span class="ln"><span class="ol">page</span></span></h1>
+    <div class="crumb" data-in><p class="mono">404 · Page not found</p><p class="mono nf-path" id="nf-path"></p></div>
+    <h1 id="pt" class="pg-title"><span class="ln"><span>Lost</span></span><span class="ln"><span>page</span></span></h1>
     <div class="pg-intro" data-in>
       <p>This page doesn’t exist, or it has moved.</p>
       <div class="nf-links">
@@ -45,7 +47,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
 <script>document.getElementById('nf-path').textContent=location.pathname</script>
 <script type="module" src="assets/js/pages.js"></script>
 </body>

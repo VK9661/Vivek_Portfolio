@@ -17,7 +17,7 @@ $('#ring').innerHTML = Array.from({ length: CARDS }, (_, i) => {
 }).join('');
 $('#dots').innerHTML = F.map((p, i) => `<button type="button" aria-label="Show ${esc(p.title)}" data-d="${i}"><i></i></button>`).join('');
 $('#rgt-n').textContent = pad(N);
-$('.rg-all sup').textContent = `(${P.length})`;
+$('#rg-n').textContent = P.length;
 
 const first = document.documentElement.classList.contains('first');
 const { mouse, lenis, arrived } = boot();
@@ -118,14 +118,6 @@ function ring() {
 function home() {
   if (first) lenis.stop();
 
-  /* counters */
-  $$('[data-count]').forEach(b => {
-    const end = +b.dataset.count, o = { v: end > 1000 ? end - 26 : 0 };
-    b.textContent = o.v;
-    gsap.to(o, { v: end, duration: 2, ease: 'out', scrollTrigger: { trigger: b, start: 'top 88%' }, onUpdate: () => { b.textContent = Math.round(o.v); } });
-  });
-  gsap.from('.stats > div', { y: 40, autoAlpha: 0, duration: 1, ease: 'out', stagger: .1, scrollTrigger: { trigger: '.stats', start: 'top 88%' } });
-
   const portrait = heroParticles(mouse);
 
   /* first visit of the session: loader → intro. Later visits: shutters → intro */
@@ -153,6 +145,9 @@ function home() {
         .to('.top', { autoAlpha: 1, duration: 1 }, '-=.6');
     });
   }
+
+  /* the ring's drag hint nudges three times once the ring is in view, then rests */
+  ScrollTrigger.create({ trigger: '.ring-sec', start: 'top 60%', once: true, onEnter: () => $('.rg-hint')?.classList.add('go') });
 
   /* hero leaves: name drifts, particles scatter */
   gsap.to('.h-name', { yPercent: 30, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });

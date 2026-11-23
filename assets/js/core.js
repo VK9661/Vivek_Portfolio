@@ -30,14 +30,14 @@ const roll = t => `<span class="r" data-r="${t}">${t}</span>`;
 export function chrome(page) {
   const top = $('.top');
   if (top) top.innerHTML = `
-    <a class="logo" href="index.html"><span class="sr">Vivek Kumar, home</span><span class="lg-t" aria-hidden="true">Vivek Kumar</span><sup aria-hidden="true"><i class="lg-c">©</i>${String(YEAR).slice(2)}</sup></a>
+    <a class="logo" href="index.html"><span class="sr">Vivek Kumar, home</span><span class="lg-t" aria-hidden="true">Vivek Kumar</span></a>
     <nav class="links" aria-label="Main">${NAV.map(([k, t, h]) => `<a href="${h}" class="ul"${k === page ? ' aria-current="page"' : ''}>${roll(t)}</a>`).join('')}</nav>
-    <p class="status mono"><i></i>Available for projects</p>
+    <p class="status mono"><i></i>Open to roles and freelance</p>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="r" data-r="Menu">Menu</span></button>`;
   document.body.insertAdjacentHTML('beforeend', `
     <div class="menu" id="menu" hidden>
       <nav aria-label="Mobile">${[['home', 'Home', 'index.html'], ...NAV].map(([k, t, h], i) => `<a href="${h}"${k === page ? ' aria-current="page"' : ''}><span class="mono">${pad(i + 1)}</span>${t}</a>`).join('')}</nav>
-      <div class="menu-foot"><a href="mailto:${C.email}">${C.email}</a><p class="mono">Open to full-time roles and freelance projects</p></div>
+      <div class="menu-foot"><a href="mailto:${C.email}">${C.email}</a><p class="mono note">Open to full-time roles and freelance projects</p></div>
     </div>
     <div class="pt" aria-hidden="true"><div class="pt-bars"><i></i><i></i><i></i><i></i><i></i></div><div class="pt-lbl"><span class="pt-no mono"></span><span class="pt-t"></span></div></div>`);
 
@@ -48,14 +48,14 @@ export function chrome(page) {
     <div class="marq" aria-hidden="true"><div class="mq-row"><span>Let's work together</span><i></i><span>Let's work together</span><i></i><span>Let's work together</span><i></i><span>Let's work together</span><i></i></div></div>
     <h2 id="ct" class="sr">Contact</h2>
     <div class="ct-main">
-      <p class="mono label">( Got a role, a project or a question? )</p>
+      <p class="mono label">Write to me</p>
       <a class="mail" href="mailto:${C.email}" data-cursor="Write"><span class="mail-t">${C.email}</span><span class="mail-arr" aria-hidden="true">→</span></a>
     </div>`}
     <footer class="foot"${page === 'contact' ? ' role="contentinfo"' : ''}>
       <div class="f-cols">
         <div><p class="mono label">Elsewhere</p><a class="ul" href="${C.behance}" target="_blank" rel="noopener">Behance</a><a class="ul" href="${C.book}" target="_blank" rel="noopener">Portfolio book</a><a class="ul" href="${C.linkedin}" target="_blank" rel="noopener">LinkedIn</a><a class="ul" href="${C.instagram}" target="_blank" rel="noopener">Instagram</a></div>
         <div><p class="mono label">Pages</p>${[['Home', 'index.html'], ...NAV.map(n => [n[1], n[2]])].map(([t, h]) => `<a class="ul" href="${h}">${t}</a>`).join('')}</div>
-        <div class="f-r"><p class="mono">© ${YEAR} Vivek Kumar</p><p class="mono">Graphic · UI/UX · Motion · Video</p><a class="ul mono to-top" href="#top">Back to top ↑</a></div>
+        <div class="f-r"><p class="mono">© ${YEAR} Vivek Kumar</p><p class="mono">Graphic · UI/UX · Motion · Video</p><a class="ul mono note to-top" href="#top">Back to top ↑</a></div>
       </div>
       <p class="f-name" aria-hidden="true">Vivek Kumar</p>
     </footer>
@@ -120,18 +120,16 @@ export function boot() {
     });
   }
 
-  /* logo: letters roll in a wave, the copyright mark spins; on hover and on its own */
+  /* logo: letters roll in a wave once after load, then on hover */
   (() => {
-    const logo = $('.logo'), t = $('.lg-t'), c = $('.lg-c'); if (!logo) return;
+    const logo = $('.logo'), t = $('.lg-t'); if (!logo) return;
     t.innerHTML = [...t.textContent].map(ch => { ch = ch === ' ' ? '&nbsp;' : ch; return `<span class="lg-ch"><span class="in"><span>${ch}</span><span>${ch}</span></span></span>`; }).join('');
     const ins = $$('.lg-ch .in', t);
     const to = (y, d = .55) => gsap.to(ins, { yPercent: y, duration: d, ease: 'ease', stagger: .03, overwrite: true });
-    const spin = () => gsap.fromTo(c, { rotation: 0 }, { rotation: 360, duration: .9, ease: 'ease' });
     let hover = false;
-    logo.addEventListener('pointerenter', () => { hover = true; to(-50); spin(); });
+    logo.addEventListener('pointerenter', () => { hover = true; to(-50); });
     logo.addEventListener('pointerleave', () => { hover = false; to(0); });
-    const wave = () => { if (!hover && !document.hidden) { to(-50, .5); gsap.delayedCall(1.3, () => { if (!hover) to(0, .5); }); spin(); } gsap.delayedCall(6, wave); };
-    gsap.delayedCall(5, wave);
+    gsap.delayedCall(5, () => { if (!hover) { to(-50, .5); gsap.delayedCall(1.3, () => { if (!hover) to(0, .5); }); } });
   })();
 
   /* reveals: identical on every page */

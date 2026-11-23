@@ -19,7 +19,6 @@ if (after) after(ctx);
    ===================================================================== */
 function buildWorks() {
   const root = $('.works'), grid = $('#grid'), list = $('#list'), chips = $('#chips');
-  $('#wk-n').textContent = `(${P.length})`;
   const count = c => c === 'all' ? P.length : P.filter(p => p.cats.includes(c)).length;
   chips.innerHTML = [['all', 'All'], ...Object.entries(CATS)].map(([k, t]) => `<button type="button" class="chip" data-c="${k}" aria-pressed="${k === 'all'}">${t}<sup>${count(k)}</sup></button>`).join('');
   grid.innerHTML = P.map((p, i) => `
@@ -91,7 +90,7 @@ function buildProject() {
   const id = document.body.dataset.id || new URLSearchParams(location.search).get('id'), i = P.findIndex(p => p.id === id), p = P[i], root = $('#pj');
   if (!p) {
     document.title = 'Project not found | Vivek Kumar';
-    root.innerHTML = `<section class="nf"><p class="mono label">( Not found )</p><h1 class="h-sec" style="margin:20px 0 34px">That project isn’t here.</h1><a class="btn" href="works.html"><span class="r" data-r="See all works">See all works</span><i class="arr">↗</i></a></section>`;
+    root.innerHTML = `<section class="nf"><p class="mono label">Not found</p><h1 class="h-sec" style="margin:20px 0 34px">That project isn’t here.</h1><a class="btn" href="works.html"><span class="r" data-r="See all works">See all works</span><i class="arr">↗</i></a></section>`;
     return null;
   }
   document.title = `${p.title}: ${p.kind} | Vivek Kumar`;
@@ -108,7 +107,7 @@ function buildProject() {
     <div class="pj-sub" data-in>
       <p class="mono">${p.tags.map(esc).join(' · ')}</p>
       <p class="lead">${esc(p.summary)}</p>
-      <p class="mono" style="text-align:right;color:var(--fg)">${p.year}<br><span style="color:var(--mute)">Published ${esc(p.published)}</span></p>
+      <p class="mono" style="text-align:right;color:var(--fg)">Published ${esc(p.published)}</p>
     </div>
   </header>
   <div class="pj-cover" style="aspect-ratio:${p.w}/${p.h};width:min(calc(100% - 2 * var(--pad)), calc(86vh * ${p.w} / ${p.h}))"><img src="${cover(p.id)}" alt="${esc(p.title)} cover" width="${p.w}" height="${p.h}" fetchpriority="high"></div>
@@ -116,7 +115,7 @@ function buildProject() {
   <section class="sec" aria-labelledby="f-h">
     <h2 id="f-h" class="sr">Project facts</h2>
     <dl class="facts" data-up=":scope > div">${p.facts.map(([k, v]) => `<div><dt class="mono">${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
-    <div class="sec-grid" style="margin-top:14vh"><p class="mono label">( About the project )</p><p class="about-p" data-fill>${esc(p.about)}</p></div>
+    <div class="sec-grid" style="margin-top:14vh"><p class="mono label">About the project</p><p class="about-p" data-fill>${esc(p.about)}</p></div>
   </section>
 
   <section class="sec" style="padding-top:0" aria-label="Write-up">
@@ -130,7 +129,7 @@ function buildProject() {
   </section>
 
   ${vids.length ? `<section class="sec" style="padding-top:0" aria-labelledby="v-h">
-    <div class="sec-grid" style="margin-bottom:6vh"><p class="mono label">( Watch )</p><h2 id="v-h" class="h-sec split">The ${esc(p.video.label)}</h2></div>
+    <div class="sec-grid" style="margin-bottom:6vh"><p class="mono label">Watch</p><h2 id="v-h" class="h-sec split">The ${esc(p.video.label)}</h2></div>
     <div class="film${vids.some(isV) ? ' v' : ''}" style="margin:0">${vids.map(it => `
       <div class="f" style="--ar:${it[1]}/${it[2]}" data-host="${p.video.host || 'vimeo'}" data-id="${esc(it[0])}" data-t="${esc(it[3])}">
         <img src="${A}img/video/${esc(it[0])}.webp" alt="" loading="lazy">
@@ -141,13 +140,13 @@ function buildProject() {
   </section>` : ''}
 
   <section class="sec" style="padding-top:${vids.length ? 0 : '0'}" aria-labelledby="r-h">
-    <div class="sec-grid"><p class="mono label">( My role )</p><div><h2 id="r-h" class="sr">My role</h2><div class="roles" data-up=":scope > span">${p.role.map(r => `<span>${esc(r)}</span>`).join('')}</div></div></div>
-    <div class="sec-grid" style="margin-top:14vh"><p class="mono label">( Design process )</p><h2 class="h-sec split">${p.process.length} steps from start to finish</h2></div>
+    <div class="sec-grid"><p class="mono label">My role</p><div><h2 id="r-h" class="sr">My role</h2><div class="roles" data-up=":scope > span">${p.role.map(r => `<span>${esc(r)}</span>`).join('')}</div></div></div>
+    <div class="sec-grid" style="margin-top:14vh"><p class="mono label">Design process</p><h2 class="h-sec split">${p.process.length} steps from start to finish</h2></div>
     <div class="steps" id="steps"><i class="bar"></i>${p.process.map(([n, d], k) => `<div class="step"><span class="mono">${pad(k + 1)}</span><b>${esc(n)}</b><p>${esc(d)}</p></div>`).join('')}</div>
   </section>
 
   <section class="sec" aria-labelledby="o-h" style="background:var(--bg-2);border-block:1px solid var(--line)">
-    <div class="sec-grid"><p class="mono label">( Outcome )</p><div><h2 id="o-h" class="h-sec split">What came out of it</h2><p class="oc-note">${esc(p.outcome.note)}</p></div></div>
+    <div class="sec-grid"><p class="mono label">Outcome</p><div><h2 id="o-h" class="h-sec split">What came out of it</h2><p class="oc-note">${esc(p.outcome.note)}</p></div></div>
     <div class="oc" data-up=":scope > div">
       <div><h3>What I delivered</h3><ul>${p.outcome.delivered.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
       <div><h3>How I’d measure success</h3><ul>${p.outcome.measure.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
@@ -156,12 +155,12 @@ function buildProject() {
   </section>
 
   ${p.gallery && p.gallery.length ? `<section class="sec" aria-labelledby="g-h">
-    <div class="sec-grid" style="margin-bottom:10vh"><p class="mono label">( Gallery )</p><h2 id="g-h" class="h-sec split">Key boards</h2></div>
+    <div class="sec-grid" style="margin-bottom:10vh"><p class="mono label">Gallery</p><h2 id="g-h" class="h-sec split">Key boards</h2></div>
     <div class="gal" style="padding:0">${p.gallery.map(([src, w, h, cap], k) => `<figure><div class="g-img" data-wipe><img src="${asset(src)}" alt="${esc(cap)}" width="${w}" height="${h}" loading="lazy"></div><figcaption><span class="mono">${pad(k + 1)} / ${pad(p.gallery.length)}</span><span class="mono" style="color:var(--fg)">${esc(cap)}</span></figcaption></figure>`).join('')}</div>
   </section>` : ''}
 
   <section class="sec" style="padding-top:${p.gallery && p.gallery.length ? '4vh' : '16vh'}" aria-labelledby="b-h">
-    <div class="sec-grid"><p class="mono label">( Full presentation )</p><div>
+    <div class="sec-grid"><p class="mono label">Full presentation</p><div>
       <h2 id="b-h" class="h-sec split">See every frame on Behance</h2>
       <div class="cta-row"><a class="btn" href="${p.behance}" target="_blank" rel="noopener"><span class="r" data-r="Open on Behance">Open on Behance</span><i class="arr">↗</i></a><a class="btn ghost" href="works.html"><span class="r" data-r="All works">All works</span><i class="arr">↗</i></a></div>
       ${p.credits ? `<p class="credits" style="margin-top:6vh">${esc(p.credits)}</p>` : ''}
@@ -169,7 +168,7 @@ function buildProject() {
   </section>
 
   <a class="next" href="${projectUrl(nx.id)}" data-cursor="Next">
-    <p class="mono"><span>( Next project )</span><span>${pad((i + 1) % P.length + 1)} / ${pad(P.length)}</span></p>
+    <p class="mono"><span>Next project</span><span>${pad((i + 1) % P.length + 1)} / ${pad(P.length)}</span></p>
     <p class="next-t">${esc(nx.title)}<i>→</i></p>
     <p class="mono" style="margin-top:14px;justify-content:flex-start">${esc(nx.kind)} · ${nx.year}</p>
     <span class="next-img"><img src="${cover(nx.id)}" alt="" loading="lazy"></span>
@@ -238,7 +237,7 @@ function buildServices() {
     return `<article class="sv" style="top:${90 + k * 14}px">
       <span class="sv-no">${pad(k + 1)}</span>
       <h3>${esc(t)}</h3>
-      <div class="sv-rel"><p class="mono">${CATS[c]} work</p><div>${rel.map(p => `<a href="${projectUrl(p.id)}" aria-label="${esc(p.title)}" data-cursor="${esc(p.title)}"><img src="${cover(p.id)}" alt="" loading="lazy"></a>`).join('')}</div></div>
+      <div class="sv-rel"><p class="mono note">${CATS[c]} work</p><div>${rel.map(p => `<a href="${projectUrl(p.id)}" aria-label="${esc(p.title)}" data-cursor="${esc(p.title)}"><img src="${cover(p.id)}" alt="" loading="lazy"></a>`).join('')}</div></div>
       <p class="sv-d">${esc(d)}</p>
       <ul>${l.map((x, j) => `<li>${esc(x)}<span>${pad(j + 1)}</span></li>`).join('')}</ul>
       <i class="sv-shade" aria-hidden="true"></i>

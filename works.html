@@ -28,6 +28,8 @@
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js">
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -39,9 +41,9 @@
 <header class="top"></header>
 <main id="top">
   <section class="pg-hero" aria-labelledby="pt">
-    <div class="crumb" data-in><p class="mono">( 02 · Works )</p><p class="mono">Graphic · UI/UX · Motion · Video</p></div>
-    <h1 id="pt" class="pg-title"><span class="ln"><span>Works<sup id="wk-n">(11)</sup></span></span></h1>
-    <div class="pg-intro" data-in><p>Every project in one place: product case studies, brand identities, campaigns and films.</p><p class="mono">Filter by discipline<br>or switch to the index</p></div>
+    <div class="crumb" data-in><p class="mono">02 · Works</p><p class="mono">Graphic · UI/UX · Motion · Video</p></div>
+    <h1 id="pt" class="pg-title"><span class="ln"><span>Works</span></span></h1>
+    <div class="pg-intro" data-in><p>Every project in one place: product case studies, brand identities, campaigns and films.</p><p class="mono note">Filter by discipline<br>or switch to the index</p></div>
   </section>
 
   <div class="works" data-view="grid">
@@ -51,7 +53,7 @@
     </div>
     <div class="wk-grid" id="grid"></div>
     <ol class="wk-list list" id="list"></ol>
-    <p class="wk-empty mono" id="empty" hidden>No projects in this filter yet.</p>
+    <p class="wk-empty mono note" id="empty" hidden>No projects in this filter yet.</p>
   </div>
 </main>
 <div data-foot></div>
@@ -62,7 +64,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
 <script type="module" src="assets/js/pages.js"></script>
 </body>
 </html>
