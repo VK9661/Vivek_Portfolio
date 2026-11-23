@@ -108,15 +108,45 @@ export function boot() {
   const top = $('.top');
   lenis.on('scroll', l => top?.classList.toggle('hide', l.direction === 1 && l.scroll > 300 && !document.documentElement.classList.contains('menu-open')));
 
-  /* cursor */
-  if (FINE) {
-    const cur = $('.cursor'), lbl = $('.c-lbl');
-    const cx = gsap.quickTo(cur, 'x', { duration: .25, ease: 'power3' }), cy = gsap.quickTo(cur, 'y', { duration: .25, ease: 'power3' });
-    addEventListener('pointermove', e => { cx(e.clientX); cy(e.clientY); });
+  /* cursor: an inverting "liquid lens". It springs after the pointer and stretches with speed,
+     grows over big type, shrinks on buttons, and spins a label ring over anything with data-cursor */
+  if (FINE && $('.cursor')) {
+    const cur = $('.cursor'), lens = $('.c-dot');
+    cur.insertAdjacentHTML('beforeend', '<svg class="c-ring" viewBox="0 0 160 160"><defs><path id="c-path" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"/></defs><text><textPath href="#c-path" textLength="372" lengthAdjust="spacing"></textPath></text></svg>');
+    const ring = $('.c-ring', cur), tp = $('textPath', ring);
+    const WORDS = { View: 'View project', Next: 'Next project', Write: 'Write to me' };
+    const BIG = 'h1,h2,.big-text,.about-p,.ab-lead,.mq-row,.tl-row,.f-name';
+    const ringText = w => { w = (WORDS[w] || w).toUpperCase() + ' · '; return w.repeat(Math.max(1, Math.round(42 / w.length))); };
+    const s = { x: innerWidth / 2, y: innerHeight / 2, vx: 0, vy: 0, d: 22, ro: 0, a: 0 };
+    let mx = s.x, my = s.y, td = 22, tro = 0, down = false, shown = false;
+    addEventListener('pointermove', e => {
+      mx = e.clientX; my = e.clientY;
+      if (!shown) { shown = true; s.x = mx; s.y = my; cur.classList.add('on'); }
+    }, { passive: true });
+    document.addEventListener('mouseout', e => { if (!e.relatedTarget) { shown = false; cur.classList.remove('on'); } });
+    addEventListener('pointerdown', () => { down = true; });
+    addEventListener('pointerup', () => { down = false; });
     document.addEventListener('pointerover', e => {
-      const c = e.target.closest('[data-cursor]'), l = e.target.closest('a,button,input,textarea,label');
-      cur.classList.toggle('big', !!c); lbl.textContent = c ? c.dataset.cursor : '';
-      cur.classList.toggle('link', !c && !!l);
+      const t = e.target, c = t.closest('[data-cursor]');
+      tro = 0;
+      if (c) { td = 86; tro = 1; const w = ringText(c.dataset.cursor); if (tp.textContent !== w) tp.textContent = w; }
+      else if (t.closest('.btn,[data-mag]')) td = 12;
+      else if (t.closest('a,button,input,textarea,label,select')) td = 54;
+      else if (t.closest(BIG)) td = 118;
+      else td = 22;
+    });
+    gsap.ticker.add((time, ms) => {
+      if (!shown) return;
+      const dt = Math.min(ms / 1000, .05);
+      s.vx += ((mx - s.x) * 300 - s.vx * 24) * dt; s.vy += ((my - s.y) * 300 - s.vy * 24) * dt;
+      s.x += s.vx * dt; s.y += s.vy * dt;
+      const k = 1 - Math.pow(.002, dt), d = down ? td * .78 : td;
+      s.d += (d - s.d) * k; s.ro += (tro - s.ro) * (1 - Math.pow(.001, dt));
+      const st = RM ? 0 : Math.min(Math.hypot(s.vx, s.vy) / 2200, .5), ang = Math.atan2(s.vy, s.vx) * 57.2958, sc = s.d / 120;
+      lens.style.transform = `translate3d(${s.x}px,${s.y}px,0) rotate(${ang}deg) scale(${sc * (1 + st)},${sc * (1 - st * .55)})`;
+      if (!RM) s.a += dt * 70;
+      ring.style.opacity = s.ro;
+      ring.style.transform = `translate3d(${s.x}px,${s.y}px,0) rotate(${s.a}deg) scale(${.7 + .3 * s.ro})`;
     });
   }
 

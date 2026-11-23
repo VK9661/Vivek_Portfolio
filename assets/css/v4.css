@@ -48,12 +48,12 @@ a:hover .r,button:hover .r{transform:translateY(-100%)}
 html.rm .loader,html.no-js .loader,html:not(.first) .loader{display:none}
 
 /* ---------- cursor ---------- */
-.cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none}
-.c-dot{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--fg);mix-blend-mode:difference;transition:width .5s var(--out),height .5s var(--out),margin .5s var(--out),background-color .3s}
-.c-lbl{position:absolute;transform:translate(-50%,-50%) scale(.6);opacity:0;font:500 13px/1 var(--body);color:var(--bg);white-space:nowrap;transition:opacity .25s,transform .5s var(--out)}
-.cursor.big .c-dot{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--acc);mix-blend-mode:normal}
-.cursor.big .c-lbl{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.cursor.link .c-dot{width:40px;height:40px;margin:-20px 0 0 -20px}
+/* liquid lens: white + difference inverts whatever sits under it; sized by transform only */
+.cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none;mix-blend-mode:difference;opacity:0;transition:opacity .3s}
+.cursor.on{opacity:1}
+.c-dot{position:absolute;left:-60px;top:-60px;width:120px;height:120px;border-radius:50%;background:#fff;transform:scale(0);will-change:transform}
+.c-ring{position:absolute;left:-80px;top:-80px;width:160px;height:160px;overflow:visible;opacity:0;will-change:transform,opacity}
+.c-ring text{fill:#fff;font:500 11.5px var(--mono)}
 @media (hover:none),(pointer:coarse){.cursor{display:none}}
 @media (hover:hover) and (pointer:fine){html:not(.rm) body,html:not(.rm) a,html:not(.rm) button{cursor:none}}
 
