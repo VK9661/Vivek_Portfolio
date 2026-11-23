@@ -207,10 +207,12 @@ function buildAbout() {
   fill(rows[1], ['Claude AI', 'ChatGPT', 'Gemini', 'NotebookLM', 'Google Flow', 'Midjourney', 'Stitch', 'Lovable']);
   return () => {
     if (!ANIM()) return;
+    // same on-screen speed as the "Let's work together" ribbon (half its row every 26s)
+    const mq = $('.mq-row'), pxS = mq ? mq.scrollWidth / 2 / 26 : innerWidth * .0866;
     rows.forEach(r => {
       const d = +r.dataset.dir;
-      const loop = gsap.fromTo(r, { xPercent: d < 0 ? 0 : -50 }, { xPercent: d < 0 ? -50 : 0, duration: 40, ease: 'none', repeat: -1 });
-      ScrollTrigger.create({ trigger: '.tools', start: 'top bottom', end: 'bottom top', onUpdate: s => { const v = Math.abs(s.getVelocity()); gsap.to(loop, { timeScale: 1 + Math.min(v / 250, 6), duration: .2, overwrite: true }); gsap.to(loop, { timeScale: 1, duration: 1.2, delay: .2 }); } });
+      const loop = gsap.fromTo(r, { xPercent: d < 0 ? 0 : -50 }, { xPercent: d < 0 ? -50 : 0, duration: r.scrollWidth / 2 / pxS, ease: 'none', repeat: -1 });
+      ScrollTrigger.create({ trigger: '.tools', start: 'top bottom', end: 'bottom top', onUpdate: s => { const v = Math.abs(s.getVelocity()); gsap.to(loop, { timeScale: 1 + Math.min(v / 300, 5), duration: .2, overwrite: true }); gsap.to(loop, { timeScale: 1, duration: 1.4, delay: .25 }); } });
     });
     gsap.from('.xp-h h3', { yPercent: 30, autoAlpha: 0, duration: 1.2, ease: 'out', scrollTrigger: { trigger: '.xp', start: 'top 85%' } });
   };
